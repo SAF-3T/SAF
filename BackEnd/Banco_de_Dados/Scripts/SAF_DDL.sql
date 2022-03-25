@@ -91,7 +91,7 @@ CREATE TABLE TabelaErro(
 	IdTipoErro INT FOREIGN KEY REFERENCES TipoErro(IdTipoErro),
 	IdCheckList INT FOREIGN KEY REFERENCES CheckList(IdCheckList),
 	DescricaoErro VARCHAR (250),
-	ImagemErro VARCHAR (255),
+	ImagemErro VARCHAR (255)
 );
 GO
 
