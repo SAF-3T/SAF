@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "RuhaxxC+AXNwKMziQkJO1bO/o1rkd60KUqcotJoDIckC2w/j6zWStbc3fXT2jtC95rr+yjWh2dI7W1f52ah4oQ==",
+  "dgSpecHash": "0S/0IWUeOccGquPNGWsmIZEGkU63Y4eWFhCfUZ1qU8Cg7Y1bpRhV5JTadovMiTkMxrm5V7nObM1qrnDVBtbPjQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\45999057809.INFOSCS\\source\\repos\\SAF_3T\\SAF_3T.csproj",
+  "projectFilePath": "C:\\Users\\45999057809.INFOSCS\\Desktop\\SAF-3T\\BackEnd\\API\\SAF_3T\\SAF_3T.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\45999057809.INFOSCS\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\45999057809.INFOSCS\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.12\\microsoft.aspnetcore.authentication.jwtbearer.5.0.12.nupkg.sha512",
