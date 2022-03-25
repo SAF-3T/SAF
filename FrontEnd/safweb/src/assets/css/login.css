@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,700;1,200&display=swap');
+
+.full-page {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+}
+
+.div-esq {
+    width: 50%;
+    height: 100%;
+    background-color: #0E758C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.div-dir {
+    width: 50%;
+    height: 100%;
+    background: url("../background-login.png");
+    border: none;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center ;
+}
+/* 
+.logo {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+} */
+
+.div-form {
+    width: 392px;
+    height: 555px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 73px;
+    color: #FFFFFF;
+}
+
+.form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+input {
+    background-color: #0E758C;
+    border: none;
+    border-bottom: solid #FFFFFF 1px;
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 15px;
+}
+
+input:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+::placeholder {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 200;
+    color: #FFFFFF;
+}
+
+.btn-login {
+    margin-top: 70px;
+    width: 150px;
+    height: 50px;
+    background: #FFFFFF;
+    border: none;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 24px;
+    color: #0E758C;
+}
+
+.img {
+    background: url("../Logo.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 250px;
+    height: 320px;
+}
