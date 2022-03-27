@@ -1,11 +1,11 @@
 import './App.css';
 
-function App() {
+function dashboard() {
   return (
     <div>
-
+      <h1 className='thisH1'>Qaulquer coisa</h1>
     </div>
   );
 }
 
-export default App;
+export default dashboard;

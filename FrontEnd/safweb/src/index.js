@@ -21,7 +21,7 @@ const PermissaoGestor = ({ component: Component }) => (
       usuarioAutenticado() && parseJwt().role === '1' ? (
         <Component {...props} />
       ) : (
-        <Redirect to="/" />
+        <Redirect to="/dashboard" />
       )
     }
   />
@@ -31,8 +31,8 @@ const routing = (
   <Router>
     <div>
       <Switch>
-        <Route exact path="/" component={Dashboard} />
-        <Route path="/login" component={Login} />
+        <Route exact path="/" component={Login} />
+        <Route path="/dashboard" component={Dashboard} />
       </Switch>
     </div>
   </Router>

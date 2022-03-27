@@ -1,17 +1,17 @@
 import { Component } from 'react';
 import axios from 'axios';
+import MaskedInput from './MaskedInput';
 
 import { parseJwt, usuarioAutenticado } from '../../services/auth';
 
 import '../../assets/css/login.css';
 
-
 export default class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            cpf: '',
-            senha: '',
+            CPF: '',
+            Senha: '',
             erroMensagem: '',
             isLoading: false,
         };
@@ -19,13 +19,11 @@ export default class Login extends Component {
 
     efetuaLogin = (event) => {
         event.preventDefault();
-
         this.setState({ erroMensagem: '', isLoading: true });
-
         axios
-            .post('', {
-                email: this.state.cpf,
-                senha: this.state.senha,
+            .post('https://62409e832aeb48a9af759fd7.mockapi.io/Usuarios', {
+                email: this.state.CPF,
+                senha: this.state.Senha,
             })
 
             .then((resposta) => {
@@ -54,11 +52,6 @@ export default class Login extends Component {
     };
 
     atualizaStateCampo = (campo) => {
-        // quando estiver digitando no campo username
-        //                     email        :       adm@adm.com
-
-        // quando estiver digitando no campo password
-        //                     senha        :        senha123
         this.setState({ [campo.target.name]: campo.target.value });
     };
 
@@ -69,13 +62,12 @@ export default class Login extends Component {
                     <div className="div-esq">
                         <div className="div-form">
                             <h1>LOGIN</h1>
-                            <form  className="form" onSubmit={this.efetuaLogin}>
-                                <label htmlFor="cpf"></label>
-                                <input type="number" value={this.state.cpf} onChange={this.atualizaStateCampo} id="cpf" placeholder="CPF" />
+                            <form className="form" onSubmit={this.efetuaLogin}>
+                                <label htmlFor="CPF"></label>
+                                <MaskedInput name="CPF" mask="999.999.999-99" value={this.state.CPF} onChange={this.atualizaStateCampo} placeholder="CPF"/>
 
-                                <label htmlFor="password"></label>
-                                <input type="text" id="senha"  value={this.state.senha} onChange={this.atualizaStateCampo} placeholder="SENHA" />
-                                
+                                <label htmlFor="Senha"></label>
+                                <input type="password" name="Senha" value={this.state.Senha} onChange={this.atualizaStateCampo} placeholder="SENHA" />
 
                                 <button className="btn-login" type="submit">LOGIN</button>
                             </form>
