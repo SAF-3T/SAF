@@ -14,7 +14,7 @@ namespace SAF_3T.Controllers
         SAFContext ctx = new SAFContext();
         public void Atualizar(int id, Veiculo veiculoAtualizado)
         {
-            throw new NotImplementedException();
+            Veiculo veiculoBuscado = ctx.Veiculos.Find(veiculoAtualizado);
         }
 
         public Veiculo BuscarPorCarroceria(string idTipoCarroceria)

@@ -29,5 +29,6 @@ namespace SAF_3T.Domains
         public string IdTipoCarroceria { get; internal set; }
         public int IdTipoVeiculos { get; internal set; }
         public string IdMarcas { get; internal set; }
+        public string IdUsuarios { get; internal set; }
     }
 }
