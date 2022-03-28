@@ -11,7 +11,7 @@ namespace SAF_3T.Interfaces
         void Cadastrar(CheckList novaChecklist);
         void Deletar(int idRecebido);
         List<CheckList> ListarTodas();
-        CheckList BuscaPorId(int idRecebido);
-        List<CheckList> ListarMinhas(int idUsuario);
+        CheckList BuscarPorId(int idRecebido);
+        List<CheckList> ListarMinhas(int idVeiculo);
     }
 }

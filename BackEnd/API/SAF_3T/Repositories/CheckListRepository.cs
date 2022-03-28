@@ -13,68 +13,30 @@ namespace SAF_3T.Repositories
     {
         SAFContext ctx = new SAFContext();
 
-        public CheckList BuscaPorId(int idRecebido)
+        public CheckList BuscarPorId(int idRecebido)
         {
-            return ctx.CheckLists.Include(x => x.IdTipoCheckListNavigation)
-                            .Select(x => new CheckList()
-                            {
-                                IdCheckList = x.IdCheckList,
-                                IdTipoCheckList = x.IdTipoCheckList,
-                                IdVeiculo = x.IdVeiculo,
-                                IdUsuario = x.IdUsuario,
-                                DataCheckList = x.DataCheckList,
-                                IdTipoCheckListNavigation = new TipoCheckList()
-                                {
-                                    NomeTipoCheckList = x.IdTipoCheckListNavigation.NomeTipoCheckList
-                                },
-                                IdUsuarioNavigation = new Usuario()
-                                {
-                                    Nome = x.IdUsuarioNavigation.Nome,
-                                    Sobrenome = x.IdUsuarioNavigation.Sobrenome,
-                                    Cpf = x.IdUsuarioNavigation.Cpf,
-                                    Telefone = x.IdUsuarioNavigation.Telefone,
-                                    IdTipoUsuarioNavigation = new TipoUsuario()
-                                    {
-                                        NomeTipoUsuario = x.IdUsuarioNavigation.IdTipoUsuarioNavigation.NomeTipoUsuario
-                                    },
-                                },
-                                IdVeiculoNavigation = new Veiculo()
-                                {
-                                    IdVeiculo = x.IdVeiculo,
-                                    IdUsuario = x.IdUsuario,
-                                    IdTipoVeiculoNavigation = new TipoVeiculo()
-                                    {
-                                        NomeTipoVeiculo = x.IdTipoCheckListNavigation.NomeTipoCheckList
-                                    },
-                                    IdMarcaNavigation = new Marca()
-                                    {
-                                        NomeMarca = x.
-                                    },
-                                    
-                                    
-
-                                }
-                            }).FirstOrDefault(c => c.IdClassificado == Id);
+            return ctx.CheckLists.Find(idRecebido);
         }
 
         public void Cadastrar(CheckList novaChecklist)
         {
-            throw new NotImplementedException();
+            ctx.CheckLists.Add(novaChecklist);
+            ctx.SaveChangesAsync();
         }
 
         public void Deletar(int idRecebido)
         {
-            throw new NotImplementedException();
+            ctx.CheckLists.Remove(BuscarPorId(idRecebido));
         }
 
-        public List<CheckList> ListarMinhas(int idUsuario)
+        public List<CheckList> ListarMinhas(int idVeiculo)
         {
             throw new NotImplementedException();
         }
 
         public List<CheckList> ListarTodas()
         {
-            throw new NotImplementedException();
+            return ctx.CheckLists.ToList();
         }
     }
 }
