@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import MaskedInput from './MaskedInput';
 
@@ -21,7 +22,7 @@ export default class Login extends Component {
         event.preventDefault();
         this.setState({ erroMensagem: '', isLoading: true });
         axios
-            .post('https://62409e832aeb48a9af759fd7.mockapi.io/Usuarios', {
+            .post('', {
                 email: this.state.CPF,
                 senha: this.state.Senha,
             })
