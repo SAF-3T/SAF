@@ -10,8 +10,7 @@ namespace SAF_3T.Interfaces
     {
         void Cadastrar(Usuario novoUsuario);
         List<Usuario> ListarTodos();
-        public Usuario LoginWeb(string CPF, string Senha);
-        public Usuario LoginMobile(string CPF, string Telefone);
+        public Usuario Login(string CPF, string Senha);
         void Deletar(int idUsuario);
         Usuario BuscarPorId(int idUsuario);
         Usuario BuscarPorNome(string NomeUsuario);

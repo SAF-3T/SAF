@@ -5,21 +5,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using SAF_3T.Utils;
 
 namespace SAF_3T.Repositories
 {
     public class UsuarioRepository : IUsuarioRepository
     {
-        private readonly SAFContext ctx;
+        private SAFContext ctx;
 
-        public UsuarioRepository(SAFContext appContext)
-        {
-            ctx = appContext;
-        }
+        public object BCrypt { get; private set; }
 
         public Usuario BuscarPorCPF(string CPFUsuario)
         {
-            throw new NotImplementedException();
+            return ctx.Usuarios.FirstOrDefault(u => u.Cpf == CPFUsuario);
         }
 
         public Usuario BuscarPorId(int idUsuario)
@@ -39,28 +37,40 @@ namespace SAF_3T.Repositories
 
         public void Cadastrar(Usuario novoUsuario)
         {
+            Criptografia.GerarHash(novoUsuario.Senha);
             ctx.Usuarios.Add(novoUsuario);
             ctx.SaveChangesAsync();
         }
 
         public void Deletar(int idUsuario)
         {
-            throw new NotImplementedException();
+            var encontrar = ctx.Usuarios.FirstOrDefault(c => c.IdUsuario == idUsuario);
+            ctx.Usuarios.Remove(encontrar);
         }
 
         public List<Usuario> ListarTodos()
         {
-            throw new NotImplementedException();
+            return ctx.Usuarios.ToList();
         }
 
-        public Usuario LoginMobile(string NomeCompleto, string Telefone)
+        public Usuario Login(string CPF, string senha)
         {
-            throw new NotImplementedException();
-        }
+            var usuario = ctx.Usuarios.FirstOrDefault(u => u.Cpf == CPF && u.Senha == senha);
 
-        public Usuario LoginWeb(string CPF, string Senha)
-        {
-            throw new NotImplementedException();
+            if (usuario != null)
+            {
+                if (usuario.Senha == senha)
+                {
+                    usuario.Senha = Criptografia.GerarHash(usuario.Senha);
+                    ctx.SaveChanges();
+                }
+
+                bool comparado = Criptografia.Comparar(senha, usuario.Senha);
+                if (comparado)
+                    return usuario;
+            }
+            
+            return null; 
         }
     }
 }

@@ -144,3 +144,4 @@ C:\Users\53961345856.INFOSCS\Desktop\SAF-3T\BackEnd\API\SAF_3T\obj\Debug\net5.0\
 C:\Users\53961345856.INFOSCS\Desktop\SAF-3T\BackEnd\API\SAF_3T\obj\Debug\net5.0\ref\SAF_3T.dll
 C:\Users\53961345856.INFOSCS\Desktop\SAF-3T\BackEnd\API\SAF_3T\obj\Debug\net5.0\SAF_3T.pdb
 C:\Users\53961345856.INFOSCS\Desktop\SAF-3T\BackEnd\API\SAF_3T\obj\Debug\net5.0\SAF_3T.genruntimeconfig.cache
+C:\Users\53961345856.INFOSCS\Desktop\SAF-3T\BackEnd\API\SAF_3T\bin\Debug\net5.0\BCrypt.Net-Next.dll
