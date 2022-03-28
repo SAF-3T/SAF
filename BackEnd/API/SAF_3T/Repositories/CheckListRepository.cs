@@ -15,7 +15,16 @@ namespace SAF_3T.Repositories
 
         public CheckList BuscarPorId(int idRecebido)
         {
-            return ctx.CheckLists.Find(idRecebido);
+            return ctx.CheckLists.Include(c => c.IdTipoCheckListNavigation)
+                .Include(c => c.IdUsuarioNavigation)
+                .Include(c => c.IdUsuarioNavigation.IdTipoUsuarioNavigation)
+                .Include(c => c.IdVeiculoNavigation)
+                .Include(c => c.IdVeiculoNavigation.IdTipoVeiculoNavigation)
+                .Include(c => c.IdVeiculoNavigation.IdMarcaNavigation)
+                .Include(c => c.IdVeiculoNavigation.IdCarroceriaNavigation)
+                .Include(c => c.IdVeiculoNavigation.IdCarroceriaNavigation.IdTipoCarroceriaNavigation)
+                .Include(c => c.IdVeiculoNavigation.IdCarroceriaNavigation.IdTipoCargaNavigation)
+                .FirstOrDefault(c => c.IdCheckList == idRecebido);
         }
 
         public void Cadastrar(CheckList novaChecklist)
@@ -31,12 +40,31 @@ namespace SAF_3T.Repositories
 
         public List<CheckList> ListarMinhas(int idVeiculo)
         {
-            throw new NotImplementedException();
+            return ctx.CheckLists.Include(c => c.IdTipoCheckListNavigation)
+                .Include(c => c.IdUsuarioNavigation)
+                .Include(c => c.IdUsuarioNavigation.IdTipoUsuarioNavigation)
+                .Include(c => c.IdVeiculoNavigation)
+                .Include(c => c.IdVeiculoNavigation.IdTipoVeiculoNavigation)
+                .Include(c => c.IdVeiculoNavigation.IdMarcaNavigation)
+                .Include(c => c.IdVeiculoNavigation.IdCarroceriaNavigation)
+                .Include(c => c.IdVeiculoNavigation.IdCarroceriaNavigation.IdTipoCarroceriaNavigation)
+                .Include(c => c.IdVeiculoNavigation.IdCarroceriaNavigation.IdTipoCargaNavigation)
+                .Where(c => c.IdVeiculo == idVeiculo)
+                .ToList();
         }
 
         public List<CheckList> ListarTodas()
         {
-            return ctx.CheckLists.ToList();
+            return ctx.CheckLists.Include(c => c.IdTipoCheckListNavigation)
+                .Include(c => c.IdUsuarioNavigation)
+                .Include(c => c.IdUsuarioNavigation.IdTipoUsuarioNavigation)
+                .Include(c => c.IdVeiculoNavigation)
+                .Include(c => c.IdVeiculoNavigation.IdTipoVeiculoNavigation)
+                .Include(c => c.IdVeiculoNavigation.IdMarcaNavigation)
+                .Include(c => c.IdVeiculoNavigation.IdCarroceriaNavigation)
+                .Include(c => c.IdVeiculoNavigation.IdCarroceriaNavigation.IdTipoCarroceriaNavigation)
+                .Include(c => c.IdVeiculoNavigation.IdCarroceriaNavigation.IdTipoCargaNavigation)
+                .ToList();
         }
     }
 }

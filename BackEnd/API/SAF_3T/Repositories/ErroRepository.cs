@@ -1,4 +1,5 @@
-﻿using SAF_3T.Contexts;
+﻿using Microsoft.EntityFrameworkCore;
+using SAF_3T.Contexts;
 using SAF_3T.Domains;
 using SAF_3T.Interfaces;
 using System;
@@ -25,17 +26,19 @@ namespace SAF_3T.Repositories
 
         public List<TabelaErro> ListarMinhas(int idCheckList)
         {
-            throw new NotImplementedException();
+            return ctx.TabelaErros.Include(c => c.IdCheckListNavigation).Include(c => c.IdTipoErroNavigation).Where(c => c.IdCheckList == idCheckList).ToList();
         }
 
         public TabelaErro BuscarPorId(int idRecebido)
         {
-            return ctx.TabelaErros.Find(idRecebido);
+            return ctx.TabelaErros.Include(c => c.IdTipoErroNavigation)
+                .Include(c => c.IdCheckListNavigation)
+                .FirstOrDefault(c => c.IdErro == idRecebido);
         }
 
         public List<TabelaErro> ListarTodos()
         {
-            return ctx.TabelaErros.ToList();
+            return ctx.TabelaErros.Include(c => c.IdTipoErroNavigation).Include(c => c.IdCheckListNavigation).ToList();
         }
     }
 }
