@@ -18,13 +18,13 @@ namespace SAF_3T.Contexts
         {
         }
 
-        public virtual DbSet<Carrocerium> Carroceria { get; set; }
+        public virtual DbSet<Carroceria> Carroceria { get; set; }
         public virtual DbSet<CheckList> CheckLists { get; set; }
         public virtual DbSet<Marca> Marcas { get; set; }
         public virtual DbSet<TabelaCorrecao> TabelaCorrecaos { get; set; }
         public virtual DbSet<TabelaErro> TabelaErros { get; set; }
         public virtual DbSet<TipoCarga> TipoCargas { get; set; }
-        public virtual DbSet<TipoCarrocerium> TipoCarroceria { get; set; }
+        public virtual DbSet<TipoCarroceria> TipoCarroceria { get; set; }
         public virtual DbSet<TipoCheckList> TipoCheckLists { get; set; }
         public virtual DbSet<TipoErro> TipoErros { get; set; }
         public virtual DbSet<TipoUsuario> TipoUsuarios { get; set; }
@@ -45,7 +45,7 @@ namespace SAF_3T.Contexts
         {
             modelBuilder.HasAnnotation("Relational:Collation", "Latin1_General_CI_AS");
 
-            modelBuilder.Entity<Carrocerium>(entity =>
+            modelBuilder.Entity<Carroceria>(entity =>
             {
                 entity.HasKey(e => e.IdCarroceria)
                     .HasName("PK__Carrocer__06E6D1D31EE9F62A");
@@ -188,7 +188,7 @@ namespace SAF_3T.Contexts
                     .IsUnicode(false);
             });
 
-            modelBuilder.Entity<TipoCarrocerium>(entity =>
+            modelBuilder.Entity<TipoCarroceria>(entity =>
             {
                 entity.HasKey(e => e.IdTipoCarroceria)
                     .HasName("PK__TipoCarr__69CC3D3AD5FAE652");
