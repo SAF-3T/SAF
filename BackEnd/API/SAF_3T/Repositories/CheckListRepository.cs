@@ -36,6 +36,7 @@ namespace SAF_3T.Repositories
         public void Deletar(int idRecebido)
         {
             ctx.CheckLists.Remove(BuscarPorId(idRecebido));
+            ctx.SaveChanges();
         }
 
         public List<CheckList> ListarMinhas(int idVeiculo)

@@ -15,9 +15,9 @@ GO
 
 INSERT INTO TipoCarroceria(NomeTIpoCarroceria)
 VALUES ('Bitrem'),
-	   ('Cacamba'),
+	   ('Caçamba'),
 	   ('Prancha'),
-	   ('Bau')
+	   ('Baú')
 GO
 
 INSERT INTO TipoCarga(NomeTipoCarga)
@@ -42,17 +42,20 @@ VALUES ('Truck'),
 GO
 
 INSERT INTO Marca(NomeMarca)
-VALUES ('Mercedes'),
+VALUES ('Mercedes-Benz'),
        ('Caio'),
 	   ('Scania'),
 	   ('Volkswagen')
 GO
 
 INSERT INTO Veiculo(IdTipoVeiculo,IdMarca,IdCarroceria,IdUsuario,Placa,DataAquisicao)
-VALUES (1,2,2,4,'HJS4722','09/07/2015 13:13'),
-       (2,1,3,2,'AML3512','03/22/2015 22:22'),
-	   (3,3,1,6,'KAE3184','11/08/2015 17:17'),
-	   (4,4,4,5,'CVI1717','11/04/2015 16:20')
+VALUES (1,2,2,4,'HJS-4722','09/07/2015 13:13'),
+       (2,1,3,2,'AML-3512','03/22/2015 22:22'),
+	   (3,3,1,6,'KAE-3184','11/08/2015 17:17'),
+	   (4,4,4,5,'CVI-1717','11/04/2015 16:20')
+GO
+
+INSERT INTO TipoChecklist VALUES ('CheckIn'),('CheckOut'),('Preventiva'),('Corretiva')
 GO
 
 

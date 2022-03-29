@@ -41,11 +41,17 @@ namespace SAF_3T.Controllers
         }
 
         [HttpPost]
-        public ActionResult<CheckList> CadastrarCheckList([FromForm] CheckList novaChecklist, IFormFile arquivo)
+        public ActionResult<CheckList> CadastrarCheckList(CheckList novaChecklist)
         {
            _checklistRepository.Cadastrar(novaChecklist);
             return StatusCode(201);
         }
 
+        [HttpDelete("{idChecklist}")]
+        public ActionResult<CheckList> DeletarCheckList(int idChecklist)
+        {
+            _checklistRepository.Deletar(idChecklist);
+            return StatusCode(200);
+        }
     }
 }
