@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import {
   Route,
   BrowserRouter as Router,
-  Redirect,
   Switch,
 } from 'react-router-dom';
 import { parseJwt, usuarioAutenticado } from './services/auth';
@@ -16,17 +15,17 @@ import Veiculos from './pages/veiculos/veiculos';
 
 import reportWebVitals from './reportWebVitals';
 
-const PermissaoGestor = ({ component: Component }) => (
-  <Route
-    render={(props) =>
-      usuarioAutenticado() && parseJwt().role === '1' ? (
-        <Component {...props} />
-      ) : (
-        <Redirect to="/dashboard" />
-      )
-    }
-  />
-);
+// const PermissaoGestor = ({ component: Component }) => (
+//   <Route
+//     render={(props) =>
+//       usuarioAutenticado() && parseJwt().role === '1' ? (
+//         <Component {...props} />
+//       ) : (
+//         <Redirect to="/dashboard" />
+//       )
+//     }
+//   />
+// );
 
 const routing = (
   <Router>

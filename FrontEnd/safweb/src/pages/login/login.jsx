@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 import axios from 'axios';
 import MaskedInput from './MaskedInput';
 
@@ -7,12 +7,12 @@ import { parseJwt, usuarioAutenticado } from '../../services/auth';
 
 import '../../assets/css/login.css';
 
-export default class Login extends Component {
+class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            CPF: '',
-            Senha: '',
+            cpf: '',
+            senha: '',
             erroMensagem: '',
             isLoading: false,
         };
@@ -22,26 +22,24 @@ export default class Login extends Component {
         event.preventDefault();
         this.setState({ erroMensagem: '', isLoading: true });
         axios
-            .post('', {
-                email: this.state.CPF,
-                senha: this.state.Senha,
+            .post('http://localhost:5000/api/Login', {
+                cpf: this.state.cpf,
+                senha: this.state.senha,
             })
+
 
             .then((resposta) => {
                 if (resposta.status === 200) {
                     localStorage.setItem('usuario-login', resposta.data.token);
                     this.setState({ isLoading: false });
 
+                    console.log('estou logado: ' + usuarioAutenticado());
+
                     let base64 = localStorage.getItem('usuario-login').split('.')[1];
                     console.log(base64);
                     console.log(this.props);
-
-                    if (parseJwt().role === '1') {
-                        this.props.history.push('/');
-                        console.log('estou logado: ' + usuarioAutenticado());
-                    } else {
-                        this.props.history.push('/');
-                    }
+                    
+                    this.props.history.push('/dashboard');
                 }
             })
             .catch(() => {
@@ -63,14 +61,14 @@ export default class Login extends Component {
                     <div className="div-esq">
                         <div className="div-form">
                             <h1>LOGIN</h1>
-                            <form className="form" onSubmit={this.efetuaLogin}>
-                                <label htmlFor="CPF"></label>
-                                <MaskedInput name="CPF" mask="999.999.999-99" value={this.state.CPF} onChange={this.atualizaStateCampo} placeholder="CPF"/>
+                            <form className="form">
+                                <label htmlFor="cpf"></label>
+                                <MaskedInput name="cpf" mask="999.999.999-99" value={this.state.cpf} onChange={this.atualizaStateCampo} placeholder="CPF"/>
 
-                                <label htmlFor="Senha"></label>
-                                <input type="password" name="Senha" value={this.state.Senha} onChange={this.atualizaStateCampo} placeholder="SENHA" />
+                                <label htmlFor="senha"></label>
+                                <input type="password" name="senha" value={this.state.senha} onChange={this.atualizaStateCampo} placeholder="SENHA" />
 
-                                <button className="btn-login" type="submit">LOGIN</button>
+                                <button className="btn-login" type="submit" onSubmit={this.efetuaLogin}>LOGIN</button>
                             </form>
                         </div>
                     </div>
@@ -82,3 +80,5 @@ export default class Login extends Component {
         );
     }
 };
+
+export default Login;
