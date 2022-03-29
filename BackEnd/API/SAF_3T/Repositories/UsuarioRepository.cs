@@ -11,7 +11,7 @@ namespace SAF_3T.Repositories
 {
     public class UsuarioRepository : IUsuarioRepository
     {
-        private SAFContext ctx;
+        private SAFContext ctx = new SAFContext();
 
         public object BCrypt { get; private set; }
 
@@ -37,15 +37,16 @@ namespace SAF_3T.Repositories
 
         public void Cadastrar(Usuario novoUsuario)
         {
-            Criptografia.GerarHash(novoUsuario.Senha);
+            novoUsuario.Senha = Criptografia.GerarHash(novoUsuario.Senha);
             ctx.Usuarios.Add(novoUsuario);
-            ctx.SaveChangesAsync();
+            ctx.SaveChanges();
         }
 
         public void Deletar(int idUsuario)
         {
             var encontrar = ctx.Usuarios.FirstOrDefault(c => c.IdUsuario == idUsuario);
             ctx.Usuarios.Remove(encontrar);
+            ctx.SaveChanges();
         }
 
         public List<Usuario> ListarTodos()
@@ -55,22 +56,33 @@ namespace SAF_3T.Repositories
 
         public Usuario Login(string CPF, string senha)
         {
-            var usuario = ctx.Usuarios.FirstOrDefault(u => u.Cpf == CPF && u.Senha == senha);
+            var usuario = ctx.Usuarios.FirstOrDefault(u => u.Cpf == CPF);
 
             if (usuario != null)
             {
-                if (usuario.Senha == senha)
+                
+                if (senha.Length != 32)
                 {
-                    usuario.Senha = Criptografia.GerarHash(usuario.Senha);
-                    ctx.SaveChanges();
-                }
+                    var SenhaBanco = ctx.Usuarios.FirstOrDefault(u => u.Cpf == CPF && u.Senha == senha);
 
-                bool comparado = Criptografia.Comparar(senha, usuario.Senha);
-                if (comparado)
+                    if (SenhaBanco != null)
+                    {
+                        SenhaBanco.Senha = Criptografia.GerarHash(SenhaBanco.Senha);
+
+                        ctx.SaveChanges();
+
+                        return usuario;
+                    }
+                }
+                bool confere = Criptografia.Comparar(senha, usuario.Senha);
+
+                if (confere)
+                {
                     return usuario;
+                }
             }
-            
-            return null; 
+
+            return null;
         }
     }
 }

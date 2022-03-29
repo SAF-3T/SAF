@@ -27,9 +27,9 @@ namespace SAF_3T.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(LoginViewModel login)
+        public IActionResult Login( LoginViewModel login)
         {
-            Usuario UsuarioBuscado = _usuarioRepository.Login(login.Cpf, login.Senha);
+            var UsuarioBuscado = _usuarioRepository.Login(login.Cpf, login.Senha);
             try
             {
                 if(UsuarioBuscado != null)

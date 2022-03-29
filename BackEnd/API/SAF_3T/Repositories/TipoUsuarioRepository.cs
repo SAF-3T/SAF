@@ -10,12 +10,7 @@ namespace SAF_3T.Repositories
 {
     public class TipoUsuarioRepository : ITipoUsuarioRepository
     {
-        private readonly SAFContext ctx;
-
-        public TipoUsuarioRepository(SAFContext appContext)
-        {
-            ctx = appContext;
-        }
+        private SAFContext ctx = new SAFContext();
 
         public void Cadastrar(TipoUsuario novoTipoU)
         {
@@ -27,6 +22,7 @@ namespace SAF_3T.Repositories
         {
             var encontrar = ctx.TipoUsuarios.FirstOrDefault(c => c.IdTipoUsuario == idTipoU);
             ctx.TipoUsuarios.Remove(encontrar);
+            ctx.SaveChanges();
         }
 
         public List<TipoUsuario> ListarTodos()
