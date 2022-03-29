@@ -29,7 +29,7 @@ namespace SAF_3T.Controllers
 
         public Veiculo BuscarPorId(int idTipoVeiculo)
         {
-            return ctx.Veiculos.FirstOrDefault(a => a.IdTipoVeiculos == idTipoVeiculo );
+            return ctx.Veiculos.FirstOrDefault(a => a.IdTipoVeiculos == idTipoVeiculo);
         }
 
         public Veiculo BuscarPorMarca(string idMarca)
@@ -64,3 +64,4 @@ namespace SAF_3T.Controllers
         }
     }
 }
+

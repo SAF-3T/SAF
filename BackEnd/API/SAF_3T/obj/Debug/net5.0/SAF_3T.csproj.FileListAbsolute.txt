@@ -71,3 +71,13 @@ C:\Users\45999057809.INFOSCS\source\repos\SAF_3T\obj\Debug\net5.0\SAF_3T.dll
 C:\Users\45999057809.INFOSCS\source\repos\SAF_3T\obj\Debug\net5.0\ref\SAF_3T.dll
 C:\Users\45999057809.INFOSCS\source\repos\SAF_3T\obj\Debug\net5.0\SAF_3T.pdb
 C:\Users\45999057809.INFOSCS\source\repos\SAF_3T\obj\Debug\net5.0\SAF_3T.genruntimeconfig.cache
+C:\Users\44597948880.INFOSCS\Desktop\SAF-3T\BackEnd\API\SAF_3T\obj\Debug\net5.0\SAF_3T.csproj.AssemblyReference.cache
+C:\Users\44597948880.INFOSCS\Desktop\SAF-3T\BackEnd\API\SAF_3T\obj\Debug\net5.0\SAF_3T.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\44597948880.INFOSCS\Desktop\SAF-3T\BackEnd\API\SAF_3T\obj\Debug\net5.0\SAF_3T.AssemblyInfoInputs.cache
+C:\Users\44597948880.INFOSCS\Desktop\SAF-3T\BackEnd\API\SAF_3T\obj\Debug\net5.0\SAF_3T.AssemblyInfo.cs
+C:\Users\44597948880.INFOSCS\Desktop\SAF-3T\BackEnd\API\SAF_3T\obj\Debug\net5.0\SAF_3T.csproj.CoreCompileInputs.cache
+C:\Users\44597948880.INFOSCS\Desktop\SAF-3T\BackEnd\API\SAF_3T\obj\Debug\net5.0\SAF_3T.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\44597948880.INFOSCS\Desktop\SAF-3T\BackEnd\API\SAF_3T\obj\Debug\net5.0\SAF_3T.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\44597948880.INFOSCS\Desktop\SAF-3T\BackEnd\API\SAF_3T\obj\Debug\net5.0\SAF_3T.dll
+C:\Users\44597948880.INFOSCS\Desktop\SAF-3T\BackEnd\API\SAF_3T\obj\Debug\net5.0\ref\SAF_3T.dll
+C:\Users\44597948880.INFOSCS\Desktop\SAF-3T\BackEnd\API\SAF_3T\obj\Debug\net5.0\SAF_3T.pdb

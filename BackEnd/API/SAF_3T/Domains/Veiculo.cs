@@ -30,5 +30,6 @@ namespace SAF_3T.Domains
         public int IdTipoVeiculos { get; internal set; }
         public string IdMarcas { get; internal set; }
         public string IdUsuarios { get; internal set; }
+        public string PlacaVeiculos { get; internal set; }
     }
 }

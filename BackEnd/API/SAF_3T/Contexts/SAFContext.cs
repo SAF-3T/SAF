@@ -9,6 +9,8 @@ namespace SAF_3T.Contexts
 {
     public partial class SAFContext : DbContext
     {
+        internal object veiculos;
+
         public SAFContext()
         {
         }
