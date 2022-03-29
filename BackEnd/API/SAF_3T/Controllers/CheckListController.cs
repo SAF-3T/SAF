@@ -51,7 +51,7 @@ namespace SAF_3T.Controllers
         public ActionResult<CheckList> DeletarCheckList(int idChecklist)
         {
             _checklistRepository.Deletar(idChecklist);
-            return StatusCode(200);
+            return StatusCode(204);
         }
     }
 }

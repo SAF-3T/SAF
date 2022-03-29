@@ -58,6 +58,13 @@ GO
 INSERT INTO TipoChecklist VALUES ('CheckIn'),('CheckOut'),('Preventiva'),('Corretiva')
 GO
 
+INSERT iNTO CheckList VALUES (3,3,5,'03/29/2022 15:03')
+GO
 
+INSERT INTO TipoErro VALUES ('Pneu Furado'),('Parabriza Trincado')
+GO
 
+INSERT INTO TabelaErro VALUES (1,6,'Pneu dianteiro esquerdo furado',null),(2,6,'Parabrisa trincado médio',null)
+GO
 
+INSERT INTO TabelaCorrecao VALUES (1,6,'Pneus trocados por novos',null),(2,6,'Parabrisa trocado por um novo',null)
