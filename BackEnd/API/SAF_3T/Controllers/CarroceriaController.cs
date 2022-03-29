@@ -51,6 +51,60 @@ namespace SAF_3T.Controllers
             }
         }
 
+        [HttpGet("/peso")]
+        public IActionResult BuscarPorPeso(string Peso)
+        {
+            try
+            {
+                return Ok(_carroceriaRepository.BuscarPorPeso(Peso));
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+                throw;
+            }
+        }
 
+        [HttpGet("/cubagem")]
+        public IActionResult BuscarPorCubagem(string Cubagem)
+        {
+            try
+            {
+                return Ok(_carroceriaRepository.BuscarPorCubagem(Cubagem));
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+                throw;
+            }
+        }
+
+        [HttpGet("/TipoCarga")]
+        public IActionResult BuscarPorTipoCarga(string TipoCarga)
+        {
+            try
+            {
+                return Ok(_carroceriaRepository.BuscarPorTipoCarga(TipoCarga));
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+                throw;
+            }
+        }
+
+        [HttpGet("/TipoCarroceria")]
+        public IActionResult BuscarPorTipoCarroceria(string TipoCarroceria)
+        {
+            try
+            {
+                return Ok(_carroceriaRepository.BuscarPorTipoCarga(TipoCarroceria));
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+                throw;
+            }
+        }
     }
 }

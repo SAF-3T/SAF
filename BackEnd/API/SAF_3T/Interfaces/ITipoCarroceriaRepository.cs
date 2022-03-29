@@ -8,9 +8,9 @@ namespace SAF_3T.Interfaces
 {
     interface ITipoCarroceriaRepository
     {
-        List<Carroceria> Listar();
+        List<TipoCarroceria> Listar();
 
-        Carroceria BuscarPorNomeCarroceria(string NomeTipoCarroceria);
+        TipoCarroceria BuscarPorNomeCarroceria(string NomeTipoCarroceria);
 
 
     }

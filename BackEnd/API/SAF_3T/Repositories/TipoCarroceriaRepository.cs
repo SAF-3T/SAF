@@ -12,14 +12,14 @@ namespace SAF_3T.Repositories
     public class TipoCarroceriaRepository : ITipoCarroceriaRepository
     {
         SAFContext ctx = new SAFContext();
-        public Carroceria BuscarPorNomeCarroceria(string NomeTipoCarroceria)
+        public TipoCarroceria BuscarPorNomeCarroceria(string NomeTipoCarroceria)
         {
-            return ctx.Carroceria.FirstOrDefault(a => a.NomeCarroceria == NomeTipoCarroceria);
+            return ctx.TipoCarroceria.FirstOrDefault(a => a.NomeTipoCarroceria == NomeTipoCarroceria);
         }
 
-        public List<Carroceria> Listar()
+        public List<TipoCarroceria> Listar()
         {
-            return ctx.Carroceria.ToList();
+            return ctx.TipoCarroceria.ToList();
         }
 
     }
