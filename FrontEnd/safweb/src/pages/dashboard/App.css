@@ -1,0 +1,94 @@
+header {
+  background-color: #0E758C;
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.wrapper {
+  width: 85%;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.imagemLogo {
+  width: 56px;
+  height: 56px;
+  background: url("../../assets/Logo.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.imagemUsuario {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #C4C4C4;
+}
+
+.imagemFooter {
+  width: 36px;
+  height: 36px;
+  background: url("../../assets/Logo.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+footer {
+  height: 87px;
+  background-color: #0E758C;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.wrapperFooter {
+  margin: 0 auto;
+  width: 22%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wrapperFooter>p {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 24px;
+  color: #FFFFFF;
+}
+
+.links {
+  width: 305px;
+  height: fit-content;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.link1 {
+  background: #C4C4C4;
+}
+
+.link2 {
+  background: #E0E0E0;
+}
+
+.link1, .link2 {
+  width: 305px;
+  height: 106px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 25px;
+  line-height: 37px;
+  color: #000000;
+}
+
+.removerLink {
+  text-decoration: none; 
+}
