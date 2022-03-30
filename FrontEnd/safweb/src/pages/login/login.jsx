@@ -27,7 +27,6 @@ class Login extends React.Component {
                 senha: this.state.senha,
             })
 
-
             .then((resposta) => {
                 if (resposta.status === 200) {
                     localStorage.setItem('usuario-login', resposta.data.token);
@@ -61,14 +60,14 @@ class Login extends React.Component {
                     <div className="div-esq">
                         <div className="div-form">
                             <h1>LOGIN</h1>
-                            <form className="form">
+                            <form className="form" onSubmit={this.efetuaLogin}>
                                 <label htmlFor="cpf"></label>
                                 <MaskedInput name="cpf" mask="999.999.999-99" value={this.state.cpf} onChange={this.atualizaStateCampo} placeholder="CPF"/>
 
                                 <label htmlFor="senha"></label>
                                 <input type="password" name="senha" value={this.state.senha} onChange={this.atualizaStateCampo} placeholder="SENHA" />
 
-                                <button className="btn-login" type="submit" onSubmit={this.efetuaLogin}>LOGIN</button>
+                                <button type="submit" className="btn-login">LOGIN</button>
                             </form>
                         </div>
                     </div>

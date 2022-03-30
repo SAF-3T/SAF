@@ -10,6 +10,8 @@ function dashboard() {
   return (
     <div>
       
+      <Sidebar />
+
       <Footer />
     </div>
   );

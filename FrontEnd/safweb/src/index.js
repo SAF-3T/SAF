@@ -11,7 +11,6 @@ import './index.css';
 
 import Dashboard from './pages/dashboard/dashboard';
 import Login from './pages/login/login';
-import Veiculos from './pages/veiculos/veiculos';
 
 import reportWebVitals from './reportWebVitals';
 
@@ -33,11 +32,10 @@ const routing = (
       <Switch>
         <Route exact path="/" component={Login} />
         <Route path="/dashboard" component={Dashboard} />
-        <Route path="/veiculos" component={Veiculos} />
       </Switch>
     </div>
   </Router>
 );
 
-ReactDOM.render(routing, document.getElementById('root'));
+ReactDOM.render(routing ,document.getElementById('root'));
 reportWebVitals();
