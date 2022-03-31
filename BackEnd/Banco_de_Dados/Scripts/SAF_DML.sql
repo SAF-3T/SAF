@@ -48,11 +48,11 @@ VALUES ('Mercedes-Benz'),
 	   ('Volkswagen')
 GO
 
-INSERT INTO Veiculo(IdTipoVeiculo,IdMarca,IdCarroceria,IdUsuario,Placa,DataAquisicao)
-VALUES (1,2,2,4,'HJS-4722','09/07/2015 13:13'),
-       (2,1,3,2,'AML-3512','03/22/2015 22:22'),
-	   (3,3,1,6,'KAE-3184','11/08/2015 17:17'),
-	   (4,4,4,5,'CVI-1717','11/04/2015 16:20')
+INSERT INTO Veiculo(IdTipoVeiculo,IdMarca,IdCarroceria,IdUsuario,Placa,DataAquisicao,IdTipoStatus)
+VALUES (1,2,2,4,'HJS-4722','09/07/2015 13:13',1),
+       (2,1,3,2,'AML-3512','03/22/2015 22:22',2),
+	   (3,3,1,6,'KAE-3184','11/08/2015 17:17',3),
+	   (4,4,4,5,'CVI-1717','11/04/2015 16:20',1)
 GO
 
 INSERT INTO TipoChecklist VALUES ('CheckIn'),('CheckOut'),('Preventiva'),('Corretiva')
@@ -68,3 +68,6 @@ INSERT INTO TabelaErro VALUES (1,6,'Pneu dianteiro esquerdo furado',null),(2,6,'
 GO
 
 INSERT INTO TabelaCorrecao VALUES (1,6,'Pneus trocados por novos',null),(2,6,'Parabrisa trocado por um novo',null)
+
+INSERT INTO TipoStatus VALUES ('Em Trajeto'),('Na garagem'),('Manutenção Necessária')
+GO
