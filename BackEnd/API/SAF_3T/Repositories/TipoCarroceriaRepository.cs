@@ -22,5 +22,19 @@ namespace SAF_3T.Repositories
             return ctx.TipoCarroceria.ToList();
         }
 
+        public void Deletar(int idTipoCarroceria)
+        {
+            TipoCarroceria deletado = ctx.TipoCarroceria.FirstOrDefault(t => t.IdTipoCarroceria == idTipoCarroceria);
+            ctx.TipoCarroceria.Remove(deletado);
+            ctx.SaveChanges();
+        }
+
+        
+        public void Cadastrar(TipoCarroceria novaCarroceria)
+            {
+                ctx.TipoCarroceria.Add(novaCarroceria);
+                ctx.SaveChanges();
+            }
+        
     }
 }

@@ -12,6 +12,10 @@ namespace SAF_3T.Interfaces
 
         TipoCarroceria BuscarPorNomeCarroceria(string NomeTipoCarroceria);
 
+        void Cadastrar(TipoCarroceria novaCarroceria);
+
+        void Deletar(int id);
+
 
     }
 }

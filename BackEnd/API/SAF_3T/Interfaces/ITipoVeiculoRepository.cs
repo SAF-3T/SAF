@@ -8,17 +8,14 @@ namespace SAF_3T.Interfaces
 {
     interface ITipoVeiculoRepository
     {
-        List<Veiculo> Listar();
+        List<TipoVeiculo> Listar();
 
-        Veiculo BuscarPorId(int idTipoVeiculo);
+        TipoVeiculo BuscarPorId(int idTipoVeiculo);
 
-        Veiculo BuscarPorPlaca(string Placa);
+        void Cadastrar(TipoVeiculo novoVeiculo);
 
-        void Cadastrar(Veiculo novoVeiculo);
+        void Atualizar(int id, TipoVeiculo veiculoAtualizado);
 
-        void Atualizar(int idTipoVeiculo, Veiculo VeiculoAtualizado);
-
-        void Deletar(int idTipoVeiculo);
-
+        void Deletar(int id);
     }
 }

@@ -106,5 +106,35 @@ namespace SAF_3T.Controllers
                 throw;
             }
         }
+
+        [HttpPost]
+        public IActionResult Cadastrar(Carroceria novaCarroceria)
+        {
+            try
+            {
+                _carroceriaRepository.Cadastrar(novaCarroceria);
+                return StatusCode(201);
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+                throw;
+            }
+        }
+
+        [HttpDelete("{Carroceria}")]
+        public IActionResult Deletar(int idCarroceria)
+        {
+            try
+            {
+                _carroceriaRepository.Deletar(idCarroceria);
+                return NoContent();
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+                throw;
+            }
+        }
     }
 }

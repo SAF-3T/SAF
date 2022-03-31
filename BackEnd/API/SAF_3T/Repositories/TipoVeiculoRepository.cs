@@ -12,45 +12,39 @@ namespace SAF_3T.Controllers
     public class TipoVeiculoRepository : ITipoVeiculoRepository
     {
         SAFContext ctx = new SAFContext();
-        public void Atualizar(int idTipoVeiculo, Veiculo veiculoAtualizado)
+        public void Atualizar(int idTipoVeiculo, TipoVeiculo tipoVeiculoAtualizado)
         {
-            TipoVeiculo TipoVeiculoBuscado = ctx.TipoVeiculos.Find(veiculoAtualizado);
+            var tipoVeiculoBuscado = ctx.TipoVeiculos.FirstOrDefault(t => t.IdTipoVeiculo == idTipoVeiculo);
 
-            if (veiculoAtualizado != null)
+            if(tipoVeiculoBuscado != null)
             {
-                TipoVeiculoBuscado.IdTipoVeiculo = veiculoAtualizado.IdTipoVeiculo;
-
-                ctx.Veiculos.Update(veiculoAtualizado);
-
+                tipoVeiculoBuscado.NomeTipoVeiculo = tipoVeiculoAtualizado.NomeTipoVeiculo;
                 ctx.SaveChanges();
-            }
+            }                
         }
 
-        public Veiculo BuscarPorId(int idTipoVeiculo)
+        public TipoVeiculo BuscarPorId(int idTipoVeiculo)
         {
-            return ctx.Veiculos.FirstOrDefault(a => a.IdTipoVeiculos == idTipoVeiculo);
+            return ctx.TipoVeiculos.FirstOrDefault(a => a.IdTipoVeiculo == idTipoVeiculo);
         }
 
-        public Veiculo BuscarPorPlaca(string Placa)
-        {
-            return ctx.Veiculos.FirstOrDefault(a => a.PlacaVeiculos == Placa);
-        }
 
-        public void Cadastrar(Veiculo novoVeiculo)
+        public void Cadastrar(TipoVeiculo novoVeiculo)
         {
-            ctx.Veiculos.Add(novoVeiculo);
+            ctx.TipoVeiculos.Add(novoVeiculo);
             ctx.SaveChanges();
         }
 
         public void Deletar(int idTipoVeiculo)
         {
-            ctx.Veiculos.Remove(BuscarPorId(idTipoVeiculo));
+            ctx.TipoVeiculos.Remove(BuscarPorId(idTipoVeiculo));
+            ctx.SaveChanges();
         }
 
 
-        public List<Veiculo> Listar()
+        public List<TipoVeiculo> Listar()
         {
-            return ctx.Veiculos.ToList();
+            return ctx.TipoVeiculos.ToList();
         }
     }
 }

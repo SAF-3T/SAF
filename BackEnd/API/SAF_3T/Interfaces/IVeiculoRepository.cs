@@ -12,15 +12,13 @@ namespace SAF_3T.Interfaces
 
         Veiculo BuscarPorId(int idTipoVeiculo);
 
-        Veiculo BuscarPorMarca(string idMarca);
+        List<Veiculo> BuscarPorMarca(int idMarca);
 
-        Veiculo BuscarPorCarroceria(string idTipoCarroceria);
+        List<Veiculo> BuscarPorCarroceria(int idTipoCarroceria);
 
-        Veiculo BuscarPorUsuario(string idUsuario);
+        List<Veiculo> BuscarPorPlaca(string Placa);
 
-        Veiculo BuscarPorPlaca(string Placa);
-
-        Veiculo BuscarPorData(DateTime DataAquisicao);
+        List<Veiculo> BuscarPorData(DateTime DataAquisicao);
 
         void Cadastrar(Veiculo novoVeiculo);
 

@@ -1,6 +1,5 @@
 ﻿using SAF_3T.Domains;
 using System.Collections.Generic;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -19,5 +18,9 @@ namespace SAF_3T.Interfaces
         Carroceria BuscarPorCubagem(string Cubagem);
 
         Carroceria BuscarPorPeso(string Peso);
+
+        void Cadastrar(Carroceria novaCarroceria);
+
+        void Deletar(int id);
     }
 }

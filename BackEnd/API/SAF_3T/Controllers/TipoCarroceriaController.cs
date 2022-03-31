@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SAF_3T.Domains;
 using SAF_3T.Interfaces;
 using SAF_3T.Repositories;
 using System;
@@ -35,7 +36,7 @@ namespace SAF_3T.Controllers
             }
         }
 
-        [HttpGet("{NomeCarroceria}")]
+        [HttpGet("{NomeTipoCarroceria}")]
         public IActionResult BuscarPorNomeCarroceria(string NomeTipoCarroceria)
         {
             try
@@ -48,5 +49,37 @@ namespace SAF_3T.Controllers
                 throw;
             }
         }
+
+        [HttpPost]
+        public IActionResult Cadastrar(TipoCarroceria novoTipoC)
+        {
+            try
+            {
+                _tipoCarroceriaRepository.Cadastrar(novoTipoC);
+                return StatusCode(201);
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+                throw;
+            }
+        }
+
+        [HttpDelete("{idTipoCarroceria}")]
+        public IActionResult Deletar(int idTipoCarroceria)
+        {
+            try
+            {
+                _tipoCarroceriaRepository.Deletar(idTipoCarroceria);
+                return NoContent();
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+                throw;
+            }
+        }
+
+
     }    
 }
