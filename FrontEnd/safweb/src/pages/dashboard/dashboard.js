@@ -2,6 +2,8 @@ import React from 'react';
 
 import './App.css';
 
+import { Link, useHistory  } from 'react-router-dom';
+
 import Header from '../../components/header';
 import HeaderDashBoard from '../../components/headerDashboard';
 import Sidebar from '../../components/sidebar';
@@ -31,6 +33,7 @@ function dashboard() {
         </section>
 
         <div className="wrapperCards">
+          <Link className="componentLink" to="/">
           <div className="card">
             <div className="adicionarCard">
               <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
@@ -39,6 +42,8 @@ function dashboard() {
               <p className="pCadastrarCard">Veículo</p>
             </div>
           </div>
+          </Link>
+          <Link className="componentLink" to="/">
           <div className="card">
             <div className="adicionarCard">
               <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
@@ -47,6 +52,8 @@ function dashboard() {
               <p className="pCadastrarCard">Tipo de veículo</p>
             </div>
           </div>
+          </Link>
+          <Link className="componentLink" to="/">
           <div className="card">
             <div className="adicionarCard">
               <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
@@ -55,6 +62,8 @@ function dashboard() {
               <p className="pCadastrarCard">Carga</p>
             </div>
           </div>
+          </Link>
+          <Link className="componentLink" to="/">
           <div className="card">
             <div className="adicionarCard">
               <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
@@ -63,6 +72,8 @@ function dashboard() {
               <p className="pCadastrarCard">Carroceria</p>
             </div>
           </div>
+          </Link>
+          <Link className="componentLink" to="/">
           <div className="card">
             <div className="adicionarCard">
               <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
@@ -71,6 +82,8 @@ function dashboard() {
               <p className="pCadastrarCard">Usuario</p>
             </div>
           </div>
+          </Link>
+          <Link className="componentLink" to="/">
           <div className="card">
             <div className="adicionarCard">
               <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
@@ -79,6 +92,7 @@ function dashboard() {
               <p className="pCadastrarCard">Checklist</p>
             </div>
           </div>
+          </Link>
 
         </div>
       </main>
