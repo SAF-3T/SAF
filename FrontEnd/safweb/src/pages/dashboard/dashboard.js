@@ -2,10 +2,8 @@ import React from 'react';
 
 import './App.css';
 
-import Header from '../../components/header';
 import HeaderDashBoard from '../../components/headerDashboard';
 import Sidebar from '../../components/sidebar';
-import Footer from '../../components/footer';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'

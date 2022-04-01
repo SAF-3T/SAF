@@ -12,7 +12,7 @@ header {
 }
 
 .wrapper {
-  width: 85%;
+  width: 80%;
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
@@ -21,7 +21,7 @@ header {
 .imagemLogo {
   width: 56px;
   height: 56px;
-  background: url("../../assets/LogoHeader.png");
+  background: url("../../assets/Logo.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -62,7 +62,7 @@ nav {
   height: 90em;
   width: fit-content;
   position: absolute;
-  top: 0;
+  top: 80px;
   border-right: 3px solid rgba(19, 159, 192, 0.25);
   width: 160px;
   display: flex;
@@ -70,6 +70,7 @@ nav {
   align-items: center;
   flex-wrap: wrap;
   flex-direction: column;
+  background-color: white;
 }
 
 .links {
@@ -78,7 +79,6 @@ nav {
   flex-direction: column;
   height: fit-content;
   width: fit-content;
-  /* position: relative; */
 }
 
 footer {
@@ -87,6 +87,9 @@ footer {
   margin: 0 auto;
   display: flex;
   align-items: center;
+  position: absolute;
+  width: 100%;
+  top: 90em;
 }
 
 .link1, .link2 {
