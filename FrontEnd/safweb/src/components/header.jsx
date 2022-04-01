@@ -28,9 +28,6 @@ class Header extends Component {
                     <div className="wrapper">
                         <a href="#">
                         <div className="imagemLogo"></div></a>
-                        {/* <img className="fotoUsuario"
-                            src={`data:image;base64,${this.state.ImagemUsuario}`}
-                            alt="Imagem de Perfil do Usuário" /> */}
                         <a href="#"><div className="imagemUsuario"></div></a>
                     </div>
                 </header>

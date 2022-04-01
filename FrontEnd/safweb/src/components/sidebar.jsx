@@ -4,20 +4,24 @@ import { Link } from 'react-router-dom';
 
 import '../pages/dashboard/App.css';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTruck } from '@fortawesome/free-solid-svg-icons'
+import { faTruckRampBox } from '@fortawesome/free-solid-svg-icons'
+import { faTruckArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { faUsers } from '@fortawesome/free-solid-svg-icons'
+import { faListCheck } from '@fortawesome/free-solid-svg-icons'
+
 class Sidebar extends Component {
 
     render() {
         return (
             <nav>
                 <div className="links">
-                    <Link className="removerLink" to="/veiculos"><div className="link1">Veículos</div></Link>
-                    <Link className="removerLink" to="/motoristas"><div className="link2">Motoristas</div></Link>
-                    <Link className="removerLink" to="/usuarios"><div className="link1">Usuários</div></Link>
-                    <Link className="removerLink" to="/carroceria"><div className="link2">Carroceria</div></Link>
-                    <Link className="removerLink" to="/check-ins"><div className="link1">Check-ins</div></Link>
-                    <Link className="removerLink" to="/check-outs"><div className="link2">Check-outs</div></Link>
-                    <Link className="removerLink" to="/preventivas"><div className="link1">Preventivas</div></Link>
-                    <Link className="removerLink" to="/corretivas"><div className="link2">Corretivas</div></Link>
+                    <div className="link1"><FontAwesomeIcon icon={faTruck} color="#0E758C" size="lg"/></div>
+                    <div className="link2"><FontAwesomeIcon icon={faTruckRampBox} color="#0E758C" size="lg"/></div>
+                    <div className="link1"><FontAwesomeIcon icon={faTruckArrowRight} color="#0E758C" size="lg"/></div>
+                    <div className="link2"><FontAwesomeIcon icon={faUsers} color="#0E758C" size="lg"/></div>
+                    <div className="link1"><FontAwesomeIcon icon={faListCheck} color="#0E758C" size="lg"/></div>
                 </div>
             </nav>
         );
