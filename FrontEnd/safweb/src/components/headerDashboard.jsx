@@ -24,12 +24,13 @@ class Header extends Component {
     render() {
         return (
             <div className="wrapperDashboard">
-                <p>Bem vindo, [nome-usuario] !</p>
+                <a href="#"><div className="imagemLogo"></div></a>
+                <p className="pBemVindo">Bem vindo, [nome-usuario] !</p>
                 <div className="usuarioHeaderDashboard">
                     <a href="#"><div className="imagemUsuario"></div></a>
                     <div className="linksUsuario">
-                        <p>[nome-usuario]</p>
-                        <p>[cargo-usuario]</p>
+                        <p className="pNomeUsuario">[nome-usuario]</p>
+                        <p className="pCargoUsuario">[cargo-usuario]</p>
                     </div>
                 </div>
             </div>
