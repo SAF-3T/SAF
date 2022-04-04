@@ -2,7 +2,7 @@ import React from 'react';
 
 import './App.css';
 
-import HeaderDashBoard from '../../components/headers/headerDashboard';
+import HeaderDashboard from '../../components/headers/headerDashboard';
 import Sidebar from '../../components/sidebars/sidebar';
 
 import { Link } from 'react-router-dom';
@@ -15,7 +15,7 @@ function dashboard() {
   return (
     <div>
 
-      <HeaderDashBoard />
+      <HeaderDashboard />
 
       <main>
         <section className="conteudoCima">

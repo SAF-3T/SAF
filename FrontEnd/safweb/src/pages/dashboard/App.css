@@ -81,6 +81,11 @@ nav {
   background-color: white;
 }
 
+.sidebar {
+  position: absolute;
+  top: 0;
+}
+
 .link1:hover, .link2:hover{
   border-right: 4px solid rgba(14, 117, 140, 0.5); 
 }
@@ -129,7 +134,7 @@ footer {
   color: inherit;
 }
 
-.wrapperDashdoard {
+.wrapperDashboard {
   display: flex;
   justify-content: space-between;
   align-items: center;
