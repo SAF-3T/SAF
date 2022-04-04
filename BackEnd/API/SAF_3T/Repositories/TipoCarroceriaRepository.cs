@@ -12,25 +12,25 @@ namespace SAF_3T.Repositories
     public class TipoCarroceriaRepository : ITipoCarroceriaRepository
     {
         SAFContext ctx = new SAFContext();
-        public TipoCarroceria BuscarPorNomeCarroceria(string NomeTipoCarroceria)
+        public TipoCarrocerium BuscarPorNomeCarroceria(string NomeTipoCarroceria)
         {
             return ctx.TipoCarroceria.FirstOrDefault(a => a.NomeTipoCarroceria == NomeTipoCarroceria);
         }
 
-        public List<TipoCarroceria> Listar()
+        public List<TipoCarrocerium> Listar()
         {
             return ctx.TipoCarroceria.ToList();
         }
 
         public void Deletar(int idTipoCarroceria)
         {
-            TipoCarroceria deletado = ctx.TipoCarroceria.FirstOrDefault(t => t.IdTipoCarroceria == idTipoCarroceria);
+            TipoCarrocerium deletado = ctx.TipoCarroceria.FirstOrDefault(t => t.IdTipoCarroceria == idTipoCarroceria);
             ctx.TipoCarroceria.Remove(deletado);
             ctx.SaveChanges();
         }
 
         
-        public void Cadastrar(TipoCarroceria novaCarroceria)
+        public void Cadastrar(TipoCarrocerium novaCarroceria)
             {
                 ctx.TipoCarroceria.Add(novaCarroceria);
                 ctx.SaveChanges();

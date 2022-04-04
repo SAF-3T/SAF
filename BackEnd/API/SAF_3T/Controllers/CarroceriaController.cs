@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 namespace SAF_3T.Controllers
 {
     [Produces("application/json")]
-
     [Route("api/[controller]")]
 
     [ApiController]
@@ -38,7 +37,7 @@ namespace SAF_3T.Controllers
         }
 
         [HttpGet("/BuscaId/{idCarroceria}")]
-        public IActionResult BuscarPorId(int idCarroceria)
+        public IActionResult ListarPorId(int idCarroceria)
         {
             try
             {
@@ -52,7 +51,7 @@ namespace SAF_3T.Controllers
         }
 
         [HttpPost]
-        public IActionResult Cadastrar(Carroceria novaCarroceria)
+        public IActionResult Cadastrar(Carrocerium novaCarroceria)
         {
             try
             {
@@ -66,13 +65,13 @@ namespace SAF_3T.Controllers
             }
         }
 
-        [HttpDelete("/Deletar/{Carroceria}")]
+        [HttpDelete("/Deletar/{idCarroceria}")]
         public IActionResult Deletar(int idCarroceria)
         {
             try
             {
                 _carroceriaRepository.Deletar(idCarroceria);
-                return NoContent();
+                return StatusCode(204);
             }
             catch (Exception erro)
             {

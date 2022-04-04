@@ -18,7 +18,6 @@ namespace SAF_3T.Controllers
             Veiculo veiculoBuscado = ctx.Veiculos.Find(id);
 
             veiculoBuscado.IdTipoVeiculo = veiculoAtualizado.IdTipoVeiculo;
-            veiculoBuscado.IdTipoCarroceria = veiculoAtualizado.IdTipoCarroceria;
             veiculoBuscado.IdMarca = veiculoAtualizado.IdMarca;
             veiculoBuscado.IdUsuario = veiculoAtualizado.IdUsuario;
             ctx.Veiculos.Update(veiculoBuscado);
@@ -85,11 +84,10 @@ namespace SAF_3T.Controllers
         public List<Veiculo> Listar()
         {
             return ctx.Veiculos
+                .Include(v => v.IdTipoVeiculoNavigation)
                 .Include(v => v.IdCarroceriaNavigation)
                 .Include(v => v.IdCarroceriaNavigation.IdTipoCarroceriaNavigation)
-                .Include(v => v.IdMarcaNavigation)
-                .Include(v => v.IdTipoVeiculoNavigation)
-                .Include(v => v.IdUsuarioNavigation)
+                .Include(v => v.IdCarroceriaNavigation.IdTipoCargaNavigation)
                 .ToList();
         }
     }

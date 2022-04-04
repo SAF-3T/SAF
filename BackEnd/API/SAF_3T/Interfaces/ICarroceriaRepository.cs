@@ -7,10 +7,10 @@ namespace SAF_3T.Interfaces
 {
     interface ICarroceriaRepository
     {
-        List<Carroceria> Listar();
+        List<Carrocerium> Listar();
 
-        Carroceria BuscarPorId(int IdCarroceria);
-        void Cadastrar(Carroceria novaCarroceria);
+        Carrocerium BuscarPorId(int IdCarroceria);
+        void Cadastrar(Carrocerium novaCarroceria);
 
         void Deletar(int id);
     }

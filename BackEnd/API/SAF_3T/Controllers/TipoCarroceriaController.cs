@@ -51,7 +51,7 @@ namespace SAF_3T.Controllers
         }
 
         [HttpPost]
-        public IActionResult Cadastrar(TipoCarroceria novoTipoC)
+        public IActionResult Cadastrar(TipoCarrocerium novoTipoC)
         {
             try
             {

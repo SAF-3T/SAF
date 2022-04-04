@@ -14,14 +14,14 @@ namespace SAF_3T.Repositories
     {
         SAFContext ctx = new SAFContext();
 
-        public Carroceria BuscarPorId(int IdCarroceria)
+        public Carrocerium BuscarPorId(int IdCarroceria)
         {
             return ctx.Carroceria
                 .Include(c => c.IdTipoCarroceriaNavigation)
                 .Include(c => c.IdTipoCargaNavigation)
                 .FirstOrDefault(c => c.IdCarroceria == IdCarroceria);
         }
-        public void Cadastrar(Carroceria novaCarroceria)
+        public void Cadastrar(Carrocerium novaCarroceria)
         {
             ctx.Carroceria.Add(novaCarroceria);
             ctx.SaveChanges();
@@ -30,9 +30,10 @@ namespace SAF_3T.Repositories
         public void Deletar(int id)
         {
             ctx.Carroceria.Remove(BuscarPorId(id));
+            ctx.SaveChanges();
         }
 
-        public List<Carroceria> Listar()
+        public List<Carrocerium> Listar()
         {
             return ctx.Carroceria
                 .Include(c => c.IdTipoCarroceriaNavigation)

@@ -9,12 +9,12 @@ namespace SAF_3T.Domains
     {
         public TipoCarga()
         {
-            Carroceria = new HashSet<Carroceria>();
+            Carroceria = new HashSet<Carrocerium>();
         }
 
         public byte IdTipoCarga { get; set; }
         public string NomeTipoCarga { get; set; }
 
-        public virtual ICollection<Carroceria> Carroceria { get; set; }
+        public virtual ICollection<Carrocerium> Carroceria { get; set; }
     }
 }

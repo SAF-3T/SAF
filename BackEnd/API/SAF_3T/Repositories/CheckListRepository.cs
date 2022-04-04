@@ -19,12 +19,6 @@ namespace SAF_3T.Repositories
                 .Include(c => c.IdTipoCheckListNavigation)
                 .Include(c => c.IdUsuarioNavigation)
                 .Include(c => c.IdUsuarioNavigation.IdTipoUsuarioNavigation)
-                .Include(c => c.IdVeiculoNavigation)
-                .Include(c => c.IdVeiculoNavigation.IdTipoVeiculoNavigation)
-                .Include(c => c.IdVeiculoNavigation.IdMarcaNavigation)
-                .Include(c => c.IdVeiculoNavigation.IdCarroceriaNavigation)
-                .Include(c => c.IdVeiculoNavigation.IdCarroceriaNavigation.IdTipoCarroceriaNavigation)
-                .Include(c => c.IdVeiculoNavigation.IdCarroceriaNavigation.IdTipoCargaNavigation)
                 .FirstOrDefault(c => c.IdCheckList == idRecebido);
         }
 
@@ -46,12 +40,6 @@ namespace SAF_3T.Repositories
                 .Include(c => c.IdTipoCheckListNavigation)
                 .Include(c => c.IdUsuarioNavigation)
                 .Include(c => c.IdUsuarioNavigation.IdTipoUsuarioNavigation)
-                .Include(c => c.IdVeiculoNavigation)
-                .Include(c => c.IdVeiculoNavigation.IdTipoVeiculoNavigation)
-                .Include(c => c.IdVeiculoNavigation.IdMarcaNavigation)
-                .Include(c => c.IdVeiculoNavigation.IdCarroceriaNavigation)
-                .Include(c => c.IdVeiculoNavigation.IdCarroceriaNavigation.IdTipoCarroceriaNavigation)
-                .Include(c => c.IdVeiculoNavigation.IdCarroceriaNavigation.IdTipoCargaNavigation)
                 .Where(c => c.IdVeiculo == idVeiculo)
                 .ToList();
         }
@@ -62,12 +50,6 @@ namespace SAF_3T.Repositories
                 .Include(c => c.IdTipoCheckListNavigation)
                 .Include(c => c.IdUsuarioNavigation)
                 .Include(c => c.IdUsuarioNavigation.IdTipoUsuarioNavigation)
-                .Include(c => c.IdVeiculoNavigation)
-                .Include(c => c.IdVeiculoNavigation.IdTipoVeiculoNavigation)
-                .Include(c => c.IdVeiculoNavigation.IdMarcaNavigation)
-                .Include(c => c.IdVeiculoNavigation.IdCarroceriaNavigation)
-                .Include(c => c.IdVeiculoNavigation.IdCarroceriaNavigation.IdTipoCarroceriaNavigation)
-                .Include(c => c.IdVeiculoNavigation.IdCarroceriaNavigation.IdTipoCargaNavigation)
                 .ToList();
         }
     }
