@@ -5,16 +5,16 @@ using System.Collections.Generic;
 
 namespace SAF_3T.Domains
 {
-    public partial class TipoCarrocerium
+    public partial class TipoCarroceria
     {
-        public TipoCarrocerium()
+        public TipoCarroceria()
         {
-            Carroceria = new HashSet<Carrocerium>();
+            Carroceria = new HashSet<Carroceria>();
         }
 
         public byte IdTipoCarroceria { get; set; }
         public string NomeTipoCarroceria { get; set; }
 
-        public virtual ICollection<Carrocerium> Carroceria { get; set; }
+        public virtual ICollection<Carroceria> Carroceria { get; set; }
     }
 }

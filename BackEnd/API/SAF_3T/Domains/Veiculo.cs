@@ -21,10 +21,15 @@ namespace SAF_3T.Domains
         public string Placa { get; set; }
         public DateTime DataAquisicao { get; set; }
 
-        public virtual Carrocerium IdCarroceriaNavigation { get; set; }
+        public virtual Carroceria IdCarroceriaNavigation { get; set; }
         public virtual Marca IdMarcaNavigation { get; set; }
         public virtual TipoVeiculo IdTipoVeiculoNavigation { get; set; }
         public virtual Usuario IdUsuarioNavigation { get; set; }
         public virtual ICollection<CheckList> CheckLists { get; set; }
+        public string IdTipoCarroceria { get; internal set; }
+        public int IdTipoVeiculos { get; internal set; }
+        public string IdMarcas { get; internal set; }
+        public string IdUsuarios { get; internal set; }
+        public string PlacaVeiculos { get; internal set; }
     }
 }

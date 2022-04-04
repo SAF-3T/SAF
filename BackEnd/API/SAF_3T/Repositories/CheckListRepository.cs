@@ -15,7 +15,8 @@ namespace SAF_3T.Repositories
 
         public CheckList BuscarPorId(int idRecebido)
         {
-            return ctx.CheckLists.Include(c => c.IdTipoCheckListNavigation)
+            return ctx.CheckLists
+                .Include(c => c.IdTipoCheckListNavigation)
                 .Include(c => c.IdUsuarioNavigation)
                 .Include(c => c.IdUsuarioNavigation.IdTipoUsuarioNavigation)
                 .Include(c => c.IdVeiculoNavigation)
@@ -41,7 +42,8 @@ namespace SAF_3T.Repositories
 
         public List<CheckList> ListarMinhas(int idVeiculo)
         {
-            return ctx.CheckLists.Include(c => c.IdTipoCheckListNavigation)
+            return ctx.CheckLists
+                .Include(c => c.IdTipoCheckListNavigation)
                 .Include(c => c.IdUsuarioNavigation)
                 .Include(c => c.IdUsuarioNavigation.IdTipoUsuarioNavigation)
                 .Include(c => c.IdVeiculoNavigation)
@@ -56,7 +58,8 @@ namespace SAF_3T.Repositories
 
         public List<CheckList> ListarTodas()
         {
-            return ctx.CheckLists.Include(c => c.IdTipoCheckListNavigation)
+            return ctx.CheckLists
+                .Include(c => c.IdTipoCheckListNavigation)
                 .Include(c => c.IdUsuarioNavigation)
                 .Include(c => c.IdUsuarioNavigation.IdTipoUsuarioNavigation)
                 .Include(c => c.IdVeiculoNavigation)
