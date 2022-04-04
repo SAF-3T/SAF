@@ -26,6 +26,14 @@ header {
   background-size: cover;
 }
 
+.imagemLogoHeaderDashboard {
+  width: 56px;
+  height: 56px;
+  background: url("../../assets/LogoHeader.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .imagemUsuario {
   width: 56px;
   height: 56px;
@@ -59,7 +67,7 @@ header {
 }
 
 nav {
-  height: 90em;
+  height: 130em;
   width: fit-content;
   position: absolute;
   top: 80px;
@@ -73,12 +81,16 @@ nav {
   background-color: white;
 }
 
+.link1:hover, .link2:hover{
+  border-right: 4px solid rgba(14, 117, 140, 0.5); 
+}
+
 .links {
   display: flex;
   align-items: center;
   flex-direction: column;
   height: fit-content;
-  width: fit-content;
+  width: 100%;
 }
 
 footer {
@@ -89,13 +101,13 @@ footer {
   align-items: center;
   position: absolute;
   width: 100%;
-  top: 90em;
+  top: 130em;
 }
 
-.link1, .link2 {
-  width: 78px;
+.link2, .link1 {
+  width: 100%;
   height: 78px;
-  margin-bottom: 70px;
+  margin-bottom: 100px;
   display: flex;
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
@@ -108,11 +120,16 @@ footer {
   color: #000000;
 }
 
-.removerLink {
-  text-decoration: none;
+.iconVeiculo, .iconCarroceria, .iconCarga, .iconUsuario, .iconChecklist {
+  border-right: 4px solid #0E758C;
 }
 
-.wrapperDashboard {
+.removerLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.wrapperDashdoard {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -250,7 +267,7 @@ footer {
   color: #FFFFFF;
   width: fit-content;
   height: fit-content;
- 
+
 }
 
 .textosCard {

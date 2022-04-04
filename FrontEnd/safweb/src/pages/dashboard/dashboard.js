@@ -2,8 +2,10 @@ import React from 'react';
 
 import './App.css';
 
-import HeaderDashBoard from '../../components/headerDashboard';
-import Sidebar from '../../components/sidebar';
+import HeaderDashBoard from '../../components/headers/headerDashboard';
+import Sidebar from '../../components/sidebars/sidebar';
+
+import { Link } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
@@ -12,7 +14,6 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 function dashboard() {
   return (
     <div>
-      {/* <Header/> */}
 
       <HeaderDashBoard />
 
@@ -30,61 +31,71 @@ function dashboard() {
 
         <div className="wrapperCards">
           <div className="card">
-            <div className="adicionarCard">
-              <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
-            <div className="textosCard">
-              <p className="pCadastrarCard">Cadastrar</p>
-              <p className="pCadastrarCard">Veículo</p>
-            </div>
+            <Link className="removerLink" to="/veiculos/cadastrar/veiculo">
+              <div className="adicionarCard">
+                <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
+              <div className="textosCard">
+                <p className="pCadastrarCard">Cadastrar</p>
+                <p className="pCadastrarCard">Veículo</p>
+              </div>
+            </Link>
           </div>
           <div className="card">
-            <div className="adicionarCard">
-              <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
-            <div className="textosCard">
-              <p className="pCadastrarCard">Cadastrar</p>
-              <p className="pCadastrarCard">Tipo de veículo</p>
-            </div>
+            <Link className="removerLink" to="/veiculos/cadastrar/tipo-veiculo">
+              <div className="adicionarCard">
+                <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
+              <div className="textosCard">
+                <p className="pCadastrarCard">Cadastrar</p>
+                <p className="pCadastrarCard">Tipo de veículo</p>
+              </div>
+            </Link>
           </div>
           <div className="card">
-            <div className="adicionarCard">
-              <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
-            <div className="textosCard">
-              <p className="pCadastrarCard">Cadastrar</p>
-              <p className="pCadastrarCard">Carga</p>
-            </div>
+            <Link className="removerLink" to="/veiculos/cadastrar/carga">
+              <div className="adicionarCard">
+                <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
+              <div className="textosCard">
+                <p className="pCadastrarCard">Cadastrar</p>
+                <p className="pCadastrarCard">Carga</p>
+              </div>
+            </Link>
           </div>
           <div className="card">
-            <div className="adicionarCard">
-              <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
-            <div className="textosCard">
-              <p className="pCadastrarCard">Cadastrar</p>
-              <p className="pCadastrarCard">Carroceria</p>
-            </div>
+            <Link className="removerLink" to="/veiculos/cadastrar/carroceria">
+              <div className="adicionarCard">
+                <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
+              <div className="textosCard">
+                <p className="pCadastrarCard">Cadastrar</p>
+                <p className="pCadastrarCard">Carroceria</p>
+              </div>
+            </Link>
           </div>
           <div className="card">
-            <div className="adicionarCard">
-              <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
-            <div className="textosCard">
-              <p className="pCadastrarCard">Cadastrar</p>
-              <p className="pCadastrarCard">Usuario</p>
-            </div>
+            <Link className="removerLink" to="/veiculos/cadastrar/usuario">
+              <div className="adicionarCard">
+                <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
+              <div className="textosCard">
+                <p className="pCadastrarCard">Cadastrar</p>
+                <p className="pCadastrarCard">Usuario</p>
+              </div>
+            </Link>
           </div>
           <div className="card">
-            <div className="adicionarCard">
-              <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
-            <div className="textosCard">
-              <p className="pCadastrarCard">Cadastrar</p>
-              <p className="pCadastrarCard">Checklist</p>
-            </div>
+            <Link className="removerLink" to="/veiculos/cadastrar/checklist">
+              <div className="adicionarCard">
+                <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
+              <div className="textosCard">
+                <p className="pCadastrarCard">Cadastrar</p>
+                <p className="pCadastrarCard">Checklist</p>
+              </div>
+            </Link>
           </div>
 
         </div>
-      </main>
+      </main >
 
       <Sidebar />
-
-      {/* <Footer /> */}
-    </div>
+    </div >
   );
 }
 

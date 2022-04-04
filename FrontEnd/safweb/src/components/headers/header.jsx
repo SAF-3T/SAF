@@ -2,7 +2,9 @@ import React, { Component } from "react";
 
 import axios from "axios";
 
-import '../pages/dashboard/App.css';
+import { Link } from 'react-router-dom';
+
+import '../../pages/dashboard/App.css';
 
 class Header extends Component {
 
@@ -26,8 +28,7 @@ class Header extends Component {
             <div>
                 <header>
                     <div className="wrapper">
-                        <a href="#">
-                        <div className="imagemLogo"></div></a>
+                        <Link to="/dashboard"><div className="imagemLogo"></div></Link>
                         <a href="#"><div className="imagemUsuario"></div></a>
                     </div>
                 </header>
