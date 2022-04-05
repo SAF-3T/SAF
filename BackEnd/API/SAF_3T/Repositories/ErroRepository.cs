@@ -15,7 +15,7 @@ namespace SAF_3T.Repositories
         public void Cadastrar(TabelaErro novoErro)
         {
             ctx.TabelaErros.Add(novoErro);
-            ctx.SaveChanges();
+            ctx.SaveChangesAsync();
         }
 
         public void Deletar(int idRecebido)
