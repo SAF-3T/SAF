@@ -46,7 +46,7 @@ export default function listarVeiculos() {
                         <button className="addVeiculo" type='submit'><Link className='removerLink' to="/veiculos/cadastro/carga"><FontAwesomeIcon className="iconPlus" icon={faPlus} color="#fff" size="lg" />Nova carga</Link></button>
                         <div className="input-e-btn-2">
                             <input className='inputBusca' type="text" placeholder="Pesquisar" />
-                            <button className='btnBuscar' type='submit'>Buscar</button>
+                            <button className='btnBuscar' type='submit'><p>Buscar</p></button>
                         </div>
                     </div>
 
@@ -56,6 +56,10 @@ export default function listarVeiculos() {
                                 <div className="etiquetaCargas">
                                     <p className="nomeEtiquetaCargas">[tipo-carga]</p>
                                 </div>
+                            </div>
+                            <div className="iconesEtiquetaCargas">
+                                <Link className='removerLink' to="/veiculos/atualizar/carroceria"><FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" /></Link>
+                                <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
                             </div>
                         </div>
                     </div>
@@ -67,9 +71,11 @@ export default function listarVeiculos() {
                                     <p className="nomeEtiquetaCargas">[tipo-carga]</p>
                                 </div>
                             </div>
+                            <div className="iconesEtiquetaCargas">
+                                <Link className='removerLink' to="/veiculos/atualizar/carroceria"><FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" /></Link>
+                                <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
+                            </div>
                         </div>
-                        <Link className='removerLink' to="/veiculos/atualizar/carroceria"><FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" /></Link>
-                        <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
                     </div>
 
                     <div className="cardVeiculoCargas3">
@@ -79,9 +85,11 @@ export default function listarVeiculos() {
                                     <p className="nomeEtiquetaCargas">[tipo-carga]</p>
                                 </div>
                             </div>
+                            <div className="iconesEtiquetaCargas">
+                                <Link className='removerLink' to="/veiculos/atualizar/carroceria"><FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" /></Link>
+                                <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
+                            </div>
                         </div>
-                        <Link className='removerLink' to="/veiculos/atualizar/carroceria"><FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" /></Link>
-                        <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
                     </div>
 
                     <div className="cardVeiculoCargas4">
@@ -91,9 +99,11 @@ export default function listarVeiculos() {
                                     <p className="nomeEtiquetaCargas">[tipo-carga]</p>
                                 </div>
                             </div>
+                            <div className="iconesEtiquetaCargas">
+                                <Link className='removerLink' to="/veiculos/atualizar/carroceria"><FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" /></Link>
+                                <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
+                            </div>
                         </div>
-                        <Link className='removerLink' to="/veiculos/atualizar/carroceria"><FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" /></Link>
-                        <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
                     </div>
 
                 </div>

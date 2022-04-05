@@ -100,7 +100,7 @@ body {
 .etiquetasCargas {
     display: flex;
     justify-content: flex-start;
-    width: 100%;
+    width: 90%;
     align-items: center;
 }
 
@@ -129,9 +129,16 @@ body {
 
 .alinharEtiquetasCargas {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
-    width: 100%;
+    width: 90%;
+}
+
+.iconesEtiquetaCargas {
+    width: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .input-e-btn {
@@ -169,15 +176,16 @@ body {
 
 .btnBuscar {
     background: #139FC0;
-    border-radius: 10px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 37px;
-    text-align: center;
     width: 170px;
     height: 73px;
-    color: #FFFFFF;
+    border-radius: 10px;
+}
+
+.btnBuscar>p {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 27px;
+    color: #fff;
 }
 
 .btnBuscar:hover {

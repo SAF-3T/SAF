@@ -44,7 +44,7 @@ export default function listarVeiculos() {
                         <button className="addVeiculo" type='submit'><Link className='removerLink' to="/veiculos/cadastro/usuario"><FontAwesomeIcon className="iconPlus" icon={faPlus} color="#fff" size="lg" />Novo usuário</Link></button>
                         <div className="input-e-btn-2">
                             <input className='inputBusca' type="text" placeholder="Pesquisar" />
-                            <button className='btnBuscar' type='submit'>Buscar</button>
+                            <button className='btnBuscar' type='submit'><p>Buscar</p></button>
                         </div>
                     </div>
 

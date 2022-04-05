@@ -46,7 +46,7 @@ export default function listarVeiculos() {
                         <button className="addVeiculo" type='submit'><Link className='removerLink' to="/veiculos/cadastro/usuario"><FontAwesomeIcon className="iconPlus" icon={faPlus} color="#fff" size="lg" />Nova carroceria</Link></button>
                         <div className="input-e-btn-2">
                             <input className='inputBusca' type="text" placeholder="Pesquisar" />
-                            <button className='btnBuscar' type='submit'>Buscar</button>
+                            <button className='btnBuscar' type='submit'><p>Buscar</p></button>
                         </div>
                     </div>
 
@@ -55,7 +55,7 @@ export default function listarVeiculos() {
                             <div className="etiquetasCarrocerias">
                                 <div className="etiquetaCarrocerias">
                                     <div className="etiquetaCarrocerias">
-                                        <p className="nomeEtiquetaCarrocerias">[nome-usuario] </p>
+                                        <p className="nomeEtiquetaCarrocerias">[nome-carroceria] </p>
                                     </div>
                                 </div>
                                 <div className="etiquetaCarrocerias">
@@ -68,8 +68,10 @@ export default function listarVeiculos() {
                                         <p className="nomeEtiquetaCarrocerias">[peso-carroceria]</p>
                                     </div>
                                 </div>
-                                <Link className='removerLink' to="/veiculos/atualizar/carroceria"><FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" /></Link>
-                                <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
+                                <div className="iconesEtiquetaCargas">
+                                    <Link className='removerLink' to="/veiculos/atualizar/carroceria"><FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" /></Link>
+                                    <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -79,7 +81,7 @@ export default function listarVeiculos() {
                             <div className="etiquetasCarrocerias">
                                 <div className="etiquetaCarrocerias">
                                     <div className="etiquetaCarrocerias">
-                                        <p className="nomeEtiquetaCarrocerias">[nome-usuario] </p>
+                                        <p className="nomeEtiquetaCarrocerias">[nome-carroceria] </p>
                                     </div>
                                 </div>
                                 <div className="etiquetaCarrocerias">
@@ -92,8 +94,10 @@ export default function listarVeiculos() {
                                         <p className="nomeEtiquetaCarrocerias">[peso-carroceria]</p>
                                     </div>
                                 </div>
-                                <Link className='removerLink' to="/veiculos/atualizar/carroceria"><FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" /></Link>
-                                <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
+                                <div className="iconesEtiquetaCargas">
+                                    <Link className='removerLink' to="/veiculos/atualizar/carroceria"><FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" /></Link>
+                                    <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -103,7 +107,7 @@ export default function listarVeiculos() {
                             <div className="etiquetasCarrocerias">
                                 <div className="etiquetaCarrocerias">
                                     <div className="etiquetaCarrocerias">
-                                        <p className="nomeEtiquetaCarrocerias">[nome-usuario] </p>
+                                        <p className="nomeEtiquetaCarrocerias">[nome-carroceria] </p>
                                     </div>
                                 </div>
                                 <div className="etiquetaCarrocerias">
@@ -116,8 +120,10 @@ export default function listarVeiculos() {
                                         <p className="nomeEtiquetaCarrocerias">[peso-carroceria]</p>
                                     </div>
                                 </div>
-                                <Link className='removerLink' to="/veiculos/atualizar/carroceria"><FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" /></Link>
-                                <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
+                                <div className="iconesEtiquetaCargas">
+                                    <Link className='removerLink' to="/veiculos/atualizar/carroceria"><FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" /></Link>
+                                    <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
+                                </div>
                             </div>
                         </div>
                     </div>
