@@ -108,7 +108,7 @@ namespace SAF_3T.Controllers
             }
         }
 
-        [HttpGet("/cpf")]
+        [HttpGet("/cpf/{cpf}")]
         public IActionResult BuscarPorCpf(string cpf)
         {
             try
