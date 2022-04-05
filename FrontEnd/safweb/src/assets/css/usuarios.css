@@ -109,10 +109,10 @@ body {
     color: #0F282D;
 }
 
-.imgVeiculo {
+.imgVeiculoUsuarios {
     width: 270px;
     height: 210px;
-    background: rgba(196, 196, 196, 0.5);
+    /* background: rgba(196, 196, 196, 0.5); */
     border-radius: 5px;
     margin-left: 30px;
     margin-right: 30px;
@@ -126,13 +126,6 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
-}
-
-.btnBuscar>p {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 20px;
-    color: #fff;
 }
 
 .input-e-btn {

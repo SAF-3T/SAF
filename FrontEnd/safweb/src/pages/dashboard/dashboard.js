@@ -1,9 +1,11 @@
 import React from 'react';
+import { useState } from "react";
 
 import './App.css';
 
 import HeaderDashboard from '../../components/headers/headerDashboard';
 import Sidebar from '../../components/sidebars/sidebar';
+import Modal from '../../components/modal';
 
 import { Link } from 'react-router-dom';
 
@@ -11,7 +13,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
-function dashboard() {
+function Dashboard() {
+
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
   return (
     <div>
 
@@ -90,13 +95,13 @@ function dashboard() {
               </div>
             </Link>
           </div>
-
         </div>
       </main >
 
       <Sidebar />
-    </div >
-  );
-}
 
-export default dashboard;
+    </div>
+  )
+};
+
+export default Dashboard;

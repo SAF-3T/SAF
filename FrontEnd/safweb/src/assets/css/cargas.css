@@ -181,13 +181,6 @@ body {
     border-radius: 10px;
 }
 
-.btnBuscar>p {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 27px;
-    color: #fff;
-}
-
 .btnBuscar:hover {
     opacity: 0.9;
 }
