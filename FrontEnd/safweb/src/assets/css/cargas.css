@@ -1,0 +1,197 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: rgba(196, 196, 196, 0.1);
+}
+
+.wrapperVeiculos {
+    width: 70%;
+    margin: 100px auto;
+    height: 70em;
+}
+
+.pVeiculo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 60px;
+    line-height: 73px;
+    color: #000000;
+}
+
+.addVeiculo {
+    background: #0E758C;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 37px;
+    display: flex;
+    align-items: center;
+    width: 170px;
+    height: 73px;
+    color: #FFFFFF;
+}
+
+.addVeiculo:hover {
+    opacity: 0.9;
+}
+
+.iconPlus {
+    margin-right: 12px;
+    margin-left: 6px;
+}
+
+.cardVeiculoCargas1, .cardVeiculoCargas2, .cardVeiculoCargas3, .cardVeiculoCargas4 {
+    width: 100%;
+    height: 100px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    /* margin-bottom: 20px; */
+}
+
+.cardVeiculoCargas1 {
+    margin-top: 260px;
+    margin-bottom: 80px;
+}
+
+.cardVeiculoCargas2 {
+    margin: 80px 0;
+}
+
+.cardVeiculoCargas3 {
+    margin: 80px 0;
+}
+
+.cardVeiculoCargas4 {
+    margin-bottom: 143px;
+}
+
+.legenda {
+    width: 78%;
+    margin-left: 22%;
+    height: fit-content;
+    /* background-color: gold;*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.legenda>p {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 23px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 0 70px;
+    color: #0F282D;
+}
+
+.etiquetasCargas {
+    display: flex;
+    justify-content: flex-start;
+    width: 90%;
+    align-items: center;
+}
+
+.etiquetaCargas {
+    width: fit-content;
+    height: 42px;
+    background: #d8d3d3;
+    border-radius: 10px;
+    margin: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.nomeEtiquetaCargas {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 37px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    color: #0F282D;
+}
+
+.alinharEtiquetasCargas {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+}
+
+.iconesEtiquetaCargas {
+    width: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input-e-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.input-e-btn-2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 0 auto;
+    width: 1000px;
+}
+
+.inputBusca {
+    width: 600px;
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #0E758C;
+    border-radius: 10px;
+    align-items: center;
+    height: 73px;
+    margin: 0 auto;
+    padding-left: 15px;
+    font-size: 25px;
+    font-weight: 600;
+
+}
+
+.inputBusca::placeholder {
+    color: #00000048;
+}
+
+.btnBuscar {
+    background: #139FC0;
+    width: 170px;
+    height: 73px;
+    border-radius: 10px;
+}
+
+.btnBuscar>p {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 27px;
+    color: #fff;
+}
+
+.btnBuscar:hover {
+    opacity: 0.9;
+}
+
+button::after {
+    display: none !important;
+}

@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import Header from '../../components/headers/header';
-import Sidebar1 from '../../components/sidebars/sidebar1';
+import Sidebar4 from '../../components/sidebars/sidebar4';
 import Footer from '../../components/footer';
 
 import { Link } from 'react-router-dom';
 
-import '../../assets/css/veiculos.css';
+import '../../assets/css/usuarios.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
@@ -34,17 +34,17 @@ export default function listarVeiculos() {
     return (
         <div>
             <Header />
-            <Sidebar1 />
+            <Sidebar4 />
 
             <main>
                 <div className="wrapperVeiculos">
-                    <p className="pVeiculo">Veículos</p>
+                    <p className="pVeiculo">Usuários</p>
 
                     <div className="input-e-btn">
-                        <button className="addVeiculo" type='submit'><Link className='removerLink' to="/veiculos/cadastro/veiculo"><FontAwesomeIcon className="iconPlus" icon={faPlus} color="#fff" size="lg" />Novo veículo</Link></button>
+                        <button className="addVeiculo" type='submit'><Link className='removerLink' to="/veiculos/cadastro/usuario"><FontAwesomeIcon className="iconPlus" icon={faPlus} color="#fff" size="lg" />Novo usuário</Link></button>
                         <div className="input-e-btn-2">
                             <input className='inputBusca' type="text" placeholder="Pesquisar" />
-                            <button className='btnBuscar' type='submit'>Buscar</button>
+                            <button className='btnBuscar' type='submit'><p>Buscar</p></button>
                         </div>
                     </div>
 
@@ -56,17 +56,17 @@ export default function listarVeiculos() {
                             </div>
                             <div className="etiquetas">
                                 <div className="etiqueta">
-                                    <p className="nomeEtiqueta alinhar">[nome-placa]</p>
+                                    <p className="nomeEtiqueta alinhar">[nome-usuario]</p>
                                 </div>
                                 <div className="etiqueta">
-                                    <p className="nomeEtiqueta">[marca-veiculo]</p>
+                                    <p className="nomeEtiqueta">[tel-usuario]</p>
                                 </div>
                                 <div className="etiqueta">
-                                    <p className="nomeEtiqueta">[data-aquisicao]</p>
+                                    <p className="nomeEtiqueta">[cpf-usuario]</p>
                                 </div>
-                                <div className="etiqueta">
+                                {/* <div className="etiqueta">
                                     <p className="nomeEtiqueta">[status-veiculo]</p>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>
@@ -78,17 +78,17 @@ export default function listarVeiculos() {
                             </div>
                             <div className="etiquetas">
                                 <div className="etiqueta">
-                                    <p className="nomeEtiqueta">[nome-placa]</p>
+                                    <p className="nomeEtiqueta">[nome-usuario]</p>
                                 </div>
                                 <div className="etiqueta">
-                                    <p className="nomeEtiqueta">[marca-veiculo]</p>
+                                    <p className="nomeEtiqueta">[tel-usuario]</p>
                                 </div>
                                 <div className="etiqueta">
-                                    <p className="nomeEtiqueta">[data-aquisicao]</p>
+                                    <p className="nomeEtiqueta">[cpf-usuario]</p>
                                 </div>
-                                <div className="etiqueta">
+                                {/* <div className="etiqueta">
                                     <p className="nomeEtiqueta">[status-veiculo]</p>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>
@@ -99,17 +99,17 @@ export default function listarVeiculos() {
                             </div>
                             <div className="etiquetas">
                                 <div className="etiqueta">
-                                    <p className="nomeEtiqueta">[nome-placa]</p>
+                                    <p className="nomeEtiqueta">[nome-usuario]</p>
                                 </div>
                                 <div className="etiqueta">
-                                    <p className="nomeEtiqueta">[marca-veiculo]</p>
+                                    <p className="nomeEtiqueta">[tel-usuario]</p>
                                 </div>
                                 <div className="etiqueta">
-                                    <p className="nomeEtiqueta">[data-aquisicao]</p>
+                                    <p className="nomeEtiqueta">[cpf-usuario]</p>
                                 </div>
-                                <div className="etiqueta">
+                                {/* <div className="etiqueta">
                                     <p className="nomeEtiqueta">[status-veiculo]</p>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>

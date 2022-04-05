@@ -2,7 +2,9 @@ import React, { Component } from "react";
 
 import axios from "axios";
 
-import '../pages/dashboard/App.css';
+import { Link } from 'react-router-dom';
+
+import '../../pages/dashboard/App.css';
 
 class Header extends Component {
 
@@ -24,7 +26,7 @@ class Header extends Component {
     render() {
         return (
             <div className="wrapperDashboard">
-                <a href="#"><div className="imagemLogo"></div></a>
+                <Link to="/dashboard"><div className="imagemLogoHeaderDashboard"></div></Link>
                 <p className="pBemVindo">Bem vindo, [nome-usuario] !</p>
                 <div className="usuarioHeaderDashboard">
                     <a href="#"><div className="imagemUsuario"></div></a>
