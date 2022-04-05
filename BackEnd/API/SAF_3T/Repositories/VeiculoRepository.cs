@@ -28,32 +28,30 @@ namespace SAF_3T.Controllers
         public Veiculo BuscarPorCarroceria(byte idCarroceria)
         {
             return ctx.Veiculos
-                .Include(v => v.IdCarroceriaNavigation)
-                .Include(v => v.IdMarcaNavigation)
                 .Include(v => v.IdTipoVeiculoNavigation)
-                .Include(v => v.IdUsuarioNavigation)
+                .Include(v => v.IdCarroceriaNavigation)
+                .Include(v => v.IdCarroceriaNavigation.IdTipoCarroceriaNavigation)
+                .Include(v => v.IdCarroceriaNavigation.IdTipoCargaNavigation)
                 .FirstOrDefault(v => v.IdCarroceria == idCarroceria);
         }
 
         public Veiculo BuscarPorId(int idVeiculo)
         {
             return ctx.Veiculos
-                .Include(v => v.IdCarroceriaNavigation)
-                .Include(v => v.IdCarroceriaNavigation.IdTipoCarroceria)
-                .Include(v => v.IdMarcaNavigation)
                 .Include(v => v.IdTipoVeiculoNavigation)
-                .Include(v => v.IdUsuarioNavigation)
+                .Include(v => v.IdCarroceriaNavigation)
+                .Include(v => v.IdCarroceriaNavigation.IdTipoCarroceriaNavigation)
+                .Include(v => v.IdCarroceriaNavigation.IdTipoCargaNavigation)
                 .FirstOrDefault(a => a.IdVeiculo == idVeiculo);
         }
 
         public List<Veiculo> BuscarPorMarca(int idMarca)
         {
             return ctx.Veiculos
-                .Include(v => v.IdCarroceriaNavigation)
-                .Include(v => v.IdCarroceriaNavigation.IdTipoCarroceria)
-                .Include(v => v.IdMarcaNavigation)
                 .Include(v => v.IdTipoVeiculoNavigation)
-                .Include(v => v.IdUsuarioNavigation)
+                .Include(v => v.IdCarroceriaNavigation)
+                .Include(v => v.IdCarroceriaNavigation.IdTipoCarroceriaNavigation)
+                .Include(v => v.IdCarroceriaNavigation.IdTipoCargaNavigation)
                 .Where(v => v.IdMarca == idMarca)
                 .ToList();
         }
@@ -61,11 +59,10 @@ namespace SAF_3T.Controllers
         public Veiculo BuscarPorPlaca(string Placa)
         {
             return ctx.Veiculos
-                .Include(v => v.IdCarroceriaNavigation)
-                .Include(v => v.IdCarroceriaNavigation.IdTipoCarroceria)
-                .Include(v => v.IdMarcaNavigation)
                 .Include(v => v.IdTipoVeiculoNavigation)
-                .Include(v => v.IdUsuarioNavigation)
+                .Include(v => v.IdCarroceriaNavigation)
+                .Include(v => v.IdCarroceriaNavigation.IdTipoCarroceriaNavigation)
+                .Include(v => v.IdCarroceriaNavigation.IdTipoCargaNavigation)
                 .FirstOrDefault(v => v.Placa == Placa);
         }
 

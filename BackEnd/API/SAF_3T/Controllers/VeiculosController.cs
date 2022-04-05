@@ -111,7 +111,7 @@ namespace SAF_3T.Controllers
             }
         }
 
-        [HttpPut("/Atualiza/{id}")]
+        [HttpPut("/Atualizar/{id}")]
         public IActionResult Atualizar(int id, Veiculo novoVeiculo)
         {
             if (novoVeiculo != null)
