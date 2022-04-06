@@ -35,6 +35,7 @@ function Dashboard() {
         </section>
 
         <div className="wrapperCards">
+          <Link className="componentLink" to="/">
           <div className="card">
             <Link className="removerLink" to="/veiculos/cadastrar/veiculo">
               <div className="adicionarCard">
@@ -45,6 +46,8 @@ function Dashboard() {
               </div>
             </Link>
           </div>
+          </Link>
+          <Link className="componentLink" to="/">
           <div className="card">
             <Link className="removerLink" to="/veiculos/cadastrar/tipo-veiculo">
               <div className="adicionarCard">
@@ -55,6 +58,8 @@ function Dashboard() {
               </div>
             </Link>
           </div>
+          </Link>
+          <Link className="componentLink" to="/">
           <div className="card">
             <Link className="removerLink" to="/veiculos/cadastrar/carga">
               <div className="adicionarCard">
@@ -65,6 +70,8 @@ function Dashboard() {
               </div>
             </Link>
           </div>
+          </Link>
+          <Link className="componentLink" to="/">
           <div className="card">
             <Link className="removerLink" to="/veiculos/cadastrar/carroceria">
               <div className="adicionarCard">
@@ -75,6 +82,8 @@ function Dashboard() {
               </div>
             </Link>
           </div>
+          </Link>
+          <Link className="componentLink" to="/">
           <div className="card">
             <Link className="removerLink" to="/veiculos/cadastrar/usuario">
               <div className="adicionarCard">
@@ -85,6 +94,8 @@ function Dashboard() {
               </div>
             </Link>
           </div>
+          </Link>
+          <Link className="componentLink" to="/">
           <div className="card">
             <Link className="removerLink" to="/veiculos/cadastrar/checklist">
               <div className="adicionarCard">
@@ -95,6 +106,11 @@ function Dashboard() {
               </div>
             </Link>
           </div>
+<<<<<<< HEAD
+=======
+          </Link>
+
+>>>>>>> ed9ec98627d7a9019dee8cce2a7816e7e06d0511
         </div>
       </main >
 
