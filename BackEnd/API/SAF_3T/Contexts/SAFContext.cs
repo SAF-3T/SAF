@@ -39,9 +39,13 @@ namespace SAF_3T.Contexts
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 //optionsBuilder.UseSqlServer("Data Source=NOTE0113E5\\SQLEXPRESS; initial catalog=SAF_3T; user Id=sa; pwd=Senai@132;")
-                
+
                 //vitor
+                //optionsBuilder.UseSqlServer("Data Source=; initial catalog=SAF_3T; integrated security = true;");
+
+                //levi
                 optionsBuilder.UseSqlServer("Data Source=NOTE0113A5\\SQLEXPRESS; initial catalog=SAF_3T; integrated security = true;");
+                //optionsBuilder.UseSqlServer("Data Source=dbserver-saf.database.windows.net; initial catalog=SAF_DB; user Id=masteruser; pwd=senai@132;");
             }
         }
 
