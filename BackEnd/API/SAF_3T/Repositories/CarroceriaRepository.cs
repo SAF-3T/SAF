@@ -17,6 +17,7 @@ namespace SAF_3T.Repositories
         public Carrocerium BuscarPorId(int IdCarroceria)
         {
             return ctx.Carroceria
+                .AsNoTracking()
                 .Include(c => c.IdTipoCarroceriaNavigation)
                 .Include(c => c.IdTipoCargaNavigation)
                 .FirstOrDefault(c => c.IdCarroceria == IdCarroceria);
@@ -36,6 +37,7 @@ namespace SAF_3T.Repositories
         public List<Carrocerium> Listar()
         {
             return ctx.Carroceria
+                .AsNoTracking()
                 .Include(c => c.IdTipoCarroceriaNavigation)
                 .Include(c => c.IdTipoCargaNavigation)
                 .ToList();

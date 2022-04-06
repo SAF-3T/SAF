@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using SAF_3T.Utils;
+using Microsoft.EntityFrameworkCore;
 
 namespace SAF_3T.Repositories
 {
@@ -51,7 +52,10 @@ namespace SAF_3T.Repositories
 
         public List<Usuario> ListarTodos()
         {
-            return ctx.Usuarios.ToList();
+            return ctx.Usuarios
+                .AsNoTracking()
+                .Include(u => u.IdTipoUsuarioNavigation)
+                .ToList();
         }
 
         public Usuario Login(string CPF, string senha)

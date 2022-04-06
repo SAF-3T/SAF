@@ -12,14 +12,13 @@ class Header extends Component {
         this.state = {
             idUsuario: 0,
             nome: '',
-            sobrenome: '',
-            cpf: ''
+            sobrenome: ''
         }
     };
 
 
     buscarImagem = () => {
-        axios('http://localhost:5000/api/perfils/imagem/bd', {
+        axios('http://localhost:5000/api/Login', {
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
             },
@@ -39,16 +38,8 @@ class Header extends Component {
         console.log(base64);      
         console.log(this.props);
 
-        axios('http://localhost:5000/api/Usuarios/', {
-            headers: {
-                Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
-            },
-        }).then(resposta => {
-                if(resposta.status === 200) {
-                    this.setState({ idUsuario : resposta.data.idUsuario})
-                }
-            }
-        )
+
+
         axios.get('https://localhost:5000/api/Usuarios/' + this.state.idUsuario)
             .then(resposta => {
                 if (resposta.status === 200) {

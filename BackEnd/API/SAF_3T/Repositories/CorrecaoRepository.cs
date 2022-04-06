@@ -14,7 +14,9 @@ namespace SAF_3T.Repositories
         SAFContext ctx = new SAFContext();
         public TabelaCorrecao BuscarPorId(int idRecebido)
         {
-        return ctx.TabelaCorrecaos.Include(c => c.IdTipoErroNavigation)
+        return ctx.TabelaCorrecaos
+                .AsNoTracking()
+                .Include(c => c.IdTipoErroNavigation)
                 .Include(c => c.IdCheckListNavigation)
                 .FirstOrDefault(c => c.IdCorrecao == idRecebido);
         }
@@ -33,12 +35,20 @@ namespace SAF_3T.Repositories
 
         public List<TabelaCorrecao> ListarMinhas(int idCheckList)
         {
-            return ctx.TabelaCorrecaos.Include(c => c.IdTipoErroNavigation).Where(c => c.IdCheckList == idCheckList).ToList();
+            return ctx.TabelaCorrecaos
+                .AsNoTracking()
+                .Include(c => c.IdTipoErroNavigation)
+                .Where(c => c.IdCheckList == idCheckList)
+                .ToList();
         }
 
         public List<TabelaCorrecao> ListarTodos()
         {
-           return ctx.TabelaCorrecaos.Include(c => c.IdTipoErroNavigation).Include(c => c.IdCheckListNavigation).ToList();
+           return ctx.TabelaCorrecaos
+                .AsNoTracking()
+                .Include(c => c.IdTipoErroNavigation)
+                .Include(c => c.IdCheckListNavigation)
+                .ToList();
         }
     }
 }

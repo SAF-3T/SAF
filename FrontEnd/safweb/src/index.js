@@ -16,6 +16,7 @@ import Usuarios from './pages/usuarios/usuarios';
 import Carrocerias from './pages/carrocerias/carroceria';
 import Cargas from './pages/cargas/cargas';
 import Checklists from './pages/checklists/checklist';
+import Corretivas from './pages/erros/corretivas';
 
 import reportWebVitals from './reportWebVitals';
 
@@ -41,6 +42,7 @@ const routing = (
         <Route path="/carrocerias" component={Carrocerias} />
         <Route path="/cargas" component={Cargas} />
         <Route path="/usuarios" component={Usuarios} />
+        <Route path="/corretivas" component={Corretivas} />
         {/* <Route path="/checklists" component={Checklists} /> */}
       </Switch>
     </div>

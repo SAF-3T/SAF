@@ -26,19 +26,30 @@ namespace SAF_3T.Repositories
 
         public List<TabelaErro> ListarMinhas(int idCheckList)
         {
-            return ctx.TabelaErros.Include(c => c.IdCheckListNavigation).Include(c => c.IdTipoErroNavigation).Where(c => c.IdCheckList == idCheckList).ToList();
+            return ctx.TabelaErros
+                .AsNoTracking()
+                .Include(c => c.IdCheckListNavigation)
+                .Include(c => c.IdTipoErroNavigation)
+                .Where(c => c.IdCheckList == idCheckList)
+                .ToList();
         }
 
         public TabelaErro BuscarPorId(int idRecebido)
         {
-            return ctx.TabelaErros.Include(c => c.IdTipoErroNavigation)
+            return ctx.TabelaErros
+                .AsNoTracking()
+                .Include(c => c.IdTipoErroNavigation)
                 .Include(c => c.IdCheckListNavigation)
                 .FirstOrDefault(c => c.IdErro == idRecebido);
         }
 
         public List<TabelaErro> ListarTodos()
         {
-            return ctx.TabelaErros.Include(c => c.IdTipoErroNavigation).Include(c => c.IdCheckListNavigation).ToList();
+            return ctx.TabelaErros
+                .AsNoTracking()
+                .Include(c => c.IdTipoErroNavigation)
+                .Include(c => c.IdCheckListNavigation)
+                .ToList();
         }
     }
 }

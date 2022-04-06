@@ -28,6 +28,7 @@ namespace SAF_3T.Controllers
         public Veiculo BuscarPorCarroceria(byte idCarroceria)
         {
             return ctx.Veiculos
+                .AsNoTracking()
                 .Include(v => v.IdTipoVeiculoNavigation)
                 .Include(v => v.IdCarroceriaNavigation)
                 .Include(v => v.IdCarroceriaNavigation.IdTipoCarroceriaNavigation)
@@ -38,6 +39,7 @@ namespace SAF_3T.Controllers
         public Veiculo BuscarPorId(int idVeiculo)
         {
             return ctx.Veiculos
+                .AsNoTracking()
                 .Include(v => v.IdTipoVeiculoNavigation)
                 .Include(v => v.IdCarroceriaNavigation)
                 .Include(v => v.IdCarroceriaNavigation.IdTipoCarroceriaNavigation)
@@ -48,6 +50,7 @@ namespace SAF_3T.Controllers
         public List<Veiculo> BuscarPorMarca(int idMarca)
         {
             return ctx.Veiculos
+                .AsNoTracking()
                 .Include(v => v.IdTipoVeiculoNavigation)
                 .Include(v => v.IdCarroceriaNavigation)
                 .Include(v => v.IdCarroceriaNavigation.IdTipoCarroceriaNavigation)
@@ -59,6 +62,7 @@ namespace SAF_3T.Controllers
         public Veiculo BuscarPorPlaca(string Placa)
         {
             return ctx.Veiculos
+                .AsNoTracking()
                 .Include(v => v.IdTipoVeiculoNavigation)
                 .Include(v => v.IdCarroceriaNavigation)
                 .Include(v => v.IdCarroceriaNavigation.IdTipoCarroceriaNavigation)
@@ -81,6 +85,7 @@ namespace SAF_3T.Controllers
         public List<Veiculo> Listar()
         {
             return ctx.Veiculos
+                .AsNoTracking()
                 .Include(v => v.IdTipoVeiculoNavigation)
                 .Include(v => v.IdCarroceriaNavigation)
                 .Include(v => v.IdCarroceriaNavigation.IdTipoCarroceriaNavigation)
