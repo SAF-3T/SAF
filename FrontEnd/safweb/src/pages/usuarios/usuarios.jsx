@@ -12,24 +12,21 @@ import '../../assets/css/usuarios.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
-export default function listarVeiculos() {
-    // const [listaMeusVeiculos, setListaMeusVeiculos] = useState([]);
+export default function ListarUsuarios() {
+     const [listaUsuarios, setListaUsuarios] = useState([]);
 
-    // function buscarMeusVeiculos() {
-    //     axios('http://localhost:5000/api/Veiculos', {
-    //         headers: {
-    //             'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
-    //         }
-    //     })
-    //         .then(response => {
-    //             if (response.status === 200) {
-    //                 setListaMeusVeiculos(response.data);
-    //             }
-    //         })
-    //         .catch(erro => console.log(erro));
-    // };
+     function buscarUsuarios() {
+         axios('http://localhost:5000/api/Usuarios', )
+            .then(response => {
+                if (response.status === 200) {
+                    setListaUsuarios(response.data);
+                    console.log(listaUsuarios)
+                 }
+             })
+             .catch(erro => console.log(erro));
+    };
 
-    // useEffect(buscarMeusVeiculos, []);
+    useEffect(buscarUsuarios, []);
 
     return (
         <div>
@@ -48,71 +45,37 @@ export default function listarVeiculos() {
                         </div>
                     </div>
 
+                    {
+                        listaUsuarios.map((usuario) => {
+                            return(
+                                <div className="cardVeiculo">
+                        <div className="alinharEtiquetas">
+                            <div className="imgVeiculo">
+                                <img src={usuario.imagemUsuario} alt="" />
+                            </div>
+                            <div className="etiquetas">
+                                <div className="etiqueta">
+                                    <p className="nomeEtiqueta alinhar">{usuario.nome}</p>
+                                </div>
+                                <div className="etiqueta">
+                                    <p className="nomeEtiqueta">{usuario.telefone}</p>
+                                </div>
+                                <div className="etiqueta">
+                                    <p className="nomeEtiqueta">{usuario.cpf}</p>
+                                </div>
+                                {/* <div className="etiqueta">
+                                    <p className="nomeEtiqueta">[status-veiculo]</p>
+                                </div> */}
+                            </div>
+                        </div>
+                    </div>
+                            )
+                            
+                        })
+                    }
+                    
 
-                    <div className="cardVeiculo">
-                        <div className="alinharEtiquetas">
-                            <div className="imgVeiculo">
-                                <img src="" alt="" />
-                            </div>
-                            <div className="etiquetas">
-                                <div className="etiqueta">
-                                    <p className="nomeEtiqueta alinhar">[nome-usuario]</p>
-                                </div>
-                                <div className="etiqueta">
-                                    <p className="nomeEtiqueta">[tel-usuario]</p>
-                                </div>
-                                <div className="etiqueta">
-                                    <p className="nomeEtiqueta">[cpf-usuario]</p>
-                                </div>
-                                {/* <div className="etiqueta">
-                                    <p className="nomeEtiqueta">[status-veiculo]</p>
-                                </div> */}
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="cardVeiculo">
-                        <div className="alinharEtiquetas">
-                            <div className="imgVeiculo">
-                                <img src="" alt="" />
-                            </div>
-                            <div className="etiquetas">
-                                <div className="etiqueta">
-                                    <p className="nomeEtiqueta">[nome-usuario]</p>
-                                </div>
-                                <div className="etiqueta">
-                                    <p className="nomeEtiqueta">[tel-usuario]</p>
-                                </div>
-                                <div className="etiqueta">
-                                    <p className="nomeEtiqueta">[cpf-usuario]</p>
-                                </div>
-                                {/* <div className="etiqueta">
-                                    <p className="nomeEtiqueta">[status-veiculo]</p>
-                                </div> */}
-                            </div>
-                        </div>
-                    </div>
-                    <div className="cardVeiculo">
-                        <div className="alinharEtiquetas">
-                            <div className="imgVeiculo">
-                                <img src="" alt="" />
-                            </div>
-                            <div className="etiquetas">
-                                <div className="etiqueta">
-                                    <p className="nomeEtiqueta">[nome-usuario]</p>
-                                </div>
-                                <div className="etiqueta">
-                                    <p className="nomeEtiqueta">[tel-usuario]</p>
-                                </div>
-                                <div className="etiqueta">
-                                    <p className="nomeEtiqueta">[cpf-usuario]</p>
-                                </div>
-                                {/* <div className="etiqueta">
-                                    <p className="nomeEtiqueta">[status-veiculo]</p>
-                                </div> */}
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </main>
 
