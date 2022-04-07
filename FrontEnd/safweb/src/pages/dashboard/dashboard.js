@@ -1,5 +1,9 @@
 import React from 'react';
+<<<<<<< HEAD
 import { useState } from "react";
+=======
+import { useState, useEffect } from "react";
+>>>>>>> b7481f4eeb07bc857261d64e2a86a559ab4f9071
 
 import './App.css';
 
@@ -7,7 +11,9 @@ import HeaderDashboard from '../../components/headers/headerDashboard';
 import Sidebar from '../../components/sidebars/sidebar';
 import Modal from '../../components/modal';
 
-import { Link } from 'react-router-dom';
+import axios from 'axios';
+
+import { Link, useHistory } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
@@ -15,7 +21,10 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 function Dashboard() {
 
+<<<<<<< HEAD
   const [isModalVisible, setIsModalVisible] = useState(false);
+=======
+>>>>>>> b7481f4eeb07bc857261d64e2a86a559ab4f9071
 
   return (
     <div>

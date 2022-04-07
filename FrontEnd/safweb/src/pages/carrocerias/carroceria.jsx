@@ -76,11 +76,15 @@ export default function ListarCarrocerias() {
                             <div className="etiquetasCarrocerias">
                                 <div className="etiquetaCarrocerias">
                                     <div className="etiquetaCarrocerias">
+<<<<<<< HEAD
                                         {
                                             ListarCarrocerias.map((carroceria) => {
                                                 <p className="nomeEtiquetaCargas">{carroceria.nome}</p>
                                             })
                                         }
+=======
+                                        <p className="nomeEtiquetaCarrocerias">[nome-carroceria] </p>
+>>>>>>> b7481f4eeb07bc857261d64e2a86a559ab4f9071
                                     </div>
                                 </div>
                                 <div className="etiquetaCarrocerias">
@@ -114,11 +118,15 @@ export default function ListarCarrocerias() {
                             <div className="etiquetasCarrocerias">
                                 <div className="etiquetaCarrocerias">
                                     <div className="etiquetaCarrocerias">
+<<<<<<< HEAD
                                         {
                                             ListarCarrocerias.map((carroceria) => {
                                                 <p className="nomeEtiquetaCargas">{carroceria.nome}</p>
                                             })
                                         }
+=======
+                                        <p className="nomeEtiquetaCarrocerias">[nome-carroceria] </p>
+>>>>>>> b7481f4eeb07bc857261d64e2a86a559ab4f9071
                                     </div>
                                 </div>
                                 <div className="etiquetaCarrocerias">
@@ -152,11 +160,15 @@ export default function ListarCarrocerias() {
                             <div className="etiquetasCarrocerias">
                                 <div className="etiquetaCarrocerias">
                                     <div className="etiquetaCarrocerias">
+<<<<<<< HEAD
                                         {
                                             ListarCarrocerias.map((carroceria) => {
                                                 <p className="nomeEtiquetaCargas">{carroceria.nome}</p>
                                             })
                                         }
+=======
+                                        <p className="nomeEtiquetaCarrocerias">[nome-carroceria] </p>
+>>>>>>> b7481f4eeb07bc857261d64e2a86a559ab4f9071
                                     </div>
                                 </div>
                                 <div className="etiquetaCarrocerias">

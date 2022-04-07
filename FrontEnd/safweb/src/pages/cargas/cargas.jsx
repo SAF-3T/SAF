@@ -62,7 +62,10 @@ export default function ListarCargas() {
                                     }
                                 </div>
                             </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> b7481f4eeb07bc857261d64e2a86a559ab4f9071
                             <div className="iconesEtiquetaCargas">
                                 <Link className='removerLink' to="/veiculos/atualizar/carroceria"><FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" /></Link>
                                 <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />

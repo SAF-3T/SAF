@@ -41,8 +41,16 @@ namespace SAF_3T.Contexts
                 //optionsBuilder.UseSqlServer("Data Source=NOTE0113E5\\SQLEXPRESS; initial catalog=SAF_3T; user Id=sa; pwd=Senai@132;")
 
                 //vitor
+<<<<<<< HEAD
                 optionsBuilder.UseSqlServer("Data Source=dbserver-saf.database.windows.net; initial catalog=dbserver-saf; user Id=masteruser; pwd=senai@132;");
                 //optionsBuilder.UseSqlServer("Data Source=DESKTOP-RR2ANFV; initial catalog=SAF_3T; user Id=sa; pwd=Senai@132;");
+=======
+                //optionsBuilder.UseSqlServer("Data Source=; initial catalog=SAF_3T; integrated security = true;");
+
+                //levi
+                optionsBuilder.UseSqlServer("Data Source=NOTE0113A5\\SQLEXPRESS; initial catalog=SAF_3T; integrated security = true;");
+                //optionsBuilder.UseSqlServer("Data Source=dbserver-saf.database.windows.net; initial catalog=SAF_DB; user Id=masteruser; pwd=senai@132;");
+>>>>>>> b7481f4eeb07bc857261d64e2a86a559ab4f9071
             }
         }
 

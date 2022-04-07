@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "C:\\Users\\hakst\\Desktop\\SAF-3T\\BackEnd\\API\\SAF_3T\\SAF_3T.csproj": {}
   },
   "projects": {
@@ -15,6 +16,22 @@
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\hakst\\AppData\\Roaming\\NuGet\\NuGet.Config",
+=======
+    "C:\\Users\\53438812894.INFOSCS\\Desktop\\SAF-3T-Levi\\BackEnd\\API\\SAF_3T\\SAF_3T.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\53438812894.INFOSCS\\Desktop\\SAF-3T-Levi\\BackEnd\\API\\SAF_3T\\SAF_3T.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\53438812894.INFOSCS\\Desktop\\SAF-3T-Levi\\BackEnd\\API\\SAF_3T\\SAF_3T.csproj",
+        "projectName": "SAF_3T",
+        "projectPath": "C:\\Users\\53438812894.INFOSCS\\Desktop\\SAF-3T-Levi\\BackEnd\\API\\SAF_3T\\SAF_3T.csproj",
+        "packagesPath": "C:\\Users\\53438812894.INFOSCS\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\53438812894.INFOSCS\\Desktop\\SAF-3T-Levi\\BackEnd\\API\\SAF_3T\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\53438812894.INFOSCS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+>>>>>>> b7481f4eeb07bc857261d64e2a86a559ab4f9071
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
