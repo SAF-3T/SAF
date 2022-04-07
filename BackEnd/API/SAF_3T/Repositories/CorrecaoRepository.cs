@@ -38,6 +38,7 @@ namespace SAF_3T.Repositories
             return ctx.TabelaCorrecaos
                 .AsNoTracking()
                 .Include(c => c.IdTipoErroNavigation)
+                .Include(c => c.IdCheckListNavigation)
                 .Where(c => c.IdCheckList == idCheckList)
                 .ToList();
         }

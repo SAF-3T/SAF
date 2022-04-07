@@ -49,6 +49,7 @@ namespace SAF_3T.Repositories
         public List<CheckList> ListarTodas()
         {
             return ctx.CheckLists
+                .AsNoTracking()
                 .Include(c => c.IdTipoCheckListNavigation)
                 .Include(c => c.IdUsuarioNavigation)
                 .Include(c => c.IdUsuarioNavigation.IdTipoUsuarioNavigation)

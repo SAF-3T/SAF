@@ -2,6 +2,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    color: white;
 }
 
 body {
@@ -201,7 +202,12 @@ button::after {
 .blocoConteudo {
     width: 49%;
     height: 90%;
-    background-color: blanchedalmond;
+    padding: 4px;
+}
+
+h2{
+    text-align: center;
+    color: white;
 }
 
 #blocoErros {
@@ -210,12 +216,12 @@ button::after {
 
 .corpoTabela {
     width: 98%;
-    margin: 5px auto;
-    background-color: chartreuse;
+    margin: 10px auto;
+    /* background-color: chartreuse; */
 }
 
 .cabecalho {
-    background-color: darkkhaki;
+    /* background-color: darkkhaki; */
     justify-content: space-between;
 }
 
@@ -227,12 +233,12 @@ text-align: center;
     width: 100px;
     display: flex;
     justify-content: center;
-    background-color: crimson;
+    /* background-color: crimson; */
 }
 
 #desc {
-    width: 254px;
-    background-color: darkslategray;
+    width: 274px;
+    /* background-color: darkslategray; */
     text-justify: center;
 }
 
