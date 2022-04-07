@@ -14,24 +14,24 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
 import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 
-export default function listarVeiculos() {
-    // const [listaMeusVeiculos, setListaMeusVeiculos] = useState([]);
+export default function ListarCarroceria() {
+    const [ListaCarroceria, setListaCarroceria] = useState([]);
 
-    // function buscarMeusVeiculos() {
-    //     axios('http://localhost:5000/api/Veiculos', {
-    //         headers: {
-    //             'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
-    //         }
-    //     })
-    //         .then(response => {
-    //             if (response.status === 200) {
-    //                 setListaMeusVeiculos(response.data);
-    //             }
-    //         })
-    //         .catch(erro => console.log(erro));
-    // };
+    function buscarCarroceria() {
+        axios('http://localhost:5000/api/Carroceria', {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+        })
+            .then(response => {
+                if (response.status === 200) {
+                    setListaCarroceria(response.data);
+                }
+            })
+            .catch(erro => console.log(erro));
+    };
 
-    // useEffect(buscarMeusVeiculos, []);
+    useEffect(buscarCarroceria, []);
 
     return (
         <div>
@@ -50,84 +50,37 @@ export default function listarVeiculos() {
                         </div>
                     </div>
 
-                    <div className="cardVeiculoCarrocerias">
-                        <div className="alinharEtiquetasCarrocerias">
-                            <div className="etiquetasCarrocerias">
-                                <div className="etiquetaCarrocerias">
-                                    <div className="etiquetaCarrocerias">
-                                        <p className="nomeEtiquetaCarrocerias">[nome-carroceria] </p>
+                    {
+                        ListaCarroceria.map((carroceria) => {
+                            return (
+                                <div className="cardVeiculoCarrocerias">
+                                    <div className="alinharEtiquetasCarrocerias">
+                                        <div className="etiquetasCarrocerias">
+                                            <div className="etiquetaCarrocerias">
+                                                <div className="etiquetaCarrocerias">
+                                                    <p className="nomeEtiquetaCarrocerias">{carroceria.idTipoCarroceriaNavigation.nomeTipoCarroceria}</p>
+                                                </div>
+                                            </div>
+                                            <div className="etiquetaCarrocerias">
+                                                <div className="etiquetaCarrocerias">
+                                                    <p className="nomeEtiquetaCarrocerias">{carroceria.cubagem}</p>
+                                                </div>
+                                            </div>
+                                            <div className="etiquetaCarrocerias">
+                                                <div className="etiquetaCarrocerias">
+                                                    <p className="nomeEtiquetaCarrocerias">{carroceria.peso}</p>
+                                                </div>
+                                            </div>
+                                            <div className="iconesEtiquetaCargas">
+                                                <Link className='removerLink' to="/veiculos/atualizar/carroceria"><FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" /></Link>
+                                                <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div className="etiquetaCarrocerias">
-                                    <div className="etiquetaCarrocerias">
-                                        <p className="nomeEtiquetaCarrocerias">[cubagem-carroceria]</p>
-                                    </div>
-                                </div>
-                                <div className="etiquetaCarrocerias">
-                                    <div className="etiquetaCarrocerias">
-                                        <p className="nomeEtiquetaCarrocerias">[peso-carroceria]</p>
-                                    </div>
-                                </div>
-                                <div className="iconesEtiquetaCargas">
-                                    <Link className='removerLink' to="/veiculos/atualizar/carroceria"><FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" /></Link>
-                                    <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="cardVeiculoCarrocerias">
-                        <div className="alinharEtiquetasCarrocerias">
-                            <div className="etiquetasCarrocerias">
-                                <div className="etiquetaCarrocerias">
-                                    <div className="etiquetaCarrocerias">
-                                        <p className="nomeEtiquetaCarrocerias">[nome-carroceria] </p>
-                                    </div>
-                                </div>
-                                <div className="etiquetaCarrocerias">
-                                    <div className="etiquetaCarrocerias">
-                                        <p className="nomeEtiquetaCarrocerias">[cubagem-carroceria]</p>
-                                    </div>
-                                </div>
-                                <div className="etiquetaCarrocerias">
-                                    <div className="etiquetaCarrocerias">
-                                        <p className="nomeEtiquetaCarrocerias">[peso-carroceria]</p>
-                                    </div>
-                                </div>
-                                <div className="iconesEtiquetaCargas">
-                                    <Link className='removerLink' to="/veiculos/atualizar/carroceria"><FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" /></Link>
-                                    <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="cardVeiculoCarrocerias">
-                        <div className="alinharEtiquetasCarrocerias">
-                            <div className="etiquetasCarrocerias">
-                                <div className="etiquetaCarrocerias">
-                                    <div className="etiquetaCarrocerias">
-                                        <p className="nomeEtiquetaCarrocerias">[nome-carroceria] </p>
-                                    </div>
-                                </div>
-                                <div className="etiquetaCarrocerias">
-                                    <div className="etiquetaCarrocerias">
-                                        <p className="nomeEtiquetaCarrocerias">[cubagem-carroceria]</p>
-                                    </div>
-                                </div>
-                                <div className="etiquetaCarrocerias">
-                                    <div className="etiquetaCarrocerias">
-                                        <p className="nomeEtiquetaCarrocerias">[peso-carroceria]</p>
-                                    </div>
-                                </div>
-                                <div className="iconesEtiquetaCargas">
-                                    <Link className='removerLink' to="/veiculos/atualizar/carroceria"><FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" /></Link>
-                                    <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                            )
+                        })
+                    }
 
                 </div>
             </main >

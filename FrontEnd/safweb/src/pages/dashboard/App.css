@@ -67,7 +67,7 @@ header {
 }
 
 nav {
-  height: 130em;
+  height: 230em;
   width: fit-content;
   position: absolute;
   top: 80px;
@@ -94,8 +94,9 @@ nav {
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: fit-content;
+  height: 130em;
   width: 100%;
+  /* background-color: gold; */
 }
 
 footer {
@@ -106,7 +107,7 @@ footer {
   align-items: center;
   position: absolute;
   width: 100%;
-  top: 130em;
+  top: 230em;
 }
 
 .link2, .link1 {

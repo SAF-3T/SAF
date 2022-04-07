@@ -13,17 +13,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 export default function ListarUsuarios() {
-     const [listaUsuarios, setListaUsuarios] = useState([]);
+    const [listaUsuarios, setListaUsuarios] = useState([]);
 
-     function buscarUsuarios() {
-         axios('http://localhost:5000/api/Usuarios', )
+    function buscarUsuarios() {
+        axios('http://localhost:5000/api/Usuarios',)
             .then(response => {
                 if (response.status === 200) {
                     setListaUsuarios(response.data);
                     console.log(listaUsuarios)
-                 }
-             })
-             .catch(erro => console.log(erro));
+                }
+            })
+            .catch(erro => console.log(erro));
     };
 
     useEffect(buscarUsuarios, []);
@@ -47,35 +47,35 @@ export default function ListarUsuarios() {
 
                     {
                         listaUsuarios.map((usuario) => {
-                            return(
+                            return (
                                 <div className="cardVeiculo">
-                        <div className="alinharEtiquetas">
-                            <div className="imgVeiculo">
-                                <img src={usuario.imagemUsuario} alt="" />
-                            </div>
-                            <div className="etiquetas">
-                                <div className="etiqueta">
-                                    <p className="nomeEtiqueta alinhar">{usuario.nome}</p>
-                                </div>
-                                <div className="etiqueta">
-                                    <p className="nomeEtiqueta">{usuario.telefone}</p>
-                                </div>
-                                <div className="etiqueta">
-                                    <p className="nomeEtiqueta">{usuario.cpf}</p>
-                                </div>
-                                {/* <div className="etiqueta">
+                                    <div className="alinharEtiquetas">
+                                        <div className="imgVeiculo">
+                                            <img src={usuario.imagemUsuario} alt="" />
+                                        </div>
+                                        <div className="etiquetas">
+                                            <div className="etiqueta">
+                                                <p className="nomeEtiqueta alinhar">{usuario.nome}</p>
+                                            </div>
+                                            <div className="etiqueta">
+                                                <p className="nomeEtiqueta">{usuario.telefone}</p>
+                                            </div>
+                                            <div className="etiqueta">
+                                                <p className="nomeEtiqueta">{usuario.cpf}</p>
+                                            </div>
+                                            {/* <div className="etiqueta">
                                     <p className="nomeEtiqueta">[status-veiculo]</p>
                                 </div> */}
-                            </div>
-                        </div>
-                    </div>
+                                        </div>
+                                    </div>
+                                </div>
                             )
-                            
+
                         })
                     }
-                    
 
-                    
+
+
                 </div>
             </main>
 

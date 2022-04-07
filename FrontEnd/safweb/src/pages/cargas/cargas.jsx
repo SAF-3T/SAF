@@ -14,24 +14,24 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
 
-export default function listarVeiculos() {
-    // const [listaMeusVeiculos, setListaMeusVeiculos] = useState([]);
+export default function ListarCarga() {
+    const [ListaCarga, setListaCarga] = useState([]);
 
-    // function buscarMeusVeiculos() {
-    //     axios('http://localhost:5000/api/Veiculos', {
-    //         headers: {
-    //             'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
-    //         }
-    //     })
-    //         .then(response => {
-    //             if (response.status === 200) {
-    //                 setListaMeusVeiculos(response.data);
-    //             }
-    //         })
-    //         .catch(erro => console.log(erro));
-    // };
+    function buscarCarga() {
+        axios('http://localhost:5000/api/TipoCargas', {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+        })
+            .then(response => {
+                if (response.status === 200) {
+                    setListaCarga(response.data);
+                }
+            })
+            .catch(erro => console.log(erro));
+    };
 
-    // useEffect(buscarMeusVeiculos, []);
+    useEffect(buscarCarga, []);
 
     return (
         <div>
@@ -50,21 +50,27 @@ export default function listarVeiculos() {
                         </div>
                     </div>
 
-                    <div className="cardVeiculoCargas1">
-                        <div className="alinharEtiquetasCargas">
-                            <div className="etiquetaCargas">
-                                <div className="etiquetaCargas">
-                                    <p className="nomeEtiquetaCargas">[tipo-carga]</p>
+                    {
+                        ListaCarga.map((carga) => {
+                            return (
+                                <div className="cardVeiculoCargas1">
+                                    <div className="alinharEtiquetasCargas">
+                                        <div className="etiquetaCargas">
+                                            <div className="etiquetaCargas">
+                                                <p className="nomeEtiquetaCargas">{carga.nomeTipoCarga}</p>
+                                            </div>
+                                        </div>
+                                        <div className="iconesEtiquetaCargas">
+                                            <Link className='removerLink' to="/veiculos/atualizar/carroceria"><FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" /></Link>
+                                            <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="iconesEtiquetaCargas">
-                                <Link className='removerLink' to="/veiculos/atualizar/carroceria"><FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" /></Link>
-                                <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
-                            </div>
-                        </div>
-                    </div>
+                            )
+                        })
+                    }
 
-                    <div className="cardVeiculoCargas2">
+                    {/* <div className="cardVeiculoCargas2">
                         <div className="alinharEtiquetasCargas">
                             <div className="etiquetaCargas">
                                 <div className="etiquetaCargas">
@@ -104,7 +110,7 @@ export default function listarVeiculos() {
                                 <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
                 </div>
             </main>
