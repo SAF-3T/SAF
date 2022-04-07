@@ -14,24 +14,45 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
 import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 
-export default function listarVeiculos() {
-    // const [listaMeusVeiculos, setListaMeusVeiculos] = useState([]);
+export default function ListarCarrocerias() {
+    const [ListaCarrocerias, setListaCarrocerias] = useState([]);
 
-    // function buscarMeusVeiculos() {
-    //     axios('http://localhost:5000/api/Veiculos', {
+    function buscarCarrocerias() {
+        axios('http://localhost:5000/api/Carrocerias', {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+        })
+            .then(response => {
+                if (response.status === 200) {
+                    setListaCarrocerias(response.data);
+                }
+            })
+            .catch(erro => console.log(erro));
+    };
+
+    useEffect(buscarCarrocerias, []);
+
+
+    // excluirCarroceria = (carroceria) => {
+
+    //     axios.delete('http://localhost:5000/api/Carrocerias/' + TipoCarroceria.idTipoCarroceria, {
     //         headers: {
-    //             'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
-    //         }
+    //             Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
+    //         },
     //     })
-    //         .then(response => {
-    //             if (response.status === 200) {
-    //                 setListaMeusVeiculos(response.data);
+    //         .then((resposta) => {
+    //             if (resposta.status === 204) {
+    //                 // console.log(
+    //                 //     'Tipo de Evento ' + tipoEvento.idTipoEvento + ' foi excluído!',
+    //                 // );
     //             }
     //         })
-    //         .catch(erro => console.log(erro));
-    // };
 
-    // useEffect(buscarMeusVeiculos, []);
+    //         .catch((erro) => console.log(erro))
+
+    //         .then(this.buscarCarrocerias);
+    // };
 
     return (
         <div>
@@ -46,7 +67,7 @@ export default function listarVeiculos() {
                         <button className="addVeiculo" type='submit'><Link className='removerLink' to="/veiculos/cadastro/usuario"><FontAwesomeIcon className="iconPlus" icon={faPlus} color="#fff" size="lg" />Nova carroceria</Link></button>
                         <div className="input-e-btn-2">
                             <input className='inputBusca' type="text" placeholder="Pesquisar" />
-                            <button className='btnBuscar' type='submit'>Buscar</button>
+                            <button className='btnBuscar' type='submit'><p>Buscar</p></button>
                         </div>
                     </div>
 
@@ -55,21 +76,35 @@ export default function listarVeiculos() {
                             <div className="etiquetasCarrocerias">
                                 <div className="etiquetaCarrocerias">
                                     <div className="etiquetaCarrocerias">
-                                        <p className="nomeEtiquetaCarrocerias">[nome-usuario] </p>
+                                        {
+                                            ListarCarrocerias.map((carroceria) => {
+                                                <p className="nomeEtiquetaCargas">{carroceria.nome}</p>
+                                            })
+                                        }
                                     </div>
                                 </div>
                                 <div className="etiquetaCarrocerias">
                                     <div className="etiquetaCarrocerias">
-                                        <p className="nomeEtiquetaCarrocerias">[cubagem-carroceria]</p>
+                                        {
+                                            ListarCarrocerias.map((carroceria) => {
+                                                <p className="nomeEtiquetaCargas">{carroceria.cubagem}</p>
+                                            })
+                                        }
                                     </div>
                                 </div>
                                 <div className="etiquetaCarrocerias">
                                     <div className="etiquetaCarrocerias">
-                                        <p className="nomeEtiquetaCarrocerias">[peso-carroceria]</p>
+                                        {
+                                            ListarCarrocerias.map((carroceria) => {
+                                                <p className="nomeEtiquetaCargas">{carroceria.peso}</p>
+                                            })
+                                        }
                                     </div>
                                 </div>
-                                <Link className='removerLink' to="/veiculos/atualizar/carroceria"><FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" /></Link>
-                                <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
+                                <div className="iconesEtiquetaCargas">
+                                    <Link className='removerLink' to="/veiculos/atualizar/carroceria"><FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" /></Link>
+                                    <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -79,21 +114,35 @@ export default function listarVeiculos() {
                             <div className="etiquetasCarrocerias">
                                 <div className="etiquetaCarrocerias">
                                     <div className="etiquetaCarrocerias">
-                                        <p className="nomeEtiquetaCarrocerias">[nome-usuario] </p>
+                                        {
+                                            ListarCarrocerias.map((carroceria) => {
+                                                <p className="nomeEtiquetaCargas">{carroceria.nome}</p>
+                                            })
+                                        }
                                     </div>
                                 </div>
                                 <div className="etiquetaCarrocerias">
                                     <div className="etiquetaCarrocerias">
-                                        <p className="nomeEtiquetaCarrocerias">[cubagem-carroceria]</p>
+                                        {
+                                            ListarCarrocerias.map((carroceria) => {
+                                                <p className="nomeEtiquetaCargas">{carroceria.cubagem}</p>
+                                            })
+                                        }
                                     </div>
                                 </div>
                                 <div className="etiquetaCarrocerias">
                                     <div className="etiquetaCarrocerias">
-                                        <p className="nomeEtiquetaCarrocerias">[peso-carroceria]</p>
+                                        {
+                                            ListarCarrocerias.map((carroceria) => {
+                                                <p className="nomeEtiquetaCargas">{carroceria.peso}</p>
+                                            })
+                                        }
                                     </div>
                                 </div>
-                                <Link className='removerLink' to="/veiculos/atualizar/carroceria"><FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" /></Link>
-                                <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
+                                <div className="iconesEtiquetaCargas">
+                                    <Link className='removerLink' to="/veiculos/atualizar/carroceria"><FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" /></Link>
+                                    <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -103,29 +152,40 @@ export default function listarVeiculos() {
                             <div className="etiquetasCarrocerias">
                                 <div className="etiquetaCarrocerias">
                                     <div className="etiquetaCarrocerias">
-                                        <p className="nomeEtiquetaCarrocerias">[nome-usuario] </p>
+                                        {
+                                            ListarCarrocerias.map((carroceria) => {
+                                                <p className="nomeEtiquetaCargas">{carroceria.nome}</p>
+                                            })
+                                        }
                                     </div>
                                 </div>
                                 <div className="etiquetaCarrocerias">
                                     <div className="etiquetaCarrocerias">
-                                        <p className="nomeEtiquetaCarrocerias">[cubagem-carroceria]</p>
+                                        {
+                                            ListarCarrocerias.map((carroceria) => {
+                                                <p className="nomeEtiquetaCargas">{carroceria.cubagem}</p>
+                                            })
+                                        }
                                     </div>
                                 </div>
                                 <div className="etiquetaCarrocerias">
                                     <div className="etiquetaCarrocerias">
-                                        <p className="nomeEtiquetaCarrocerias">[peso-carroceria]</p>
+                                        {
+                                            ListarCarrocerias.map((carroceria) => {
+                                                <p className="nomeEtiquetaCargas">{carroceria.peso}</p>
+                                            })
+                                        }
                                     </div>
                                 </div>
-                                <Link className='removerLink' to="/veiculos/atualizar/carroceria"><FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" /></Link>
-                                <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
+                                <div className="iconesEtiquetaCargas">
+                                    <Link className='removerLink' to="/veiculos/atualizar/carroceria"><FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" /></Link>
+                                    <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
+                                </div>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </main >
-
             <Footer />
         </div >
     );

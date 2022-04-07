@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\45999057809.INFOSCS\\Desktop\\SAF-3T\\BackEnd\\API\\SAF_3T\\SAF_3T.csproj": {}
+    "C:\\Users\\hakst\\Desktop\\SAF-3T\\BackEnd\\API\\SAF_3T\\SAF_3T.csproj": {}
   },
   "projects": {
-    "C:\\Users\\45999057809.INFOSCS\\Desktop\\SAF-3T\\BackEnd\\API\\SAF_3T\\SAF_3T.csproj": {
+    "C:\\Users\\hakst\\Desktop\\SAF-3T\\BackEnd\\API\\SAF_3T\\SAF_3T.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\45999057809.INFOSCS\\Desktop\\SAF-3T\\BackEnd\\API\\SAF_3T\\SAF_3T.csproj",
+        "projectUniqueName": "C:\\Users\\hakst\\Desktop\\SAF-3T\\BackEnd\\API\\SAF_3T\\SAF_3T.csproj",
         "projectName": "SAF_3T",
-        "projectPath": "C:\\Users\\45999057809.INFOSCS\\Desktop\\SAF-3T\\BackEnd\\API\\SAF_3T\\SAF_3T.csproj",
-        "packagesPath": "C:\\Users\\45999057809.INFOSCS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\45999057809.INFOSCS\\Desktop\\SAF-3T\\BackEnd\\API\\SAF_3T\\obj\\",
+        "projectPath": "C:\\Users\\hakst\\Desktop\\SAF-3T\\BackEnd\\API\\SAF_3T\\SAF_3T.csproj",
+        "packagesPath": "C:\\Users\\hakst\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hakst\\Desktop\\SAF-3T\\BackEnd\\API\\SAF_3T\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\45999057809.INFOSCS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\hakst\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -40,6 +40,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.2, )"
+            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[5.0.12, )"
@@ -93,7 +97,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
         }
       }
     }

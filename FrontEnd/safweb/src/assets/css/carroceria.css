@@ -116,6 +116,13 @@ body {
     width: 100%;
 }
 
+.iconesEtiquetaCargas {
+    width: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .input-e-btn {
     display: flex;
     justify-content: space-between;

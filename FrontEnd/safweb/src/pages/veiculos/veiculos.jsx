@@ -5,14 +5,17 @@ import Header from '../../components/headers/header';
 import Sidebar1 from '../../components/sidebars/sidebar1';
 import Footer from '../../components/footer';
 
+import Modal from '../../components/modal';
+
 import { Link } from 'react-router-dom';
 
 import '../../assets/css/veiculos.css';
 
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
-export default function listarVeiculos() {
+export default function ListarVeiculos() {
     // const [listaMeusVeiculos, setListaMeusVeiculos] = useState([]);
 
     // function buscarMeusVeiculos() {
@@ -31,6 +34,8 @@ export default function listarVeiculos() {
 
     // useEffect(buscarMeusVeiculos, []);
 
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
     return (
         <div>
             <Header />
@@ -41,7 +46,7 @@ export default function listarVeiculos() {
                     <p className="pVeiculo">Veículos</p>
 
                     <div className="input-e-btn">
-                        <button className="addVeiculo" type='submit'><Link className='removerLink' to="/veiculos/cadastro/veiculo"><FontAwesomeIcon className="iconPlus" icon={faPlus} color="#fff" size="lg" />Novo veículo</Link></button>
+                        <button className="addVeiculo" type='submit' onClick={() => setIsModalVisible(true)}><Link className='removerLink' to="/veiculos/cadastro/veiculo"><FontAwesomeIcon className="iconPlus" icon={faPlus} color="#fff" size="lg" />Novo veículo</Link></button>{isModalVisible ? (<Modal onClose={() => setIsModalVisible(false)}></Modal>) : null}
                         <div className="input-e-btn-2">
                             <input className='inputBusca' type="text" placeholder="Pesquisar" />
                             <button className='btnBuscar' type='submit'>Buscar</button>
