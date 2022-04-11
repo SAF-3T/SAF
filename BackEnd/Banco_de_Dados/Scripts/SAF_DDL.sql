@@ -1,7 +1,8 @@
 CREATE DATABASE SAF_3T;
 GO
+--Não criar o banco pois já está na núvem--
 
-USE SAF_3T;
+USE SAF-DB;
 GO
 
 CREATE TABLE TipoUsuario(
