@@ -53,6 +53,12 @@ export default function ListarVeiculos() {
                         </div>
                     </div>
 
+                    <div className="cabecalhoParametros">
+                        <p>Placa</p>
+                        <p>Marca</p>
+                        <p>Data de aquisição</p>
+                        <p>Status</p>
+                    </div>
 
                     {
                         ListaVeiculos.map((veiculo) => {
@@ -85,48 +91,6 @@ export default function ListarVeiculos() {
                         })
                     }
 
-                    {/* <div className="cardVeiculo">
-                        <div className="alinharEtiquetas">
-                            <div className="imgVeiculo">
-                                <img src="" alt="" />
-                            </div>
-                            <div className="etiquetas">
-                                <div className="etiqueta">
-                                    <p className="nomeEtiqueta">[nome-placa]</p>
-                                </div>
-                                <div className="etiqueta">
-                                    <p className="nomeEtiqueta">[marca-veiculo]</p>
-                                </div>
-                                <div className="etiqueta">
-                                    <p className="nomeEtiqueta">[data-aquisicao]</p>
-                                </div>
-                                <div className="etiqueta">
-                                    <p className="nomeEtiqueta">[status-veiculo]</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="cardVeiculo">
-                        <div className="alinharEtiquetas">
-                            <div className="imgVeiculo">
-                                <img src="" alt="" />
-                            </div>
-                            <div className="etiquetas">
-                                <div className="etiqueta">
-                                    <p className="nomeEtiqueta">[nome-placa]</p>
-                                </div>
-                                <div className="etiqueta">
-                                    <p className="nomeEtiqueta">[marca-veiculo]</p>
-                                </div>
-                                <div className="etiqueta">
-                                    <p className="nomeEtiqueta">[data-aquisicao]</p>
-                                </div>
-                                <div className="etiqueta">
-                                    <p className="nomeEtiqueta">[status-veiculo]</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div> */}
                 </div>
             </main>
 
