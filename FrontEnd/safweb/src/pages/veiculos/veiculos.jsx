@@ -16,25 +16,25 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 export default function ListarVeiculos() {
-    // const [listaMeusVeiculos, setListaMeusVeiculos] = useState([]);
+    const [ListaVeiculos, setListaVeiculos] = useState([]);
 
-    // function buscarMeusVeiculos() {
-    //     axios('http://localhost:5000/api/Veiculos', {
-    //         headers: {
-    //             'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
-    //         }
-    //     })
-    //         .then(response => {
-    //             if (response.status === 200) {
-    //                 setListaMeusVeiculos(response.data);
-    //             }
-    //         })
-    //         .catch(erro => console.log(erro));
-    // };
+    function buscarVeiculos() {
+        axios('http://localhost:5000/api/Veiculos', {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+            }
+        })
+            .then(response => {
+                if (response.status === 200) {
+                    setListaVeiculos(response.data);
+                }
+            })
+            .catch(erro => console.log(erro));
+    };
 
-    // useEffect(buscarMeusVeiculos, []);
+    useEffect(buscarVeiculos, []);
 
-  const [isModalVisible, setIsModalVisible] = useState(false);
+    const [isModalVisible, setIsModalVisible] = useState(false);
 
     return (
         <div>
@@ -54,29 +54,38 @@ export default function ListarVeiculos() {
                     </div>
 
 
-                    <div className="cardVeiculo">
-                        <div className="alinharEtiquetas">
-                            <div className="imgVeiculo">
-                                <img src="" alt="" />
-                            </div>
-                            <div className="etiquetas">
-                                <div className="etiqueta">
-                                    <p className="nomeEtiqueta alinhar">[nome-placa]</p>
+                    {
+                        ListaVeiculos.map((veiculo) => {
+                            return (
+                                <div className="cardVeiculo">
+                                    <div className="alinharEtiquetas">
+                                        <div className="imgVeiculo">
+                                            <img src="" alt="" />
+                                        </div>
+                                        <div className="etiquetas">
+                                            <div className="etiqueta">
+                                                <p className="nomeEtiqueta">{veiculo.placa}</p>
+                                            </div>
+                                            <div className="etiqueta">
+                                                <p className="nomeEtiqueta">Scania</p>
+                                            </div>
+                                            <div className="etiqueta">
+                                                <p className="nomeEtiqueta">{Intl.DateTimeFormat("pt-BR", {
+                                                    year: 'numeric', month: 'numeric', day: 'numeric',
+                                                    hour: 'numeric', minute: 'numeric', hour12: false
+                                                }).format(new Date(veiculo.dataAquisicao))}</p>
+                                            </div>
+                                            <div className="etiqueta">
+                                                <p className="nomeEtiqueta">Na garagem</p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div className="etiqueta">
-                                    <p className="nomeEtiqueta">[marca-veiculo]</p>
-                                </div>
-                                <div className="etiqueta">
-                                    <p className="nomeEtiqueta">[data-aquisicao]</p>
-                                </div>
-                                <div className="etiqueta">
-                                    <p className="nomeEtiqueta">[status-veiculo]</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                            )
+                        })
+                    }
 
-                    <div className="cardVeiculo">
+                    {/* <div className="cardVeiculo">
                         <div className="alinharEtiquetas">
                             <div className="imgVeiculo">
                                 <img src="" alt="" />
@@ -117,7 +126,7 @@ export default function ListarVeiculos() {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </main>
 
