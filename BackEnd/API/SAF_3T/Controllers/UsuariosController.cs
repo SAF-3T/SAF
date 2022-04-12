@@ -66,7 +66,7 @@ namespace SAF_3T.Controllers
             }
         }
 
-        [HttpGet("{idUsuario}")]
+        [HttpGet("BuscarPorId/{idUsuario}")]
         public IActionResult BuscarPorId(int idUsuario)
         {
             try

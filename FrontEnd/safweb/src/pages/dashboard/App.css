@@ -67,7 +67,7 @@ header {
 }
 
 nav {
-  height: 230em;
+  height: 220em;
   width: fit-content;
   position: absolute;
   top: 80px;
@@ -96,7 +96,6 @@ nav {
   flex-direction: column;
   height: 130em;
   width: 100%;
-  /* background-color: gold; */
 }
 
 footer {
@@ -107,7 +106,7 @@ footer {
   align-items: center;
   position: absolute;
   width: 100%;
-  top: 230em;
+  top: 220em;
 }
 
 .link2, .link1 {
@@ -216,7 +215,7 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 40px auto;
+  margin: 100px auto 210px;
 }
 
 .imagemDrawkit {
