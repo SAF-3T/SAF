@@ -19,7 +19,9 @@ namespace SAF_3T.Repositories
                 .AsNoTracking()
                 .Include(c => c.IdTipoCheckListNavigation)
                 .Include(c => c.IdUsuarioNavigation)
-                .Include(c => c.IdUsuarioNavigation.IdTipoUsuarioNavigation)
+                .Include(c => c.IdVeiculoNavigation)
+                .Include(c => c.IdVeiculoNavigation.IdTipoVeiculoNavigation)
+                .Include(c => c.IdVeiculoNavigation.IdStatusNavigation)
                 .FirstOrDefault(c => c.IdCheckList == idRecebido);
         }
 
@@ -41,7 +43,9 @@ namespace SAF_3T.Repositories
                 .AsNoTracking()
                 .Include(c => c.IdTipoCheckListNavigation)
                 .Include(c => c.IdUsuarioNavigation)
-                .Include(c => c.IdUsuarioNavigation.IdTipoUsuarioNavigation)
+                .Include(c => c.IdVeiculoNavigation)
+                .Include(c => c.IdVeiculoNavigation.IdTipoVeiculoNavigation)
+                .Include(c => c.IdVeiculoNavigation.IdStatusNavigation)
                 .Where(c => c.IdVeiculo == idVeiculo)
                 .ToList();
         }
@@ -49,9 +53,12 @@ namespace SAF_3T.Repositories
         public List<CheckList> ListarTodas()
         {
             return ctx.CheckLists
+                .AsNoTracking()
                 .Include(c => c.IdTipoCheckListNavigation)
                 .Include(c => c.IdUsuarioNavigation)
-                .Include(c => c.IdUsuarioNavigation.IdTipoUsuarioNavigation)
+                .Include(c => c.IdVeiculoNavigation)
+                .Include(c => c.IdVeiculoNavigation.IdTipoVeiculoNavigation)
+                .Include(c => c.IdVeiculoNavigation.IdStatusNavigation)
                 .ToList();
         }
     }

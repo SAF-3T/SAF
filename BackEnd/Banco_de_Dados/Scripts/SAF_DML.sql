@@ -1,4 +1,4 @@
-USE SAF_3T
+USE SAF-DB
 
 INSERT INTO TipoUsuario(NomeTipoUsuario)
 VALUES ('Gestor'),('Motorista'),('Mecanico')
