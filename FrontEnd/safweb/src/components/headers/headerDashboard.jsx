@@ -57,12 +57,12 @@ componentDidMount(){
         return (
             <div className="wrapperDashboard">
                 <Link to="/dashboard"><div className="imagemLogoHeaderDashboard"></div></Link>
-                <p className="pBemVindo">Bem vindo, [nome-usuario] !</p>
+                <p className="pBemVindo">Bem vindo, Márcio !</p>
                 <div className="usuarioHeaderDashboard">
                     <a href="#"><div className="imagemUsuario"></div></a>
                     <div className="linksUsuario">
-                        <p className="pNomeUsuario">[nome-usuario]</p>
-                        <p className="pCargoUsuario">[cargo-usuario]</p>
+                        <p className="pNomeUsuario">Márcio</p>
+                        <p className="pCargoUsuario">Gestor</p>
                     </div>
                 </div>
             </div>
@@ -70,17 +70,3 @@ componentDidMount(){
     }
 }
 export default Header;
-
-//     render() {
-//         return (
-//             <div className="wrapperDashboard">
-//                 <p>Bem vindo, {this.nome}!</p>
-//                 <div className="usuarioHeaderDashboard">
-//                     <a href="#"><div className="imagemUsuario"></div></a>
-//                     <p>{this.nome}</p>
-//                     <p>{this.IdTipoUsuarioNavigation.TipoUsuario}</p>
-//                 </div>
-//             </div>
-//         );
-//     };
-// }
