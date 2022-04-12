@@ -11,7 +11,9 @@ namespace SAF_3T.Interfaces
 
         Carrocerium BuscarPorId(int IdCarroceria);
         void Cadastrar(Carrocerium novaCarroceria);
-
+        void AlterarTipoCarga(int idRecebido, Carrocerium atualizaCarroceria);
+        void AlterarConteudo(int idRecebido, Carrocerium atualizaCarroceria);
+        void AtualizarCarroceria(int idRecebido, Carrocerium atualizaCarroceria);
         void Deletar(int id);
     }
 }

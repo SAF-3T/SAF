@@ -26,11 +26,6 @@ namespace SAF_3T.Repositories
            return ctx.Usuarios.FirstOrDefault(c => c.IdUsuario == idUsuario);
         }
 
-        public Usuario BuscarPorNome(string NomeUsuario)
-        {
-            return ctx.Usuarios.FirstOrDefault(c => c.Nome == NomeUsuario);
-        }
-
         public Usuario BuscarPorNumero(string NumeroUsuario)
         {
             return ctx.Usuarios.FirstOrDefault(c => c.Telefone == NumeroUsuario);

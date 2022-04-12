@@ -14,6 +14,34 @@ namespace SAF_3T.Repositories
     {
         SAFContext ctx = new SAFContext();
 
+        public void AlterarConteudo(int idRecebido, Carrocerium atualizaCarroceria)
+        {
+            Carrocerium carroceriaDesatualizada = ctx.Carroceria.FirstOrDefault(c => c.IdCarroceria == idRecebido);
+
+            carroceriaDesatualizada.Cubagem = atualizaCarroceria.Cubagem;
+            carroceriaDesatualizada.Peso = atualizaCarroceria.Peso;
+            ctx.SaveChanges();
+        }
+
+        public void AlterarTipoCarga(int idRecebido, Carrocerium atualizaCarroceria)
+        {
+            Carrocerium carroceriaDesatualizada = ctx.Carroceria.FirstOrDefault(c => c.IdCarroceria == idRecebido);
+
+            carroceriaDesatualizada.IdTipoCarga = atualizaCarroceria.IdTipoCarga;
+            ctx.SaveChanges();
+        }
+
+        public void AtualizarCarroceria(int idRecebido, Carrocerium atualizaCarroceria)
+        {
+            Carrocerium carroceriaDesatualizada = ctx.Carroceria.FirstOrDefault(c => c.IdCarroceria == idRecebido);
+
+            carroceriaDesatualizada.IdTipoCarga = atualizaCarroceria.IdTipoCarga;
+            carroceriaDesatualizada.IdTipoCarroceria = atualizaCarroceria.IdTipoCarroceria;
+            carroceriaDesatualizada.Cubagem = atualizaCarroceria.Cubagem;
+            carroceriaDesatualizada.Peso = atualizaCarroceria.Peso;
+            ctx.SaveChanges();
+        }
+
         public Carrocerium BuscarPorId(int IdCarroceria)
         {
             return ctx.Carroceria

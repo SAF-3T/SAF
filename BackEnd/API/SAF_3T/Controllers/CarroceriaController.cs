@@ -65,13 +65,58 @@ namespace SAF_3T.Controllers
             }
         }
 
-        [HttpDelete("/Deletar/{idCarroceria}")]
+        [HttpDelete("/DeletarCarroceria/{idCarroceria}")]
         public IActionResult Deletar(int idCarroceria)
         {
             try
             {
                 _carroceriaRepository.Deletar(idCarroceria);
                 return StatusCode(204);
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+                throw;
+            }
+        }
+
+        [HttpPut("/Alterar/{idCarroceria}")]
+        public IActionResult Atualiza(int idCarroceria, Carrocerium atualizaCarroceria)
+        {
+            try
+            {
+                _carroceriaRepository.AtualizarCarroceria(idCarroceria, atualizaCarroceria);
+                return StatusCode(200);
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+                throw;
+            }
+        }
+
+        [HttpPatch("/AlterarConteúdo/{idCarroceria}")]
+        public IActionResult AtualizaConteudo(int idCarroceria, Carrocerium atualizaCarroceria)
+        {
+            try
+            {
+                _carroceriaRepository.AlterarConteudo(idCarroceria, atualizaCarroceria);
+                return StatusCode(200);
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+                throw;
+            }
+        }
+
+        [HttpPatch("/AlterarTipoCarga/{idCarroceria}")]
+        public IActionResult AtualizaTipoCarga(int idCarroceria, Carrocerium atualizaCarroceria)
+        {
+            try
+            {
+                _carroceriaRepository.AlterarTipoCarga(idCarroceria, atualizaCarroceria);
+                return StatusCode(200);
             }
             catch (Exception erro)
             {

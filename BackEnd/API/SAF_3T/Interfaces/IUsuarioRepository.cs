@@ -13,7 +13,6 @@ namespace SAF_3T.Interfaces
         public Usuario Login(string CPF, string Senha);
         void Deletar(int idUsuario);
         Usuario BuscarPorId(int idUsuario);
-        Usuario BuscarPorNome(string NomeUsuario);
         Usuario BuscarPorCPF(string CPFUsuario);
         Usuario BuscarPorNumero(string NumeroUsuario);
 

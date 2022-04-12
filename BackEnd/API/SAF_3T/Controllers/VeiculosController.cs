@@ -135,5 +135,30 @@ namespace SAF_3T.Controllers
             }
             return BadRequest();
         }
+
+        [HttpPut("/AtualizarStatus/{id}")]
+        public IActionResult AtualizarStatus(int id, Veiculo novoVeiculo)
+        {
+            if (novoVeiculo != null)
+            {
+                var VeiculoBuscado = _veiculosRepository.BuscarPorId(id);
+                if (VeiculoBuscado != null)
+                {
+                    try
+                    {
+                        _veiculosRepository.Atualizar(id, novoVeiculo);
+                        return NoContent();
+                    }
+                    catch (Exception erro)
+                    {
+                        return BadRequest(erro);
+                        throw;
+                    }
+                }
+                return BadRequest();
+
+            }
+            return BadRequest();
+        }
     }
 }

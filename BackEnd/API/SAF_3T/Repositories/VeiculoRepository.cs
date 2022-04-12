@@ -20,8 +20,16 @@ namespace SAF_3T.Controllers
             veiculoBuscado.IdTipoVeiculo = veiculoAtualizado.IdTipoVeiculo;
             veiculoBuscado.IdMarca = veiculoAtualizado.IdMarca;
             veiculoBuscado.IdUsuario = veiculoAtualizado.IdUsuario;
-            ctx.Veiculos.Update(veiculoBuscado);
+            veiculoBuscado.IdCarroceria = veiculoAtualizado.IdCarroceria;
+            veiculoBuscado.ImagemVeiculo = veiculoAtualizado.ImagemVeiculo;
+            ctx.SaveChanges();
+        }
 
+        public void AtualizarStatus(int id, Veiculo veiculoAtualizado)
+        {
+            Veiculo veiculoBuscado = ctx.Veiculos.FirstOrDefault(v => v.IdVeiculo == id);
+
+            veiculoBuscado.IdStatus = veiculoAtualizado.IdStatus;
             ctx.SaveChanges();
         }
 
@@ -29,6 +37,7 @@ namespace SAF_3T.Controllers
         {
             return ctx.Veiculos
                 .AsNoTracking()
+                .Include(v => v.IdStatusNavigation)
                 .Include(v => v.IdTipoVeiculoNavigation)
                 .Include(v => v.IdCarroceriaNavigation)
                 .Include(v => v.IdCarroceriaNavigation.IdTipoCarroceriaNavigation)
@@ -40,6 +49,7 @@ namespace SAF_3T.Controllers
         {
             return ctx.Veiculos
                 .AsNoTracking()
+                .Include(v => v.IdStatusNavigation)
                 .Include(v => v.IdTipoVeiculoNavigation)
                 .Include(v => v.IdCarroceriaNavigation)
                 .Include(v => v.IdCarroceriaNavigation.IdTipoCarroceriaNavigation)
@@ -51,6 +61,7 @@ namespace SAF_3T.Controllers
         {
             return ctx.Veiculos
                 .AsNoTracking()
+                .Include(v => v.IdStatusNavigation)
                 .Include(v => v.IdTipoVeiculoNavigation)
                 .Include(v => v.IdCarroceriaNavigation)
                 .Include(v => v.IdCarroceriaNavigation.IdTipoCarroceriaNavigation)
@@ -63,6 +74,7 @@ namespace SAF_3T.Controllers
         {
             return ctx.Veiculos
                 .AsNoTracking()
+                .Include(v => v.IdStatusNavigation)
                 .Include(v => v.IdTipoVeiculoNavigation)
                 .Include(v => v.IdCarroceriaNavigation)
                 .Include(v => v.IdCarroceriaNavigation.IdTipoCarroceriaNavigation)
@@ -86,6 +98,7 @@ namespace SAF_3T.Controllers
         {
             return ctx.Veiculos
                 .AsNoTracking()
+                .Include(v => v.IdStatusNavigation)
                 .Include(v => v.IdTipoVeiculoNavigation)
                 .Include(v => v.IdCarroceriaNavigation)
                 .Include(v => v.IdCarroceriaNavigation.IdTipoCarroceriaNavigation)

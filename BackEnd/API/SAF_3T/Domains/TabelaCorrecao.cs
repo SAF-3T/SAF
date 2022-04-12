@@ -10,7 +10,7 @@ namespace SAF_3T.Domains
     {
         public int IdCorrecao { get; set; }
 
-        [Required(ErrorMessage = "É necessário informar qual o tipo do erro")]
+        [Required(ErrorMessage = "É necessário informar qual o idErro")]
         public byte IdTipoErro { get; set; }
 
         [Required(ErrorMessage = "É necessário informar o idChecklist")]

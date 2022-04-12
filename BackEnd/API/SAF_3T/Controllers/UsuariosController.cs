@@ -80,20 +80,6 @@ namespace SAF_3T.Controllers
             }
         }
 
-        [HttpGet("/nome")]
-        public IActionResult BuscarPorNome(string nome)
-        {
-            try
-            {
-                return Ok(_usuarioRepository.BuscarPorNome(nome));
-            }
-            catch (Exception erro)
-            {
-                return BadRequest(erro);
-                throw;
-            }
-        }
-
         [HttpGet("/numero")]
         public IActionResult BuscarPorNumero(string numero)
         {

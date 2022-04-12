@@ -18,8 +18,11 @@ namespace SAF_3T.Domains
 
         [Required(ErrorMessage = "É necessário informar o tipo de checklist cadastrada")]
         public byte IdTipoCheckList { get; set; }
+        
         [Required(ErrorMessage = "É necessário informar a qual veículo esta checklist pertence")]
         public int IdVeiculo { get; set; }
+
+        [Required(ErrorMessage = "É necessário informar qual o usuário efetuou a checklist")]
         public int IdUsuario { get; set; }
         public DateTime DataCheckList { get; set; }
 
