@@ -9,6 +9,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 const AuthStack = createStackNavigator();
 
 import PreLogin from './src/pages/PreLogin'
+import Login from './src/pages/Login'
 
 export default function Stack() {
 
@@ -17,6 +18,7 @@ export default function Stack() {
   
         <AuthStack.Navigator initialRouteName="PreLogin" screenOptions={{ headerShown: false, }}>
           <AuthStack.Screen name="PreLogin" component={PreLogin} />
+          <AuthStack.Screen name="Login" component={Login} />
         </AuthStack.Navigator>
       </NavigationContainer>
     )

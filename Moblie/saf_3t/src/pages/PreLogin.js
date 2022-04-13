@@ -1,6 +1,9 @@
 import { Component } from "react";
 import React from 'react';
 import jwtDecode from 'jwt-decode';
+
+import FontRegular from '../../assets/fonts/Montserrat-Regular.ttf'
+
 import {
     StyleSheet,
     Text,
@@ -40,7 +43,7 @@ export default class PreLogin extends Component {
                     </View>
                                        
                     <View style={styles.containerEspacamento}>
-                        <TouchableOpacity style={styles.corpoBotao}>
+                        <TouchableOpacity onPress={ () => (this.props.navigation.navigate('Login'))} style={styles.corpoBotao}>
                             <Text style={styles.textoBotao}>COMEÇAR</Text>
                         </TouchableOpacity>
                     </View>
@@ -74,19 +77,19 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: 'white',
         textAlign: 'center',
-        fontFamily: 'Montserrat',
+        fontFamily: 'Montserrat-Regular'
     },
     textoGrifado: {
         fontSize: 20,
         color: 'white',
         fontWeight: '900', 
-        fontFamily: 'Montserrat',
+        fontFamily: 'Montserrat-Regular'
     },
     textoBotao: {
         fontWeight: '900',
         fontSize: 25,
         color: 'white',
-        fontFamily: 'Montserrat'
+        fontFamily: 'FontRegular'
     },
     corpoBotao: {
         width: 190,

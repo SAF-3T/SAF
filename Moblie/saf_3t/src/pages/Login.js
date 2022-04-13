@@ -1,0 +1,129 @@
+import { Component } from "react";
+import React from 'react';
+import jwtDecode from 'jwt-decode';
+import {
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
+    Image,
+    TextInput,
+    ImageBackground,
+    AsyncStorage,
+  } from 'react-native';
+  import api from '../services/api';
+
+export default class Login extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            email : "",
+            senha : ""
+        };
+    }
+
+    realizarLogin = async () => {
+        const resposta = await api.post('/Login',
+        {
+            email: this.state.email,
+            senha: this.state.senha
+        })
+
+        const token = resposta.data.token;
+        await AsyncStorage.setItem('userToken',token)
+    }
+
+    render() {
+        return(
+            <View style={styles.main}>
+                <View style={styles.containerImg}>
+                    <View style={styles.imgFixa}>
+                        <Image style={styles.imgCamera} source={require('../../assets/img/Group.png')}/>
+                    </View>
+                </View>
+                <View style={styles.containerInputs}>
+                    <TextInput 
+                    placeholder="CPF"
+                    placeholderTextColor="#0E758C"
+                    style={styles.input}
+                    />
+                    <TextInput 
+                    placeholder="Senha"
+                    placeholderTextColor="#0E758C"
+                    style={styles.input}
+                    />
+                </View>
+                <View style={styles.containerBotao}>
+                    <TouchableOpacity style={styles.corpoBotao}>
+                        <Text style={styles.textoBotao}>ENTRAR</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
+        )
+    }
+    
+}
+
+const styles = StyleSheet.create({
+    main: {
+        backgroundColor: 'white',
+        flex: 1,
+        padding: 50
+    },
+    containerImg: {
+        flex: 1,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    containerInputs: {
+        flex: 1,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    containerBotao: {
+        flex: 1,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    input: {
+        //backgroundColor: 'black',
+        width: 250,
+        height: 50,
+        marginTop: 20,
+        borderBottomWidth: 2,
+        borderBottomColor: '#0E758C',
+        textAlign: 'center',
+        fontSize: 20
+    },
+    corpoBotao: {
+        width: 190,
+        height: 60,
+        backgroundColor: '#0E758C',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 5,
+    },
+    textoBotao: {
+        fontWeight: '900',
+        fontSize: 25,
+        color: 'white',
+        fontFamily: 'Montserrat'
+    },
+    imgFixa: {
+        width: 150,
+        height: 150,
+        backgroundColor: '#C4C4C4',
+        borderRadius: 100,
+        alignItems: 'center',
+        justifyContent: 'center',
+        display: 'flex'
+    },
+
+})
