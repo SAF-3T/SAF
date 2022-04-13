@@ -13,6 +13,7 @@ namespace SAF_3T.Interfaces
         Veiculo BuscarPorId(int idTipoVeiculo);
 
         List<Veiculo> BuscarPorMarca(int idMarca);
+        void AtualizarStatus(int id, Veiculo veiculoAtualizado);
 
         Veiculo BuscarPorCarroceria(byte idTipoCarroceria);
 

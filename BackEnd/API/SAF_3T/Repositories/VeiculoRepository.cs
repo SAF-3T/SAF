@@ -63,9 +63,7 @@ namespace SAF_3T.Controllers
                 .AsNoTracking()
                 .Include(v => v.IdStatusNavigation)
                 .Include(v => v.IdTipoVeiculoNavigation)
-                .Include(v => v.IdCarroceriaNavigation)
                 .Include(v => v.IdCarroceriaNavigation.IdTipoCarroceriaNavigation)
-                .Include(v => v.IdCarroceriaNavigation.IdTipoCargaNavigation)
                 .Where(v => v.IdMarca == idMarca)
                 .ToList();
         }

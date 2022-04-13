@@ -146,7 +146,7 @@ namespace SAF_3T.Controllers
                 {
                     try
                     {
-                        _veiculosRepository.Atualizar(id, novoVeiculo);
+                        _veiculosRepository.(id, novoVeiculo);
                         return NoContent();
                     }
                     catch (Exception erro)
