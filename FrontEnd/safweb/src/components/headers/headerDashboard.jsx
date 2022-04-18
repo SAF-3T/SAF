@@ -16,41 +16,32 @@ export default function Header() {
 
     function buscarUsuarios() {
 
-        let token = localStorage.getItem('usuario-login').split('.')[1];
-        // console.log(token)
+        // Armazena token do usuário
+        const armazenaToken = localStorage.getItem('usuario-login').split('.')[1];
 
-        var token2 = window.atob(token);
-        console.log(token2)
+        // Descriptografa token
+        const tokenDescriptografado = window.atob(armazenaToken).split(',')[2].split('"')[3];
 
-        var token3 = token2.split(',')[2];
-        console.log(token3)
 
-        var token4 = token3.split('"')[3];
-        console.log(token4)
-
-        axios('http://localhost:5000/api/Usuarios/BuscarPorId/' + token4)
+        axios('http://localhost:5000/api/Usuarios/BuscarPorId/' + tokenDescriptografado)
             .then(response => {
                 if (response.status === 200) {
                     setListaUsuario(response.data);
-                    var lista = response.data;
-                    console.log(lista)
 
-                    var chave = JSON.stringify(lista)
-                    console.log(chave);
+                    // Busca o array de usuários
+                    const listaDeUsuarios = response.data;
 
-                    var chave2 = chave.split(',')[2];
-                    console.log(chave2)
+                    // Formata em JSON
+                    const formatoEmJSON = JSON.stringify(listaDeUsuarios)
+                    
+                    // Identificar cargo do usuário 
+                    const cargoUsuario = formatoEmJSON.split(',')[9].split(':')[1].replace('"', "").split('"')[0]
+                    setCargoUsuario(cargoUsuario)
 
-                    var chave3 = chave2.split(':')[1]
-                    console.log(chave3)
-
-                    var chave5 = chave3.replace('"', "").split('"')[0]
-
-                    setNomeUsuario(chave5)
-
-                    console.log(chave5)
+                    // Buscar nome do usuário 
+                    var nomeUsuario = formatoEmJSON.split(',')[2].split(':')[1].replace('"', "").split('"')[0]
+                    setNomeUsuario(nomeUsuario)
                 }
-                // console.log(ListaUsuario)
             })
             .catch(erro => console.log(erro));
     };
@@ -62,7 +53,7 @@ export default function Header() {
         <div className="wrapperDashboard">
             <Link to="/dashboard"><div className="imagemLogoHeaderDashboard"></div></Link>
 
-            <p className="pBemVindo">Bem vindo, {NomeUsuario} !</p>
+            <p className="pBemVindo">Bem vindo, {NomeUsuario}!</p>
             <div className="usuarioHeaderDashboard">
                 <a href="#"><div className="imagemUsuario"></div></a>
                 <div className="linksUsuario">

@@ -75,7 +75,7 @@ function Dashboard() {
             <div className="card">
               <Link className="removerLink" to="/veiculos/cadastrar/carroceria">
                 <div className="adicionarCard">
-                  <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
+                  <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /></div>
                 <div className="textosCard">
                   <p className="pCadastrarCard">Cadastrar</p>
                   <p className="pCadastrarCard">Carroceria</p>

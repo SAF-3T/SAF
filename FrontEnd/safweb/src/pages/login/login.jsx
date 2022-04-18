@@ -37,7 +37,7 @@ class Login extends React.Component {
                     let base64 = localStorage.getItem('usuario-login').split('.')[1];
                     console.log(base64);
                     console.log(this.props);
-                    
+
                     this.props.history.push('/dashboard');
                 }
             })
@@ -58,20 +58,26 @@ class Login extends React.Component {
             <div>
                 <div className="full-page">
                     <div className="div-esq">
-                        <div className="div-form">
+                        <div className="div-form esq-dir">
                             <h1>LOGIN</h1>
                             <form className="form" onSubmit={this.efetuaLogin}>
                                 <label htmlFor="cpf"></label>
-                                <MaskedInput name="cpf" mask="999.999.999-99" value={this.state.cpf} onChange={this.atualizaStateCampo} placeholder="CPF"/>
+                                <MaskedInput name="cpf" mask="999.999.999-99" value={this.state.cpf} onChange={this.atualizaStateCampo} placeholder="CPF" />
 
                                 <label htmlFor="senha"></label>
                                 <input type="password" name="senha" value={this.state.senha} onChange={this.atualizaStateCampo} placeholder="SENHA" />
+                                    <div className="item">
+                                        <p>{this.state.erroMensagem}</p>
+                                    </div>
+                                <button type="submit" className="btn_login">LOGIN</button>
 
-                                <button type="submit" className="btn-login">LOGIN</button>
                             </form>
+
                         </div>
+
                     </div>
-                    <div className="div-dir">
+
+                    <div className="div-dir esq-dir">
                         <div className="img"></div>
                     </div>
                 </div>

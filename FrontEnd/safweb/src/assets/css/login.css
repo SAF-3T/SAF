@@ -47,6 +47,7 @@
 .form {
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
     width: 100%;
 }
@@ -91,7 +92,7 @@ button {
     color: #0E758C;
     border: 0.25rem solid #fff;
     padding: 0.85em 0.75em;
-    margin-top: 70px;
+    margin-top: 50px;
     position: relative;
     z-index: 1;
     overflow: hidden;
@@ -105,8 +106,8 @@ button:hover {
 }
 
 button::after {
-    content: "";
-    background: #0E758C;
+    content: "e2e2e2";
+    background-color: #0E758C;
     position: absolute;
     z-index: -1;
     padding: 0.85em 0.75em;
@@ -138,4 +139,23 @@ button.btn-login::after {
     background-size: cover;
     width: 250px;
     height: 320px;
+}
+
+.item {
+    width: 100%;
+    height: fit-content;
+    margin-top: 20px;
+    background-color: rgb(246, 36, 36);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.esq-dir {
+    /* background-color: gold; */
+    margin: 0 auto;
 }
