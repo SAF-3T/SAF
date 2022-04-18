@@ -10,6 +10,7 @@ const AuthStack = createStackNavigator();
 
 import PreLogin from './src/pages/PreLogin'
 import Login from './src/pages/Login'
+import Menu from './src/pages/Menu'
 
 export default function Stack() {
 
@@ -19,6 +20,7 @@ export default function Stack() {
         <AuthStack.Navigator initialRouteName="PreLogin" screenOptions={{ headerShown: false, }}>
           <AuthStack.Screen name="PreLogin" component={PreLogin} />
           <AuthStack.Screen name="Login" component={Login} />
+          <AuthStack.Screen name="Menu" component={Menu} />
         </AuthStack.Navigator>
       </NavigationContainer>
     )

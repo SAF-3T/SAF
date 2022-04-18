@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'http://(IpSeuNote):5000/api' 
+    baseURL: 'https://backend-saf-api.azurewebsites.net/api' 
 });
 
 export default api;

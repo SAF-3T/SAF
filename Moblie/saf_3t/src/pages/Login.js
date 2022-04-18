@@ -17,20 +17,27 @@ export default class Login extends Component {
     constructor(props){
         super(props);
         this.state = {
-            email : "",
-            senha : ""
+            cpf : "78098767965",
+            senha : "testemobile"
         };
     }
 
     realizarLogin = async () => {
         const resposta = await api.post('/Login',
         {
-            email: this.state.email,
+            cpf: this.state.cpf,
             senha: this.state.senha
         })
-
-        const token = resposta.data.token;
-        await AsyncStorage.setItem('userToken',token)
+        console.warn(resposta)
+        if (resposta.status == 200) {
+            const token = resposta.data.token;
+            await AsyncStorage.setItem('userToken',token)
+            console.warn(token)
+            this.props.navigation.navigate('Menu');
+        }
+        else {
+            console.warn('Ta dando problema paizão')
+        }
     }
 
     render() {
@@ -46,15 +53,20 @@ export default class Login extends Component {
                     placeholder="CPF"
                     placeholderTextColor="#0E758C"
                     style={styles.input}
+                    keyboardType="default"
+                    onChangeText={cpf => this.setState({cpf})}
                     />
                     <TextInput 
                     placeholder="Senha"
                     placeholderTextColor="#0E758C"
                     style={styles.input}
+                    keyboardType="default"
+                    onChangeText={senha => this.setState({senha})}
+                    secureTextEntry={true}
                     />
                 </View>
                 <View style={styles.containerBotao}>
-                    <TouchableOpacity style={styles.corpoBotao}>
+                    <TouchableOpacity onPress={this.realizarLogin} style={styles.corpoBotao}>
                         <Text style={styles.textoBotao}>ENTRAR</Text>
                     </TouchableOpacity>
                 </View>
@@ -68,7 +80,11 @@ const styles = StyleSheet.create({
     main: {
         backgroundColor: 'white',
         flex: 1,
-        padding: 50
+        padding: 5,
+        position: 'absolute',
+        width: '100%',
+        height: '100%'
+
     },
     containerImg: {
         flex: 1,
@@ -99,7 +115,8 @@ const styles = StyleSheet.create({
         borderBottomWidth: 2,
         borderBottomColor: '#0E758C',
         textAlign: 'center',
-        fontSize: 20
+        fontSize: 20,
+        
     },
     corpoBotao: {
         width: 190,
@@ -108,7 +125,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: 5,
+        borderRadius: 5
     },
     textoBotao: {
         fontWeight: '900',
