@@ -45,17 +45,28 @@ export default function ListarUsuarios() {
                         </div>
                     </div>
 
+                    <div className="cabecalhoUsuario">
+                        <div className="alinharEtiquetasUsuarios">
+                            <div className="imgEspaço" />
+                            <div className="etiquetasUsuarios">
+                                <div className="parametro">Nome</div>
+                                <div className="parametro">Telefone</div>
+                                <div className="parametro">CPF</div>
+                            </div>
+                        </div>
+                    </div>
+
                     {
                         listaUsuarios.map((usuario) => {
                             return (
                                 <div className="cardVeiculo">
-                                    <div className="alinharEtiquetas">
-                                        <div className="imgVeiculo">
+                                    <div className="alinharEtiquetasUsuarios">
+                                        <div className="imgUsuario">
                                             <img src={usuario.imagemUsuario} alt="" />
                                         </div>
-                                        <div className="etiquetas">
+                                        <div className="etiquetasUsuarios">
                                             <div className="etiqueta">
-                                                <p className="nomeEtiqueta alinhar">{usuario.nome}</p>
+                                                <p className="nomeEtiqueta">{usuario.nome}</p>
                                             </div>
                                             <div className="etiqueta">
                                                 <p className="nomeEtiqueta">{usuario.telefone}</p>
@@ -63,9 +74,6 @@ export default function ListarUsuarios() {
                                             <div className="etiqueta">
                                                 <p className="nomeEtiqueta">{usuario.cpf}</p>
                                             </div>
-                                            {/* <div className="etiqueta">
-                                    <p className="nomeEtiqueta">[status-veiculo]</p>
-                                </div> */}
                                         </div>
                                     </div>
                                 </div>

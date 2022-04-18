@@ -53,48 +53,52 @@ export default function ListarVeiculos() {
                         </div>
                     </div>
 
-                    <div className="cabecalhoParametros">
-                        <p>Placa</p>
-                        <p>Marca</p>
-                        <p>Data de aquisição</p>
-                        <p>Status</p>
-                    </div>
 
-                    {
-                        ListaVeiculos.map((veiculo) => {
-                            return (
-                                <div className="cardVeiculo">
-                                    <div className="alinharEtiquetas">
-                                        <div className="imgVeiculo">
-                                            <img src="" alt="" />
-                                        </div>
-                                        <div className="etiquetas">
-                                            <div className="etiqueta">
-                                                <p className="nomeEtiqueta">{veiculo.placa}</p>
+                        <div className="cabecalho">
+                            <div className="alinharEtiquetas">
+                                <div className="imgEspaço" />
+                                <div className="etiquetas">
+                                    <div className="parametro">Placa</div>
+                                    <div className="parametro">Marca</div>
+                                    <div className="parametro">Data de Aquisição</div>
+                                    <div className="parametro">Status</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        {
+                            ListaVeiculos.map((veiculo) => {
+                                return (
+                                    <div className="cardVeiculo">
+                                        <div className="alinharEtiquetas">
+                                            <div className="imgVeiculo">
+                                                <img src="" alt="" />
                                             </div>
-                                            <div className="etiqueta">
-                                                <p className="nomeEtiqueta">Scania</p>
-                                            </div>
-                                            <div className="etiqueta">
-                                                <p className="nomeEtiqueta">{Intl.DateTimeFormat("pt-BR", {
-                                                    year: 'numeric', month: 'numeric', day: 'numeric',
-                                                    hour: 'numeric', minute: 'numeric', hour12: false
-                                                }).format(new Date(veiculo.dataAquisicao))}</p>
-                                            </div>
-                                            <div className="etiqueta">
-                                                <p className="nomeEtiqueta">Na garagem</p>
-                                            </div>
+                                            <table className="etiquetas">
+                                                <tr className="etiqueta">
+                                                    <div className="nomeEtiqueta">{veiculo.placa}</div>
+                                                </tr>
+                                                <div className="etiqueta">
+                                                    <p className="nomeEtiqueta">Scania</p>
+                                                </div>
+                                                <tr className="etiqueta">
+                                                    <th className="nomeEtiqueta">{Intl.DateTimeFormat("pt-BR", {
+                                                        year: 'numeric', month: 'numeric', day: 'numeric',
+                                                        hour: 'numeric', minute: 'numeric', hour12: false
+                                                    }).format(new Date(veiculo.dataAquisicao))}</th>
+                                                </tr>
+                                                <div className="etiqueta">
+                                                    <p className="nomeEtiqueta">Na garagem</p>
+                                                </div>
+                                            </table>
                                         </div>
                                     </div>
-                                </div>
-                            )
-                        })
-                    }
-
+                                )
+                            })
+                        }
                 </div>
             </main>
-
             <Footer />
-        </div>
+        </div >
     );
 };

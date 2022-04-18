@@ -50,6 +50,14 @@ export default function ListarCarroceria() {
                         </div>
                     </div>
 
+                    <div className="cabecalhoCarroceria">
+                        <div className="etiquetasCarrocerias">
+                            <div className="parametro">Carroceria</div>
+                            <div className="parametro">Cubagem</div>
+                            <div className="parametro">Peso</div>
+                        </div>
+                    </div>
+
                     {
                         ListaCarroceria.map((carroceria) => {
                             return (
@@ -57,25 +65,20 @@ export default function ListarCarroceria() {
                                     <div className="alinharEtiquetasCarrocerias">
                                         <div className="etiquetasCarrocerias">
                                             <div className="etiquetaCarrocerias">
-                                                <div className="etiquetaCarrocerias">
-                                                    <p className="nomeEtiquetaCarrocerias">{carroceria.idTipoCarroceriaNavigation.nomeTipoCarroceria}</p>
-                                                </div>
+                                                <p className="nomeEtiquetaCarrocerias">{carroceria.idTipoCarroceriaNavigation.nomeTipoCarroceria}</p>
                                             </div>
                                             <div className="etiquetaCarrocerias">
-                                                <div className="etiquetaCarrocerias">
-                                                    <p className="nomeEtiquetaCarrocerias">{carroceria.cubagem}</p>
-                                                </div>
+                                                <p className="nomeEtiquetaCarrocerias">{carroceria.cubagem}</p>
                                             </div>
                                             <div className="etiquetaCarrocerias">
-                                                <div className="etiquetaCarrocerias">
-                                                    <p className="nomeEtiquetaCarrocerias">{carroceria.peso}</p>
-                                                </div>
+                                                <p className="nomeEtiquetaCarrocerias">{carroceria.peso}</p>
                                             </div>
-                                            <div className="iconesEtiquetaCargas">
-                                                <Link className='removerLink' to="/veiculos/atualizar/carroceria"><FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" /></Link>
-                                                <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
-                                            </div>
+
                                         </div>
+                                    </div>
+                                    <div className="iconesEtiquetaCargas">
+                                        <Link className='removerLink' to="/veiculos/atualizar/carroceria"><FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" /></Link>
+                                        <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
                                     </div>
                                 </div>
                             )

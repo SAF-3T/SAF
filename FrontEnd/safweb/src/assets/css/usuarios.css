@@ -54,37 +54,12 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* display: flex;
-    justify-content: center;
-    align-items: center; */
-    /* margin-bottom: 20px; */
 }
 
-.legenda {
-    width: 78%;
-    margin-left: 22%;
-    height: fit-content;
-    /* background-color: gold;*/
+.etiquetasUsuarios {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-}
-
-.legenda>p {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 23px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    margin: 0 70px;
-    color: #0F282D;
-}
-
-.etiquetas {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+    width: 70%;
 }
 
 .etiqueta {
@@ -109,10 +84,10 @@ body {
     color: #0F282D;
 }
 
-.imgVeiculoUsuarios {
-    width: 270px;
+.imgUsuario {
+    width: 240px;
     height: 210px;
-    /* background: rgba(196, 196, 196, 0.5); */
+    background: rgba(196, 196, 196, 0.5);
     border-radius: 5px;
     margin-left: 30px;
     margin-right: 30px;
@@ -121,7 +96,7 @@ body {
     align-items: center;
 }
 
-.alinharEtiquetas {
+.alinharEtiquetasUsuarios {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -180,4 +155,16 @@ body {
 
 button::after {
     display: none !important;
+}
+
+.cabecalhoUsuario {
+    position: relative;
+    top: 100px;
+    margin-top: 180px;
+    width: 100%;
+    height: 42px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
