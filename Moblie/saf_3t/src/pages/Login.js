@@ -13,16 +13,22 @@ import {
   } from 'react-native';
   import api from '../services/api';
 
+  
+
 export default class Login extends Component {
     constructor(props){
         super(props);
         this.state = {
-            cpf : "78098767965",
-            senha : "testemobile"
+            cpf : "34256378578",
+            senha : "teste",
+            isLoading: false,
+            erroMensagem: ''
         };
     }
 
     realizarLogin = async () => {
+        this.erroMensagem = ''
+        this.isLoading = true
         const resposta = await api.post('/Login',
         {
             cpf: this.state.cpf,
@@ -34,9 +40,12 @@ export default class Login extends Component {
             await AsyncStorage.setItem('userToken',token)
             console.warn(token)
             this.props.navigation.navigate('Menu');
+            this.isLoading = false
         }
         else {
-            console.warn('Ta dando problema paizão')
+            this.erroMensagem = 'Email ou Senha incorretos!'
+            this.isLoading = false
+
         }
     }
 

@@ -35,6 +35,8 @@ import {
         console.warn(this.nomeU)
     }
 
+    mudarPara
+
     componentDidMount() { this.buscarInfosUsuario() }
 
       render() {
@@ -60,7 +62,7 @@ import {
                         </TouchableOpacity>
                     </View>
                     <View>
-                        <TouchableOpacity style={styles.buttonBackgroundBig}>
+                        <TouchableOpacity onPress={() =>(this.props.navigation.navigate('Contatos'))} style={styles.buttonBackgroundBig}>
                             <Text style={styles.buttonText}>Chat</Text>
                         </TouchableOpacity>
                     </View>
