@@ -1,11 +1,12 @@
 .modal {
     width: 100%;
-    height: 100vh;
+    height: 385vh;
     position: absolute;
     top: 0;
     left: 0;
     z-index: 10;
-    background-color: rgba(0, 0, 0, 0.8);
+    /* background-color: rgba(0, 0, 0, 0.8); */
+    backdrop-filter: brightness(60%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,39 +14,101 @@
 
 .wrapperModal {
     background-color: #fff;
-    width: 60%;
+    width: 70%;
     color: #000;
-    height: 60%;
+    height: 45%;
+    position: absolute;
+    top: 20%;
     border-radius: 10px;
 }
 
 .headerModal {
-    width: 92%;
-    /* background-color: gold; */
-    border-bottom: 2px solid #000;
-    height: 40px;
+    width: 95%;
+    height: 80px;
     margin: 0 auto;
     margin-top: 20px;
     display: flex;
+    padding: 0 20px;
     justify-content: space-between;
     align-items: center;
 }
 
 .pHeaderModal {
-    font-size: 20px;
+    font-size: 45px;
     font-weight: 700;
+    color: #0E758C;
     font-family: 'Montserrat', sans-serif;
+    margin: 0 auto;
 }
 
-.close {
-    background-color: transparent;
-    outline: none;
-    width: 100px;
-    height: 50px;
-    right: calc(-100% + 64px);
-    top: 16px;
+.conteudo {
+    /* background-color: green;  */
+    height: 90%;
+    width: 90%;
     display: flex;
-    position: relative;
-    cursor: pointer;
+    margin: 0 auto;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.imgCadastrar {
+    width: 390px;
+    height: 360px;
+    border-radius: 10px;
+    background-color: #00000048;
+    margin: 30px auto;
+}
+
+.formularioCadastro {
+    /* background-color: purple; */
+    height: 40%;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
     align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.inputs {
+    width: 60%;
+    margin: 40px 0;
+    height: 30px;
+    color: #000;
+    background-color: white;
+    font-size: 30px;
+    text-align: center;
+    border-bottom: 1px solid #000;
+}
+
+.inputs-esq {
+    /* background-color: red; */
+}
+
+.inputs-dir {
+    /* background-color: saddlebrown; */
+}
+
+.inputs-esq, .inputs-dir {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+
+.inputs::placeholder {
+    text-align: center;
+    font-size: 30px;
+    color: #00000048;
+}
+
+.inputStatus {
+    width: 30%;
+}
+
+.juntaInputs {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10%;
 }

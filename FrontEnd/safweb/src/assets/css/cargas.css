@@ -8,13 +8,13 @@ body {
     background: rgba(196, 196, 196, 0.1);
 }
 
-.wrapperVeiculos {
+.wrapperCargas {
     width: 70%;
     margin: 100px auto;
     height: 70em;
 }
 
-.pVeiculo {
+.pCarga {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: 60px;
@@ -22,7 +22,7 @@ body {
     color: #000000;
 }
 
-.addVeiculo {
+.addCarga {
     background: #0E758C;
     border-radius: 10px;
     font-family: 'Montserrat', sans-serif;
@@ -36,7 +36,7 @@ body {
     color: #FFFFFF;
 }
 
-.addVeiculo:hover {
+.addCarga:hover {
     opacity: 0.9;
 }
 
@@ -45,7 +45,7 @@ body {
     margin-left: 6px;
 }
 
-.cardVeiculoCargas1, .cardVeiculoCargas2, .cardVeiculoCargas3, .cardVeiculoCargas4 {
+.cardCargas {
     width: 100%;
     height: 100px;
     background: #FFFFFF;
@@ -64,39 +64,6 @@ body {
     margin-bottom: 80px;
 }
 
-.cardVeiculoCargas2 {
-    margin: 80px 0;
-}
-
-.cardVeiculoCargas3 {
-    margin: 80px 0;
-}
-
-.cardVeiculoCargas4 {
-    margin-bottom: 143px;
-}
-
-.legenda {
-    width: 78%;
-    margin-left: 22%;
-    height: fit-content;
-    /* background-color: gold;*/
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.legenda>p {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    font-size: 23px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    margin: 0 70px;
-    color: #0F282D;
-}
-
 .etiquetasCargas {
     display: flex;
     justify-content: flex-start;
@@ -105,7 +72,7 @@ body {
 }
 
 .etiquetaCargas {
-    width: fit-content;
+    width: 153px;
     height: 42px;
     background: #d8d3d3;
     border-radius: 10px;
@@ -116,7 +83,7 @@ body {
 }
 
 .nomeEtiquetaCargas {
-    font-family: 'Montserrat', sans-serif;
+    /* font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     font-size: 15px;
     line-height: 37px;
@@ -124,7 +91,7 @@ body {
     align-items: center;
     justify-content: flex-start;
     text-align: center;
-    color: #0F282D;
+    color: #0F282D; */
 }
 
 .alinharEtiquetasCargas {
@@ -185,6 +152,6 @@ body {
     opacity: 0.9;
 }
 
-button::after {
+.btnBuscar::after {
     display: none !important;
 }

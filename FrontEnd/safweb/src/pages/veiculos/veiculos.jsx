@@ -11,7 +11,6 @@ import { Link } from 'react-router-dom';
 
 import '../../assets/css/veiculos.css';
 
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
@@ -46,7 +45,7 @@ export default function ListarVeiculos() {
                     <p className="pVeiculo">Veículos</p>
 
                     <div className="input-e-btn">
-                        <button className="addVeiculo" type='submit' onClick={() => setIsModalVisible(true)}><Link className='removerLink' to="/veiculos/cadastro/veiculo"><FontAwesomeIcon className="iconPlus" icon={faPlus} color="#fff" size="lg" />Novo veículo</Link></button>{isModalVisible ? (<Modal onClose={() => setIsModalVisible(false)}></Modal>) : null}
+                        <button className="addVeiculo" type='submit' onClick={() => setIsModalVisible(true)}><FontAwesomeIcon className="iconPlus" icon={faPlus} color="#fff" size="lg" />Novo veículo</button>{isModalVisible ? (<Modal onClose={() => setIsModalVisible(false)}></Modal>) : null}
                         <div className="input-e-btn-2">
                             <input className='inputBusca' type="text" placeholder="Pesquisar" />
                             <button className='btnBuscar' type='submit'>Buscar</button>
@@ -54,48 +53,48 @@ export default function ListarVeiculos() {
                     </div>
 
 
-                        <div className="cabecalho">
-                            <div className="alinharEtiquetas">
-                                <div className="imgEspaço" />
-                                <div className="etiquetas">
-                                    <div className="parametro">Placa</div>
-                                    <div className="parametro">Marca</div>
-                                    <div className="parametro">Data de Aquisição</div>
-                                    <div className="parametro">Status</div>
-                                </div>
+                    <div className="cabecalho">
+                        <div className="alinharEtiquetas">
+                            <div className="imgEspaço" />
+                            <div className="etiquetas">
+                                <div className="parametro">Placa</div>
+                                <div className="parametro">Marca</div>
+                                <div className="parametro">Data de Aquisição</div>
+                                <div className="parametro">Status</div>
                             </div>
                         </div>
+                    </div>
 
-                        {
-                            ListaVeiculos.map((veiculo) => {
-                                return (
-                                    <div className="cardVeiculo">
-                                        <div className="alinharEtiquetas">
-                                            <div className="imgVeiculo">
-                                                <img src="" alt="" />
-                                            </div>
-                                            <table className="etiquetas">
-                                                <tr className="etiqueta">
-                                                    <div className="nomeEtiqueta">{veiculo.placa}</div>
-                                                </tr>
-                                                <div className="etiqueta">
-                                                    <p className="nomeEtiqueta">Scania</p>
-                                                </div>
-                                                <tr className="etiqueta">
-                                                    <th className="nomeEtiqueta">{Intl.DateTimeFormat("pt-BR", {
-                                                        year: 'numeric', month: 'numeric', day: 'numeric',
-                                                        hour: 'numeric', minute: 'numeric', hour12: false
-                                                    }).format(new Date(veiculo.dataAquisicao))}</th>
-                                                </tr>
-                                                <div className="etiqueta">
-                                                    <p className="nomeEtiqueta">Na garagem</p>
-                                                </div>
-                                            </table>
+                    {
+                        ListaVeiculos.map((veiculo) => {
+                            return (
+                                <div className="cardVeiculo">
+                                    <div className="alinharEtiquetas">
+                                        <div className="imgVeiculo">
+                                            <img src="" alt="" />
                                         </div>
+                                        <table className="etiquetas">
+                                            <tr className="etiqueta">
+                                                <div className="nomeEtiqueta">{veiculo.placa}</div>
+                                            </tr>
+                                            <div className="etiqueta">
+                                                <p className="nomeEtiqueta">Scania</p>
+                                            </div>
+                                            <tr className="etiqueta">
+                                                <th className="nomeEtiqueta">{Intl.DateTimeFormat("pt-BR", {
+                                                    year: 'numeric', month: 'numeric', day: 'numeric',
+                                                    hour: 'numeric', minute: 'numeric', hour12: false
+                                                }).format(new Date(veiculo.dataAquisicao))}</th>
+                                            </tr>
+                                            <div className="etiqueta">
+                                                <p className="nomeEtiqueta">Na garagem</p>
+                                            </div>
+                                        </table>
                                     </div>
-                                )
-                            })
-                        }
+                                </div>
+                            )
+                        })
+                    }
                 </div>
             </main>
             <Footer />

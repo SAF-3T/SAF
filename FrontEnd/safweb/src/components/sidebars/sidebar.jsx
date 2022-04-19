@@ -28,7 +28,7 @@ class Sidebar extends Component {
                     </div>
                 </nav>
 
-                <Footer />
+                {/* <Footer /> */}
             </div>
         );
     };

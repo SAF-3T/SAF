@@ -78,7 +78,7 @@ input[type=number] {
     appearance: textfield;
 }
 
-::placeholder {
+input::placeholder {
     font-family: 'Montserrat', sans-serif;
     font-size: 20px;
     font-weight: 200;
@@ -106,19 +106,19 @@ button:hover {
 }
 
 button::after {
-    content: "e2e2e2";
-    background-color: #0E758C;
-    position: absolute;
+    content: "";
+    background: #0E758C;
     z-index: -1;
     padding: 0.85em 0.75em;
-    display: block;
+    position: absolute;
+    display: block; 
 }
 
-button[class^="btn-login"]::after {
+button[class^="btn_login"]::after {
     transition: all 0.35s;
 }
 
-button[class^="btn-login"]:hover::after {
+button[class^="btn_login"]:hover::after {
     left: 0;
     right: 0;
     top: 0;
@@ -126,7 +126,7 @@ button[class^="btn-login"]:hover::after {
     transition: all 0.35s;
 }
 
-button.btn-login::after {
+button.btn_login::after {
     top: 0;
     bottom: 0;
     left: -100%;

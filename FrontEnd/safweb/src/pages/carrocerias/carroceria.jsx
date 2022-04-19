@@ -5,6 +5,8 @@ import Header from '../../components/headers/header';
 import Sidebar2 from '../../components/sidebars/sidebar2';
 import Footer from '../../components/footer';
 
+import Modal from '../../components/modal';
+
 import { Link } from 'react-router-dom';
 
 import '../../assets/css/carroceria.css';
@@ -33,17 +35,20 @@ export default function ListarCarroceria() {
 
     useEffect(buscarCarroceria, []);
 
+    const [isModalVisible, setIsModalVisible] = useState(false);
+
+
     return (
         <div>
             <Header />
             <Sidebar2 />
 
             <main>
-                <div className="wrapperVeiculos">
-                    <p className="pVeiculo">Carrocerias</p>
+                <div className="wrapperCarrocerias">
+                    <p className="pCarroceria">Carrocerias</p>
 
                     <div className="input-e-btn">
-                        <button className="addVeiculo" type='submit'><Link className='removerLink' to="/veiculos/cadastro/usuario"><FontAwesomeIcon className="iconPlus" icon={faPlus} color="#fff" size="lg" />Nova carroceria</Link></button>
+                        <button className="addCarroceria" type='submit' onClick={() => setIsModalVisible(true)}><FontAwesomeIcon className="iconPlus" icon={faPlus} color="#fff" size="lg" />Nova carroceria</button>{isModalVisible ? (<Modal onClose={() => setIsModalVisible(false)}></Modal>) : null}
                         <div className="input-e-btn-2">
                             <input className='inputBusca' type="text" placeholder="Pesquisar" />
                             <button className='btnBuscar' type='submit'><p>Buscar</p></button>
@@ -61,7 +66,7 @@ export default function ListarCarroceria() {
                     {
                         ListaCarroceria.map((carroceria) => {
                             return (
-                                <div className="cardVeiculoCarrocerias">
+                                <div className="cardCarrocerias">
                                     <div className="alinharEtiquetasCarrocerias">
                                         <div className="etiquetasCarrocerias">
                                             <div className="etiquetaCarrocerias">

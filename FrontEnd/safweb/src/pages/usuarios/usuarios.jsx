@@ -5,6 +5,8 @@ import Header from '../../components/headers/header';
 import Sidebar4 from '../../components/sidebars/sidebar4';
 import Footer from '../../components/footer';
 
+import Modal from '../../components/modal';
+
 import { Link } from 'react-router-dom';
 
 import '../../assets/css/usuarios.css';
@@ -28,17 +30,20 @@ export default function ListarUsuarios() {
 
     useEffect(buscarUsuarios, []);
 
+    const [isModalVisible, setIsModalVisible] = useState(false);
+
+
     return (
         <div>
             <Header />
             <Sidebar4 />
 
             <main>
-                <div className="wrapperVeiculos">
-                    <p className="pVeiculo">Usuários</p>
+                <div className="wrapperUsuarios">
+                    <p className="pUsuario">Usuários</p>
 
                     <div className="input-e-btn">
-                        <button className="addVeiculo" type='submit'><Link className='removerLink' to="/veiculos/cadastro/usuario"><FontAwesomeIcon className="iconPlus" icon={faPlus} color="#fff" size="lg" />Novo usuário</Link></button>
+                        <button className="addUsuario" type='submit' onClick={() => setIsModalVisible(true)}><FontAwesomeIcon className="iconPlus" icon={faPlus} color="#fff" size="lg" />Novo usuário</button>{isModalVisible ? (<Modal onClose={() => setIsModalVisible(false)}></Modal>) : null}
                         <div className="input-e-btn-2">
                             <input className='inputBusca' type="text" placeholder="Pesquisar" />
                             <button className='btnBuscar' type='submit'><p>Buscar</p></button>
@@ -59,7 +64,7 @@ export default function ListarUsuarios() {
                     {
                         listaUsuarios.map((usuario) => {
                             return (
-                                <div className="cardVeiculo">
+                                <div className="cardUsuario">
                                     <div className="alinharEtiquetasUsuarios">
                                         <div className="imgUsuario">
                                             <img src={usuario.imagemUsuario} alt="" />
@@ -81,9 +86,6 @@ export default function ListarUsuarios() {
 
                         })
                     }
-
-
-
                 </div>
             </main>
 

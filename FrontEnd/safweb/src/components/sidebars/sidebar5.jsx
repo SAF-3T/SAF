@@ -27,8 +27,6 @@ class Sidebar extends Component {
                         <div className="link1 iconChecklist"><Link to="/checklists"><FontAwesomeIcon icon={faListCheck} color="#0E758C" size="lg" /></Link></div>
                     </div>
                 </nav>
-
-                <Footer />
             </div>
         );
     };

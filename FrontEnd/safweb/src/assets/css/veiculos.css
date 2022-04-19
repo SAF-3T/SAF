@@ -159,7 +159,7 @@ body {
     opacity: 0.9;
 }
 
-button::after {
+.btnBuscar::after {
     display: none !important;
 }
 

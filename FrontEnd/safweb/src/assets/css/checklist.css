@@ -1,0 +1,46 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: rgba(196, 196, 196, 0.1);
+}
+
+.wrapperChecklist {
+    width: 70%;
+    margin: 100px auto;
+    height: 70em;
+}
+
+.pChecklist {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 60px;
+    line-height: 73px;
+    color: #000000;
+}
+
+.addChecklist {
+    background: #0E758C;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 37px;
+    display: flex;
+    align-items: center;
+    width: 170px;
+    height: 73px;
+    color: #FFFFFF;
+}
+
+.addVeiculo:hover {
+    opacity: 0.9;
+}
+
+.iconPlus {
+    margin-right: 12px;
+    margin-left: 6px;
+}
