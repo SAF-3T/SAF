@@ -5,7 +5,7 @@ import './App.css';
 
 import HeaderDashboard from '../../components/headers/headerDashboard';
 import Sidebar from '../../components/sidebars/sidebar';
-import Modal from '../../components/modal';
+// import Modal from '../../components/modal';
 
 import { Link } from 'react-router-dom';
 
@@ -15,7 +15,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 function Dashboard() {
 
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  // const [isModalVisible, setIsModalVisible] = useState(false);
 
   return (
     <div>

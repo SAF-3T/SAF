@@ -5,7 +5,7 @@ import Header from '../../components/headers/header';
 import Sidebar2 from '../../components/sidebars/sidebar2';
 import Footer from '../../components/footer';
 
-import Modal from '../../components/modal';
+// import Modal from '../../components/modal';
 
 import { Link } from 'react-router-dom';
 
@@ -35,7 +35,7 @@ export default function ListarCarroceria() {
 
     useEffect(buscarCarroceria, []);
 
-    const [isModalVisible, setIsModalVisible] = useState(false);
+    // const [isModalVisible, setIsModalVisible] = useState(false);
 
 
     return (
@@ -48,7 +48,7 @@ export default function ListarCarroceria() {
                     <p className="pCarroceria">Carrocerias</p>
 
                     <div className="input-e-btn">
-                        <button className="addCarroceria" type='submit' onClick={() => setIsModalVisible(true)}><FontAwesomeIcon className="iconPlus" icon={faPlus} color="#fff" size="lg" />Nova carroceria</button>{isModalVisible ? (<Modal onClose={() => setIsModalVisible(false)}></Modal>) : null}
+                        {/* <button className="addCarroceria" type='submit' onClick={() => setIsModalVisible(true)}><FontAwesomeIcon className="iconPlus" icon={faPlus} color="#fff" size="lg" />Nova carroceria</button>{isModalVisible ? (<Modal onClose={() => setIsModalVisible(false)}></Modal>) : null} */}
                         <div className="input-e-btn-2">
                             <input className='inputBusca' type="text" placeholder="Pesquisar" />
                             <button className='btnBuscar' type='submit'><p>Buscar</p></button>

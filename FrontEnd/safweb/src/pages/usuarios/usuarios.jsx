@@ -5,7 +5,7 @@ import Header from '../../components/headers/header';
 import Sidebar4 from '../../components/sidebars/sidebar4';
 import Footer from '../../components/footer';
 
-import Modal from '../../components/modal';
+// import Modal from '../../components/modal';
 
 import { Link } from 'react-router-dom';
 
@@ -30,7 +30,7 @@ export default function ListarUsuarios() {
 
     useEffect(buscarUsuarios, []);
 
-    const [isModalVisible, setIsModalVisible] = useState(false);
+    // const [isModalVisible, setIsModalVisible] = useState(false);
 
 
     return (
@@ -43,7 +43,7 @@ export default function ListarUsuarios() {
                     <p className="pUsuario">Usuários</p>
 
                     <div className="input-e-btn">
-                        <button className="addUsuario" type='submit' onClick={() => setIsModalVisible(true)}><FontAwesomeIcon className="iconPlus" icon={faPlus} color="#fff" size="lg" />Novo usuário</button>{isModalVisible ? (<Modal onClose={() => setIsModalVisible(false)}></Modal>) : null}
+                        {/* <button className="addUsuario" type='submit' onClick={() => setIsModalVisible(true)}><FontAwesomeIcon className="iconPlus" icon={faPlus} color="#fff" size="lg" />Novo usuário</button>{isModalVisible ? (<Modal onClose={() => setIsModalVisible(false)}></Modal>) : null} */}
                         <div className="input-e-btn-2">
                             <input className='inputBusca' type="text" placeholder="Pesquisar" />
                             <button className='btnBuscar' type='submit'><p>Buscar</p></button>

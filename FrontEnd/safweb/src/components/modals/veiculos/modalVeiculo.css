@@ -5,7 +5,6 @@
     top: 0;
     left: 0;
     z-index: 10;
-    /* background-color: rgba(0, 0, 0, 0.8); */
     backdrop-filter: brightness(60%);
     display: flex;
     justify-content: center;
@@ -14,11 +13,11 @@
 
 .wrapperModal {
     background-color: #fff;
-    width: 70%;
+    width: 90%;
     color: #000;
-    height: 45%;
+    height: 25%;
     position: absolute;
-    top: 20%;
+    top: 0.50%;
     border-radius: 10px;
 }
 
@@ -41,8 +40,7 @@
     margin: 0 auto;
 }
 
-.conteudo {
-    /* background-color: green;  */
+.conteudos {
     height: 90%;
     width: 90%;
     display: flex;
@@ -51,23 +49,30 @@
     flex-direction: column;
 }
 
+.conteudo {
+    display: flex;
+    justify-content: space-between;
+}
+
 .imgCadastrar {
-    width: 390px;
+    width: 420px;
     height: 360px;
     border-radius: 10px;
-    background-color: #00000048;
-    margin: 30px auto;
+    background-color: #77757548;
+    margin: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .formularioCadastro {
-    /* background-color: purple; */
-    height: 40%;
     width: 90%;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
+    /* background-color: green; */
 }
 
 .inputs {
@@ -76,7 +81,7 @@
     height: 30px;
     color: #000;
     background-color: white;
-    font-size: 30px;
+    font-size: 25px;
     text-align: center;
     border-bottom: 1px solid #000;
 }
@@ -94,11 +99,12 @@
     flex-direction: column;
     align-items: center;
     width: 50%;
+    height: 100%;
 }
 
 .inputs::placeholder {
     text-align: center;
-    font-size: 30px;
+    font-size: 25px;
     color: #00000048;
 }
 
@@ -108,7 +114,56 @@
 
 .juntaInputs {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     width: 100%;
-    margin-top: 10%;
+    /* background-color: royalblue; */
+}
+
+.btn_cadastro {
+    width: 60%;
+    background-color: #0E758C;
+    overflow: visible;
+    height: 60px;
+    border: none;
+    margin-top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    border-radius: 10px;
+}
+
+.pCadastro {
+    color: white;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+}
+
+.btn_cadastro::after {
+    display: none;
+}
+
+.selects {
+    font-size: 25px;
+    font-weight: 200;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    border: none;
+    text-align: center;
+    border-bottom: 1px solid #000;
+}
+
+.selects:required:invalid {
+    color: #00000048;
+}
+
+option[value=""][disabled] {
+    display: none;
+}
+
+.selects:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
 }

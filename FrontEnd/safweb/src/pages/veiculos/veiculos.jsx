@@ -5,7 +5,7 @@ import Header from '../../components/headers/header';
 import Sidebar1 from '../../components/sidebars/sidebar1';
 import Footer from '../../components/footer';
 
-import Modal from '../../components/modal';
+import Modal from '../../components/modals/veiculos/modalVeiculo';
 
 import { Link } from 'react-router-dom';
 
