@@ -27,11 +27,16 @@ import {
 
     buscarInfosUsuario = async() => {
         const token = await AsyncStorage.getItem('userToken')
-        console.warn(token)
+        //console.warn(token)
         this.tipoAutorizacao = await jwtDecode(token).role;
         this.idUsuario = await jwtDecode(token).jti
         const resposta = await api.get('/Usuarios/BuscarPorId/'+ this.idUsuario)
         this.nomeU = resposta.data.nome
+        this.funcaoU = resposta.data.idTipoUsuarioNavigation.nomeTipoUsuario
+        //console.warn(resposta.data)
+        this.setState({ nomeU: resposta.data.nome })
+        this.setState({ funcaoU: resposta.data.idTipoUsuarioNavigation.nomeTipoUsuario })
+
         console.warn(this.nomeU)
     }
 
@@ -57,7 +62,7 @@ import {
                         <TouchableOpacity style={styles.buttonBackground}>
                             <Text style={styles.buttonText}>Check-in</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity style={styles.buttonBackground}>
+                        <TouchableOpacity onPress={() =>(this.props.navigation.navigate('Contatos'))} style={styles.buttonBackground}>
                             <Text style={styles.buttonText}>Check-out</Text>
                         </TouchableOpacity>
                     </View>
