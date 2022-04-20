@@ -11,7 +11,6 @@ body {
 .wrapperCarrocerias {
     width: 70%;
     margin: 100px auto;
-    height: 70em;
 }
 
 .pCarroceria {
@@ -46,7 +45,7 @@ body {
 }
 
 .cardCarrocerias {
-    margin-top: 120px;
+    margin-top: 3%;
     width: 100%;
     height: 120px;
     background: #FFFFFF;
@@ -56,12 +55,84 @@ body {
     justify-content: center;
 }
 
+.cardCabecalhoCarroceria {
+    margin-top: 20%;
+    width: 100%;
+    height: 120px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cabecalhoCarroceria {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.conteudoCabecalhoCarroceria {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.alinharEtiquetasCabecalhoCarroceria {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.etiquetasCabecalhoCarrocerias {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    align-items: center;
+}
+
+.etiquetaCabecalhoCarroceria {
+    width: 158px;
+    height: 60px;
+    border-radius: 10px;
+    margin: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nomeCabecalhoEtiquetaCarrocerias {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 25px;
+    line-height: 37px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #0F282D;
+}
+
+.conteudoCarroceria {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.conteudoCabecalhoCarroceria {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .etiquetasCarrocerias {
     display: flex;
     justify-content: space-between;
     width: 80%;
     align-items: center;
-    background-color: gold;
 }
 
 .etiquetaCarrocerias {
@@ -74,7 +145,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: purple;
 }
 
 .nomeEtiquetaCarrocerias {
@@ -86,19 +156,17 @@ body {
     align-items: center;
     text-align: center;
     color: #0F282D;
-    background-color: pink;
 }
 
 .alinharEtiquetasCarrocerias {
-    width: 80%;
+    width: 90%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    background-color: green;
 }
 
-.iconesEtiquetaCargas {
-    width: 80px;
+.iconesEtiquetaCarrocerias {
+    width: 7%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -164,16 +232,4 @@ body {
 
 .btnBuscar::after {
     display: none !important;
-}
-
-.cabecalhoCarroceria {
-    position: relative;
-    top: 100px;
-    margin-top: 180px;
-    width: 80%;
-    height: 42px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }

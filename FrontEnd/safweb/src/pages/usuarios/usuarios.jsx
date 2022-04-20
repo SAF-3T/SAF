@@ -32,7 +32,6 @@ export default function ListarUsuarios() {
 
     // const [isModalVisible, setIsModalVisible] = useState(false);
 
-
     return (
         <div>
             <Sidebar4 />
@@ -50,13 +49,19 @@ export default function ListarUsuarios() {
                         </div>
                     </div>
 
-                    <div className="cabecalhoUsuario">
-                        <div className="alinharEtiquetasUsuarios">
-                            <div className="imgEspaço" />
-                            <div className="etiquetasUsuarios">
-                                <div className="parametro">Nome</div>
-                                <div className="parametro">Telefone</div>
-                                <div className="parametro">CPF</div>
+                    <div className="cardCabecalhoUsuario">
+                        <div className="alinharEtiquetasUsuariosCabecalho">
+                            <div className="imgUsuario" />
+                            <div className="etiquetasCabecalhoUsuarios">
+                                <div className="etiquetaCabecalhoUsuario">
+                                    <p className="nomeEtiquetaCabecalhoUsuario">Nome</p>
+                                </div>
+                                <div className="etiquetaCabecalhoUsuario">
+                                    <p className="nomeEtiquetaCabecalhoUsuario">Telefone</p>
+                                </div>
+                                <div className="etiquetaCabecalhoUsuario">
+                                    <p className="nomeEtiquetaCabecalhoUsuario">CPF</p>
+                                </div>
                             </div>
                         </div>
                     </div>

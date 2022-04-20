@@ -5,7 +5,7 @@ import Header from '../../components/headers/header';
 import Sidebar2 from '../../components/sidebars/sidebar2';
 import Footer from '../../components/footer';
 
-// import Modal from '../../components/modal';
+import Modal from '../../components/modals/carrocerias/modalCarrocerias';
 
 import { Link } from 'react-router-dom';
 
@@ -35,7 +35,7 @@ export default function ListarCarroceria() {
 
     useEffect(buscarCarroceria, []);
 
-    // const [isModalVisible, setIsModalVisible] = useState(false);
+    const [isModalVisible, setIsModalVisible] = useState(false);
 
 
     return (
@@ -48,42 +48,55 @@ export default function ListarCarroceria() {
                     <p className="pCarroceria">Carrocerias</p>
 
                     <div className="input-e-btn">
-                        {/* <button className="addCarroceria" type='submit' onClick={() => setIsModalVisible(true)}><FontAwesomeIcon className="iconPlus" icon={faPlus} color="#fff" size="lg" />Nova carroceria</button>{isModalVisible ? (<Modal onClose={() => setIsModalVisible(false)}></Modal>) : null} */}
+                        <button className="addCarroceria" type='submit' onClick={() => setIsModalVisible(true)}><FontAwesomeIcon className="iconPlus" icon={faPlus} color="#fff" size="lg" />Nova carroceria</button>{isModalVisible ? (<Modal onClose={() => setIsModalVisible(false)}></Modal>) : null}
                         <div className="input-e-btn-2">
                             <input className='inputBusca' type="text" placeholder="Pesquisar" />
                             <button className='btnBuscar' type='submit'><p>Buscar</p></button>
                         </div>
                     </div>
 
-                    <div className="cabecalhoCarroceria">
-                        <div className="etiquetasCarrocerias">
-                            <div className="parametro">Carroceria</div>
-                            <div className="parametro">Cubagem</div>
-                            <div className="parametro">Peso</div>
+                    <div className="cardCabecalhoCarroceria">
+                        <div className="conteudoCabecalhoCarroceria">
+                            <div className="alinharEtiquetasCabecalhoCarroceria">
+                                <div className="etiquetasCabecalhoCarrocerias">
+                                    <div className="etiquetaCabecalhoCarroceria">
+                                        <div className="nomeCabecalhoEtiquetaCarrocerias">Carroceria</div>
+                                    </div>
+                                    <div className="etiquetaCabecalhoCarroceria">
+                                        <div className="nomeCabecalhoEtiquetaCarrocerias">Cubagem</div>
+                                    </div>
+                                    <div className="etiquetaCabecalhoCarroceria">
+                                        <div className="nomeCabecalhoEtiquetaCarrocerias">Peso</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="iconesEtiquetaCarrocerias"/>
                         </div>
                     </div>
+
 
                     {
                         ListaCarroceria.map((carroceria) => {
                             return (
                                 <div className="cardCarrocerias">
-                                    <div className="alinharEtiquetasCarrocerias">
-                                        <div className="etiquetasCarrocerias">
-                                            <div className="etiquetaCarrocerias">
-                                                <p className="nomeEtiquetaCarrocerias">{carroceria.idTipoCarroceriaNavigation.nomeTipoCarroceria}</p>
+                                    <div className="conteudoCarroceria">
+                                        <div className="alinharEtiquetasCarrocerias">
+                                            <div className="etiquetasCarrocerias">
+                                                <div className="etiquetaCarrocerias">
+                                                    <p className="nomeEtiquetaCarrocerias">{carroceria.idTipoCarroceriaNavigation.nomeTipoCarroceria}</p>
+                                                </div>
+                                                <div className="etiquetaCarrocerias">
+                                                    <p className="nomeEtiquetaCarrocerias">{carroceria.cubagem}</p>
+                                                </div>
+                                                <div className="etiquetaCarrocerias">
+                                                    <p className="nomeEtiquetaCarrocerias">{carroceria.peso}</p>
+                                                </div>
                                             </div>
-                                            <div className="etiquetaCarrocerias">
-                                                <p className="nomeEtiquetaCarrocerias">{carroceria.cubagem}</p>
-                                            </div>
-                                            <div className="etiquetaCarrocerias">
-                                                <p className="nomeEtiquetaCarrocerias">{carroceria.peso}</p>
-                                            </div>
-
                                         </div>
-                                    </div>
-                                    <div className="iconesEtiquetaCargas">
-                                        <FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" />
-                                        <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
+                                        <div className="iconesEtiquetaCargas">
+                                            <FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" />
+                                            <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
+                                        </div>
                                     </div>
                                 </div>
                             )

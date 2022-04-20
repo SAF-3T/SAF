@@ -102,8 +102,8 @@ body {
     color: #0F282D;
 }
 
-.iconesCabecalhoEtiqueta {
-    width: 80px;
+.iconesCabecalhoVeiculos {
+    width: 8.5%;
     display: flex;
     justify-content: space-between;
     align-items: center;

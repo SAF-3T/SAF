@@ -71,7 +71,7 @@ export default function ListarVeiculos() {
                                 <div className="etiquetaCabecalhoVeiculo">
                                     <div className="nomeCabecalhoEtiqueta">Status</div>
                                 </div>
-                                <div className="iconesCabecalhoEtiqueta">
+                                <div className="iconesCabecalhoVeiculos">
                                 </div>
                             </div>
                         </div>
