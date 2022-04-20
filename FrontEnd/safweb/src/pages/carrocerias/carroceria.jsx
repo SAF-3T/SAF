@@ -40,8 +40,8 @@ export default function ListarCarroceria() {
 
     return (
         <div>
-            <Header />
             <Sidebar2 />
+            <Header />
 
             <main>
                 <div className="wrapperCarrocerias">
@@ -82,7 +82,7 @@ export default function ListarCarroceria() {
                                         </div>
                                     </div>
                                     <div className="iconesEtiquetaCargas">
-                                        <Link className='removerLink' to="/veiculos/atualizar/carroceria"><FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" /></Link>
+                                        <FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" />
                                         <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
                                     </div>
                                 </div>
@@ -92,7 +92,6 @@ export default function ListarCarroceria() {
 
                 </div>
             </main >
-
             <Footer />
         </div >
     );

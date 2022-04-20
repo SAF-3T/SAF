@@ -13,6 +13,8 @@ import '../../assets/css/veiculos.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
+import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 
 export default function ListarVeiculos() {
     const [ListaVeiculos, setListaVeiculos] = useState([]);
@@ -37,8 +39,8 @@ export default function ListarVeiculos() {
 
     return (
         <div>
-            <Header />
             <Sidebar1 />
+            <Header />
 
             <main>
                 <div className="wrapperVeiculos">
@@ -53,14 +55,24 @@ export default function ListarVeiculos() {
                     </div>
 
 
-                    <div className="cabecalho">
-                        <div className="alinharEtiquetas">
-                            <div className="imgEspaço" />
-                            <div className="etiquetas">
-                                <div className="parametro">Placa</div>
-                                <div className="parametro">Marca</div>
-                                <div className="parametro">Data de Aquisição</div>
-                                <div className="parametro">Status</div>
+                    <div className="cabecalhoVeiculo">
+                        <div className="imgCabecalhoVeiculo" />
+                        <div className="alinharEtiquetasCabecalho">
+                            <div className="etiquetasVeiculos">
+                                <div className="etiquetaCabecalhoVeiculo">
+                                    <div className="nomeCabecalhoEtiqueta">Placa</div>
+                                </div>
+                                <div className="etiquetaCabecalhoVeiculo">
+                                    <div className="nomeCabecalhoEtiqueta">Marca</div>
+                                </div>
+                                <div className="etiquetaCabecalhoVeiculo">
+                                    <div className="nomeCabecalhoEtiqueta">Data de Aquisição</div>
+                                </div>
+                                <div className="etiquetaCabecalhoVeiculo">
+                                    <div className="nomeCabecalhoEtiqueta">Status</div>
+                                </div>
+                                <div className="iconesCabecalhoEtiqueta">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -69,27 +81,33 @@ export default function ListarVeiculos() {
                         ListaVeiculos.map((veiculo) => {
                             return (
                                 <div className="cardVeiculo">
-                                    <div className="alinharEtiquetas">
+                                    <div className="conteudoVeiculo">
                                         <div className="imgVeiculo">
                                             <img src="" alt="" />
                                         </div>
-                                        <table className="etiquetas">
-                                            <tr className="etiqueta">
-                                                <div className="nomeEtiqueta">{veiculo.placa}</div>
-                                            </tr>
-                                            <div className="etiqueta">
-                                                <p className="nomeEtiqueta">Scania</p>
+                                        <div className="alinharEtiquetas">
+                                            <div className="etiquetasVeiculos">
+                                                <div className="etiquetaVeiculo">
+                                                    <div className="nomeEtiqueta">{veiculo.placa}</div>
+                                                </div>
+                                                <div className="etiquetaVeiculo">
+                                                    <p className="nomeEtiqueta">Scania</p>
+                                                </div>
+                                                <div className="etiquetaVeiculo">
+                                                    <div className="nomeEtiqueta">{Intl.DateTimeFormat("pt-BR", {
+                                                        year: 'numeric', month: 'numeric', day: 'numeric',
+                                                        hour: 'numeric', minute: 'numeric', hour12: false
+                                                    }).format(new Date(veiculo.dataAquisicao))}</div>
+                                                </div>
+                                                <div className="etiquetaVeiculo">
+                                                    <p className="nomeEtiqueta">Na garagem</p>
+                                                </div>
+                                                <div className="iconesEtiquetaCargas">
+                                                    <FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" />
+                                                    <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
+                                                </div>
                                             </div>
-                                            <tr className="etiqueta">
-                                                <th className="nomeEtiqueta">{Intl.DateTimeFormat("pt-BR", {
-                                                    year: 'numeric', month: 'numeric', day: 'numeric',
-                                                    hour: 'numeric', minute: 'numeric', hour12: false
-                                                }).format(new Date(veiculo.dataAquisicao))}</th>
-                                            </tr>
-                                            <div className="etiqueta">
-                                                <p className="nomeEtiqueta">Na garagem</p>
-                                            </div>
-                                        </table>
+                                        </div>
                                     </div>
                                 </div>
                             )

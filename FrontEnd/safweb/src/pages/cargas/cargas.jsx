@@ -40,8 +40,8 @@ export default function ListarCarga() {
 
     return (
         <div>
-            <Header />
             <Sidebar3 />
+            <Header />
 
             <main>
                 <div className="wrapperCargas">

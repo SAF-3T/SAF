@@ -18,18 +18,16 @@ class Sidebar extends Component {
     render() {
         return (
             <div>
-                <nav className="sidebar"> 
+                <nav className="sidebar">
                     <div className="links">
                         <div className="link1"><Link to="/veiculos"><FontAwesomeIcon icon={faTruck} color="#0E758C" size="lg" /></Link></div>
                         <div className="link2"><Link to="/carrocerias"><FontAwesomeIcon icon={faTruckRampBox} color="#0E758C" size="lg" /></Link></div>
                         <div className="link1"><Link to="/cargas"><FontAwesomeIcon icon={faTruckArrowRight} color="#0E758C" size="lg" /></Link></div>
                         <div className="link2"><Link to="/usuarios"><FontAwesomeIcon icon={faUsers} color="#0E758C" size="lg" /></Link></div>
-                        <div className="link1"><Link to="/checklists"><FontAwesomeIcon icon={faListCheck} color="#0E758C" size="lg" /></Link></div>
+                        <div className="link1 linkUltimo"><Link to="/checklists"><FontAwesomeIcon icon={faListCheck} color="#0E758C" size="lg" /></Link></div>
                     </div>
                 </nav>
-
-                {/* <Footer /> */}
-            </div>
+            </div>  
         );
     };
 }

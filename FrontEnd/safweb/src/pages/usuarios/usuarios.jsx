@@ -35,8 +35,8 @@ export default function ListarUsuarios() {
 
     return (
         <div>
-            <Header />
             <Sidebar4 />
+            <Header />
 
             <main>
                 <div className="wrapperUsuarios">

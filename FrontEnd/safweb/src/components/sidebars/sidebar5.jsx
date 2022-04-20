@@ -24,7 +24,7 @@ class Sidebar extends Component {
                         <div className="link2"><Link to="/carrocerias"><FontAwesomeIcon icon={faTruckRampBox} color="#0E758C" size="lg" /></Link></div>
                         <div className="link1"><Link to="/cargas"><FontAwesomeIcon icon={faTruckArrowRight} color="#0E758C" size="lg" /></Link></div>
                         <div className="link2"><Link to="/usuarios"><FontAwesomeIcon icon={faUsers} color="#0E758C" size="lg" /></Link></div>
-                        <div className="link1 iconChecklist"><Link to="/checklists"><FontAwesomeIcon icon={faListCheck} color="#0E758C" size="lg" /></Link></div>
+                        <div className="link1 linkUltimo iconChecklist"><Link to="/checklists"><FontAwesomeIcon icon={faListCheck} color="#0E758C" size="lg" /></Link></div>
                     </div>
                 </nav>
             </div>
