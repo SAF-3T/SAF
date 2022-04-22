@@ -14,6 +14,8 @@ class Login extends React.Component {
             senha: '', //123456789
             erroMensagem: '',
             isLoading: false,
+            isLogged: false,
+            permanecerLogado: false
         };
     }
 
@@ -48,9 +50,25 @@ class Login extends React.Component {
             });
     };
 
+    verificaSeLogado() {
+        let token = localStorage.getItem('usuario-login')
+
+        if (token != null) {
+            this.setState({ isLogged: true });
+        }
+
+        if (this.isLogged == true && this.permanecerLogado == true) {
+            this.props.history.push('/dashboard');
+        }
+    }
+
     atualizaStateCampo = (campo) => {
         this.setState({ [campo.target.name]: campo.target.value });
     };
+
+    componentDidMount() {
+        this.verificaSeLogado();
+    }
 
     render() {
         return (
@@ -65,9 +83,15 @@ class Login extends React.Component {
 
                                 <label htmlFor="senha"></label>
                                 <input className='inputLogin' type="password" name="senha" value={this.state.senha} onChange={this.atualizaStateCampo} placeholder="SENHA" />
-                                    <div className="item">
-                                        <p>{this.state.erroMensagem}</p>
-                                    </div>
+                                <div className="item">
+                                    <p>{this.state.erroMensagem}</p>
+                                </div>
+
+                                <div className='caixa_logged'>
+                                    <button type='button' id='check'></button>
+                                    <span id='logged_tag'>Permanecer logado?</span>
+                                </div>
+
                                 <button type="submit" className="btn_login">LOGIN</button>
 
                             </form>
