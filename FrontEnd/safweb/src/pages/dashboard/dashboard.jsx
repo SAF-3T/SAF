@@ -21,22 +21,38 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 function Dashboard() {
 
   const [StatusVeiculos, setStatusVeiculos] = useState([]);
+  const [QntTrajeto, setQntTrajeto] = useState(0);
+  const [QntGaragem, setQntGaragem] = useState(0);
+  const [QntManutencao, setQntManutencao] = useState(0);
+
 
   function listarStatusVeiculo() {
-    axios('https://backend-saf-api.azurewebsites.net/api/Veiculos/BuscaStatus', {
-      headers: {
-        'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
-      }
-    })
+    axios('https://backend-saf-api.azurewebsites.net/api/Veiculos/BuscaStatus/1')
       .then(response => {
         if (response.status === 200) {
-          console.log(response.data)
-          setStatusVeiculos(response.data);
+          console.log(response);
+          setQntTrajeto(response.data);
+        }
+      })
+      .catch(erro => console.log(erro));
+
+      axios('https://backend-saf-api.azurewebsites.net/api/Veiculos/BuscaStatus/2')
+      .then(response => {
+        if (response.status === 200) {
+          setQntGaragem(response.data);
+        }
+      })
+      .catch(erro => console.log(erro));
+
+      axios('https://backend-saf-api.azurewebsites.net/api/Veiculos/BuscaStatus/3')
+      .then(response => {
+        if (response.status === 200) {
+          setQntManutencao(response.data);
         }
       })
       .catch(erro => console.log(erro));
   };
-
+  
   useEffect(listarStatusVeiculo, []);
 
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -53,15 +69,15 @@ function Dashboard() {
             <p className="mensagemTitulo">Dados de veículos</p>
             <div className='conteudoMensagem'>
               <FontAwesomeIcon icon={faRoad} color="#0E758C" size='2x' />
-              <p className="mensagem">Veículos em trajeto: </p>
+              <p className="mensagem">Veículos em trajeto: {QntGaragem} </p>
             </div>
             <div className='conteudoMensagem'>
               <FontAwesomeIcon icon={faWarehouse} color="#0E758C" size='2x'/>
-              <p className="mensagem">Veículos na garagem: </p>
+              <p className="mensagem">Veículos na garagem: {QntTrajeto}</p>
             </div>
             <div className='conteudoMensagem'>
               <FontAwesomeIcon icon={faWrench} color="#0E758C"size='2x'/>
-              <p className="mensagem">Veículos em manutenção: </p>
+              <p className="mensagem">Veículos em manutenção: {QntManutencao}</p>
             </div>
           </div>
 
