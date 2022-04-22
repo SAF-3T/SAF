@@ -16,6 +16,8 @@ import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 
 export default function ListarVeiculos() {
     const [ListaVeiculos, setListaVeiculos] = useState([]);
+    const [MarcaVeiculos, setMarcaVeiculos] = useState([]);
+    const [StatusVeiculos, setStatusVeiculos] = useState([]);
 
     function buscarVeiculos() {
         axios('https://backend-saf-api.azurewebsites.net/api/Veiculos', {
@@ -34,6 +36,7 @@ export default function ListarVeiculos() {
     useEffect(buscarVeiculos, []);
 
     const [isModalVisible, setIsModalVisible] = useState(false);
+
 
     return (
         <div>
@@ -92,7 +95,7 @@ export default function ListarVeiculos() {
                                                     <div className="nomeEtiqueta">{veiculo.placa}</div>
                                                 </div>
                                                 <div className="etiquetaVeiculo">
-                                                    <p className="nomeEtiqueta">Scania</p>
+                                                    <p className="nomeEtiqueta">{veiculo.idMarcaNavigation.nomeMarca}</p>
                                                 </div>
                                                 <div className="etiquetaVeiculo">
                                                     <div className="nomeEtiqueta">{Intl.DateTimeFormat("pt-BR", {
@@ -101,7 +104,7 @@ export default function ListarVeiculos() {
                                                     }).format(new Date(veiculo.dataAquisicao))}</div>
                                                 </div>
                                                 <div className="etiquetaVeiculo">
-                                                    <p className="nomeEtiqueta">Na garagem</p>
+                                                    <p className="nomeEtiqueta">{veiculo.idStatusNavigation.nomeStatus}</p>
                                                 </div>
                                             </div>
                                         </div>

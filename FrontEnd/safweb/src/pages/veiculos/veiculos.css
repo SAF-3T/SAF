@@ -125,10 +125,11 @@ body {
 }
 
 .etiquetaVeiculo {
-    width: 165px;
+    width: 170px;
     height: 62px;
     background: rgba(196, 196, 196, 0.5);
     border-radius: 10px;
+    text-align: center;
     margin: 0 20px;
     display: flex;
     align-items: center;
@@ -136,8 +137,8 @@ body {
 }
 
 .etiquetaCabecalhoVeiculo {
-    width: 165px;
-    height: 42px;
+    width: 170px;
+    height: fit-content;
     border-radius: 10px;
     margin: 0 20px;
     display: flex;

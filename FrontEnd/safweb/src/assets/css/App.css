@@ -186,11 +186,22 @@ footer {
 }
 
 .mensagem {
-  font-size: 25px;
+  font-size: 20px;
+  width: 100%;
+}
+
+.conteudoMensagem {
+  width: 73%;
+  margin: 0 auto 0 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .mensagemTitulo {
-  font-size: 30px;
+  font-size: 28px;
+  margin-left: 40px;
+  margin-top: 20px;
 }
 
 .mensagem, .mensagemTitulo {
@@ -199,9 +210,7 @@ footer {
   line-height: 61px;
   color: #0F282D;
   width: 270px;
-  margin-top: 10px;
   height: fit-content;
-  margin-left: 40px;
 }
 
 .conteudoCima {

@@ -1,54 +1,82 @@
 import React from 'react';
-// import { useState } from "react";
+import { useState, useEffect } from 'react';
 
 import '../../assets/css/App.css';
+
+import axios from 'axios';
 
 import HeaderDashboard from '../../components/headers/headerDashboard';
 import Sidebar from '../../components/sidebars/sidebar';
 
-// import Modal from '../../components/modal';
+import Modal from '../veiculos/modal/modalVeiculo';
 
 import { Link } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheck } from '@fortawesome/free-solid-svg-icons'
+import { faWarehouse } from '@fortawesome/free-solid-svg-icons'
+import { faRoad } from '@fortawesome/free-solid-svg-icons'
+import { faWrench } from '@fortawesome/free-solid-svg-icons'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 function Dashboard() {
 
-  // const [isModalVisible, setIsModalVisible] = useState(false);
+  const [StatusVeiculos, setStatusVeiculos] = useState([]);
+
+  function listarStatusVeiculo() {
+    axios('https://backend-saf-api.azurewebsites.net/api/Veiculos/BuscaStatus', {
+      headers: {
+        'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+      }
+    })
+      .then(response => {
+        if (response.status === 200) {
+          console.log(response.data)
+          setStatusVeiculos(response.data);
+        }
+      })
+      .catch(erro => console.log(erro));
+  };
+
+  useEffect(listarStatusVeiculo, []);
+
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   return (
     <div>
-      
+
       <Sidebar />
       <HeaderDashboard />
 
       <main>
         <section className="conteudoCima">
           <div className="mensagemBoard">
-            <p className="mensagemTitulo">Hoje é dia de ...</p>
-            <p className="mensagem"><FontAwesomeIcon icon={faCheck} color="#0E758C" /> Cadastrar</p>
-            <p className="mensagem"><FontAwesomeIcon icon={faCheck} color="#0E758C" /> Buscar</p>
-            <p className="mensagem"><FontAwesomeIcon icon={faCheck} color="#0E758C" /> Planejar</p>
+            <p className="mensagemTitulo">Dados de veículos</p>
+            <div className='conteudoMensagem'>
+              <FontAwesomeIcon icon={faRoad} color="#0E758C" size='2x' />
+              <p className="mensagem">Veículos em trajeto: </p>
+            </div>
+            <div className='conteudoMensagem'>
+              <FontAwesomeIcon icon={faWarehouse} color="#0E758C" size='2x'/>
+              <p className="mensagem">Veículos na garagem: </p>
+            </div>
+            <div className='conteudoMensagem'>
+              <FontAwesomeIcon icon={faWrench} color="#0E758C"size='2x'/>
+              <p className="mensagem">Veículos em manutenção: </p>
+            </div>
           </div>
 
           <div className="imagemDrawkit" />
         </section>
 
         <div className="wrapperCards">
-          <Link className="componentLink" to="/">
-            <div className="card">
-              <Link className="removerLink" to="/veiculos/cadastrar/veiculo">
-                <div className="adicionarCard">
-                  <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
-                <div className="textosCard">
-                  <p className="pCadastrarCard">Cadastrar</p>
-                  <p className="pCadastrarCard">Veículo</p>
-                </div>
-              </Link>
+          <div className="card" onClick={() => setIsModalVisible(true)}>
+            <div className="adicionarCard">
+              <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
+            <div className="textosCard">
+              <p className="pCadastrarCard">Cadastrar</p>
+              <p className="pCadastrarCard">Veículo</p>
             </div>
-          </Link>
+          </div>{isModalVisible ? (<Modal onClose={() => setIsModalVisible(false)}></Modal>) : null}
           <Link className="componentLink" to="/">
             <div className="card">
               <Link className="removerLink" to="/veiculos/cadastrar/tipo-veiculo">
