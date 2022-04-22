@@ -58,7 +58,6 @@ body {
 .cardCabecalhoCarroceria {
     margin-top: 20%;
     width: 100%;
-    height: 120px;
     border-radius: 5px;
     display: flex;
     align-items: center;
@@ -106,7 +105,7 @@ body {
 .nomeCabecalhoEtiquetaCarrocerias {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    font-size: 25px;
+    font-size: 29px;
     line-height: 37px;
     display: flex;
     align-items: center;
@@ -166,7 +165,7 @@ body {
 }
 
 .iconesEtiquetaCarrocerias {
-    width: 7%;
+    width: 8%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -213,23 +212,34 @@ body {
     color: #00000048;
 }
 
-.btnBuscar {
-    background: #139FC0;
+.btnAddCarroceria {
+    width: 18%;
+    height: 73px;
+    background-color: #0E758C;
     border-radius: 10px;
+}
+
+.btnAddCarroceria:hover {
+    opacity: 0.9;
+}
+
+.btnAddCarroceria::after {
+    background: none;
+    padding: 0;
+}
+
+.conteudoBtnAddCarroceria {
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pAddCarroceria {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: 20px;
     line-height: 37px;
-    text-align: center;
-    width: 170px;
-    height: 73px;
     color: #FFFFFF;
-}
-
-.btnBuscar:hover {
-    opacity: 0.9;
-}
-
-.btnBuscar::after {
-    display: none !important;
 }

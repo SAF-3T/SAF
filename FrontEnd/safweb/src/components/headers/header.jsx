@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
-import axios from "axios";
+// import axios from "axios";
 
 import { Link } from 'react-router-dom';
 
-import '../../pages/dashboard/App.css';
+import '../../assets/css/App.css';
 
 class Header extends Component {
 

@@ -2,9 +2,7 @@ import React, { Component } from "react";
 
 import { Link } from 'react-router-dom';
 
-import '../../pages/dashboard/App.css';
-
-import Footer from '../footer';
+import '../../assets/css/App.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTruck } from '@fortawesome/free-solid-svg-icons'

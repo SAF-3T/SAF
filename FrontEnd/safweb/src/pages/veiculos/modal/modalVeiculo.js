@@ -1,8 +1,6 @@
-import { useState, useEffect } from 'react';
-
 import React from 'react';
 
-import '../../modals/veiculos/modalVeiculo.css';
+import './modalVeiculo.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImage } from '@fortawesome/free-solid-svg-icons';
@@ -23,21 +21,21 @@ const Modal = ({ onClose = () => { }, children }) => {
                         <form className='formularioCadastro'>
                             <div className='juntaInputs'>
                                 <div className='inputs-esq'>
-                                    <input className='inputs' type='text' placeholder="ABC-1234" name='placa' maxlength="8" />
-                                    <input className='inputs' type='text' name='marca' placeholder='Marca' />
-                                    <input className='inputs' type='date' name='data' placeholder='Data de aquisição' />
-                                    <select className='inputs selects' type='text' name='status' placeholder='Status' required>
+                                    <input className='inputVeiculo' type='text' placeholder="ABC-1234" name='placa' maxlength="8" />
+                                    <input className='inputVeiculo' type='text' name='marca' placeholder='Marca' />
+                                    <input className='inputVeiculo' type='date' name='data' placeholder='Data de aquisição' />
+                                    <select className='inputVeiculo selects' type='text' name='status' placeholder='Status' required>
                                         <option value='' disabled selected>Status</option>
                                     </select>
                                 </div>
                                 <div className='inputs-dir'>
-                                    <select className='inputs selects' type='text' name='tipoVeiculo' required>
+                                    <select className='inputVeiculo selects' type='text' name='tipoVeiculo' required>
                                         <option value='' disabled selected>Tipo de veículo</option>
                                     </select>
-                                    <select className='inputs selects' type='text' name='carroceria' required>
+                                    <select className='inputVeiculo selects' type='text' name='carroceria' required>
                                         <option value='' disabled selected>Carroceria</option>
                                     </select>
-                                    <select className='inputs selects' type='text' name='carga' required>
+                                    <select className='inputVeiculo selects' type='text' name='carga' required>
                                         <option value='' disabled selected>Carga</option>
                                     </select>
                                     <button className='btn_cadastro' type='submit'><p className='pCadastro'>Cadastrar</p></button>
@@ -47,7 +45,7 @@ const Modal = ({ onClose = () => { }, children }) => {
                     </div>
                 </div>
             </div>
-        </div >
+        </div>
     );
 };
 

@@ -21,7 +21,7 @@ header {
 .imagemLogo {
   width: 56px;
   height: 56px;
-  background: url("../../assets/Logo.png");
+  background: url("../../assets/imgs/Logo.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -29,7 +29,7 @@ header {
 .imagemLogoHeaderDashboard {
   width: 56px;
   height: 56px;
-  background: url("../../assets/LogoHeader.png");
+  background: url("../../assets/imgs/LogoHeader.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -44,7 +44,7 @@ header {
 .imagemFooter {
   width: 36px;
   height: 36px;
-  background: url("../../assets/Logo.png");
+  background: url("../../assets/imgs/Logo.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -78,11 +78,6 @@ nav {
   flex-wrap: wrap;
   flex-direction: column;
   background-color: white;
-}
-
-.sidebar {
-  position: absolute;
-  top: 0;
 }
 
 .link1:hover, .link2:hover{
@@ -218,7 +213,7 @@ footer {
 }
 
 .imagemDrawkit {
-  background: url("../../assets/drawkit.svg");
+  background: url("../../assets/imgs/drawkit.svg");
   background-size: cover;
   width: 498px;
   height: 400px;

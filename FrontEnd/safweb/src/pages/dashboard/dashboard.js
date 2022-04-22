@@ -1,10 +1,11 @@
 import React from 'react';
-import { useState } from "react";
+// import { useState } from "react";
 
-import './App.css';
+import '../../assets/css/App.css';
 
 import HeaderDashboard from '../../components/headers/headerDashboard';
 import Sidebar from '../../components/sidebars/sidebar';
+
 // import Modal from '../../components/modal';
 
 import { Link } from 'react-router-dom';
@@ -19,7 +20,8 @@ function Dashboard() {
 
   return (
     <div>
-
+      
+      <Sidebar />
       <HeaderDashboard />
 
       <main>
@@ -109,7 +111,6 @@ function Dashboard() {
           </Link>
         </div>
       </main >
-      <Sidebar />
     </div>
   )
 };

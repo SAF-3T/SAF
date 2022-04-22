@@ -5,24 +5,23 @@ import Header from '../../components/headers/header';
 import Sidebar4 from '../../components/sidebars/sidebar4';
 import Footer from '../../components/footer';
 
-// import Modal from '../../components/modal';
+import Modal from '../usuarios/modal/modalUsuario';
 
-import { Link } from 'react-router-dom';
-
-import '../../assets/css/usuarios.css';
+import './usuarios.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
+import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 
 export default function ListarUsuarios() {
-    const [listaUsuarios, setListaUsuarios] = useState([]);
+    const [ListaUsuarios, setListaUsuarios] = useState([]);
 
     function buscarUsuarios() {
-        axios('http://localhost:5000/api/Usuarios',)
+        axios('http://backend-saf-api.azurewebsites.net/api/Usuarios',)
             .then(response => {
                 if (response.status === 200) {
                     setListaUsuarios(response.data);
-                    console.log(listaUsuarios)
                 }
             })
             .catch(erro => console.log(erro));
@@ -30,7 +29,9 @@ export default function ListarUsuarios() {
 
     useEffect(buscarUsuarios, []);
 
-    // const [isModalVisible, setIsModalVisible] = useState(false);
+    const [isModalVisible, setIsModalVisible] = useState(false);
+
+
 
     return (
         <div>
@@ -42,7 +43,13 @@ export default function ListarUsuarios() {
                     <p className="pUsuario">Usuários</p>
 
                     <div className="input-e-btn">
-                        {/* <button className="addUsuario" type='submit' onClick={() => setIsModalVisible(true)}><FontAwesomeIcon className="iconPlus" icon={faPlus} color="#fff" size="lg" />Novo usuário</button>{isModalVisible ? (<Modal onClose={() => setIsModalVisible(false)}></Modal>) : null} */}
+                        <button className='btnAddUsuario' type='submit' onClick={() => setIsModalVisible(true)}>
+                            <div className="conteudoBtnAddUsuario">
+                                <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" />
+                                <p className="pAddUsuario">Novo usuário</p>
+                            </div>
+                        </button>{isModalVisible ? (<Modal onClose={() => setIsModalVisible(false)}></Modal>) : null}
+
                         <div className="input-e-btn-2">
                             <input className='inputBusca' type="text" placeholder="Pesquisar" />
                             <button className='btnBuscar' type='submit'><p>Buscar</p></button>
@@ -50,40 +57,47 @@ export default function ListarUsuarios() {
                     </div>
 
                     <div className="cardCabecalhoUsuario">
-                        <div className="alinharEtiquetasUsuariosCabecalho">
-                            <div className="imgUsuario" />
-                            <div className="etiquetasCabecalhoUsuarios">
-                                <div className="etiquetaCabecalhoUsuario">
-                                    <p className="nomeEtiquetaCabecalhoUsuario">Nome</p>
-                                </div>
-                                <div className="etiquetaCabecalhoUsuario">
-                                    <p className="nomeEtiquetaCabecalhoUsuario">Telefone</p>
-                                </div>
-                                <div className="etiquetaCabecalhoUsuario">
-                                    <p className="nomeEtiquetaCabecalhoUsuario">CPF</p>
+                        <div className="conteudoCabecalhoUsuario">
+                            <div className="alinharEtiquetasUsuariosCabecalho">
+                                <div className="imgCabecalhoUsuario" />
+                                <div className="etiquetasCabecalhoUsuarios">
+                                    <div className="etiquetaCabecalhoUsuario">
+                                        <p className="nomeCabecalhoEtiquetaUsuario">Nome</p>
+                                    </div>
+                                    <div className="etiquetaCabecalhoUsuario">
+                                        <p className="nomeCabecalhoEtiquetaUsuario">Telefone</p>
+                                    </div>
+                                    <div className="etiquetaCabecalhoUsuario">
+                                        <p className="nomeCabecalhoEtiquetaUsuario">CPF</p>
+                                    </div>
                                 </div>
                             </div>
+                            <div className="iconesEtiquetaUsuarios" />
                         </div>
                     </div>
 
                     {
-                        listaUsuarios.map((usuario) => {
+                        ListaUsuarios.map((usuario) => {
                             return (
                                 <div className="cardUsuario">
-                                    <div className="alinharEtiquetasUsuarios">
-                                        <div className="imgUsuario">
-                                            <img src={usuario.imagemUsuario} alt="" />
+                                    <div className="conteudoUsuario">
+                                        <div className="alinharEtiquetasUsuarios">
+                                            <div className="imgUsuario" />
+                                            <div className="etiquetasUsuarios">
+                                                <div className="etiquetaUsuario">
+                                                    <p className="nomeEtiquetaUsuario">{usuario.nome}</p>
+                                                </div>
+                                                <div className="etiquetaUsuario">
+                                                    <p className="nomeEtiquetaUsuario">{usuario.telefone}</p>
+                                                </div>
+                                                <div className="etiquetaUsuario">
+                                                    <p className="nomeEtiquetaUsuario">{usuario.cpf}</p>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div className="etiquetasUsuarios">
-                                            <div className="etiqueta">
-                                                <p className="nomeEtiqueta">{usuario.nome}</p>
-                                            </div>
-                                            <div className="etiqueta">
-                                                <p className="nomeEtiqueta">{usuario.telefone}</p>
-                                            </div>
-                                            <div className="etiqueta">
-                                                <p className="nomeEtiqueta">{usuario.cpf}</p>
-                                            </div>
+                                        <div className="iconesEtiquetaUsuarios">
+                                            <FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" />
+                                            <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
                                         </div>
                                     </div>
                                 </div>

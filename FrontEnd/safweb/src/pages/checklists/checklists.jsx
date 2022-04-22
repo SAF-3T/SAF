@@ -2,15 +2,14 @@ import Header from '../../components/headers/header';
 import Sidebar5 from '../../components/sidebars/sidebar5';
 import Footer from '../../components/footer';
 
-import { useState, useEffect } from 'react';
-
+// import { useState, useEffect } from 'react';
 
 // import Modal from '../../components/modal';
 
-import '../../assets/css/checklist.css';
+import './checklist.css';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 
 export default function Checklists() {

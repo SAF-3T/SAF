@@ -1,18 +1,17 @@
-import { Component } from 'react';
 import React from 'react';
 import axios from 'axios';
 import MaskedInput from './MaskedInput';
 
-import { parseJwt, usuarioAutenticado } from '../../services/auth';
+import { usuarioAutenticado } from '../../services/auth';
 
-import '../../assets/css/login.css';
+import './login.css';
 
 class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            cpf: '',
-            senha: '',
+            cpf: '', //248.174.823-84 - Marcio
+            senha: '', //123456789
             erroMensagem: '',
             isLoading: false,
         };
@@ -22,7 +21,7 @@ class Login extends React.Component {
         event.preventDefault();
         this.setState({ erroMensagem: '', isLoading: true });
         axios
-            .post('http://localhost:5000/api/Login', {
+            .post('http://backend-saf-api.azurewebsites.net/api/Login', {
                 cpf: this.state.cpf,
                 senha: this.state.senha,
             })
@@ -62,10 +61,10 @@ class Login extends React.Component {
                             <h1>LOGIN</h1>
                             <form className="form" onSubmit={this.efetuaLogin}>
                                 <label htmlFor="cpf"></label>
-                                <MaskedInput name="cpf" mask="999.999.999-99" value={this.state.cpf} onChange={this.atualizaStateCampo} placeholder="CPF" />
+                                <MaskedInput className="inputLogin" name="cpf" mask="999.999.999-99" value={this.state.cpf} onChange={this.atualizaStateCampo} placeholder="CPF" />
 
                                 <label htmlFor="senha"></label>
-                                <input type="password" name="senha" value={this.state.senha} onChange={this.atualizaStateCampo} placeholder="SENHA" />
+                                <input className='inputLogin' type="password" name="senha" value={this.state.senha} onChange={this.atualizaStateCampo} placeholder="SENHA" />
                                     <div className="item">
                                         <p>{this.state.erroMensagem}</p>
                                     </div>

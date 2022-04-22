@@ -19,7 +19,7 @@
 .div-dir {
     width: 50%;
     height: 100%;
-    background: url("../background-login.png");
+    background: url("../../assets/imgs/background-login.png");
     border: none;
     background-size: cover;
     background-repeat: no-repeat;
@@ -52,7 +52,7 @@
     width: 100%;
 }
 
-input {
+.inputLogin {
     background-color: #0E758C;
     border: none;
     border-bottom: solid #FFFFFF 1px;
@@ -63,7 +63,7 @@ input {
     font-size: 20px;
 }
 
-input:focus {
+.inputLogin:focus {
     box-shadow: 0 0 0 0;
     outline: 0;
 }
@@ -73,12 +73,12 @@ input[type=number]::-webkit-inner-spin-button {
 
 }
 
-input[type=number] {
+.inputLogin[type=number] {
     -moz-appearance: textfield;
     appearance: textfield;
 }
 
-input::placeholder {
+.inputLogin::placeholder {
     font-family: 'Montserrat', sans-serif;
     font-size: 20px;
     font-weight: 200;
@@ -134,7 +134,7 @@ button.btn_login::after {
 }
 
 .img {
-    background: url("../Logo.png");
+    background: url("../../assets/imgs/Logo.png");
     background-repeat: no-repeat;
     background-size: cover;
     width: 250px;

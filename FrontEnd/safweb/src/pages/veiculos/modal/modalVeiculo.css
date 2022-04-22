@@ -72,19 +72,26 @@
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
-    /* background-color: green; */
 }
 
-.inputs {
+.inputVeiculo {
     width: 60%;
     margin: 40px 0;
     height: 30px;
     color: #000;
     background-color: white;
     font-size: 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
     text-align: center;
+    border: none;
     border-bottom: 1px solid #000;
 }
+
+.inputVeiculo:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
+} 
 
 .inputs-esq {
     /* background-color: red; */
@@ -102,14 +109,10 @@
     height: 100%;
 }
 
-.inputs::placeholder {
+.inputVeiculo::placeholder {
     text-align: center;
     font-size: 25px;
     color: #00000048;
-}
-
-.inputStatus {
-    width: 30%;
 }
 
 .juntaInputs {
@@ -117,7 +120,6 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    /* background-color: royalblue; */
 }
 
 .btn_cadastro {

@@ -5,7 +5,7 @@ import {
   BrowserRouter as Router,
   Switch,
 } from 'react-router-dom';
-import { parseJwt, usuarioAutenticado } from './services/auth';
+// import { parseJwt, usuarioAutenticado } from './services/auth';
 
 import './index.css';
 

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 import { useState, useEffect } from 'react';
 
@@ -6,7 +6,7 @@ import axios from "axios";
 
 import { Link } from 'react-router-dom';
 
-import '../../pages/dashboard/App.css';
+import '../../assets/css/App.css';
 
 export default function Header() {
 
@@ -23,7 +23,7 @@ export default function Header() {
         const tokenDescriptografado = window.atob(armazenaToken).split(',')[2].split('"')[3];
 
 
-        axios('http://localhost:5000/api/Usuarios/BuscarPorId/' + tokenDescriptografado)
+        axios('http://backend-saf-api.azurewebsites.net/api/Usuarios/BuscarPorId/' + tokenDescriptografado)
             .then(response => {
                 if (response.status === 200) {
                     setListaUsuario(response.data);

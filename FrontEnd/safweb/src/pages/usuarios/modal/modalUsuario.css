@@ -1,0 +1,21 @@
+.inputUsuario {
+    margin: 40px 0;
+    height: 30px;
+    color: #000;
+    background-color: white;
+    font-size: 25px;
+    text-align: center;
+    border: none;
+    border-bottom: 1px solid #000000;
+}
+
+.inputUsuario:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
+} 
+
+.inputUsuario::placeholder {
+    text-align: center;
+    font-size: 25px;
+    color: #00000048;
+}

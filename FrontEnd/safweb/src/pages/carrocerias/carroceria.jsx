@@ -5,11 +5,9 @@ import Header from '../../components/headers/header';
 import Sidebar2 from '../../components/sidebars/sidebar2';
 import Footer from '../../components/footer';
 
-import Modal from '../../components/modals/carrocerias/modalCarrocerias';
+import Modal from './modal/modalCarrocerias';
 
-import { Link } from 'react-router-dom';
-
-import '../../assets/css/carroceria.css';
+import './carroceria.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
@@ -20,7 +18,7 @@ export default function ListarCarroceria() {
     const [ListaCarroceria, setListaCarroceria] = useState([]);
 
     function buscarCarroceria() {
-        axios('http://localhost:5000/api/Carroceria', {
+        axios('http://backend-saf-api.azurewebsites.net/api/Carroceria', {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
             }
@@ -48,7 +46,13 @@ export default function ListarCarroceria() {
                     <p className="pCarroceria">Carrocerias</p>
 
                     <div className="input-e-btn">
-                        <button className="addCarroceria" type='submit' onClick={() => setIsModalVisible(true)}><FontAwesomeIcon className="iconPlus" icon={faPlus} color="#fff" size="lg" />Nova carroceria</button>{isModalVisible ? (<Modal onClose={() => setIsModalVisible(false)}></Modal>) : null}
+                        <button className='btnAddCarroceria' type='submit' onClick={() => setIsModalVisible(true)}>
+                            <div className="conteudoBtnAddCarroceria">
+                                <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" />
+                                <p className="pAddCarroceria">Nova carroceria</p>
+                            </div>
+                        </button>{isModalVisible ? (<Modal onClose={() => setIsModalVisible(false)}></Modal>) : null}
+
                         <div className="input-e-btn-2">
                             <input className='inputBusca' type="text" placeholder="Pesquisar" />
                             <button className='btnBuscar' type='submit'><p>Buscar</p></button>
@@ -70,10 +74,9 @@ export default function ListarCarroceria() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="iconesEtiquetaCarrocerias"/>
+                            <div className="iconesEtiquetaCarrocerias" />
                         </div>
                     </div>
-
 
                     {
                         ListaCarroceria.map((carroceria) => {
@@ -93,7 +96,7 @@ export default function ListarCarroceria() {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="iconesEtiquetaCargas">
+                                        <div className="iconesEtiquetaCarrocerias">
                                             <FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" />
                                             <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
                                         </div>
