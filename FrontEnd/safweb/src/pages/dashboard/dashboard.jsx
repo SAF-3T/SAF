@@ -29,8 +29,7 @@ function Dashboard() {
   function listarStatusVeiculo() {
     axios('https://backend-saf-api.azurewebsites.net/api/Veiculos/BuscaStatus/1')
       .then(response => {
-        if (response.status === 200) {
-          console.log(response);
+        if (response.status === 201) {
           setQntTrajeto(response.data);
         }
       })
@@ -38,7 +37,7 @@ function Dashboard() {
 
       axios('https://backend-saf-api.azurewebsites.net/api/Veiculos/BuscaStatus/2')
       .then(response => {
-        if (response.status === 200) {
+        if (response.status === 201) {
           setQntGaragem(response.data);
         }
       })
@@ -46,7 +45,7 @@ function Dashboard() {
 
       axios('https://backend-saf-api.azurewebsites.net/api/Veiculos/BuscaStatus/3')
       .then(response => {
-        if (response.status === 200) {
+        if (response.status === 201) {
           setQntManutencao(response.data);
         }
       })
@@ -66,14 +65,14 @@ function Dashboard() {
       <main>
         <section className="conteudoCima">
           <div className="mensagemBoard">
-            <p className="mensagemTitulo">Dados de veículos</p>
+            <p className="mensagemTitulo">Dados da frota</p>
             <div className='conteudoMensagem'>
               <FontAwesomeIcon icon={faRoad} color="#0E758C" size='2x' />
-              <p className="mensagem">Veículos em trajeto: {QntGaragem} </p>
+              <p className="mensagem">Veículos em trajeto: {QntTrajeto} </p>
             </div>
             <div className='conteudoMensagem'>
               <FontAwesomeIcon icon={faWarehouse} color="#0E758C" size='2x'/>
-              <p className="mensagem">Veículos na garagem: {QntTrajeto}</p>
+              <p className="mensagem">Veículos na garagem: {QntGaragem}</p>
             </div>
             <div className='conteudoMensagem'>
               <FontAwesomeIcon icon={faWrench} color="#0E758C"size='2x'/>

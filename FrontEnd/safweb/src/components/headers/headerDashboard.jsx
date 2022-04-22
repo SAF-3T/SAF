@@ -55,7 +55,7 @@ export default function Header() {
 
             <p className="pBemVindo">Bem vindo, {NomeUsuario}!</p>
             <div className="usuarioHeaderDashboard">
-                <a href="#"><div className="imagemUsuario"></div></a>
+                <a href="#"><img src={"http://backend-saf-api.azurewebsites.net/api/StaticFiles/Images/PerfilSaf.jpg"} className="imagemUsuario"></img></a>
                 <div className="linksUsuario">
                     <p className="pNomeUsuario">{NomeUsuario}</p>
                     <p className="pCargoUsuario">{CargoUsuario}</p>
