@@ -39,6 +39,7 @@ const Modal = ({ onClose = () => { } }) => {
                                     <select className='inputVeiculoDashboard selectsVeiculoDashboard' type='text' name='carga' required>
                                         <option value='' disabled selected>Carga</option>
                                     </select>
+                                    <div className='inputVeiculoDashboardEspaco'/>
                                 </div>
                             </div>
                         </form>

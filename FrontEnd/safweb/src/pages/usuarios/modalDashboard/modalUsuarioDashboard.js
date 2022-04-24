@@ -13,7 +13,7 @@ const Modal = ({ onClose = () => { }, children }) => {
     return (
         <div className="modalUsuario">
             <div className="wrapperModalUsuarioDashboard">
-                <div className="headerModal">
+                <div className="headerModalUsuarioDashboard">
                     <p className="pHeaderModal">CADASTRO DE USUÁRIO</p>
                     <FontAwesomeIcon className="iconClose" icon={faClose} onClick={onClose} style={{ cursor: 'pointer' }} color="red" size="3x" />
                 </div>
@@ -25,7 +25,7 @@ const Modal = ({ onClose = () => { }, children }) => {
                                 <input className='inputUsuario' type='text' name='nome' placeholder='Nome' required />
                                 <input className='inputUsuario' type='text' placeholder='Sobrenome' name='sobrenome' required />
                             </div>
-                            <div className='inputs-dir'>
+                            <div className='inputs-dir-UsuarioDashboard'>
                                 {/* Adicionar máscara de telefone e ajustar de CPF */}
                                 <MaskedInput className='inputUsuario' mask="999.999.999-99" placeholder='CPF' required />
                                 <input className='inputUsuario' type='tel' name='tel' placeholder='Telefone' required />

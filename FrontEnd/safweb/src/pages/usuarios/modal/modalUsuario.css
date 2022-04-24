@@ -13,7 +13,7 @@
 
 .wrapperModalUsuario {
     background-color: #fff;
-    width: 80%;
+    width: 65%;
     color: #000;
     height: 16%;
     position: absolute;
@@ -51,4 +51,21 @@
     text-align: center;
     font-size: 25px;
     color: #00000048;
+}
+
+.btn_cadastroUsuario {
+    width: 30%;
+    background-color: #0E758C;
+    overflow: visible;
+    height: 60px;
+    border: none;
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.btn_cadastroUsuario:hover{
+    opacity: 0.9;
 }

@@ -29,9 +29,9 @@ const Modal = ({ onClose = () => { }, children }) => {
                                 {/* Adicionar máscara de telefone e ajustar de CPF */}
                                 <MaskedInput className='inputUsuario' mask="999.999.999-99" placeholder='CPF' required />
                                 <input className='inputUsuario' type='tel' name='tel' placeholder='Telefone' required />
-                                <button className='btn_cadastro' type='submit'><p className='pCadastro'>Cadastrar</p></button>
                             </div>
                         </div>
+                        <button className='btn_cadastroUsuario' type='submit'><p className='pCadastro'>Cadastrar</p></button>
                     </form>
                 </div>
             </div>

@@ -68,7 +68,6 @@
 
 .formularioCadastroVeiculoDashboard {
     width: 90%;
-    /* background-color: yellow; */
     margin: 0 auto;
     display: flex;
     height: fit-content;
@@ -91,18 +90,22 @@
     border-bottom: 1px solid #000;
 }
 
+.inputVeiculoDashboardEspaco {
+    width: 65%;
+    margin: 40px 0;
+    height: 30px;
+    color: #000;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    text-align: center;
+    border: none;
+}
+
 .inputVeiculoDashboard:focus {
     box-shadow: 0 0 0 0;
     outline: 0;
 } 
-
-.inputs-esq {
-    /* background-color: red; */
-}
-
-.inputs-dir {
-    /* background-color: saddlebrown; */
-}
 
 .inputs-esq, .inputs-dir {
     display: flex;
@@ -123,7 +126,6 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    /* background-color: red; */
 }
 
 .btn_cadastro_Dashboard:hover {
@@ -131,7 +133,7 @@
 }
 
 .btn_cadastro_Dashboard {
-    width: 40%;
+    width: 35%;
     background-color: #0E758C;
     overflow: visible;
     height: 60px;
