@@ -10,7 +10,6 @@ import '../../assets/css/App.css';
 
 export default function Header() {
 
-    const [ListaUsuario, setListaUsuario] = useState([]);
     const [NomeUsuario, setNomeUsuario] = useState([]);
     const [CargoUsuario, setCargoUsuario] = useState([]);
 
@@ -26,7 +25,6 @@ export default function Header() {
         axios('http://backend-saf-api.azurewebsites.net/api/Usuarios/BuscarPorId/' + tokenDescriptografado)
             .then(response => {
                 if (response.status === 200) {
-                    setListaUsuario(response.data);
 
                     // Busca o array de usuários
                     const listaDeUsuarios = response.data;

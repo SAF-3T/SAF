@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useHistory } from "react-router-dom";
 import axios from 'axios';
 
 import Header from '../../components/headers/header';
@@ -16,8 +17,6 @@ import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 
 export default function ListarVeiculos() {
     const [ListaVeiculos, setListaVeiculos] = useState([]);
-    const [MarcaVeiculos, setMarcaVeiculos] = useState([]);
-    const [StatusVeiculos, setStatusVeiculos] = useState([]);
 
     function buscarVeiculos() {
         axios('https://backend-saf-api.azurewebsites.net/api/Veiculos', {
@@ -28,6 +27,23 @@ export default function ListarVeiculos() {
             .then(response => {
                 if (response.status === 200) {
                     setListaVeiculos(response.data);
+                }
+            })
+            .catch(erro => console.log(erro));
+    };
+
+    // Armazena token do usuário
+    const armazenaToken = localStorage.getItem('usuario-login').split('.')[1];
+
+    // Descriptografa token
+    const tokenDescriptografado = window.atob(armazenaToken).split(',')[2].split('"')[3];
+
+    function deletarVeiculos() {
+        axios.delete('https://backend-saf-api.azurewebsites.net/api/Deletar' + tokenDescriptografado)
+            .then(resposta => {
+                if (resposta.status === 200) {
+                    setListaVeiculos(resposta.data)
+                    console.log(resposta.data)
                 }
             })
             .catch(erro => console.log(erro));
@@ -110,7 +126,7 @@ export default function ListarVeiculos() {
                                         </div>
                                         <div className="iconesEtiquetaVeiculos">
                                             <FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" />
-                                            <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
+                                            <FontAwesomeIcon onClick={deletarVeiculos()} style={{ cursor: 'pointer' }} className="iconTrashCan" icon={faTrashCan} size="2x" />
                                         </div>
                                     </div>
                                 </div>

@@ -13,7 +13,6 @@ class Login extends React.Component {
             cpf: '', //248.174.823-84 - Marcio
             senha: '', //123456789
             erroMensagem: '',
-            isLoading: false,
         };
     }
 
@@ -29,14 +28,7 @@ class Login extends React.Component {
             .then((resposta) => {
                 if (resposta.status === 200) {
                     localStorage.setItem('usuario-login', resposta.data.token);
-                    this.setState({ isLoading: false });
-
-                    console.log('estou logado: ' + usuarioAutenticado());
-
                     let base64 = localStorage.getItem('usuario-login').split('.')[1];
-                    console.log(base64);
-                    console.log(this.props);
-
                     this.props.history.push('/dashboard');
                 }
             })

@@ -11,13 +11,13 @@
     align-items: center;
 }
 
-.wrapperModalUsuario {
+.wrapperModalUsuarioDashboard {
     background-color: #fff;
-    width: 80%;
+    width: 100%;
     color: #000;
     height: 16%;
     position: absolute;
-    top: 4.5%;
+    top: 2.5%;
     border-radius: 10px;
 }
 
@@ -25,8 +25,20 @@
     align-items: none;
 }
 
+.imgCadastrarUsuarioDashboard {
+    width: 320px;
+    height: 260px;
+    border-radius: 10px;
+    background-color: #77757548;
+    margin: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .juntaInputsUsuario {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     width: 100%;
 }
@@ -42,10 +54,34 @@
     border-bottom: 1px solid #000000;
 }
 
+.formularioCadastroUsuarioDashboard {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: fit-content;
+    /* background-color: green; */
+}
+
+.btn_cadastro_Usuario-Dashboard {
+    width: 40%;
+    background-color: #0E758C;
+    overflow: visible;
+    height: 60px;
+    border: none;
+    margin-top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    border-radius: 10px;
+}
+
 .inputUsuario:focus {
     box-shadow: 0 0 0 0;
     outline: 0;
-} 
+}
 
 .inputUsuario::placeholder {
     text-align: center;

@@ -8,9 +8,10 @@ import axios from 'axios';
 import HeaderDashboard from '../../components/headers/headerDashboard';
 import Sidebar from '../../components/sidebars/sidebar';
 
-import Modal from '../veiculos/modal/modalVeiculo';
-
-import { Link } from 'react-router-dom';
+import ModalVeiculoDashboard from '../veiculos/modalDashboard/modalVeiculoDashboard';
+import ModalCargaDashboard from '../cargas/modalDashboard/modalCargasDashboard';
+import ModalCarroceriaDashboard from '../carrocerias/modalDashboard/modalCarroceriasDashboard';
+import ModalUsuarioDashboard from '../usuarios/modalDashboard/modalUsuarioDashboard';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faWarehouse } from '@fortawesome/free-solid-svg-icons'
@@ -20,7 +21,6 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 function Dashboard() {
 
-  const [StatusVeiculos, setStatusVeiculos] = useState([]);
   const [QntTrajeto, setQntTrajeto] = useState(0);
   const [QntGaragem, setQntGaragem] = useState(0);
   const [QntManutencao, setQntManutencao] = useState(0);
@@ -35,7 +35,7 @@ function Dashboard() {
       })
       .catch(erro => console.log(erro));
 
-      axios('https://backend-saf-api.azurewebsites.net/api/Veiculos/BuscaStatus/2')
+    axios('https://backend-saf-api.azurewebsites.net/api/Veiculos/BuscaStatus/2')
       .then(response => {
         if (response.status === 201) {
           setQntGaragem(response.data);
@@ -43,7 +43,7 @@ function Dashboard() {
       })
       .catch(erro => console.log(erro));
 
-      axios('https://backend-saf-api.azurewebsites.net/api/Veiculos/BuscaStatus/3')
+    axios('https://backend-saf-api.azurewebsites.net/api/Veiculos/BuscaStatus/3')
       .then(response => {
         if (response.status === 201) {
           setQntManutencao(response.data);
@@ -51,10 +51,13 @@ function Dashboard() {
       })
       .catch(erro => console.log(erro));
   };
-  
+
   useEffect(listarStatusVeiculo, []);
 
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isModalVeiculoVisible, setIsModalVeiculoVisible] = useState(false);
+  const [isModalCargaVisible, setIsModalCargaVisible] = useState(false);
+  const [isModalCarroceriaVisible, setIsModalCarroceriaVisible] = useState(false);
+  const [isModalUsuarioVisible, setIsModalUsuarioVisible] = useState(false);
 
   return (
     <div>
@@ -71,87 +74,72 @@ function Dashboard() {
               <p className="mensagem">Veículos em trajeto: {QntTrajeto} </p>
             </div>
             <div className='conteudoMensagem'>
-              <FontAwesomeIcon icon={faWarehouse} color="#0E758C" size='2x'/>
+              <FontAwesomeIcon icon={faWarehouse} color="#0E758C" size='2x' />
               <p className="mensagem">Veículos na garagem: {QntGaragem}</p>
             </div>
             <div className='conteudoMensagem'>
-              <FontAwesomeIcon icon={faWrench} color="#0E758C"size='2x'/>
+              <FontAwesomeIcon icon={faWrench} color="#0E758C" size='2x' />
               <p className="mensagem">Veículos em manutenção: {QntManutencao}</p>
             </div>
           </div>
-
           <div className="imagemDrawkit" />
         </section>
 
         <div className="wrapperCards">
-          <div className="card" onClick={() => setIsModalVisible(true)}>
+          <div className="card" onClick={() => setIsModalVeiculoVisible(true)}>
             <div className="adicionarCard">
               <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
             <div className="textosCard">
               <p className="pCadastrarCard">Cadastrar</p>
               <p className="pCadastrarCard">Veículo</p>
             </div>
-          </div>{isModalVisible ? (<Modal onClose={() => setIsModalVisible(false)}></Modal>) : null}
-          <Link className="componentLink" to="/">
-            <div className="card">
-              <Link className="removerLink" to="/veiculos/cadastrar/tipo-veiculo">
-                <div className="adicionarCard">
-                  <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
-                <div className="textosCard">
-                  <p className="pCadastrarCard">Cadastrar</p>
-                  <p className="pCadastrarCard">Tipo de veículo</p>
-                </div>
-              </Link>
+          </div>{isModalVeiculoVisible ? (<ModalVeiculoDashboard onClose={() => setIsModalVeiculoVisible(false)}></ModalVeiculoDashboard>) : null}
+
+          <div className="card">
+            <div className="adicionarCard">
+              <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
+            <div className="textosCard">
+              <p className="pCadastrarCard">Cadastrar</p>
+              <p className="pCadastrarCard">Tipo de veículo</p>
             </div>
-          </Link>
-          <Link className="componentLink" to="/">
-            <div className="card">
-              <Link className="removerLink" to="/veiculos/cadastrar/carga">
-                <div className="adicionarCard">
-                  <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
-                <div className="textosCard">
-                  <p className="pCadastrarCard">Cadastrar</p>
-                  <p className="pCadastrarCard">Carga</p>
-                </div>
-              </Link>
+          </div>
+
+          <div className="card" onClick={() => setIsModalCargaVisible(true)}>
+            <div className="adicionarCard">
+              <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
+            <div className="textosCard">
+              <p className="pCadastrarCard">Cadastrar</p>
+              <p className="pCadastrarCard">Carga</p>
             </div>
-          </Link>
-          <Link className="componentLink" to="/">
-            <div className="card">
-              <Link className="removerLink" to="/veiculos/cadastrar/carroceria">
-                <div className="adicionarCard">
-                  <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /></div>
-                <div className="textosCard">
-                  <p className="pCadastrarCard">Cadastrar</p>
-                  <p className="pCadastrarCard">Carroceria</p>
-                </div>
-              </Link>
+          </div>{isModalCargaVisible ? (<ModalCargaDashboard onClose={() => setIsModalCargaVisible(false)}></ModalCargaDashboard>) : null}
+
+          <div className="card" onClick={() => setIsModalCarroceriaVisible(true)}>
+            <div className="adicionarCard">
+              <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /></div>
+            <div className="textosCard">
+              <p className="pCadastrarCard">Cadastrar</p>
+              <p className="pCadastrarCard">Carroceria</p>
             </div>
-          </Link>
-          <Link className="componentLink" to="/">
-            <div className="card">
-              <Link className="removerLink" to="/veiculos/cadastrar/usuario">
-                <div className="adicionarCard">
-                  <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
-                <div className="textosCard">
-                  <p className="pCadastrarCard">Cadastrar</p>
-                  <p className="pCadastrarCard">Usuario</p>
-                </div>
-              </Link>
+          </div>{isModalCarroceriaVisible ? (<ModalCarroceriaDashboard onClose={() => setIsModalCarroceriaVisible(false)}></ModalCarroceriaDashboard>) : null}
+
+          <div className="card" onClick={() => setIsModalUsuarioVisible(true)}>
+            <div className="adicionarCard">
+              <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
+            <div className="textosCard">
+              <p className="pCadastrarCard">Cadastrar</p>
+              <p className="pCadastrarCard">Usuario</p>
             </div>
-          </Link>
-          <Link className="componentLink" to="/">
-            <div className="card">
-              <Link className="removerLink" to="/veiculos/cadastrar/checklist">
-                <div className="adicionarCard">
-                  <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
-                <div className="textosCard">
-                  <p className="pCadastrarCard">Cadastrar</p>
-                  <p className="pCadastrarCard">Checklist</p>
-                </div>
-              </Link>
+          </div>{isModalUsuarioVisible ? (<ModalUsuarioDashboard onClose={() => setIsModalUsuarioVisible(false)}></ModalUsuarioDashboard>) : null}
+
+          <div className="card">
+            <div className="adicionarCard">
+              <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
+            <div className="textosCard">
+              <p className="pCadastrarCard">Cadastrar</p>
+              <p className="pCadastrarCard">Checklist</p>
             </div>
-          </Link>
+          </div>
+
         </div>
       </main >
     </div>
