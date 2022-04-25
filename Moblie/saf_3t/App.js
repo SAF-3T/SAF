@@ -12,6 +12,7 @@ import PreLogin from './src/pages/PreLogin'
 import Login from './src/pages/Login'
 import Menu from './src/pages/Menu'
 import Contatos from './src/pages/Contatos'
+import BuscarVeiculos from './src/pages/BuscarVeiculo'
 
 export default function Stack() {
 
@@ -23,6 +24,7 @@ export default function Stack() {
           <AuthStack.Screen name="Login" component={Login} />
           <AuthStack.Screen name="Menu" component={Menu} />
           <AuthStack.Screen name="Contatos" component={Contatos} />
+          <AuthStack.Screen name="BuscarVeiculos" component={BuscarVeiculos} />
         </AuthStack.Navigator>
       </NavigationContainer>
     )

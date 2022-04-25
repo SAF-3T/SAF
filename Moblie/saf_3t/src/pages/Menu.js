@@ -54,8 +54,8 @@ import {
                 </View>
                 <View style={styles.content}> 
                     <View>
-                        <TouchableOpacity style={styles.buttonBackgroundBig}>
-                            <Text style={styles.buttonText}>Visualizar veículo</Text>
+                        <TouchableOpacity onPress={() =>(this.props.navigation.navigate('BuscarVeiculos'))} style={styles.buttonBackgroundBig}>
+                            <Text style={styles.buttonText}>Buscar veículo</Text>
                         </TouchableOpacity>
                     </View>
                     <View style={styles.container2buttons}>
