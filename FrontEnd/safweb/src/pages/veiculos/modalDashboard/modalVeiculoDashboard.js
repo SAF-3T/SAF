@@ -7,7 +7,7 @@ import { faImage } from '@fortawesome/free-solid-svg-icons';
 import { faClose } from '@fortawesome/free-solid-svg-icons'
 
 const Modal = ({ onClose = () => { } }) => {
-
+    
     return (
         <div className="modalVeiculoDashboard">
             <div className="wrapperModalVeiculoDashboard">
