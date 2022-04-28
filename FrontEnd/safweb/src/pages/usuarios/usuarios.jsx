@@ -5,7 +5,8 @@ import Header from '../../components/headers/header';
 import Sidebar4 from '../../components/sidebars/sidebar4';
 import Footer from '../../components/footer';
 
-import Modal from '../usuarios/modal/modalUsuario';
+import ModalAddUsuario from '../usuarios/modal/modalUsuario';
+import ModalEditUsuario from '../usuarios/modalEdit/modaEditUsuario';
 
 import './usuarios.css';
 
@@ -29,9 +30,8 @@ export default function ListarUsuarios() {
 
     useEffect(buscarUsuarios, []);
 
-    const [isModalVisible, setIsModalVisible] = useState(false);
-
-
+    const [isModalAddUsuarioVisible, setIsModalAddUsuarioVisible] = useState(false);
+    const [isModalEditUsuarioVisible, setIsModalEditUsuarioVisible] = useState(false);
 
     return (
         <div>
@@ -43,12 +43,12 @@ export default function ListarUsuarios() {
                     <p className="pUsuario">Usuários</p>
 
                     <div className="input-e-btn">
-                        <button className='btnAddUsuario' type='submit' onClick={() => setIsModalVisible(true)}>
+                        <button className='btnAddUsuario' type='submit' onClick={() => setIsModalAddUsuarioVisible(true)}>
                             <div className="conteudoBtnAddUsuario">
                                 <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" />
                                 <p className="pAddUsuario">Novo usuário</p>
                             </div>
-                        </button>{isModalVisible ? (<Modal onClose={() => setIsModalVisible(false)}></Modal>) : null}
+                        </button>{isModalAddUsuarioVisible ? (<ModalAddUsuario onClose={() => setIsModalAddUsuarioVisible(false)}></ModalAddUsuario>) : null}
 
                         <div className="input-e-btn-2">
                             <input className='inputBusca' type="text" placeholder="Pesquisar" />
@@ -96,7 +96,7 @@ export default function ListarUsuarios() {
                                             </div>
                                         </div>
                                         <div className="iconesEtiquetaUsuarios">
-                                            <FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" />
+                                            <FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} style={{cursor: 'pointer'}} onClick={() => setIsModalEditUsuarioVisible(true)}  size="2x"  />{isModalEditUsuarioVisible ? (<ModalEditUsuario onClose={() => setIsModalEditUsuarioVisible(false)}></ModalEditUsuario>) : null}
                                             <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
                                         </div>
                                     </div>

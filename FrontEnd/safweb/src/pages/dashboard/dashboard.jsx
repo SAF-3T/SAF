@@ -9,6 +9,7 @@ import HeaderDashboard from '../../components/headers/headerDashboard';
 import Sidebar from '../../components/sidebars/sidebar';
 
 import ModalVeiculoDashboard from '../veiculos/modalDashboard/modalVeiculoDashboard';
+import ModalTipoVeiculoDashboard from '../tipoVeiculos/modalDashboard/modalTipoVeiculosDashboard';
 import ModalCargaDashboard from '../cargas/modalDashboard/modalCargasDashboard';
 import ModalCarroceriaDashboard from '../carrocerias/modalDashboard/modalCarroceriasDashboard';
 import ModalUsuarioDashboard from '../usuarios/modalDashboard/modalUsuarioDashboard';
@@ -55,6 +56,7 @@ function Dashboard() {
   useEffect(listarStatusVeiculo, []);
 
   const [isModalVeiculoVisible, setIsModalVeiculoVisible] = useState(false);
+  const [isModalTipoVeiculoVisible, setIsModalTipoVeiculoVisible] = useState(false);
   const [isModalCargaVisible, setIsModalCargaVisible] = useState(false);
   const [isModalCarroceriaVisible, setIsModalCarroceriaVisible] = useState(false);
   const [isModalUsuarioVisible, setIsModalUsuarioVisible] = useState(false);
@@ -95,14 +97,14 @@ function Dashboard() {
             </div>
           </div>{isModalVeiculoVisible ? (<ModalVeiculoDashboard onClose={() => setIsModalVeiculoVisible(false)}></ModalVeiculoDashboard>) : null}
 
-          <div className="card">
+          <div className="card" onClick={() => setIsModalTipoVeiculoVisible(true)}>
             <div className="adicionarCard">
               <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
             <div className="textosCard">
               <p className="pCadastrarCard">Cadastrar</p>
               <p className="pCadastrarCard">Tipo de veículo</p>
             </div>
-          </div>
+          </div>{isModalTipoVeiculoVisible ? (<ModalTipoVeiculoDashboard onClose={() => setIsModalTipoVeiculoVisible(false)}></ModalTipoVeiculoDashboard>) : null}
 
           <div className="card" onClick={() => setIsModalCargaVisible(true)}>
             <div className="adicionarCard">

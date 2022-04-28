@@ -6,7 +6,8 @@ import Header from '../../components/headers/header';
 import Sidebar1 from '../../components/sidebars/sidebar1';
 import Footer from '../../components/footer';
 
-import Modal from '../veiculos/modal/modalVeiculo';
+import ModalAddVeiculo from '../veiculos/modal/modalVeiculo';
+import ModalEditVeiculo from '../veiculos/modalEdit/modalEditVeiculo';
 
 import './veiculos.css';
 
@@ -52,7 +53,8 @@ export default function ListarVeiculos() {
 
     useEffect(buscarVeiculos, []);
 
-    const [isModalVisible, setIsModalVisible] = useState(false);
+    const [isModalAddVeiculoVisible, setIsModalAddVeiculoVisible] = useState(false);
+    const [isModalEditVeiculoVisible, setIsModalEditVeiculoVisible] = useState(false);
 
 
     return (
@@ -65,12 +67,12 @@ export default function ListarVeiculos() {
                     <p className="pVeiculo">Veículos</p>
 
                     <div className="input-e-btn">
-                        <button className='btnAddVeiculo' type='submit' onClick={() => setIsModalVisible(true)}>
+                        <button className='btnAddVeiculo' type='submit' onClick={() => setIsModalAddVeiculoVisible(true)}>
                             <div className="conteudoBtnAddVeiculo">
                                 <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" />
                                 <p className="pAddVeiculo">Novo veículo</p>
                             </div>
-                        </button>{isModalVisible ? (<Modal onClose={() => setIsModalVisible(false)}></Modal>) : null}
+                        </button>{isModalAddVeiculoVisible ? (<ModalAddVeiculo onClose={() => setIsModalAddVeiculoVisible(false)}></ModalAddVeiculo>) : null}
 
                         <div className="input-e-btn-2">
                             <input className='inputBusca' type="text" placeholder="Pesquisar" />
@@ -126,8 +128,8 @@ export default function ListarVeiculos() {
                                             </div>
                                         </div>
                                         <div className="iconesEtiquetaVeiculos">
-                                            <FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" />
-                                            <FontAwesomeIcon onClick={deletarVeiculos()} style={{ cursor: 'pointer' }} className="iconTrashCan" icon={faTrashCan} size="2x" />
+                                            <FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} style={{cursor: 'pointer'}} size="2x" onClick={() => setIsModalEditVeiculoVisible(true)} />{isModalEditVeiculoVisible ? (<ModalEditVeiculo onClose={() => setIsModalEditVeiculoVisible(false)}></ModalEditVeiculo>) : null}
+                                            <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
                                         </div>
                                     </div>
                                 </div>
