@@ -40,14 +40,14 @@ export default function ListarVeiculos() {
     const tokenDescriptografado = window.atob(armazenaToken).split(',')[2].split('"')[3];
 
     function deletarVeiculos() {
-        axios.delete('https://backend-saf-api.azurewebsites.net/api/Deletar' + tokenDescriptografado)
-            .then(resposta => {
-                if (resposta.status === 200) {
-                    setListaVeiculos(resposta.data)
-                    console.log(resposta.data)
-                }
-            })
-            .catch(erro => console.log(erro));
+        //axios.delete('https://backend-saf-api.azurewebsites.net/api/Deletar/' + tokenDescriptografado)
+        //   .then(resposta => {
+        //        if (resposta.status === 200) {
+        //            setListaVeiculos(resposta.data)
+        //            console.log(resposta.data)
+        //        }
+        //    })
+        //   .catch(erro => console.log(erro));
     };
 
     useEffect(buscarVeiculos, []);
