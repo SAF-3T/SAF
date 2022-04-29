@@ -18,7 +18,6 @@ import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 
 export default function ListarVeiculos() {
     const [ListaVeiculos, setListaVeiculos] = useState([]);
-    const [Placa, setPlacaVeiculo] = useState("");
 
     function buscarVeiculos() {
         axios('https://backend-saf-api.azurewebsites.net/api/Veiculos', {

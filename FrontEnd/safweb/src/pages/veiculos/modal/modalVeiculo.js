@@ -4,6 +4,8 @@ import './modalVeiculo.css';
 
 import axios from 'axios';
 
+import { useHistory } from 'react-router-dom';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImage } from '@fortawesome/free-solid-svg-icons';
 import { faClose } from '@fortawesome/free-solid-svg-icons'
@@ -15,7 +17,7 @@ export default function Modal({ onClose = () => { } }) {
     const [Marca, setMarca] = useState('');
     const [Data, setData] = useState('');
     const [IdCarroceria, setIdCarroceria] = useState('');
-    const [Status, setStatus] = useState([]);
+    const [Status, setStatus] = useState('');
     const [Carga, setCarga] = useState('');
     const [TipoVeiculo, setTipoVeiculo] = useState('');
 
@@ -29,27 +31,54 @@ export default function Modal({ onClose = () => { } }) {
 
     function AdicionarVeiculo() {
 
+        let history = useHistory();
+
         var formData = new FormData();
 
-        const element = document.getElementById('arquivo')
-        const file = element.files[0]
-        formData.append('arquivo', file, file.name)
+        // const element = document.getElementById('arquivo')
+        // if (element != null) {
+            // const file = element.files[0]
+            // formData.append('arquivo', file, file.name)
+        // }
+
 
         formData.append('placa', Placa);
         formData.append('idMarca', Marca);
         formData.append('dataAquisicao', Data);
         formData.append('idStatus', Status);
-        formData.append('idTipoVeiculo', TipoVeiculos);
+        formData.append('idTipoVeiculo', TipoVeiculo);
         formData.append('idCarroceria', IdCarroceria);
         formData.append('idTipoCarga', Carga);
 
-        axios({
-            method: "post",
-            url: "http://backend-saf-api.azurewebsites.net/api/Veiculos",
-            data: formData,
-            headers: { "Content-Type": "multipart/form-data" },
-        })
+        try {
+
+            // axios({
+            //     method: "post",
+            //     url: "http://backend-saf-api.azurewebsites.net/api/Veiculos",
+            //     data: formData,
+            //     headers: { "Content-Type": "multipart/form-data" },
+            // })
+            //     .then((resposta) => {
+            //         console.log(resposta.status)
+            //         history.push('/veiculos');
+            //     })
+
+            axios.post('http://backend-saf-api.azurewebsites.net/api/Veiculos', {
+                headers: { "Content-Type": "form-data" },
+                //headers: { "Content-Type": "multipart/form-data" },
+                data: formData,
+            }).then((resposta => {
+
+                console.log(resposta.status)
+            }))
+
+        } catch (error) {
+            console.log(error)
+        }
+
+
     }
+
 
     function BuscarForms() {
 
@@ -96,20 +125,19 @@ export default function Modal({ onClose = () => { } }) {
     }
 
     useEffect(BuscarForms, []);
-    //useEffect(Log, TrackChanges)
 
     return (
         <div className="modal">
             <div className="wrapperModal">
                 <div className="headerModal">
                     <p className="pHeaderModal">CADASTRO DE VEÍCULO</p>
-                    <FontAwesomeIcon className="iconClose" icon={faClose} onClick={onClose} style={{ cursor: 'pointer' }} color="red" size="3x" />
+                    <FontAwesomeIcon className="iconClose" icon={faClose} style={{ cursor: 'pointer' }} color="red" size="3x" />
                 </div>
                 <div className="conteudos">
                     <div className="conteudo">
                         <div className='imgCadastrar'><FontAwesomeIcon icon={faImage} color="white" size="5x" /></div>
 
-                        <form className='formularioCadastro' onSubmit={AdicionarVeiculo}>
+                        <form className='formularioCadastro' onSubmit={() => (AdicionarVeiculo)}>
                             <div className='juntaInputs'>
                                 <div className='inputs-esq'>
                                     <input className='inputVeiculo' type='text' placeholder="ABC-1234" name='placa' maxlength="8" onChange={(e) => setPlaca(e.target.value)} />
@@ -136,16 +164,18 @@ export default function Modal({ onClose = () => { } }) {
                                     </select>
                                 </div>
                                 <div className='inputs-dir'>
-                                    <select className='inputVeiculo selects' type='text' name='Tipo' required onChange={(e) => setTipoVeiculo(e.target.value)}>
+                                    <select className='inputVeiculo selects' type='text' name='TipoVeiculo' required onChange={(e) => setTipoVeiculo(e.target.value)}>
                                         <option value='0' disabled selected>Tipo de veículo</option>
                                         {TipoVeiculos.map((tipoVeiculo) => {
-                                            <option key={tipoVeiculo.idTipoVeiculo} value={tipoVeiculo.idTipoVeiculo}>
-                                                {tipoVeiculo.nomeTipoVeiculo}
-                                            </option>
+                                            return (
+                                                <option key={tipoVeiculo.idTipoVeiculo} value={tipoVeiculo.idTipoVeiculo}>
+                                                    {tipoVeiculo.nomeTipoVeiculo}
+                                                </option>
+                                            )
                                         })}
                                     </select>
                                     <select className='inputVeiculo selects' type='text' name='carroceria' required onChange={(e) => setIdCarroceria(e.target.value)}>
-                                        <option value='' disabled selected>Carroceria</option>
+                                        <option value='0' disabled selected>Carroceria</option>
                                         {Carrocerias.map((carroceria) => {
                                             return (
                                                 <option key={carroceria.idCarroceria} value={carroceria.idCarroceria}>
@@ -164,7 +194,7 @@ export default function Modal({ onClose = () => { } }) {
                                             )
                                         })}
                                     </select>
-                                    <button className='btn_cadastro' type='submit'><p className='pCadastro'>Cadastrar</p></button>
+                                    <button className='btn_cadastro' type='submit'><p className='pCadastro' onClick={onClose}>Cadastrar</p></button>
                                 </div>
                             </div>
                         </form>
@@ -173,4 +203,5 @@ export default function Modal({ onClose = () => { } }) {
             </div >
         </div >
     )
+
 }
