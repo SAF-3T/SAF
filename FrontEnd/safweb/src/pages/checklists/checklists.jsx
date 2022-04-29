@@ -8,8 +8,8 @@ import Footer from '../../components/footer';
 
 import './checklist.css';
 
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
 
 
 export default function Checklists() {
@@ -26,7 +26,12 @@ export default function Checklists() {
                     <p className="pChecklist">Checklists</p>
 
                     <div className="input-e-btn">
-                        {/* <button className="addChecklist" type='submit' onClick={() => setIsModalVisible(true)}><FontAwesomeIcon className="iconPlus" icon={faPlus} color="#fff" size="lg" />Novo checklist</button>{isModalVisible ? (<Modal onClose={() => setIsModalVisible(false)}></Modal>) : null} */}
+                        <button className="addChecklist" type='submit'>
+                            <div className="conteudoBtnAddChecklist">
+                                <FontAwesomeIcon icon={faPlus} color="#fff" size="2x" />
+                                <p className="pAddChecklist">Novo checklist</p>
+                            </div>
+                        </button>
                         <div className="input-e-btn-2">
                             <input className='inputBusca' type="text" placeholder="Pesquisar" />
                             <button className='btnBuscar' type='submit'><p>Buscar</p></button>
@@ -36,7 +41,7 @@ export default function Checklists() {
             </main>
 
             <Footer />
-        
+
         </div >
     );
 };

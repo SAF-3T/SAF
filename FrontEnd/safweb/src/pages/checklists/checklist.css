@@ -30,8 +30,28 @@ body {
     line-height: 37px;
     display: flex;
     align-items: center;
-    width: 170px;
+    width: 200px;
     height: 73px;
+    color: #FFFFFF;
+}
+
+.addChecklist:hover {
+    opacity: 0.9;
+}
+
+.conteudoBtnAddChecklist {
+    width: 96%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pAddChecklist {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 37px;
     color: #FFFFFF;
 }
 
