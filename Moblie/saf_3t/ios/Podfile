@@ -19,6 +19,8 @@ target 'saf_3t' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+  pod 'react-native-camera', :path => '../node_modules/react-native-camera'
+
   target 'saf_3tTests' do
     inherit! :complete
     # Pods for testing
