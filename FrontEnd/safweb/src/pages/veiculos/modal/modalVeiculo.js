@@ -9,7 +9,6 @@ import { useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImage } from '@fortawesome/free-solid-svg-icons';
 import { faClose } from '@fortawesome/free-solid-svg-icons'
-import { TrackChanges } from '@material-ui/icons';
 
 export default function Modal({ onClose = () => { } }) {
 
@@ -20,6 +19,7 @@ export default function Modal({ onClose = () => { } }) {
     const [Status, setStatus] = useState('');
     const [Carga, setCarga] = useState('');
     const [TipoVeiculo, setTipoVeiculo] = useState('');
+    const [IdUsuario, setIdUsuario] = useState('');
 
 
     const [Marcas, setMarcas] = useState([]);
@@ -28,64 +28,64 @@ export default function Modal({ onClose = () => { } }) {
     const [Carrocerias, setCarrocerias] = useState([]);
     const [TiposCargas, setTiposCargas] = useState([]);
 
+    function BuscarUsuario() {
+        // Armazena token do usuário
+        const armazenaToken = localStorage.getItem('usuario-login').split('.')[1]
+        // Descriptografa token
+        const tokenDescriptografado = window.atob(armazenaToken).split(',')[2].split('"')[3];
+        setIdUsuario(armazenaToken);
+    }
 
-    function AdicionarVeiculo() {
-
-        let history = useHistory();
+function AdicionarVeiculo() {
 
         var formData = new FormData();
 
-        // const element = document.getElementById('arquivo')
-        // if (element != null) {
-            // const file = element.files[0]
-            // formData.append('arquivo', file, file.name)
-        // }
-
-
-        formData.append('placa', Placa);
-        formData.append('idMarca', Marca);
-        formData.append('dataAquisicao', Data);
-        formData.append('idStatus', Status);
-        formData.append('idTipoVeiculo', TipoVeiculo);
-        formData.append('idCarroceria', IdCarroceria);
-        formData.append('idTipoCarga', Carga);
-
-        try {
-
-            // axios({
-            //     method: "post",
-            //     url: "http://backend-saf-api.azurewebsites.net/api/Veiculos",
-            //     data: formData,
-            //     headers: { "Content-Type": "multipart/form-data" },
-            // })
-            //     .then((resposta) => {
-            //         console.log(resposta.status)
-            //         history.push('/veiculos');
-            //     })
-
-            axios.post('http://backend-saf-api.azurewebsites.net/api/Veiculos', {
-                headers: { "Content-Type": "form-data" },
-                //headers: { "Content-Type": "multipart/form-data" },
-                data: formData,
-            }).then((resposta => {
-
-                console.log(resposta.status)
-            }))
-
-        } catch (error) {
-            console.log(error)
+        const element = document.getElementById('arquivo')
+        if (element != null) {
+            const file = element.files[0]
+            formData.append('arquivo', file, file.name)
         }
 
 
+        formData.append('idUsuario', Placa);
+        formData.append('idMarca', Marca);
+        formData.append('idTipoVeiculo', TipoVeiculo);
+        formData.append('idStatus', Status);
+        formData.append('placa', Placa);
+        formData.append('dataAquisicao', Data);
+        formData.append('idCarroceria', IdCarroceria);
+        //formData.append('idTipoCarga', Carga);
+
+        try {
+            axios({
+                method: "post",
+                url: "http://backend-saf-api.azurewebsites.net/api/Veiculos",
+                data: formData,
+                headers: { "Content-Type": "multipart/form-data" },
+            })
+                .then((resposta) => {
+                    if (resposta.status === 200) {
+                        console.log('Cadastrado');
+                    }
+                });
+
+            //await axios.post('http://backend-saf-api.azurewebsites.net/api/Veiculos', {
+            //    headers: { "Content-Type": "multipart/form-data" },
+            //    data: formData,
+            //}).then((resposta =>
+            //    console.log(resposta.status)
+            // ))
+        } catch (error) {
+            console.log(error)
+        }
     }
 
 
     function BuscarForms() {
 
-
         axios.get("http://backend-saf-api.azurewebsites.net/api/Status")
             .then((response) => {
-                if (response.status == 200) {
+                if (response.status === 200) {
                     setTipoStatus(response.data)
                     console.log(TipoStatus)
                 }
@@ -93,7 +93,7 @@ export default function Modal({ onClose = () => { } }) {
 
         axios.get("http://backend-saf-api.azurewebsites.net/api/TipoVeiculos")
             .then((response) => {
-                if (response.status == 200) {
+                if (response.status === 200) {
                     setTipoVeiculos(response.data)
                     console.log(TipoVeiculos)
                 }
@@ -101,7 +101,7 @@ export default function Modal({ onClose = () => { } }) {
 
         axios.get("http://backend-saf-api.azurewebsites.net/api/Carroceria")
             .then((response) => {
-                if (response.status == 200) {
+                if (response.status === 200) {
                     setCarrocerias(response.data)
                     console.log(Carrocerias)
                 }
@@ -109,7 +109,7 @@ export default function Modal({ onClose = () => { } }) {
 
         axios.get("http://backend-saf-api.azurewebsites.net/api/TipoCargas")
             .then((response) => {
-                if (response.status == 200) {
+                if (response.status === 200) {
                     setTiposCargas(response.data)
                     console.log(TiposCargas);
                 }
@@ -117,27 +117,27 @@ export default function Modal({ onClose = () => { } }) {
 
         axios.get("http://backend-saf-api.azurewebsites.net/api/Marca")
             .then((response) => {
-                if (response.status == 200) {
+                if (response.status === 200) {
                     setMarcas(response.data)
                     console.log(Marcas);
                 }
             })
     }
 
-    useEffect(BuscarForms, []);
+    useEffect(BuscarForms, BuscarUsuario, []);
 
     return (
         <div className="modal">
             <div className="wrapperModal">
                 <div className="headerModal">
                     <p className="pHeaderModal">CADASTRO DE VEÍCULO</p>
-                    <FontAwesomeIcon className="iconClose" icon={faClose} style={{ cursor: 'pointer' }} color="red" size="3x" />
+                    <FontAwesomeIcon onClick={onClose} className="iconClose" icon={faClose} style={{ cursor: 'pointer' }} color="red" size="3x" />
                 </div>
                 <div className="conteudos">
                     <div className="conteudo">
                         <div className='imgCadastrar'><FontAwesomeIcon icon={faImage} color="white" size="5x" /></div>
 
-                        <form className='formularioCadastro' onSubmit={() => (AdicionarVeiculo)}>
+                        <form method="post" encType="multipart/form-data" className='formularioCadastro' onSubmit={AdicionarVeiculo}>
                             <div className='juntaInputs'>
                                 <div className='inputs-esq'>
                                     <input className='inputVeiculo' type='text' placeholder="ABC-1234" name='placa' maxlength="8" onChange={(e) => setPlaca(e.target.value)} />
@@ -194,7 +194,7 @@ export default function Modal({ onClose = () => { } }) {
                                             )
                                         })}
                                     </select>
-                                    <button className='btn_cadastro' type='submit'><p className='pCadastro' onClick={onClose}>Cadastrar</p></button>
+                                    <button onClick={(e) => AdicionarVeiculo(e)} className='btn_cadastro' type='submit'><p className='pCadastro'>Cadastrar</p></button>
                                 </div>
                             </div>
                         </form>
