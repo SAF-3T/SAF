@@ -15,7 +15,7 @@ import Veiculos from './pages/veiculos/veiculos';
 import Usuarios from './pages/usuarios/usuarios';
 import Carrocerias from './pages/carrocerias/carroceria';
 import Cargas from './pages/cargas/cargas';
-import Checklists from './pages/checklists/checklists';
+import Checklists from './pages/checklists/checklist';
 
 import reportWebVitals from './reportWebVitals';
 
