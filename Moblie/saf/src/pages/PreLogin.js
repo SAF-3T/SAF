@@ -77,19 +77,17 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: 'white',
         textAlign: 'center',
-        fontFamily: 'Montserrat-Regular'
+
     },
     textoGrifado: {
         fontSize: 20,
         color: 'white',
         fontWeight: '900', 
-        fontFamily: 'Montserrat-Black'
     },
     textoBotao: {
         fontWeight: '900',
         fontSize: 25,
         color: 'white',
-        fontFamily: 'Montserrat-Bold'
     },
     corpoBotao: {
         width: 190,
