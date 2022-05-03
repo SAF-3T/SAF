@@ -1,4 +1,4 @@
-.modalCarroceria {
+.modalCargas {
     width: 100%;
     height: 385vh;
     position: absolute;
@@ -11,7 +11,7 @@
     align-items: center;
 }
 
-.wrapperModalCarrocerias {
+.wrapperModalCargas {
     background-color: #fff;
     width: 50%;
     color: #000;
@@ -40,13 +40,13 @@
     margin: 0 auto;
 }
 
-.conteudosCarrocerias {
+.conteudosCargas {
     height: fit-content;
     width: 90%;
     margin: 14% auto;
 }
 
-.conteudoCarroceriaModal {
+.conteudoCarga {
     width: 80%;
     display: flex;
     align-items: center;
@@ -54,30 +54,30 @@
     margin: 0 auto;
 }
 
-.inputCarroceria {
+.inputCarga {
     width: 45%;
     color: #000;
     background-color: white;
     font-size: 30px;
     text-align: center;
     border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
     border-bottom: 1px solid #000;
-    margin-top: 0;
-    margin-bottom: 0;
 }
 
-.inputCarroceria::placeholder {
+.inputCarga::placeholder {
     text-align: center;
     font-size: 30px;
     color: #00000048;
 }
 
-.inputCarroceria:focus {
+.inputCarga:focus {
     box-shadow: 0 0 0 0;
     outline: 0;
 }
 
-.btn_cadastroCarroceria {
+.btn_EditarCarga {
     width: 30%;
     background-color: #0E758C;
     overflow: visible;
@@ -90,15 +90,15 @@
     border-radius: 10px;
 }
 
-.btn_cadastroCarroceria:hover {
+.btn_EditarCarga:hover {
     opacity: 0.9;
 }
 
-.btn_cadastroCarroceria::after {
+.btn_EditarCarga::after {
     display: none;
 }
 
-.pBtnCadastroCarroceria {
+.btn_EditarCarga {
     color: white;
     font-size: 20px;
     font-family: 'Montserrat', sans-serif;

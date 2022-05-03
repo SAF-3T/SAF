@@ -14,7 +14,7 @@ const Modal = ({ onClose = () => { }, children }) => {
         <div className="modalEditUsuario">
             <div className="wrapperModalUsuario">
                 <div className="headerModal">
-                    <p className="pHeaderModal">ATUALIZAR USUÁRIO</p>
+                    <p className="pHeaderModal">EDITAR USUÁRIO</p>
                     <FontAwesomeIcon className="iconClose" icon={faClose} onClick={onClose} style={{ cursor: 'pointer' }} color="red" size="3x" />
                 </div>
                 <div className="conteudoUsuario">
@@ -31,7 +31,7 @@ const Modal = ({ onClose = () => { }, children }) => {
                                 <input className='inputUsuario' type='tel' name='tel' placeholder='Telefone' required />
                             </div>
                         </div>
-                        <button className='btn_cadastroUsuario' type='submit'><p className='pCadastro'>Atualizar</p></button>
+                        <button className="btn_editarUsuario" type='submit'><p className='pCadastro'>Atualizar</p></button>
                     </form>
                 </div>
             </div>

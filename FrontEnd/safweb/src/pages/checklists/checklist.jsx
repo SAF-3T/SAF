@@ -4,7 +4,8 @@ import Header from '../../components/headers/header';
 import Sidebar5 from '../../components/sidebars/sidebar5';
 import Footer from '../../components/footer';
 
-import Modal from '../checklists/modal/modalChecklist';
+import ModalErro from '../checklists/modalChecklistErros/modalChecklistErro';
+import ModalCorrecao from '../checklists/modalChecklistCorrecao/modalChecklistCorrecao';
 
 import axios from 'axios';
 
@@ -17,22 +18,34 @@ import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 
 export default function Checklists() {
 
-    const [isModalVisible, setIsModalVisible] = useState(false);
-
+    const [ListaCheckList, setListaChecklist] = useState([]);
     const [ListaChecklistErro, setListaChecklistErro] = useState([]);
-    const [ListaChecklistCorrecao, setListaChecklistCorrecao] = useState([]); //Implementar modal de correção 
+    const [ListaChecklistCorrecao, setListaChecklistCorrecao] = useState([]);
+    const [QntdErros, setQntdErros] = useState([]);
 
     function buscarChecklists() {
         axios('http://backend-saf-api.azurewebsites.net/api/CheckList',)
             .then(response => {
                 if (response.status === 200) {
-                    setListaChecklistErro(response.data);
+                    setListaChecklist(response.data);
                     console.log(response.data)
                 }
             })
             .catch(erro => console.log(erro));
     };
 
+    function buscarContagemErros() {
+        axios('http://backend-saf-api.azurewebsites.net/api/Erro/Contagem/1?idChecklsist=1')
+            .then(response => {
+                if (response.status === 200) {
+                    setQntdErros(response.data);
+                    console.log(response.data)
+                }
+            })
+            .catch(erro => console.log(erro));
+    }
+    
+    useEffect(buscarContagemErros, []);
     useEffect(buscarChecklists, []);
 
     return (
@@ -45,12 +58,6 @@ export default function Checklists() {
                     <p className="pChecklist">Checklists</p>
 
                     <div className="input-e-btn">
-                        <button className="addChecklist" type='submit' >
-                            <div className="conteudoBtnAddChecklist">
-                                <FontAwesomeIcon icon={faPlus} color="#fff" size="2x" />
-                                <p className="pAddChecklist">Novo checklist</p>
-                            </div>
-                        </button>
                         <div className="input-e-btn-2">
                             <input className='inputBusca' type="text" placeholder="Pesquisar" />
                             <button className='btnBuscar' type='submit'><p>Buscar</p></button>
@@ -70,12 +77,14 @@ export default function Checklists() {
                                     <div className="etiquetaCabecalhoChecklist">
                                         <div className="nomeCabecalhoEtiquetaChecklist">Placa</div>
                                     </div>
-                                    <div className="etiquetaCabecalhoChecklist" onClick={() => setIsModalVisible(true)}>
+                                    <div className="etiquetaCabecalhoChecklist" onClick={() => setListaChecklistErro()}>
                                         <p className="nomeCabecalhoEtiquetaChecklist">Erros</p>
-                                    </div>{isModalVisible ? (<Modal onClose={() => setIsModalVisible(false)}></Modal>) : null}
-                                    <div className="etiquetaCabecalhoChecklist">
+                                    </div>
+
+                                    <div className="etiquetaCabecalhoChecklist" >
                                         <p className="nomeCabecalhoEtiquetaChecklist">Correções</p>
                                     </div>
+
                                     <div className="etiquetaCabecalhoChecklist">
                                         <p className="nomeCabecalhoEtiquetaChecklist">Data</p>
                                     </div>
@@ -86,7 +95,7 @@ export default function Checklists() {
                     </div>
 
                     {
-                        ListaChecklistErro.map((checklist) => {
+                        ListaCheckList.map((checklist) => {
                             return (
                                 <div className="cardChecklist">
                                     <div className="conteudoChecklist">
@@ -101,10 +110,10 @@ export default function Checklists() {
                                                 <div className="etiquetaChecklist">
                                                     <div className="nomeEtiquetaChecklist">{checklist.idVeiculoNavigation.placa}</div>
                                                 </div>
-                                                <div className="etiquetaChecklist" style={{cursor: 'pointer'}} onClick={() => setIsModalVisible(true)}>
-                                                    <p className="nomeEtiquetaChecklist">2</p>
+                                                <div className="etiquetaChecklist" style={{ cursor: 'pointer' }} onClick={() => setListaChecklistErro(true)}>
+                                                    <p className="nomeEtiquetaChecklist">{QntdErros}</p>
                                                 </div>
-                                                <div className="etiquetaChecklist">
+                                                <div className="etiquetaChecklist" style={{ cursor: 'pointer' }}  onClick={() => setListaChecklistCorrecao(true)}>
                                                     <div className="nomeEtiqueta">3</div>
                                                 </div>
                                                 <div className="etiquetaChecklist">
@@ -125,6 +134,9 @@ export default function Checklists() {
                         })
                     }
                 </div>
+                {ListaChecklistErro ? (<ModalErro onClose={() => setListaChecklistErro(false)}></ModalErro>) : null}
+                {ListaChecklistCorrecao ? (<ModalCorrecao onClose={() => setListaChecklistCorrecao(false)}></ModalCorrecao>) : null}
+
             </main>
             <Footer />
         </div >

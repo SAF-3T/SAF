@@ -45,7 +45,7 @@
 .inputUsuario:focus {
     box-shadow: 0 0 0 0;
     outline: 0;
-} 
+}
 
 .inputUsuario::placeholder {
     text-align: center;
@@ -53,7 +53,7 @@
     color: #00000048;
 }
 
-.btn_cadastroUsuario {
+.btn_editarUsuario {
     width: 30%;
     background-color: #0E758C;
     overflow: visible;
@@ -66,6 +66,10 @@
     border-radius: 10px;
 }
 
-.btn_cadastroUsuario:hover{
-    opacity: 0.9;
+.btn_editarUsuario::after {
+    content: none;
+}
+
+.btn_editarUsuario:hover {
+    opacity: 0.5;
 }

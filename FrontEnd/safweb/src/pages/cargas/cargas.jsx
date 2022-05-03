@@ -6,6 +6,7 @@ import Sidebar3 from '../../components/sidebars/sidebar3';
 import Footer from '../../components/footer';
 
 import Modal from '../cargas/modal/modalCargas';
+import ModalEdit from '../cargas/modalEdit/modalEditCargas';
 
 import './cargas.css';
 
@@ -34,6 +35,7 @@ export default function ListarCarga() {
     useEffect(buscarCarga, []);
 
     const [isModalVisible, setIsModalVisible] = useState(false);
+    const [ListaModalEditCargas, setListaModalEditCargas] = useState(false);
 
 
     return (
@@ -77,7 +79,7 @@ export default function ListarCarga() {
                                             <p className="nomeEtiquetaCarga">{carga.nomeTipoCarga}</p>
                                         </div>
                                         <div className="iconesEtiquetaCargas">
-                                            <FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" />
+                                            <FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" style={{cursor: 'pointer'}} onClick={() => setListaModalEditCargas(true)} />{ListaModalEditCargas ? (<ModalEdit onClose={() => setListaModalEditCargas(false)}></ModalEdit>) : null}
                                             <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
                                         </div>
                                     </div>

@@ -12,7 +12,7 @@ const Modal = ({ onClose = () => { } }) => {
         <div className="modalEditVeiculo">
             <div className="wrapperModal">
                 <div className="headerModal">
-                    <p className="pHeaderModal">ATUALIZAR VEÍCULO</p>
+                    <p className="pHeaderModal">EDITAR VEÍCULO</p>
                     <FontAwesomeIcon className="iconClose" icon={faClose} onClick={onClose} style={{ cursor: 'pointer' }} color="red" size="3x" />
                 </div>
                 <div className="conteudos">
@@ -39,7 +39,7 @@ const Modal = ({ onClose = () => { } }) => {
                                     <select className='inputVeiculo selects' type='text' name='carga' required>
                                         <option value='' disabled selected>Carga</option>
                                     </select>
-                                    <button className='btn_cadastro' type='submit'><p className='pCadastro'>Atualizar</p></button>
+                                    <button className='btn_editarVeiculo' type='submit'><p className='pCadastro'>Atualizar</p></button>
                                 </div>
                             </div>
                         </form>

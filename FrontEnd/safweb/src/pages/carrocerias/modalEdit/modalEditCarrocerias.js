@@ -2,10 +2,9 @@ import { useState, useEffect } from 'react';
 
 import React from 'react';
 
-import '../modal/modalCarroceria.css';
+import '../modalEdit/modalEditCarrocerias.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faImage } from '@fortawesome/free-solid-svg-icons';
 import { faClose } from '@fortawesome/free-solid-svg-icons'
 
 const Modal = ({ onClose = () => { }, children }) => {
@@ -14,13 +13,13 @@ const Modal = ({ onClose = () => { }, children }) => {
         <div className="modalCarroceria">
             <div className="wrapperModalCarrocerias">
                 <div className="headerModal">
-                    <p className="pHeaderModal">CADASTRO DE CARROCERIA</p>
+                    <p className="pHeaderModal">EDITAR CARROCERIA</p>
                     <FontAwesomeIcon className="iconClose" icon={faClose} onClick={onClose} style={{ cursor: 'pointer' }} color="red" size="3x" />
                 </div>
                 <div className="conteudosCarrocerias">
-                    <div className='conteudoCarroceriaModal'>
+                    <div className='conteudoCarroceria'>
                         <input className='inputCarroceria' type='text' placeholder="Tipo de carroceria" name='carroceria' required/>
-                        <button className='btn_cadastroCarroceria' type='submit'><p className='pBtnCadastroCarroceria'>Cadastrar</p></button>
+                        <button className='btn_editarCarroceria' type='submit'><p className='pBtnEditarCarroceria'>ATUALIZAR</p></button>
                     </div>
                 </div>
             </div>

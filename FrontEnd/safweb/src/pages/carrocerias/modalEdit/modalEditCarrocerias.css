@@ -46,7 +46,7 @@
     margin: 14% auto;
 }
 
-.conteudoCarroceriaModal {
+.conteudoCarroceria {
     width: 80%;
     display: flex;
     align-items: center;
@@ -77,7 +77,7 @@
     outline: 0;
 }
 
-.btn_cadastroCarroceria {
+.btn_editarCarroceria {
     width: 30%;
     background-color: #0E758C;
     overflow: visible;
@@ -90,15 +90,15 @@
     border-radius: 10px;
 }
 
-.btn_cadastroCarroceria:hover {
+.btn_editarCarroceria:hover {
     opacity: 0.9;
 }
 
-.btn_cadastroCarroceria::after {
+.btn_editarCarroceria::after {
     display: none;
 }
 
-.pBtnCadastroCarroceria {
+.pBtnEditarCarroceria {
     color: white;
     font-size: 20px;
     font-family: 'Montserrat', sans-serif;
