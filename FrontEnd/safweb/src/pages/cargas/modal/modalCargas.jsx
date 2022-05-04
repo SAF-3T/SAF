@@ -14,6 +14,7 @@ const Modal = ({ onClose = () => { } }) => {
 
     const [Carga, setCarga] = useState([]);
     const [NovaCarga, setNovaCarga] = useState('');
+    const [Disponibiliade, setDisponibilidade] = useState('');
 
     const notyf = new Notyf();
 
@@ -21,40 +22,45 @@ const Modal = ({ onClose = () => { } }) => {
 
         event.preventDefault();
 
-        axios.post('http://backend-saf-api.azurewebsites.net/api/TipoCargas', {
-            nomeTipoCarga: NovaCarga
-        })
-            .then((resposta) => {
-                if (resposta.status === 201) {
-                    console.log('Carga cadastrada');
-                    setCarga('');
-                    onClose()
-                    notyf.success(
-                        {
-                            message: 'Carga cadastrada com êxito',
-                            duration: 1000,
-                            position: {
-                                x: 'right',
-                                y: 'top',
-                            }
-                        }
-                    );
-                }
-
-                if (resposta.status !== 201) {
-                    notyf.error(
-                        {
-                            message: 'Carga já cadastrada!',
-                            duration: 1000,
-                            position: {
-                                x: 'right',
-                                y: 'top',
-                            }
-                        }
-                    );
-                    console.log('aqui');
-                }
+        axios('http://backend-saf-api.azurewebsites.net/VerificaDisponibilidadeNome/' + NovaCarga)
+            .then(response => {
+                setDisponibilidade(response.data)
             })
+
+        if (Disponibiliade === 1) {
+            axios.post('http://backend-saf-api.azurewebsites.net/api/TipoCargas', {
+                nomeTipoCarga: NovaCarga
+            })
+                .then((resposta) => {
+                    if (resposta.status === 201) {
+                        console.log('Carga cadastrada');
+                        setCarga('');
+                        onClose()
+                        notyf.success(
+                            {
+                                message: 'Carga cadastrada com êxito',
+                                duration: 1000,
+                                position: {
+                                    x: 'right',
+                                    y: 'top',
+                                }
+                            }
+                        );
+                    }
+                })
+        }
+        if (Disponibiliade === 0) {
+            notyf.error(
+                {
+                    message: 'Carga já cadastrada!',
+                    duration: 2000,
+                    position: {
+                        x: 'right',
+                        y: 'top',
+                    }
+                }
+            );
+        }
     };
 
 

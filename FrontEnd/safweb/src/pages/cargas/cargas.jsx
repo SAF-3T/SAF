@@ -19,7 +19,7 @@ import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
 export default function ListarCarga() {
 
     const [ListaCarga, setListaCarga] = useState([]);
-    
+
     const notyf = new Notyf();
 
     function buscarCarga() {
@@ -37,25 +37,24 @@ export default function ListarCarga() {
     };
 
     function deletar(idTipoCarga) {
-        axios.delete('https://backend-saf-api.azurewebsites.net/' + idTipoCarga)
-            .then(resposta => {
-                if (resposta.status === 204) {
-                    console.log('excluiu')
-                    notyf.success(
-                        {
-                            message: 'Carga excluída com êxito',
-                            duration: 1000,
-                            position: {
-                                x: 'right',
-                                y: 'top',
-                            }
-                        }
-                    );
-                }
-            })
-            .catch(erro => console.log(erro))
 
-            .then(buscarCarga);
+            axios.delete('https://backend-saf-api.azurewebsites.net/' + idTipoCarga)
+                .then(resposta => {
+                    if (resposta.status === 200) {
+                        console.log('excluiu')
+                        notyf.success(
+                            {
+                                message: 'Carga excluída com êxito',
+                                duration: 1000,
+                                position: {
+                                    x: 'right',
+                                    y: 'top',
+                                }
+                            }
+                        );
+                    }
+                })
+        
     };
 
     useEffect(buscarCarga, [ListaCarga]);

@@ -10,6 +10,9 @@ import ModalEdit from '../carrocerias/modalEdit/modalEditCarrocerias';
 
 import './carroceria.css';
 
+import { Notyf } from 'notyf';
+import 'notyf/notyf.min.css';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
@@ -17,6 +20,8 @@ import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 
 export default function ListarCarroceria() {
     const [ListaCarroceria, setListaCarroceria] = useState([]);
+
+    const notyf = new Notyf();
 
     function buscarCarroceria() {
         axios('http://backend-saf-api.azurewebsites.net/api/Carroceria', {
@@ -32,10 +37,31 @@ export default function ListarCarroceria() {
             .catch(erro => console.log(erro));
     };
 
-    useEffect(buscarCarroceria, []);
+    function deletar(idCarroceria) {
+        axios.delete('https://backend-saf-api.azurewebsites.net/DeletarCarroceria/' + idCarroceria)
+            .then(resposta => {
+                if (resposta.status === 204) {
+                    notyf.success(
+                        {
+                            message: 'Carroceria excluída com êxito',
+                            duration: 1000,
+                            position: {
+                                x: 'right',
+                                y: 'top',
+                            }
+                        }
+                    );
+                }
+            })
+            .catch(erro => console.log(erro))
+
+            .then(buscarCarroceria);
+    };
+
+    useEffect(buscarCarroceria, [ListaCarroceria]);
 
     const [isModalVisible, setIsModalVisible] = useState(false);
-    const [ListaEditCarroceria, setListaEditCarroceria] = useState([]);
+    const [ListaEditCarroceria, setListaEditCarroceria] = useState(false);
 
 
     return (
@@ -99,8 +125,9 @@ export default function ListarCarroceria() {
                                             </div>
                                         </div>
                                         <div className="iconesEtiquetaCarrocerias">
-                                            <FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" style={{cursor: 'pointer'}} onClick={() => setListaEditCarroceria(true)}/>{ListaEditCarroceria ? (<ModalEdit onClose={() => setListaEditCarroceria(false)}></ModalEdit>) : null}
-                                            <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
+                                            <FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" style={{ cursor: 'pointer' }} onClick={() => setListaEditCarroceria(true)} />{ListaEditCarroceria ? (<ModalEdit onClose={() => setListaEditCarroceria(false)}></ModalEdit>) : null}
+                                            <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" style={{ cursor: 'pointer' }}
+                                                onClick={() => deletar(carroceria.idCarroceria)} />
                                         </div>
                                     </div>
                                 </div>
