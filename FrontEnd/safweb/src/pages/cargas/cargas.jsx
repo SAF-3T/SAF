@@ -32,6 +32,18 @@ export default function ListarCarga() {
             .catch(erro => console.log(erro));
     };
 
+    function deletar(idTipoCarga) {
+        axios.delete('https://backend-saf-api.azurewebsites.net/' + idTipoCarga)
+           .then(resposta => {
+                if (resposta.status === 204) {
+                    setListaCarga(resposta.data)
+                    
+                }
+                buscarCarga();
+            })
+           .catch(erro => console.log(erro));
+    };
+
     useEffect(buscarCarga, []);
 
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -48,7 +60,7 @@ export default function ListarCarga() {
                     <p className="pCarga">Cargas</p>
 
                     <div className="input-e-btn">
-                        <button className='btnAddCarga' type='submit' onClick={() => setIsModalVisible(true)}>
+                        <button className='btnAddCarga' type='button' onClick={() => setIsModalVisible(true)}>
                             <div className="conteudoBtnAddCarga">
                                 <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" />
                                 <p className="pAddCarga">Nova carga</p>
@@ -57,7 +69,7 @@ export default function ListarCarga() {
 
                         <div className="input-e-btn-2">
                             <input className='inputBusca' type="text" placeholder="Pesquisar" />
-                            <button className='btnBuscar' type='submit'><p>Buscar</p></button>
+                            <button className='btnBuscar' type='button'><p>Buscar</p></button>
                         </div>
                     </div>
 
@@ -79,8 +91,7 @@ export default function ListarCarga() {
                                             <p className="nomeEtiquetaCarga">{carga.nomeTipoCarga}</p>
                                         </div>
                                         <div className="iconesEtiquetaCargas">
-                                            <FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" style={{cursor: 'pointer'}} onClick={() => setListaModalEditCargas(true)} />{ListaModalEditCargas ? (<ModalEdit onClose={() => setListaModalEditCargas(false)}></ModalEdit>) : null}
-                                            <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
+                                            <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} style={{cursor : 'pointer'}} size="2x" onClick={ () => deletar(carga.idTipoCarga)} />
                                         </div>
                                     </div>
                                 </div>

@@ -19,9 +19,10 @@ import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 export default function Checklists() {
 
     const [ListaCheckList, setListaChecklist] = useState([]);
-    const [ListaChecklistErro, setListaChecklistErro] = useState([]);
-    const [ListaChecklistCorrecao, setListaChecklistCorrecao] = useState([]);
+    const [ListaChecklistErro, setListaChecklistErro] = useState(false);
+    const [ListaChecklistCorrecao, setListaChecklistCorrecao] = useState(false);
     const [QntdErros, setQntdErros] = useState([]);
+    const [QntdCorrecoes, setQntdCorrecoes] = useState([]);
 
     function buscarChecklists() {
         axios('http://backend-saf-api.azurewebsites.net/api/CheckList',)
@@ -44,9 +45,32 @@ export default function Checklists() {
             })
             .catch(erro => console.log(erro));
     }
+
+    function buscarContagemCorrecoes() {
+        axios('http://backend-saf-api.azurewebsites.net/api/Correcao/Contagem/1')
+            .then(response => {
+                if (response.status === 200) {
+                    setQntdCorrecoes(response.data);
+                    console.log(response.data)
+                }
+            })
+            .catch(erro => console.log(erro));
+    }
+
+        function deletar(idChecklist) {
+            axios.delete('https://backend-saf-api.azurewebsites.net/CheckList/' + idChecklist)
+            .then(resposta => {
+                    if (resposta.status === 204) {
+                        setListaChecklist(resposta.data)
+                        .then(buscarChecklists());
+                    }
+                })
+            .catch(erro => console.log(erro));
+        };
     
     useEffect(buscarContagemErros, []);
     useEffect(buscarChecklists, []);
+    useEffect(buscarContagemCorrecoes, []);
 
     return (
         <div>
@@ -114,7 +138,7 @@ export default function Checklists() {
                                                     <p className="nomeEtiquetaChecklist">{QntdErros}</p>
                                                 </div>
                                                 <div className="etiquetaChecklist" style={{ cursor: 'pointer' }}  onClick={() => setListaChecklistCorrecao(true)}>
-                                                    <div className="nomeEtiqueta">3</div>
+                                                    <div className="nomeEtiqueta">{QntdCorrecoes}</div>
                                                 </div>
                                                 <div className="etiquetaChecklist">
                                                     <p className="nomeEtiquetaChecklist">{Intl.DateTimeFormat("pt-BR", {
@@ -125,8 +149,7 @@ export default function Checklists() {
                                             </div>
                                         </div>
                                         <div className="iconesEtiquetaChecklist">
-                                            <FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} style={{ cursor: 'pointer' }} size="2x" />
-                                            <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} style={{ cursor: 'pointer' }} size="2x" />
+                                            <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} style={{ cursor: 'pointer' }} size="2x" onClick={ () => deletar(checklist.idChecklist)} />
                                         </div>
                                     </div>
                                 </div>

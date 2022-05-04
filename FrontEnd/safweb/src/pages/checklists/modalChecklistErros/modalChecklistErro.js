@@ -13,7 +13,6 @@ const Modal = ({ onClose = () => { } }) => {
 
     const [TipoCheckList, setTipoCheckList] = useState([]); //Listar tipo do checklist para concatenar com o modal
     const [ListaChecklist, setListaChecklist] = useState([]);
-    
 
 
     function buscarChecklistErroPorId() {
@@ -26,16 +25,30 @@ const Modal = ({ onClose = () => { } }) => {
             .catch(erro => console.log(erro));
     };
 
+    function buscarChecklistPorId() {
+        axios('http://backend-saf-api.azurewebsites.net/api/Checklist/1')
+            .then(response => {
+                if (response.status === 200) {
+                    setTipoCheckList(response.data);
+                    console.log(response.data)
+                }
+            })
+            .catch(erro => console.log(erro));
+    }
+
     useEffect(buscarChecklistErroPorId, []);
+    useEffect(buscarChecklistPorId, []);
 
     return (
         <div className="modalChecklist">
             <div className="wrapperModalChecklists">
-                <div className="headerModal">
-                    <p className="pHeaderModal">CHECKLIST</p>
-                    <FontAwesomeIcon className="iconClose" icon={faClose} onClick={onClose} style={{ cursor: 'pointer' }} color="red" size="3x" />
-                </div>
+                
+                            <div className="headerModal">
+                                <p className="pHeaderModal">CHECKLIST {}</p>
+                                <FontAwesomeIcon className="iconClose" icon={faClose} onClick={onClose} style={{ cursor: 'pointer' }} color="red" size="3x" />
+                            </div>
 
+                        
                 <table>
                     <tr>
                         <th>Tipo de erro</th>
