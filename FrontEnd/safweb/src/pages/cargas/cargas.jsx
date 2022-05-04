@@ -17,18 +17,10 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
 
 export default function ListarCarga() {
+
     const [ListaCarga, setListaCarga] = useState([]);
-
+    
     const notyf = new Notyf();
-
-    notyf.success({
-        message: 'Carga excluída com êxito',
-        duration: 1000,
-        position: {
-            x: 'right',
-            y: 'top',
-        }
-    })
 
     function buscarCarga() {
         axios('http://backend-saf-api.azurewebsites.net/api/TipoCargas', {
@@ -48,16 +40,26 @@ export default function ListarCarga() {
         axios.delete('https://backend-saf-api.azurewebsites.net/' + idTipoCarga)
             .then(resposta => {
                 if (resposta.status === 204) {
-                    setListaCarga(resposta.data)
                     console.log('excluiu')
+                    notyf.success(
+                        {
+                            message: 'Carga excluída com êxito',
+                            duration: 1000,
+                            position: {
+                                x: 'right',
+                                y: 'top',
+                            }
+                        }
+                    );
                 }
             })
             .catch(erro => console.log(erro))
 
-            .then(buscarCarga());
+            .then(buscarCarga);
     };
 
-    useEffect(buscarCarga, ListaCarga);
+    useEffect(buscarCarga, [ListaCarga]);
+
 
     const [isModalVisible, setIsModalVisible] = useState(false);
 
