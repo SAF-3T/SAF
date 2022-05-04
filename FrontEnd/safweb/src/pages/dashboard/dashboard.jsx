@@ -132,16 +132,6 @@ function Dashboard() {
               <p className="pCadastrarCard">Usuario</p>
             </div>
           </div>{isModalUsuarioVisible ? (<ModalUsuarioDashboard onClose={() => setIsModalUsuarioVisible(false)}></ModalUsuarioDashboard>) : null}
-
-          <div className="card">
-            <div className="adicionarCard">
-              <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
-            <div className="textosCard">
-              <p className="pCadastrarCard">Cadastrar</p>
-              <p className="pCadastrarCard">Checklist</p>
-            </div>
-          </div>
-
         </div>
       </main >
     </div>

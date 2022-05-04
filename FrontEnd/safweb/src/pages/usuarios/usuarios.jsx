@@ -28,15 +28,30 @@ export default function ListarUsuarios() {
             .catch(erro => console.log(erro));
     };
 
+    function deletar(id) {
+        axios.delete('https://backend-saf-api.azurewebsites.net/api/Usuarios/Deletar' + id)
+            .then(resposta => {
+                if (resposta.status === 204) {
+                    setListaUsuarios(resposta.data)
+                        .then(buscarUsuarios());
+                        console.log('excluiu');
+                }
+            })
+            .catch(erro => console.log(erro))
+
+            .then(buscarUsuarios());
+    };
+
+
     useEffect(buscarUsuarios, []);
 
     const [isModalAddUsuarioVisible, setIsModalAddUsuarioVisible] = useState(false);
     const [isModalEditUsuarioVisible, setIsModalEditUsuarioVisible] = useState(false);
 
 
-    const [Busca, setBusca] = useState([]);
+    // const [Busca, setBusca] = useState([]);
 
-    const filtrarParametros = ListaUsuarios.filter((ListaUsuarios) => ListaUsuarios)
+    // const filtrarParametros = ListaUsuarios.filter((ListaUsuarios) => ListaUsuarios)
 
     return (
         <div>
@@ -56,11 +71,9 @@ export default function ListarUsuarios() {
                         </button>{isModalAddUsuarioVisible ? (<ModalAddUsuario onClose={() => setIsModalAddUsuarioVisible(false)}></ModalAddUsuario>) : null}
 
                         <div className="input-e-btn-2">
-                            <input className='inputBusca' type="text" value={Busca} onChange={(event) => setBusca(event.target.value)} placeholder="Pesquisar" />
+                            <input className='inputBusca' type="text"/>
                             <button className='btnBuscar' type='submit'><p>Buscar</p></button>
 
-                            {
-                                filtrarParametros.map((ListaUsuarios) => (
                                     <div className="cardUsuario" key={ListaUsuarios}>
                                         <div className="conteudoUsuario">
                                             <div className="alinharEtiquetasUsuarios">
@@ -77,9 +90,7 @@ export default function ListarUsuarios() {
                                             </div>
                                         </div>
                                     </div>
-                                )
-                                )
-                            }
+                                
                         </div>
                     </div>
 
@@ -124,7 +135,9 @@ export default function ListarUsuarios() {
                                         </div>
                                         <div className="iconesEtiquetaUsuarios">
                                             <FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} style={{ cursor: 'pointer' }} onClick={() => setIsModalEditUsuarioVisible(true)} size="2x" />{isModalEditUsuarioVisible ? (<ModalEditUsuario onClose={() => setIsModalEditUsuarioVisible(false)}></ModalEditUsuario>) : null}
-                                            <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
+                                            <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x"
+                                                
+                                            />
                                         </div>
                                     </div>
                                 </div>

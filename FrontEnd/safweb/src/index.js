@@ -14,7 +14,7 @@ import Login from './pages/login/login';
 import Veiculos from './pages/veiculos/veiculos';
 import Usuarios from './pages/usuarios/usuarios';
 import Carrocerias from './pages/carrocerias/carroceria';
-import Cargas from './pages/cargas/cargas';
+import ListarCarga from './pages/cargas/cargas';
 import Checklists from './pages/checklists/checklist';
 
 import reportWebVitals from './reportWebVitals';
@@ -39,7 +39,7 @@ const routing = (
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/veiculos" component={Veiculos} />
         <Route path="/carrocerias" component={Carrocerias} />
-        <Route path="/cargas" component={Cargas} />
+        <Route path="/cargas" component={ListarCarga} />
         <Route path="/usuarios" component={Usuarios} />
         <Route path="/checklists" component={Checklists} />
       </Switch>
