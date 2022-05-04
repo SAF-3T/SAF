@@ -40,8 +40,6 @@ import {
         console.warn(this.nomeU)
     }
 
-    mudarPara
-
     componentDidMount() { this.buscarInfosUsuario() }
 
       render() {
@@ -59,7 +57,7 @@ import {
                         </TouchableOpacity>
                     </View>
                     <View style={styles.container2buttons}>
-                        <TouchableOpacity style={styles.buttonBackground}>
+                        <TouchableOpacity onPress={() =>(this.props.navigation.navigate('Checkin'))} style={styles.buttonBackground}>
                             <Text style={styles.buttonText}>Check-in</Text>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() =>(this.props.navigation.navigate('Contatos'))} style={styles.buttonBackground}>

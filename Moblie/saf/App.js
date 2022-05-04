@@ -13,6 +13,7 @@ import Login from './src/pages/Login'
 import Menu from './src/pages/Menu'
 import Contatos from './src/pages/Contatos'
 import BuscarVeiculos from './src/pages/BuscarVeiculo'
+import Checkin from './src/pages/Checkin'
 
 export default function App() {
 
@@ -25,6 +26,7 @@ export default function App() {
           <AuthStack.Screen name="Menu" component={Menu} />
           <AuthStack.Screen name="Contatos" component={Contatos} />
           <AuthStack.Screen name="BuscarVeiculos" component={BuscarVeiculos} />
+          <AuthStack.Screen name="Checkin" component={Checkin} />
         </AuthStack.Navigator>
       </NavigationContainer>
     )
