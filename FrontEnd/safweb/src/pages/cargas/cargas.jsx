@@ -6,13 +6,11 @@ import Sidebar3 from '../../components/sidebars/sidebar3';
 import Footer from '../../components/footer';
 
 import Modal from '../cargas/modal/modalCargas';
-import ModalEdit from '../cargas/modalEdit/modalEditCargas';
 
 import './cargas.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
-import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
 
 export default function ListarCarga() {
@@ -47,7 +45,6 @@ export default function ListarCarga() {
     useEffect(buscarCarga, []);
 
     const [isModalVisible, setIsModalVisible] = useState(false);
-    const [ListaModalEditCargas, setListaModalEditCargas] = useState(false);
 
 
     return (

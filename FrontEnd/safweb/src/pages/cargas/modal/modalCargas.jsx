@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import axios from 'axios';
 
@@ -16,11 +16,11 @@ const Modal = ({ onClose = () => { } }) => {
         event.preventDefault();
 
         axios.post('http://localhost:5000/api/TipoCargas', {
-            nomeTipoCarga: Carga
+            nomeTipoCarga : Carga
         }
             .then(resposta => {
                 if (resposta.status === 201) {
-                    console.log('Consulta agendada com sucesso!')
+                    console.log('Carga cadastrada')
                     setCarga('');
                 }
             })
@@ -36,12 +36,12 @@ const Modal = ({ onClose = () => { } }) => {
                     <p className="pHeaderModal">CADASTRO DE CARGA</p>
                     <FontAwesomeIcon className="iconClose" icon={faClose} onClick={onClose} style={{ cursor: 'pointer' }} color="red" size="3x" />
                 </div>
-                <form className="conteudosCargas" onSubmit={CadastrarCarga}>
-                    <div className='conteudoCarga'>
+                <div className="conteudosCargas">
+                    <form className='conteudoCarga' onSubmit={CadastrarCarga}>
                         <input required type='text' className='inputCarga' placeholder='Tipo de carga' value={Carga} onChange={event => setCarga(event.target.value)}  />
-                        <button className='btn_cadastroCarga' type='submit'><p className='pBtnCadastroCarga' >Cadastrar</p></button>
-                    </div>
-                </form>
+                        <button className='btn_cadastroCarga' type='submit' onClick={onClose}><p className='pBtnCadastroCarga' >Cadastrar</p></button>
+                    </form>
+                </div>
             </div>
         </div >
     );

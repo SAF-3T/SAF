@@ -33,6 +33,11 @@ export default function ListarUsuarios() {
     const [isModalAddUsuarioVisible, setIsModalAddUsuarioVisible] = useState(false);
     const [isModalEditUsuarioVisible, setIsModalEditUsuarioVisible] = useState(false);
 
+
+    const [Busca, setBusca] = useState([]);
+
+    const filtrarParametros = ListaUsuarios.filter((ListaUsuarios) => ListaUsuarios)
+
     return (
         <div>
             <Sidebar4 />
@@ -51,8 +56,30 @@ export default function ListarUsuarios() {
                         </button>{isModalAddUsuarioVisible ? (<ModalAddUsuario onClose={() => setIsModalAddUsuarioVisible(false)}></ModalAddUsuario>) : null}
 
                         <div className="input-e-btn-2">
-                            <input className='inputBusca' type="text" placeholder="Pesquisar" />
+                            <input className='inputBusca' type="text" value={Busca} onChange={(event) => setBusca(event.target.value)} placeholder="Pesquisar" />
                             <button className='btnBuscar' type='submit'><p>Buscar</p></button>
+
+                            {
+                                filtrarParametros.map((ListaUsuarios) => (
+                                    <div className="cardUsuario" key={ListaUsuarios}>
+                                        <div className="conteudoUsuario">
+                                            <div className="alinharEtiquetasUsuarios">
+                                                <div className="imgUsuario" />
+                                                <div className="etiquetasUsuarios">
+                                                    <div className="etiquetaUsuario">
+                                                        <p className="nomeEtiquetaUsuario">{ListaUsuarios}</p>
+                                                    </div>
+                                                </div>
+                                                <div className="iconesEtiquetaUsuarios">
+                                                    <FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} style={{ cursor: 'pointer' }} onClick={() => setIsModalEditUsuarioVisible(true)} size="2x" />{isModalEditUsuarioVisible ? (<ModalEditUsuario onClose={() => setIsModalEditUsuarioVisible(false)}></ModalEditUsuario>) : null}
+                                                    <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )
+                                )
+                            }
                         </div>
                     </div>
 
@@ -96,7 +123,7 @@ export default function ListarUsuarios() {
                                             </div>
                                         </div>
                                         <div className="iconesEtiquetaUsuarios">
-                                            <FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} style={{cursor: 'pointer'}} onClick={() => setIsModalEditUsuarioVisible(true)}  size="2x"  />{isModalEditUsuarioVisible ? (<ModalEditUsuario onClose={() => setIsModalEditUsuarioVisible(false)}></ModalEditUsuario>) : null}
+                                            <FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} style={{ cursor: 'pointer' }} onClick={() => setIsModalEditUsuarioVisible(true)} size="2x" />{isModalEditUsuarioVisible ? (<ModalEditUsuario onClose={() => setIsModalEditUsuarioVisible(false)}></ModalEditUsuario>) : null}
                                             <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
                                         </div>
                                     </div>
@@ -106,9 +133,9 @@ export default function ListarUsuarios() {
                         })
                     }
                 </div>
-            </main>
+            </main >
 
             <Footer />
-        </div>
+        </div >
     );
 };
