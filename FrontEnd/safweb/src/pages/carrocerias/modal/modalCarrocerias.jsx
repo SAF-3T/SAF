@@ -36,15 +36,14 @@ const Modal = ({ onClose = () => { } }) => {
         event.preventDefault();
 
         axios.post('http://backend-saf-api.azurewebsites.net/api/Carroceria', {
-            idTipoCarga : 6,
+            idTipoCarga: 6,
             idTipoCarroceria: NovoIdTipoCarroceria,
-            cubagem: NovaCubagem,
-            peso: NovoPeso
+            cubagem: NovaCubagem + 'm³',
+            peso: NovoPeso + 'kg'
         })
             .then((resposta) => {
                 if (resposta.status === 201) {
-                    console.log('cadastro porra');
-                    setNovaCubagem ('');
+                    setNovaCubagem('');
                     setNovoPeso('');
                     notyf.success(
                         {
@@ -57,10 +56,6 @@ const Modal = ({ onClose = () => { } }) => {
                         }
                     );
                     onClose()
-                }
-                if(resposta.status != 201)
-                {
-                    console.log("aaa")
                 }
             })
 
@@ -79,7 +74,7 @@ const Modal = ({ onClose = () => { } }) => {
                     <form className='conteudoCarroceriaModal' onSubmit={CadastrarCarroceria}>
                         <div className="inputsCarroceria" >
                             <select className='inputSelect' type='text' placeholder="Tipo de carroceria" name='carroceria' required onChange={(e) => setNovoIdTipoCarroceria(e.target.value)}>
-                            <option value='0' disabled selected >Tipo da carroceria</option>
+                                <option value='0' disabled selected >Tipo da carroceria</option>
                                 {ListarCarroceria.map((tipo) => {
                                     return (
                                         <option value={tipo.idTipoCarroceria}>
