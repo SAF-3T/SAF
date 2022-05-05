@@ -31,21 +31,39 @@ export default function Header() {
 
                     // Formata em JSON
                     const formatoEmJSON = JSON.stringify(listaDeUsuarios)
+                    console.log(formatoEmJSON)
 
-                    // Identificar cargo do usuário 
-                    const cargoUsuario = formatoEmJSON.split(',')[10].split(':')[1].replace('"', "").split('"')[0]
-                    setCargoUsuario(cargoUsuario)
+                    let tamanhoArray = formatoEmJSON.split(',').length
 
-                    //Identificar Imagem usuario
-                    const imagemUsuario = formatoEmJSON.split(',')[2].split(':')[1].replace('"', "").split('"')[0]
-                    setImagemUsuario(imagemUsuario);
+                    //Caso não tenha foto
+                    if (tamanhoArray === 13) {
+                        // Identificar cargo do usuário 
+                        const nomeUsuario = formatoEmJSON.split(',')[2].split(':')[1].replace('"', "").split('"')[0]
+                        setNomeUsuario(nomeUsuario)
 
-                    //Buscar nome do Usuário
-                    const nomeUsuario = formatoEmJSON.split(',')[3].split(':')[1].replace('"', "").split('"')[0]
-                    setNomeUsuario(nomeUsuario);
-                    // Buscar nome do usuário 
-                    //var nomeUsuario = formatoEmJSON.split(',')[2].split(':')[1].replace('"', "").split('"')[0]
-                    //setNomeUsuario(nomeUsuario)
+                        //ImagemUsuario
+                        setImagemUsuario('Perfilpadrao.jpg')
+
+                        //Buscar nome do Usuário
+                        const cargo = formatoEmJSON.split(',')[9].split(':')[1].replace('"', "").split('"')[0]
+                        setCargoUsuario(cargo);
+                    }
+                    //Caso tenha foto
+                    else {
+                        const nomeUsuario = formatoEmJSON.split(',')[3].split(':')[1].replace('"', "").split('"')[0]
+                        console.log(nomeUsuario)
+                        setNomeUsuario(nomeUsuario)
+
+                        //Identificar Imagem usuario
+                        const imagemUsuario = formatoEmJSON.split(',')[2].split(':')[1].replace('"', "").split('"')[0]
+                        console.log(imagemUsuario);
+                        setImagemUsuario(imagemUsuario);
+
+                        //Buscar nome do Usuário
+                        const cargoUsuario = formatoEmJSON.split(',')[10].split(':')[1].replace('"', "").split('"')[0]
+                        console.log(cargoUsuario)
+                        setCargoUsuario(cargoUsuario);
+                    }
                 }
             })
             .catch(erro => console.log(erro));
@@ -60,7 +78,9 @@ export default function Header() {
 
             <p className="pBemVindo">Bem vindo, {NomeUsuario}!</p>
             <div className="usuarioHeaderDashboard">
-                <a className="linkImagemUsuario" href="#"><img src={"http://backend-saf-api.azurewebsites.net/Img/" + ImagemUsuario} className="imagemUsuario" /></a>
+                <a className="linkImagemUsuario" href="#">
+                    <img src={"http://backend-saf-api.azurewebsites.net/Img/" + ImagemUsuario} className="imagemUsuario" />
+                </a>
                 <div className="linksUsuario">
                     <p className="pNomeUsuario">{NomeUsuario}</p>
                     <p className="pCargoUsuario">{CargoUsuario}</p>
