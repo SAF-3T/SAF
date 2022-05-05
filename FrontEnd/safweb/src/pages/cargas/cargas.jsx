@@ -40,7 +40,7 @@ export default function ListarCarga() {
 
             axios.delete('https://backend-saf-api.azurewebsites.net/' + idTipoCarga)
                 .then(resposta => {
-                    if (resposta.status === 200) {
+                    if (resposta.status === 204) {
                         console.log('excluiu')
                         notyf.success(
                             {

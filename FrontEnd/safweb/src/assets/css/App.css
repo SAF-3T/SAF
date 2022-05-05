@@ -34,11 +34,15 @@ header {
   background-size: cover;
 }
 
+.linkImagemUsuario{
+  width: 80px;
+  height: 80px;
+}
+
 .imagemUsuario {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background-color: #C4C4C4;
+  width: 100%;
+  height: 100%;
+  border-radius: 75px;
 }
 
 .imagemFooter {

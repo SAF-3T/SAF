@@ -18,11 +18,11 @@ const Modal = ({ onClose = () => { } }) => {
 
     const notyf = new Notyf();
 
-    function CadastrarCarga(event) {
+   async function CadastrarCarga(event) {
 
         event.preventDefault();
 
-        axios('http://backend-saf-api.azurewebsites.net/VerificaDisponibilidadeNome/' + NovaCarga)
+        await axios('http://backend-saf-api.azurewebsites.net/VerificaDisponibilidadeNome/' + NovaCarga)
             .then(response => {
                 setDisponibilidade(response.data)
             })

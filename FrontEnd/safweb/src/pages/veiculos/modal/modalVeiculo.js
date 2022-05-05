@@ -127,21 +127,21 @@ function AdicionarVeiculo() {
     useEffect(BuscarForms, BuscarUsuario, []);
 
     return (
-        <div className="modal">
-            <div className="wrapperModal">
+        <div className="modalVeiculoDashboard">
+            <div className="wrapperModalVeiculoDashboard">
                 <div className="headerModal">
                     <p className="pHeaderModal">CADASTRO DE VEÍCULO</p>
                     <FontAwesomeIcon onClick={onClose} className="iconClose" icon={faClose} style={{ cursor: 'pointer' }} color="red" size="3x" />
                 </div>
                 <div className="conteudos">
                     <div className="conteudo">
-                        <div className='imgCadastrar'><FontAwesomeIcon icon={faImage} color="white" size="5x" /></div>
+                        <div className='imgCadastrarVeiculoDashboard'><FontAwesomeIcon icon={faImage} color="white" size="5x" /></div>
 
-                        <form method="post" encType="multipart/form-data" className='formularioCadastro' onSubmit={AdicionarVeiculo}>
+                        <form method="post" encType="multipart/form-data" className='formularioCadastroVeiculoDashboard' onSubmit={AdicionarVeiculo}>
                             <div className='juntaInputs'>
                                 <div className='inputs-esq'>
-                                    <input className='inputVeiculo' type='text' placeholder="ABC-1234" name='placa' maxlength="8" onChange={(e) => setPlaca(e.target.value)} />
-                                    <select className='inputVeiculo selects' type='text' name='Marcas' placeholder='Marca' onChange={(e) => setMarca(e.target.value)}>
+                                    <input className='inputVeiculoDashboard' type='text' placeholder="ABC-1234" name='placa' maxlength="8" onChange={(e) => setPlaca(e.target.value)} />
+                                    <select className='inputVeiculoDashboard selects' type='text' name='Marcas' placeholder='Marca' onChange={(e) => setMarca(e.target.value)}>
                                         <option value='0' disabled selected >Marca</option>
                                         {Marcas.map((marca) => {
                                             return (
@@ -151,8 +151,8 @@ function AdicionarVeiculo() {
                                             )
                                         })}
                                     </select>
-                                    <input className='inputVeiculo' type='date' name='data' placeholder='Data de aquisição' onChange={(e) => setData(e.target.value)} />
-                                    <select className='inputVeiculo selects' type='text' name='Status' placeholder='Status' required onChange={(e) => setStatus(e.target.value)}>
+                                    <input className='inputVeiculoDashboard' type='date' name='data' placeholder='Data de aquisição' onChange={(e) => setData(e.target.value)} />
+                                    <select className='inputVeiculoDashboard selects' type='text' name='Status' placeholder='Status' required onChange={(e) => setStatus(e.target.value)}>
                                         <option value='0' disabled selected>Status</option>
                                         {TipoStatus.map((status) => {
                                             return (
@@ -164,7 +164,7 @@ function AdicionarVeiculo() {
                                     </select>
                                 </div>
                                 <div className='inputs-dir'>
-                                    <select className='inputVeiculo selects' type='text' name='TipoVeiculo' required onChange={(e) => setTipoVeiculo(e.target.value)}>
+                                    <select className='inputVeiculoDashboard selects' type='text' name='TipoVeiculo' required onChange={(e) => setTipoVeiculo(e.target.value)}>
                                         <option value='0' disabled selected>Tipo de veículo</option>
                                         {TipoVeiculos.map((tipoVeiculo) => {
                                             return (
@@ -174,7 +174,7 @@ function AdicionarVeiculo() {
                                             )
                                         })}
                                     </select>
-                                    <select className='inputVeiculo selects' type='text' name='carroceria' required onChange={(e) => setIdCarroceria(e.target.value)}>
+                                    <select className='inputVeiculoDashboard selects' type='text' name='carroceria' required onChange={(e) => setIdCarroceria(e.target.value)}>
                                         <option value='0' disabled selected>Carroceria</option>
                                         {Carrocerias.map((carroceria) => {
                                             return (
@@ -184,7 +184,7 @@ function AdicionarVeiculo() {
                                             )
                                         })}
                                     </select>
-                                    <select className='inputVeiculo selects' type='text' name='TipoCargas' required onChange={(e) => setCarga(e.target.value)}>
+                                    <select className='inputVeiculoDashboard selects' type='text' name='TipoCargas' required onChange={(e) => setCarga(e.target.value)}>
                                         <option value='0' disabled selected>Carga</option>
                                         {TiposCargas.map((tipo) => {
                                             return (
@@ -194,7 +194,7 @@ function AdicionarVeiculo() {
                                             )
                                         })}
                                     </select>
-                                    <button onClick={(e) => AdicionarVeiculo(e)} className='btn_cadastro' type='submit'><p className='pCadastro'>Cadastrar</p></button>
+                                    <button onClick={(e) => AdicionarVeiculo(e)} className='btn_cadastro_Dashboard' type='submit'><p className='pCadastro'>Cadastrar</p></button>
                                 </div>
                             </div>
                         </form>

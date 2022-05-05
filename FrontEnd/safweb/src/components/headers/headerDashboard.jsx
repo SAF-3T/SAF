@@ -12,6 +12,7 @@ export default function Header() {
 
     const [NomeUsuario, setNomeUsuario] = useState([]);
     const [CargoUsuario, setCargoUsuario] = useState([]);
+    const [ImagemUsuario, setImagemUsuario] = useState('');
 
     function buscarUsuarios() {
 
@@ -20,7 +21,6 @@ export default function Header() {
 
         // Descriptografa token
         const tokenDescriptografado = window.atob(armazenaToken).split(',')[2].split('"')[3];
-
 
         axios('http://backend-saf-api.azurewebsites.net/api/Usuarios/BuscarPorId/' + tokenDescriptografado)
             .then(response => {
@@ -31,14 +31,21 @@ export default function Header() {
 
                     // Formata em JSON
                     const formatoEmJSON = JSON.stringify(listaDeUsuarios)
-                    
+
                     // Identificar cargo do usuário 
-                    const cargoUsuario = formatoEmJSON.split(',')[9].split(':')[1].replace('"', "").split('"')[0]
+                    const cargoUsuario = formatoEmJSON.split(',')[10].split(':')[1].replace('"', "").split('"')[0]
                     setCargoUsuario(cargoUsuario)
 
+                    //Identificar Imagem usuario
+                    const imagemUsuario = formatoEmJSON.split(',')[2].split(':')[1].replace('"', "").split('"')[0]
+                    setImagemUsuario(imagemUsuario);
+
+                    //Buscar nome do Usuário
+                    const nomeUsuario = formatoEmJSON.split(',')[3].split(':')[1].replace('"', "").split('"')[0]
+                    setNomeUsuario(nomeUsuario);
                     // Buscar nome do usuário 
-                    var nomeUsuario = formatoEmJSON.split(',')[2].split(':')[1].replace('"', "").split('"')[0]
-                    setNomeUsuario(nomeUsuario)
+                    //var nomeUsuario = formatoEmJSON.split(',')[2].split(':')[1].replace('"', "").split('"')[0]
+                    //setNomeUsuario(nomeUsuario)
                 }
             })
             .catch(erro => console.log(erro));
@@ -53,7 +60,7 @@ export default function Header() {
 
             <p className="pBemVindo">Bem vindo, {NomeUsuario}!</p>
             <div className="usuarioHeaderDashboard">
-                <a href="#"><img src={"http://backend-saf-api.azurewebsites.net/StaticFiles/Images/61508814-9508-414f-9f94-cc84a0a045f3.png"} className="imagemUsuario"/></a>
+                <a className="linkImagemUsuario" href="#"><img src={"http://backend-saf-api.azurewebsites.net/Img/" + ImagemUsuario} className="imagemUsuario" /></a>
                 <div className="linksUsuario">
                     <p className="pNomeUsuario">{NomeUsuario}</p>
                     <p className="pCargoUsuario">{CargoUsuario}</p>
