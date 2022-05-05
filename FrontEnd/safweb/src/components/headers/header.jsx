@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
 // import axios from "axios";
 
@@ -6,20 +6,18 @@ import { Link } from 'react-router-dom';
 
 import '../../assets/css/App.css';
 
-class Header extends Component {
+export default function Header() {
 
-    render() {
-        return (
-            <div>
-                <header>
-                    <div className="wrapper">
-                        <Link to="/dashboard"><div className="imagemLogo"></div></Link>
-                        <a href="#"><div className="imagemUsuario"></div></a>
-                    </div>
-                </header>
-            </div>
-        );
-    }
+    const [ImagemUsuario, setImagemUsuario] = useState('');
+
+    return (
+        <div>
+            <header>
+                <div className="wrapper">
+                    <Link to="/dashboard"><div className="imagemLogo"></div></Link>
+                    <img src={"http://backend-saf-api.azurewebsites.net/Img/" + ImagemUsuario} className="imagemUsuario" />
+                </div>
+            </header>
+        </div>
+    );
 }
-
-export default Header;
