@@ -33,8 +33,7 @@ export default function ListarUsuarios() {
             .then(resposta => {
                 if (resposta.status === 204) {
                     setListaUsuarios(resposta.data)
-                        .then(buscarUsuarios());
-                        console.log('excluiu');
+                    console.log('excluiu');
                 }
             })
             .catch(erro => console.log(erro))
@@ -48,11 +47,6 @@ export default function ListarUsuarios() {
     const [isModalAddUsuarioVisible, setIsModalAddUsuarioVisible] = useState(false);
     const [isModalEditUsuarioVisible, setIsModalEditUsuarioVisible] = useState(false);
 
-
-    // const [Busca, setBusca] = useState([]);
-
-    // const filtrarParametros = ListaUsuarios.filter((ListaUsuarios) => ListaUsuarios)
-
     return (
         <div>
             <Sidebar4 />
@@ -63,34 +57,34 @@ export default function ListarUsuarios() {
                     <p className="pUsuario">Usuários</p>
 
                     <div className="input-e-btn">
-                        <button className='btnAddUsuario' type='submit' onClick={() => setIsModalAddUsuarioVisible(true)}>
+                        <button className='btnAddUsuario' type='submit' >
                             <div className="conteudoBtnAddUsuario">
                                 <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" />
                                 <p className="pAddUsuario">Novo usuário</p>
                             </div>
-                        </button>{isModalAddUsuarioVisible ? (<ModalAddUsuario onClose={() => setIsModalAddUsuarioVisible(false)}></ModalAddUsuario>) : null}
+                        </button>
 
                         <div className="input-e-btn-2">
-                            <input className='inputBusca' type="text"/>
+                            <input className='inputBusca' type="text" />
                             <button className='btnBuscar' type='submit'><p>Buscar</p></button>
 
-                                    <div className="cardUsuario" key={ListaUsuarios}>
-                                        <div className="conteudoUsuario">
-                                            <div className="alinharEtiquetasUsuarios">
-                                                <div className="imgUsuario" />
-                                                <div className="etiquetasUsuarios">
-                                                    <div className="etiquetaUsuario">
-                                                        <p className="nomeEtiquetaUsuario">{ListaUsuarios}</p>
-                                                    </div>
-                                                </div>
-                                                <div className="iconesEtiquetaUsuarios">
-                                                    <FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} style={{ cursor: 'pointer' }} onClick={() => setIsModalEditUsuarioVisible(true)} size="2x" />{isModalEditUsuarioVisible ? (<ModalEditUsuario onClose={() => setIsModalEditUsuarioVisible(false)}></ModalEditUsuario>) : null}
-                                                    <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
-                                                </div>
+                            <div className="cardUsuario" key={ListaUsuarios}>
+                                <div className="conteudoUsuario">
+                                    <div className="alinharEtiquetasUsuarios">
+                                        <div className="imgUsuario" />
+                                        <div className="etiquetasUsuarios">
+                                            <div className="etiquetaUsuario">
+                                                <p className="nomeEtiquetaUsuario">{ListaUsuarios}</p>
                                             </div>
                                         </div>
+                                        <div className="iconesEtiquetaUsuarios">
+                                            <FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} style={{ cursor: 'pointer' }} size="2x" />
+                                            <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
+                                        </div>
                                     </div>
-                                
+                                </div>
+                            </div>
+
                         </div>
                     </div>
 
@@ -120,7 +114,7 @@ export default function ListarUsuarios() {
                                 <div className="cardUsuario">
                                     <div className="conteudoUsuario">
                                         <div className="alinharEtiquetasUsuarios">
-                                            <div className="imgUsuario" />
+                                            {/* <div className="imgUsuario" /> */}
                                             <div className="etiquetasUsuarios">
                                                 <div className="etiquetaUsuario">
                                                     <p className="nomeEtiquetaUsuario">{usuario.nome}</p>
@@ -134,20 +128,16 @@ export default function ListarUsuarios() {
                                             </div>
                                         </div>
                                         <div className="iconesEtiquetaUsuarios">
-                                            <FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} style={{ cursor: 'pointer' }} onClick={() => setIsModalEditUsuarioVisible(true)} size="2x" />{isModalEditUsuarioVisible ? (<ModalEditUsuario onClose={() => setIsModalEditUsuarioVisible(false)}></ModalEditUsuario>) : null}
-                                            <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x"
-                                                
-                                            />
+                                            <FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} style={{ cursor: 'pointer' }} size="2x" />
+                                            <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
                                         </div>
                                     </div>
                                 </div>
                             )
-
                         })
                     }
                 </div>
             </main >
-
             <Footer />
         </div >
     );
