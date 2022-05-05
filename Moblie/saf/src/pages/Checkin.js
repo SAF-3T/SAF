@@ -36,6 +36,13 @@ import {
 
         };
     }
+    cadastrarCheckIn = async() => {
+        if (this.estadoFreio && this.estadoMotor && this.estadoPneus && this.estadoRodas && this.estadoTransmissao && this.combustivel)    
+        {
+            
+        }
+
+    }
 
     buscarInfosUsuario = async() => {
         const token = await AsyncStorage.getItem('userToken')
@@ -51,6 +58,7 @@ import {
         this.setState({ funcaoU: resposta.data.idTipoUsuarioNavigation.nomeTipoUsuario })
 
         console.warn(this.nomeU)
+        console.warn(this.idVeiculo)
     }
 
     buscarInfosVeiculos = async() => {
@@ -62,6 +70,11 @@ import {
         this.setState({ placaVeiculo : resposta.data.placa })
         this.setState({ statusVeiculo : resposta.data.idStatusNavigation.nomeStatus })
         console.warn(resposta.data)
+        console.warn('Buscou veículos')
+    }
+    
+    mudarTruePneus = async() => {
+        this.setState({ })
     }
 
     componentDidMount() { this.buscarInfosUsuario(), this.buscarInfosVeiculos() }
@@ -83,11 +96,17 @@ import {
                                     <Text style={styles.textItem}>Pneus</Text>
                                 </View>
                                 <View style={styles.containerDivisaoItens}>
-                                    <TouchableOpacity>
-                                        <Image style={styles.icon} source={require('../../assets/img/certo.png')} />
+                                    <TouchableOpacity onPress={() => this.setState({estadoPneus : true}),() => this.estadoPneus = true}>
+                                        {this.estadoPneus?
+                                            <Image style={styles.icon} source={require('../../assets/img/certo.png')} /> :
+                                            <Image style={styles.icon} source={require('../../assets/img/certoApagado.png')} />
+                                        }
                                     </TouchableOpacity>
-                                    <TouchableOpacity>
-                                        <Image style={styles.icon} source={require('../../assets/img/x.png')} />    
+                                    <TouchableOpacity onPress={() => this.setState({estadoPneus : false}), () => this.estadoPneus = false}>
+                                        {this.estadoPneus?
+                                            <Image style={styles.icon} source={require('../../assets/img/xApagado.png')} /> :
+                                            <Image style={styles.icon} source={require('../../assets/img/x.png')} />
+                                        }    
                                     </TouchableOpacity>
                                     <TouchableOpacity>
                                         <Image style={styles.icon} source={require('../../assets/img/clip.png')} /> 
@@ -99,11 +118,17 @@ import {
                                     <Text style={styles.textItem}>Pastilhas de freio</Text>
                                 </View>
                                 <View style={styles.containerDivisaoItens}>
-                                    <TouchableOpacity>
-                                        <Image style={styles.icon} source={require('../../assets/img/certo.png')} />
+                                    <TouchableOpacity onPress={() => this.setState({estadoFreio : true})}>
+                                        {this.estadoFreio?
+                                            <Image style={styles.icon} source={require('../../assets/img/certo.png')} /> :
+                                            <Image style={styles.icon} source={require('../../assets/img/certoApagado.png')} />
+                                        }
                                     </TouchableOpacity>
-                                    <TouchableOpacity>
-                                        <Image style={styles.icon} source={require('../../assets/img/x.png')} />    
+                                    <TouchableOpacity onPress={() => this.setState({estadoFreio : false})}>
+                                        {this.estadoFreio?
+                                            <Image style={styles.icon} source={require('../../assets/img/xApagado.png')} /> :
+                                            <Image style={styles.icon} source={require('../../assets/img/x.png')} />
+                                        }    
                                     </TouchableOpacity>
                                     <TouchableOpacity>
                                         <Image style={styles.icon} source={require('../../assets/img/clip.png')} /> 
@@ -115,11 +140,17 @@ import {
                                     <Text style={styles.textItem}>Motor</Text>
                                 </View>
                                 <View style={styles.containerDivisaoItens}>
-                                    <TouchableOpacity>
-                                        <Image style={styles.icon} source={require('../../assets/img/certo.png')} />
+                                    <TouchableOpacity onPress={() => this.setState({estadoMotor : true})}>
+                                        {this.estadoMotor?
+                                            <Image style={styles.icon} source={require('../../assets/img/certo.png')} /> :
+                                            <Image style={styles.icon} source={require('../../assets/img/certoApagado.png')} />
+                                        }
                                     </TouchableOpacity>
-                                    <TouchableOpacity>
-                                        <Image style={styles.icon} source={require('../../assets/img/x.png')} />    
+                                    <TouchableOpacity onPress={() => this.setState({estadoMotor : false})}>
+                                        {this.estadoMotor?
+                                            <Image style={styles.icon} source={require('../../assets/img/xApagado.png')} /> :
+                                            <Image style={styles.icon} source={require('../../assets/img/x.png')} />
+                                        }   
                                     </TouchableOpacity>
                                     <TouchableOpacity>
                                         <Image style={styles.icon} source={require('../../assets/img/clip.png')} /> 
@@ -131,11 +162,17 @@ import {
                                     <Text style={styles.textItem}>Trasmissão</Text>
                                 </View>
                                 <View style={styles.containerDivisaoItens}>
-                                    <TouchableOpacity>
-                                        <Image style={styles.icon} source={require('../../assets/img/certo.png')} />
+                                    <TouchableOpacity onPress={() => this.setState({estadoTransmissao : true})}>
+                                        {this.estadoTransmissao?
+                                            <Image style={styles.icon} source={require('../../assets/img/certo.png')} /> :
+                                            <Image style={styles.icon} source={require('../../assets/img/certoApagado.png')} />
+                                        }
                                     </TouchableOpacity>
-                                    <TouchableOpacity>
-                                        <Image style={styles.icon} source={require('../../assets/img/x.png')} />    
+                                    <TouchableOpacity onPress={() => this.setState({estadoTransmissao : false})}>
+                                        {this.estadoTransmissao?
+                                            <Image style={styles.icon} source={require('../../assets/img/xApagado.png')} /> :
+                                            <Image style={styles.icon} source={require('../../assets/img/x.png')} />
+                                        }    
                                     </TouchableOpacity>
                                     <TouchableOpacity>
                                         <Image style={styles.icon} source={require('../../assets/img/clip.png')} /> 
@@ -147,11 +184,17 @@ import {
                                     <Text style={styles.textItem}>Rodas</Text>
                                 </View>
                                 <View style={styles.containerDivisaoItens}>
-                                    <TouchableOpacity>
-                                        <Image style={styles.icon} source={require('../../assets/img/certo.png')} />
-                                    </TouchableOpacity>
-                                    <TouchableOpacity>
-                                        <Image style={styles.icon} source={require('../../assets/img/x.png')} />    
+                                    <TouchableOpacity onPress={() => this.setState({estadoRodas : true})}>
+                                        {this.estadoRodas?
+                                            <Image style={styles.icon} source={require('../../assets/img/certo.png')} /> :
+                                            <Image style={styles.icon} source={require('../../assets/img/certoApagado.png')} />
+                                        }
+                                    </TouchableOpacity >
+                                    <TouchableOpacity onPress={() => this.setState({estadoRodas : false})}>
+                                        {this.estadoRodas?
+                                            <Image style={styles.icon} source={require('../../assets/img/xApagado.png')} /> :
+                                            <Image style={styles.icon} source={require('../../assets/img/x.png')} />
+                                        }    
                                     </TouchableOpacity>
                                     <TouchableOpacity>
                                         <Image style={styles.icon} source={require('../../assets/img/clip.png')} /> 
@@ -163,20 +206,26 @@ import {
                                     <Text style={styles.textItem}>Tanques de combustível</Text>
                                 </View>
                                 <View style={styles.containerDivisaoItens}>
-                                    <TouchableOpacity>
-                                        <Image style={styles.icon} source={require('../../assets/img/certo.png')} />
+                                    <TouchableOpacity onPress={() => this.setState({combustivel : true})}>
+                                        {this.combustivel?
+                                            <Image style={styles.icon} source={require('../../assets/img/certo.png')} /> :
+                                            <Image style={styles.icon} source={require('../../assets/img/certoApagado.png')} />
+                                        }
                                     </TouchableOpacity>
-                                    <TouchableOpacity>
-                                        <Image style={styles.icon} source={require('../../assets/img/x.png')} />    
+                                    <TouchableOpacity onPress={() => this.setState({combustivel : false})}>
+                                        {this.combustivel?
+                                            <Image style={styles.icon} source={require('../../assets/img/xApagado.png')} /> :
+                                            <Image style={styles.icon} source={require('../../assets/img/x.png')} />
+                                        }   
                                     </TouchableOpacity>
-                                    <TouchableOpacity>
+                                    <TouchableOpacity >
                                         <Image style={styles.icon} source={require('../../assets/img/clip.png')} /> 
                                     </TouchableOpacity>                                  
                                 </View>
                             </View>
                         </View>
                         <View style={styles.containerBotao}>
-                            <TouchableOpacity style={styles.btnProsseguir}>
+                            <TouchableOpacity onPress={ () => this.cadastrarCheckIn()} style={styles.btnProsseguir}>
                                 <Text style={styles.btnText}>Prosseguir</Text>
                             </TouchableOpacity>
                         </View>
