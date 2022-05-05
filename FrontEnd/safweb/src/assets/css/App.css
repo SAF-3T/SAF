@@ -34,7 +34,7 @@ header {
   background-size: cover;
 }
 
-.linkImagemUsuario{
+.linkImagemUsuario {
   width: 80px;
   height: 80px;
 }
@@ -53,23 +53,6 @@ header {
   background-size: cover;
 }
 
-
-.wrapperFooter {
-  margin: 0 auto;
-  width: 22%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.wrapperFooter>p {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  font-size: 15px;
-  line-height: 24px;
-  color: #FFFFFF;
-}
-
 nav {
   height: calc(100vh);
   width: fit-content;
@@ -84,8 +67,8 @@ nav {
   background-color: white;
 }
 
-.link1:hover, .link2:hover{
-  border-right: 4px solid rgba(14, 117, 140, 0.5); 
+.link1:hover, .link2:hover {
+  border-right: 4px solid rgba(14, 117, 140, 0.5);
 }
 
 .links {
@@ -98,12 +81,62 @@ nav {
 }
 
 footer {
-  height: 87px;
+  height: 115px;
   background-color: #0E758C;
   margin: 0 auto;
   display: flex;
   align-items: center;
   width: 100%;
+}
+
+.wrapperFooter {
+  margin: 0 auto;
+  width: 40%;
+  height: fit-content;
+}
+
+.conteudoFooter>p {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 24px;
+  color: #FFFFFF;
+}
+
+.conteudoFooter {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.linkDireitoFooter {
+  display: flex;
+  justify-content: space-between;
+  width: 43%;
+  align-items: center;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 24px;
+  color: #FFFFFF;
+}
+
+.linkEsquerdoFooter {
+  display: flex;
+  justify-content: space-between;
+  width: 42%;
+  align-items: center;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 24px;
+  color: #FFFFFF;
+}
+
+.pLinkEsquerdoFooter {
+  cursor: pointer;
+  color: #FFFFFF;
 }
 
 .link2, .link1 {
@@ -237,10 +270,23 @@ footer {
   margin: 0 auto;
   width: 1100px;
   height: fit-content;
+  filter: drop-shadow(40px 42px 91px rgba(0, 0, 0, 0.25));
+  margin-bottom: 10%;
+}
+
+.cardsCima {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  filter: drop-shadow(40px 42px 91px rgba(0, 0, 0, 0.25));
+  flex-direction: row;
+}
+
+.cardsBaixo {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  flex-direction: row;
+  width: 100%;
 }
 
 .card {
@@ -263,7 +309,7 @@ footer {
   cursor: pointer;
 }
 
-.componentLink{
+.componentLink {
   text-decoration: unset;
 }
 

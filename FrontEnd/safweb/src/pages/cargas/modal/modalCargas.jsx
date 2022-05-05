@@ -18,7 +18,7 @@ const Modal = ({ onClose = () => { } }) => {
 
     const notyf = new Notyf();
 
-   async function CadastrarCarga(event) {
+    async function CadastrarCarga(event) {
 
         event.preventDefault();
 

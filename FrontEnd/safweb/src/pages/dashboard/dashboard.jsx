@@ -7,6 +7,7 @@ import axios from 'axios';
 
 import HeaderDashboard from '../../components/headers/headerDashboard';
 import Sidebar from '../../components/sidebars/sidebar';
+import Footer from '../../components/footer'
 
 import ModalVeiculoDashboard from '../veiculos/modalDashboard/modalVeiculoDashboard';
 import ModalTipoVeiculoDashboard from '../tipoVeiculos/modalDashboard/modalTipoVeiculosDashboard';
@@ -88,52 +89,58 @@ function Dashboard() {
         </section>
 
         <div className="wrapperCards">
-          <div className="card" onClick={() => setIsModalVeiculoVisible(true)}>
-            <div className="adicionarCard">
-              <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
-            <div className="textosCard">
-              <p className="pCadastrarCard">Cadastrar</p>
-              <p className="pCadastrarCard">Veículo</p>
-            </div>
-          </div>{isModalVeiculoVisible ? (<ModalVeiculoDashboard onClose={() => setIsModalVeiculoVisible(false)}></ModalVeiculoDashboard>) : null}
+          <div className="cardsCima">
+            <div className="card" onClick={() => setIsModalVeiculoVisible(true)}>
+              <div className="adicionarCard">
+                <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
+              <div className="textosCard">
+                <p className="pCadastrarCard">Cadastrar</p>
+                <p className="pCadastrarCard">Veículo</p>
+              </div>
+            </div>{isModalVeiculoVisible ? (<ModalVeiculoDashboard onClose={() => setIsModalVeiculoVisible(false)}></ModalVeiculoDashboard>) : null}
 
-          <div className="card" onClick={() => setIsModalTipoVeiculoVisible(true)}>
-            <div className="adicionarCard">
-              <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
-            <div className="textosCard">
-              <p className="pCadastrarCard">Cadastrar</p>
-              <p className="pCadastrarCard">Tipo de veículo</p>
-            </div>
-          </div>{isModalTipoVeiculoVisible ? (<ModalTipoVeiculoDashboard onClose={() => setIsModalTipoVeiculoVisible(false)}></ModalTipoVeiculoDashboard>) : null}
+            <div className="card" onClick={() => setIsModalTipoVeiculoVisible(true)}>
+              <div className="adicionarCard">
+                <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
+              <div className="textosCard">
+                <p className="pCadastrarCard">Cadastrar</p>
+                <p className="pCadastrarCard">Tipo de veículo</p>
+              </div>
+            </div>{isModalTipoVeiculoVisible ? (<ModalTipoVeiculoDashboard onClose={() => setIsModalTipoVeiculoVisible(false)}></ModalTipoVeiculoDashboard>) : null}
 
-          <div className="card" onClick={() => setIsModalCargaVisible(true)}>
-            <div className="adicionarCard">
-              <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
-            <div className="textosCard">
-              <p className="pCadastrarCard">Cadastrar</p>
-              <p className="pCadastrarCard">Carga</p>
-            </div>
-          </div>{isModalCargaVisible ? (<ModalCargaDashboard onClose={() => setIsModalCargaVisible(false)}></ModalCargaDashboard>) : null}
+            <div className="card" onClick={() => setIsModalCargaVisible(true)}>
+              <div className="adicionarCard">
+                <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
+              <div className="textosCard">
+                <p className="pCadastrarCard">Cadastrar</p>
+                <p className="pCadastrarCard">Carga</p>
+              </div>
+            </div>{isModalCargaVisible ? (<ModalCargaDashboard onClose={() => setIsModalCargaVisible(false)}></ModalCargaDashboard>) : null}
+          </div>
 
-          <div className="card" onClick={() => setIsModalCarroceriaVisible(true)}>
-            <div className="adicionarCard">
-              <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /></div>
-            <div className="textosCard">
-              <p className="pCadastrarCard">Cadastrar</p>
-              <p className="pCadastrarCard">Carroceria</p>
-            </div>
-          </div>{isModalCarroceriaVisible ? (<ModalCarroceriaDashboard onClose={() => setIsModalCarroceriaVisible(false)}></ModalCarroceriaDashboard>) : null}
+          <div className="cardsBaixo">
+            <div className="card" onClick={() => setIsModalCarroceriaVisible(true)}>
+              <div className="adicionarCard">
+                <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /></div>
+              <div className="textosCard">
+                <p className="pCadastrarCard">Cadastrar</p>
+                <p className="pCadastrarCard">Carroceria</p>
+              </div>
+            </div>{isModalCarroceriaVisible ? (<ModalCarroceriaDashboard onClose={() => setIsModalCarroceriaVisible(false)}></ModalCarroceriaDashboard>) : null}
 
-          <div className="card" onClick={() => setIsModalUsuarioVisible(true)}>
-            <div className="adicionarCard">
-              <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
-            <div className="textosCard">
-              <p className="pCadastrarCard">Cadastrar</p>
-              <p className="pCadastrarCard">Usuario</p>
-            </div>
-          </div>{isModalUsuarioVisible ? (<ModalUsuarioDashboard onClose={() => setIsModalUsuarioVisible(false)}></ModalUsuarioDashboard>) : null}
+            <div className="card" onClick={() => setIsModalUsuarioVisible(true)}>
+              <div className="adicionarCard">
+                <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
+              <div className="textosCard">
+                <p className="pCadastrarCard">Cadastrar</p>
+                <p className="pCadastrarCard">Usuario</p>
+              </div>
+            </div>{isModalUsuarioVisible ? (<ModalUsuarioDashboard onClose={() => setIsModalUsuarioVisible(false)}></ModalUsuarioDashboard>) : null}
+          </div>
         </div>
       </main >
+
+      <Footer />
     </div>
   )
 };
