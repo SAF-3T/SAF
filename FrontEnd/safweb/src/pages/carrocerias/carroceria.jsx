@@ -68,7 +68,7 @@ export default function ListarCarroceria() {
         <div>
             <Sidebar2 />
             <Header />
-
+        
             <main>
                 <div className="wrapperCarrocerias">
                     <p className="pCarroceria">Carrocerias</p>
