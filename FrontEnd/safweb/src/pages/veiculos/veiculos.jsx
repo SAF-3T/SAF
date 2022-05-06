@@ -107,7 +107,11 @@ export default function ListarVeiculos() {
                                 <div className="cardVeiculo">
                                     <div className="conteudoVeiculo">
                                         <div className="alinharEtiquetas">
-                                            <div className="imgVeiculo" />
+                                            {
+                                                veiculo.idVeiculo != null ?
+                                                    < img src={"http://backend-saf-api.azurewebsites.net/Img/" + veiculo.imagemVeiculo} className="imgVeiculo" /> :
+                                                    < img src={"http://backend-saf-api.azurewebsites.net/Img/Veiculopadrao.png"} className="imgVeiculo" />
+                                            }
                                             <div className="etiquetasVeiculos">
                                                 <div className="etiquetaVeiculo">
                                                     <div className="nomeEtiqueta">{veiculo.placa}</div>
@@ -127,7 +131,7 @@ export default function ListarVeiculos() {
                                             </div>
                                         </div>
                                         <div className="iconesEtiquetaVeiculos">
-                                            <FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} style={{cursor: 'pointer'}} size="2x" onClick={() => setIsModalEditVeiculoVisible(true)} />{isModalEditVeiculoVisible ? (<ModalEditVeiculo onClose={() => setIsModalEditVeiculoVisible(false)}></ModalEditVeiculo>) : null}
+                                            <FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} style={{ cursor: 'pointer' }} size="2x" onClick={() => setIsModalEditVeiculoVisible(true)} />{isModalEditVeiculoVisible ? (<ModalEditVeiculo onClose={() => setIsModalEditVeiculoVisible(false)}></ModalEditVeiculo>) : null}
                                             <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
                                         </div>
                                     </div>

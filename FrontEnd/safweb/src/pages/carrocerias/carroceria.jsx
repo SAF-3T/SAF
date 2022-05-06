@@ -20,6 +20,7 @@ import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 
 export default function ListarCarroceria() {
     const [ListaCarroceria, setListaCarroceria] = useState([]);
+    const [IdCarroceria, setidCarroceria] = useState('');
 
     const notyf = new Notyf();
 
@@ -58,8 +59,14 @@ export default function ListarCarroceria() {
             .then(buscarCarroceria);
     };
 
-    useEffect(buscarCarroceria, [ListaCarroceria]);
+    function Atualizalocal() {
+        localStorage.setItem('att-carroceria', IdCarroceria)
+        console.log(localStorage.getItem('att-carroceria'))
+    }
 
+    useEffect(buscarCarroceria, [ListaCarroceria]);
+    useEffect(Atualizalocal, [IdCarroceria]);
+    
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [ListaEditCarroceria, setListaEditCarroceria] = useState(false);
 
@@ -131,7 +138,7 @@ export default function ListarCarroceria() {
                                             </div>
                                         </div>
                                         <div className="iconesEtiquetaCarrocerias">
-                                            <FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" style={{ cursor: 'pointer' }} onClick={() => setListaEditCarroceria(true)} />{ListaEditCarroceria ? (<ModalEdit onClose={() => setListaEditCarroceria(false)}></ModalEdit>) : null}
+                                            <FontAwesomeIcon value={carroceria.idCarroceria} className="iconPenToSquare" icon={faPenToSquare} size="2x" style={{ cursor: 'pointer' }} onClick={() => setListaEditCarroceria(true), (e) => setidCarroceria(e.target.value)} />{ListaEditCarroceria ? (<ModalEdit onClose={() => setListaEditCarroceria(false)}></ModalEdit>) : null}
                                             <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" style={{ cursor: 'pointer' }}
                                                 onClick={() => deletar(carroceria.idCarroceria)} />
                                         </div>
