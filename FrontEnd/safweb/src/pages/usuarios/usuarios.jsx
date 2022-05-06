@@ -53,8 +53,8 @@ export default function ListarUsuarios() {
                     }
 
                     //Filtra se tem ou não imagem dentro do array
-                    const teste = armazenarParametroImg.filter((item,i) => item === null)
-                    console.log(teste) 
+                    const teste = armazenarParametroImg.filter((item, i) => item === null)
+                    console.log(teste)
 
 
 
@@ -159,7 +159,13 @@ export default function ListarUsuarios() {
                                 <div className="cardUsuario">
                                     <div className="conteudoUsuario">
                                         <div className="alinharEtiquetasUsuarios">
-                                            <img src={usuario.imagemUsuario} className="imgUsuario" />
+                                                {
+                                                    usuario.imagemUsuario != null ?
+                                                    <img src={"http://backend-saf-api.azurewebsites.net/Img/" + usuario.imagemUsuario} className="imgUsuario" />
+                                                    :
+                                                    <img src={"http://backend-saf-api.azurewebsites.net/Img/Perfilpadrao.jpg"} className="imgUsuario" />
+                                                }
+                                            
                                             <div className="etiquetasUsuarios">
                                                 <div className="etiquetaUsuario">
                                                     <p className="nomeEtiquetaUsuario">{usuario.nome}</p>
