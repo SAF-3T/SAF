@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { useState, useEffect } from 'react';
 import React from 'react';
 import jwtDecode from 'jwt-decode';
 import {
@@ -15,80 +16,69 @@ import {
   import api from '../services/api';
   import Header from '../components/Header'
 
-  export default class Checkin extends Component {
 
-    constructor(props){
-        super(props);
-        this.state = {
-            tipoAutorizacao: 0,
-            idUsuario: 0,
-            idVeiculo: 0,
-            nomeTipoVeiculo: '',
-            placaVeiculo: '',
-            statusVeiculo: '',
-            estadoPneus: false,
-            estadoFreio: false,
-            estadoMotor: false,
-            estadoTransmissao: false,
-            estadoRodas: false,
-            combustivel: false,
-            estadoTransmissao: false
+export default function Checkin() {
+    const [ tipoAutorizacao, setTipoAutorizacao ] = useState( 0 );
+    const [ idUsuario, setIdUsuario ] = useState( 0 );
+    const [ idVeiculo, setIdVeiculo ] = useState( 0 );
+    const [ idStatus, setIdStatus ] = useState( 0 );
+    const [ nomeTipoVeiculo, setNomeTipoVeiculo ] = useState( '' );
+    const [ nomeU, setNomeU ] = useState( '' );
+    const [ placaVeiculo, setPlacaVeiculo ] = useState( '' );
+    const [ statusVeiculo, setStatusVeiculo ] = useState( '' );
+    const [ estadoPneus, setEstadoPneus ] = useState( false );
+    const [ estadoFreio, setEstadoFreio ] = useState( false );
+    const [ estadoMotor, setEstadoMotor ] = useState( false );
+    const [ estadoTransmissao, setEstadoTransmissao ] = useState( false );
+    const [ estadoRodas, setEstadoRodas ] = useState( false );
+    const [ combustivel, setCombustivel ] = useState( false );
 
-        };
-    }
-    cadastrarCheckIn = async() => {
-        if (this.estadoFreio && this.estadoMotor && this.estadoPneus && this.estadoRodas && this.estadoTransmissao && this.combustivel)    
-        {
-            
-        }
-
+    function cadastrarCheckIn() {
+        console.warn(estadoPneus)
     }
 
-    buscarInfosUsuario = async() => {
+    async function buscarInfoUsuarios () {
         const token = await AsyncStorage.getItem('userToken')
-        //console.warn(token)
-        this.tipoAutorizacao = await jwtDecode(token).role;
-        this.idUsuario = await jwtDecode(token).jti
-        const resposta = await api.get('/Usuarios/BuscarPorId/'+ this.idUsuario)
-        this.nomeU = resposta.data.nome
-        this.idVeiculo = resposta.data.idVeiculo
-        //console.warn(resposta.data)
-        this.setState({ nomeU: resposta.data.nome })
-        this.setState({ idVeiculo: resposta.data.idVeiculo })
-        this.setState({ funcaoU: resposta.data.idTipoUsuarioNavigation.nomeTipoUsuario })
-
-        console.warn(this.nomeU)
-        console.warn(this.idVeiculo)
+        setTipoAutorizacao(jwtDecode(token).role)
+        setIdUsuario( jwtDecode(token).jti)
+        console.warn(jwtDecode(token).jti)
+        const resposta =  await api.get('/Usuarios/BuscarPorId/'+ idUsuario)
+        setNomeU(resposta.data.nome)
+        setIdVeiculo(resposta.data.idVeiculo)
+        idVeiculo = resposta.data.idVeiculo
+        console.warn(resposta.data.idVeiculo)
     }
 
-    buscarInfosVeiculos = async() => {
-        const resposta = await api.get('/BuscarVeiculo/'+ this.idVeiculo)
-        this.nomeTipoVeiculo = resposta.data.idTipoVeiculoNavigation.nomeTipoVeiculo
-        this.placaVeiculo = resposta.data.placa
-        this.statusVeiculo = resposta.data.idStatusNavigation.nomeStatus
-        this.setState({ nomeTipoVeiculo : resposta.data.idTipoVeiculoNavigation.nomeTipoVeiculo })
-        this.setState({ placaVeiculo : resposta.data.placa })
-        this.setState({ statusVeiculo : resposta.data.idStatusNavigation.nomeStatus })
-        console.warn(resposta.data)
-        console.warn('Buscou veículos')
-    }
-    
-    mudarTruePneus = async() => {
-        this.setState({ })
+    async function buscaInfoVeiculo() {
+        const token = await AsyncStorage.getItem('userToken')
+        axios('https://backend-saf-api.azurewebsites.net/BuscarVeiculo/1', {
+            headers : {
+                'Authorization' : 'Bearer ' + localStorage.getItem('userToken')
+            }
+        })
+        .then(response => {
+            if(response.status === 200)
+            {
+                console.warn(response)
+                setPlacaVeiculo(response.data.placa)
+                setStatusVeiculo(response.data.idStatusNavigation.nomeStatus)
+                setNomeTipoVeiculo(response.data.idTipoVeiculoNavigation.nomeTipoVeiculo)
+                
+            }
+        })
     }
 
-    componentDidMount() { this.buscarInfosUsuario(), this.buscarInfosVeiculos() }
+    useEffect(buscaInfoVeiculo, [])
 
-    render() {
-        return(
-            <View style={styles.main}>
+    return(
+        <View style={styles.main}>
                 <Header/>
                 <View style={styles.background}>
                     <View style={styles.content}>
                         <View style={styles.header}>
-                            <Text style={styles.placa}> SEX-6969{this.placaVeiculo}</Text>
-                            <Text style={styles.tipoVeiculo}>Caminhão {this.nomeTipoVeiculo}</Text>
-                            <Text style={styles.status}>Na garagem{this.statusVeiculo}</Text>
+                            <Text style={styles.placa}> SEX-6969{placaVeiculo}</Text>
+                            <Text style={styles.tipoVeiculo}>Caminhão {nomeTipoVeiculo}</Text>
+                            <Text style={styles.status}>Na garagem{statusVeiculo}</Text>
                         </View>
                         <View style={styles.body}>
                             <View style={styles.containerItens}>
@@ -96,14 +86,14 @@ import {
                                     <Text style={styles.textItem}>Pneus</Text>
                                 </View>
                                 <View style={styles.containerDivisaoItens}>
-                                    <TouchableOpacity onPress={() => this.setState({estadoPneus : true}),() => this.estadoPneus = true}>
-                                        {this.estadoPneus?
+                                    <TouchableOpacity onPress={() => setEstadoPneus(true)}>
+                                        {estadoPneus?
                                             <Image style={styles.icon} source={require('../../assets/img/certo.png')} /> :
                                             <Image style={styles.icon} source={require('../../assets/img/certoApagado.png')} />
                                         }
                                     </TouchableOpacity>
-                                    <TouchableOpacity onPress={() => this.setState({estadoPneus : false}), () => this.estadoPneus = false}>
-                                        {this.estadoPneus?
+                                    <TouchableOpacity onPress={() =>setEstadoPneus(false)}>
+                                        {estadoPneus?
                                             <Image style={styles.icon} source={require('../../assets/img/xApagado.png')} /> :
                                             <Image style={styles.icon} source={require('../../assets/img/x.png')} />
                                         }    
@@ -118,14 +108,14 @@ import {
                                     <Text style={styles.textItem}>Pastilhas de freio</Text>
                                 </View>
                                 <View style={styles.containerDivisaoItens}>
-                                    <TouchableOpacity onPress={() => this.setState({estadoFreio : true})}>
-                                        {this.estadoFreio?
+                                    <TouchableOpacity onPress={() => setEstadoFreio(true)}>
+                                        {estadoFreio?
                                             <Image style={styles.icon} source={require('../../assets/img/certo.png')} /> :
                                             <Image style={styles.icon} source={require('../../assets/img/certoApagado.png')} />
                                         }
                                     </TouchableOpacity>
-                                    <TouchableOpacity onPress={() => this.setState({estadoFreio : false})}>
-                                        {this.estadoFreio?
+                                    <TouchableOpacity onPress={() => setEstadoFreio(false)}>
+                                        {estadoFreio?
                                             <Image style={styles.icon} source={require('../../assets/img/xApagado.png')} /> :
                                             <Image style={styles.icon} source={require('../../assets/img/x.png')} />
                                         }    
@@ -140,14 +130,14 @@ import {
                                     <Text style={styles.textItem}>Motor</Text>
                                 </View>
                                 <View style={styles.containerDivisaoItens}>
-                                    <TouchableOpacity onPress={() => this.setState({estadoMotor : true})}>
-                                        {this.estadoMotor?
+                                    <TouchableOpacity onPress={() => setEstadoMotor(true)}>
+                                        {estadoMotor?
                                             <Image style={styles.icon} source={require('../../assets/img/certo.png')} /> :
                                             <Image style={styles.icon} source={require('../../assets/img/certoApagado.png')} />
                                         }
                                     </TouchableOpacity>
-                                    <TouchableOpacity onPress={() => this.setState({estadoMotor : false})}>
-                                        {this.estadoMotor?
+                                    <TouchableOpacity onPress={() => setEstadoMotor(false)}>
+                                        {estadoMotor?
                                             <Image style={styles.icon} source={require('../../assets/img/xApagado.png')} /> :
                                             <Image style={styles.icon} source={require('../../assets/img/x.png')} />
                                         }   
@@ -162,14 +152,14 @@ import {
                                     <Text style={styles.textItem}>Trasmissão</Text>
                                 </View>
                                 <View style={styles.containerDivisaoItens}>
-                                    <TouchableOpacity onPress={() => this.setState({estadoTransmissao : true})}>
-                                        {this.estadoTransmissao?
+                                    <TouchableOpacity onPress={() => setEstadoTransmissao(true)}>
+                                        {estadoTransmissao?
                                             <Image style={styles.icon} source={require('../../assets/img/certo.png')} /> :
                                             <Image style={styles.icon} source={require('../../assets/img/certoApagado.png')} />
                                         }
                                     </TouchableOpacity>
-                                    <TouchableOpacity onPress={() => this.setState({estadoTransmissao : false})}>
-                                        {this.estadoTransmissao?
+                                    <TouchableOpacity onPress={() => setEstadoTransmissao(false)}>
+                                        {estadoTransmissao?
                                             <Image style={styles.icon} source={require('../../assets/img/xApagado.png')} /> :
                                             <Image style={styles.icon} source={require('../../assets/img/x.png')} />
                                         }    
@@ -184,14 +174,14 @@ import {
                                     <Text style={styles.textItem}>Rodas</Text>
                                 </View>
                                 <View style={styles.containerDivisaoItens}>
-                                    <TouchableOpacity onPress={() => this.setState({estadoRodas : true})}>
-                                        {this.estadoRodas?
+                                    <TouchableOpacity onPress={() => setEstadoRodas(true)}>
+                                        {estadoRodas?
                                             <Image style={styles.icon} source={require('../../assets/img/certo.png')} /> :
                                             <Image style={styles.icon} source={require('../../assets/img/certoApagado.png')} />
                                         }
                                     </TouchableOpacity >
-                                    <TouchableOpacity onPress={() => this.setState({estadoRodas : false})}>
-                                        {this.estadoRodas?
+                                    <TouchableOpacity onPress={() => setEstadoRodas(false)}>
+                                        {estadoRodas?
                                             <Image style={styles.icon} source={require('../../assets/img/xApagado.png')} /> :
                                             <Image style={styles.icon} source={require('../../assets/img/x.png')} />
                                         }    
@@ -206,14 +196,14 @@ import {
                                     <Text style={styles.textItem}>Tanques de combustível</Text>
                                 </View>
                                 <View style={styles.containerDivisaoItens}>
-                                    <TouchableOpacity onPress={() => this.setState({combustivel : true})}>
-                                        {this.combustivel?
+                                    <TouchableOpacity onPress={() => setCombustivel(true)}>
+                                        {combustivel?
                                             <Image style={styles.icon} source={require('../../assets/img/certo.png')} /> :
                                             <Image style={styles.icon} source={require('../../assets/img/certoApagado.png')} />
                                         }
                                     </TouchableOpacity>
-                                    <TouchableOpacity onPress={() => this.setState({combustivel : false})}>
-                                        {this.combustivel?
+                                    <TouchableOpacity onPress={() => setCombustivel(false)}>
+                                        {combustivel?
                                             <Image style={styles.icon} source={require('../../assets/img/xApagado.png')} /> :
                                             <Image style={styles.icon} source={require('../../assets/img/x.png')} />
                                         }   
@@ -225,7 +215,7 @@ import {
                             </View>
                         </View>
                         <View style={styles.containerBotao}>
-                            <TouchableOpacity onPress={ () => this.cadastrarCheckIn()} style={styles.btnProsseguir}>
+                            <TouchableOpacity onPress={ () => cadastrarCheckIn()} style={styles.btnProsseguir}>
                                 <Text style={styles.btnText}>Prosseguir</Text>
                             </TouchableOpacity>
                         </View>
@@ -233,9 +223,9 @@ import {
                 </View>
                 
             </View>
-        )
-    }
+    )
 }
+ 
 
 const styles = StyleSheet.create({
     main: {
