@@ -15,6 +15,9 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
 import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 
+import { Notyf } from 'notyf';
+import 'notyf/notyf.min.css';
+
 export default function ListarUsuarios() {
     const [ListaUsuarios, setListaUsuarios] = useState([]);
     // const [Imagem, setImagem] = useState('');
@@ -28,85 +31,34 @@ export default function ListarUsuarios() {
             .then(response => {
                 if (response.status === 200) {
                     setListaUsuarios(response.data)
-                    // Busca o array de usuários
-                    const listaDeUsuarios = response.data;
-                    console.log(response.data)
-
-                    //Mapeia parametros
-                    const mapearArrayResponse = listaDeUsuarios.map((parametro => { return (parametro.imagemUsuario) }))
-                    console.log(mapearArrayResponse)
-
-                    //Armazena response data em um array
-                    // const armazenarArray = [mapearArrayResponse]
-                    // console.log(armazenarArray) 
-
-                    //Transforma em objeto JSON e mostra um array do parametro de imagens  
-                    const armazenarParametroImg = JSON.stringify(mapearArrayResponse).split('[]')[0]
-                    console.log(armazenarParametroImg)
-
-                    //Função de filtro de imagem
-                    function filtrarPorImagem(armazenarParametroImg) {
-                        if (armazenarParametroImg === null)
-                            return true
-                        else
-                            return false
-                    }
-
-                    //Filtra se tem ou não imagem dentro do array
-                    const teste = armazenarParametroImg.filter((item, i) => item === null)
-                    console.log(teste)
-
-
-
-
-
-                    //Caso não tenha foto 
-                    // if (tamanhoArray.length == 11) { 
-                    // console.log('não tem foto') 
-                    //ImagemUsuario
-                    // setImagem('Perfilpadrao.jpg')
-
-                    //Caso tenha foto
-                    // else {
-                    //Identificar Nome do usuário
-                    // console.log('tem foto')
-                    // const nomeUsuario = tamanhoArray.filter(( imagem => "imagemUsuario"))
-                    // console.log(nomeUsuario)
-                    // setNome(nomeUsuario); 
-
-                    // //Identificar Tel do usuario
-                    // const telUsuario = formatoEmJSON.split(',')[5].split(':')[1].replace('"', "").split('"')[0] + ' ' + formatoEmJSON.split(',')[6].split(':')[1].replace('"', "").split('"')[0];
-                    // // console.log(telUsuario)
-                    // setTel(telUsuario);
-
-                    // //Identificar CPF do usuario
-                    // const cpfUsuario = formatoEmJSON.split(',')[7].split(':')[1].replace('"', "").split('"')[0]
-                    // // console.log(cpfUsuario)
-                    // setCPF(cpfUsuario);
-
-                    // //Identificar Imagem usuario
-                    // const Imagem = formatoEmJSON.split(',')[2].split(':')[1].replace('"', "").split('"')[0];
-                    // // console.log(Imagem);
-                    // setImagem(Imagem);
-
                 }
             })
             .catch(erro => console.log(erro));
     };
 
+    const notyf = new Notyf();
 
-    function deletar(id) {
-        axios.delete('https://backend-saf-api.azurewebsites.net/api/Usuarios/Deletar' + id)
+    function deletar(idUsuario) {
+        axios.delete('https://backend-saf-api.azurewebsites.net/api/Usuarios/Deletar/' + idUsuario)
             .then(resposta => {
                 if (resposta.status === 204) {
-                    setListaUsuarios(resposta.data)
+                    notyf.success(
+                        {
+                            message: 'Usuário excluída com êxito',
+                            duration: 1000,
+                            position: {
+                                x: 'right',
+                                y: 'top',
+                            }
+                        }
+                    );
                 }
             })
             .catch(erro => console.log(erro))
     };
 
 
-    useEffect(buscarUsuarios, []);
+    useEffect(buscarUsuarios, [ListaUsuarios]);
 
 
     // const [isModalAddUsuarioVisible, setIsModalAddUsuarioVisible] = useState(false);
@@ -159,13 +111,13 @@ export default function ListarUsuarios() {
                                 <div className="cardUsuario">
                                     <div className="conteudoUsuario">
                                         <div className="alinharEtiquetasUsuarios">
-                                                {
-                                                    usuario.imagemUsuario != null ?
+                                            {
+                                                usuario.imagemUsuario != null ?
                                                     <img src={"http://backend-saf-api.azurewebsites.net/Img/" + usuario.imagemUsuario} className="imgUsuario" />
                                                     :
                                                     <img src={"http://backend-saf-api.azurewebsites.net/Img/Perfilpadrao.jpg"} className="imgUsuario" />
-                                                }
-                                            
+                                            }
+
                                             <div className="etiquetasUsuarios">
                                                 <div className="etiquetaUsuario">
                                                     <p className="nomeEtiquetaUsuario">{usuario.nome}</p>
@@ -180,10 +132,11 @@ export default function ListarUsuarios() {
                                         </div>
                                         <div className="iconesEtiquetaUsuarios">
                                             <FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} style={{ cursor: 'pointer' }} size="2x" />
-                                            <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
+                                            <FontAwesomeIcon className="iconTrashCan" style={{ cursor: 'pointer' }} icon={faTrashCan} size="2x"
+                                                onClick={() => deletar(usuario.idUsuario)} />
                                         </div>
                                     </div>
-                                </div>
+                                </div>  
                             )
                         }
                         )

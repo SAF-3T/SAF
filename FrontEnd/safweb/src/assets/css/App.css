@@ -353,3 +353,10 @@ footer {
   margin-left: 20px;
   margin-top: 120px;
 }
+
+.linksHeader {
+  width: 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

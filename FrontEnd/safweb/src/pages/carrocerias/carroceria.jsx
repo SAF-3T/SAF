@@ -95,6 +95,9 @@ export default function ListarCarroceria() {
                                         <div className="nomeCabecalhoEtiquetaCarrocerias">Carroceria</div>
                                     </div>
                                     <div className="etiquetaCabecalhoCarroceria">
+                                        <div className="nomeCabecalhoEtiquetaCarrocerias">Carga</div>
+                                    </div>
+                                    <div className="etiquetaCabecalhoCarroceria">
                                         <div className="nomeCabecalhoEtiquetaCarrocerias">Cubagem</div>
                                     </div>
                                     <div className="etiquetaCabecalhoCarroceria">
@@ -115,6 +118,9 @@ export default function ListarCarroceria() {
                                             <div className="etiquetasCarrocerias">
                                                 <div className="etiquetaCarrocerias">
                                                     <p className="nomeEtiquetaCarrocerias">{carroceria.idTipoCarroceriaNavigation.nomeTipoCarroceria}</p>
+                                                </div>
+                                                <div className="etiquetaCarrocerias">
+                                                    <p className="nomeEtiquetaCarrocerias">{carroceria.idTipoCargaNavigation.nomeTipoCarga}</p>
                                                 </div>
                                                 <div className="etiquetaCarrocerias">
                                                     <p className="nomeEtiquetaCarrocerias">{carroceria.cubagem}</p>

@@ -6,6 +6,9 @@ import { Link } from 'react-router-dom';
 
 import '../../assets/css/App.css';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+
 export default function Header() {
 
     function buscarUsuarios() {
@@ -47,6 +50,10 @@ export default function Header() {
             .catch(erro => console.log(erro));
     };
 
+    function Logout() {
+        localStorage.removeItem('usuario-login')
+    }
+
     useEffect(buscarUsuarios, []);
 
     const [ImagemUsuario, setImagemUsuario] = useState('');
@@ -56,7 +63,12 @@ export default function Header() {
             <header>
                 <div className="wrapper">
                     <Link to="/dashboard"><div className="imagemLogo"></div></Link>
-                    <img src={"http://backend-saf-api.azurewebsites.net/Img/" + ImagemUsuario} className="imagemUsuario" />
+                    <div className="linksHeader">
+                        <img src={"http://backend-saf-api.azurewebsites.net/Img/" + ImagemUsuario} className="imagemUsuario" />
+                        <Link className="removerLink" onClick={() => Logout()} to='/'>
+                            <FontAwesomeIcon color="#FFF" icon={faRightFromBracket} size="2x"/>
+                        </Link>
+                    </div>
                 </div>
             </header>
         </div>
