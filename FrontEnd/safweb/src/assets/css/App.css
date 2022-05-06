@@ -37,6 +37,8 @@ header {
 .linkImagemUsuario {
   width: 80px;
   height: 80px;
+  border-radius: 100%;
+  /* background-color: darkblue; */
 }
 
 .imagemUsuario {
@@ -163,11 +165,6 @@ footer {
   border-right: 4px solid #0E758C;
 }
 
-.removerLink {
-  text-decoration: none;
-  color: inherit;
-}
-
 .wrapperDashboard {
   display: flex;
   justify-content: space-between;
@@ -175,6 +172,7 @@ footer {
   width: 75%;
   height: 121px;
   border-bottom: 2px solid #139FC0;
+
   margin: 0 auto;
 }
 
@@ -182,20 +180,38 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 100px;
+  width: 200px;
+  /* background-color: purple; */
 }
 
 .linksUsuario {
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  justify-content: space-between;
+  align-items: flex-start;
+  /* padding: 10px; */
+  height: 75px;
+  width: fit-content;
+  /* background-color: red; */
 }
+
 
 .pNomeUsuario, .pCargoUsuario {
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 17px;
   line-height: 24px;
   color: #000000;
+}
+
+.iconRightFromBracket{
+  color: #0E758C;
+  cursor: pointer;
+}
+
+.removerLink {
+  text-decoration: none;
 }
 
 .pBemVindo {
@@ -203,6 +219,7 @@ footer {
   font-size: 40px;
   line-height: 61px;
   color: #000000;
+  margin: 0 auto;
 }
 
 .mensagemBoard {

@@ -5,8 +5,8 @@ import Header from '../../components/headers/header';
 import Sidebar4 from '../../components/sidebars/sidebar4';
 import Footer from '../../components/footer';
 
-import ModalAddUsuario from '../usuarios/modal/modalUsuario';
-import ModalEditUsuario from '../usuarios/modalEdit/modaEditUsuario';
+// import ModalAddUsuario from '../usuarios/modal/modalUsuario';
+// import ModalEditUsuario from '../usuarios/modalEdit/modaEditUsuario';
 
 import './usuarios.css';
 
@@ -17,35 +17,100 @@ import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 
 export default function ListarUsuarios() {
     const [ListaUsuarios, setListaUsuarios] = useState([]);
+    // const [Imagem, setImagem] = useState('');
+    // const [Nome, setNome] = useState('');
+    // const [CPF, setCPF] = useState('');
+    // const [Tel, setTel] = useState('');
 
     function buscarUsuarios() {
-        axios('http://backend-saf-api.azurewebsites.net/api/Usuarios',)
+
+        axios('http://backend-saf-api.azurewebsites.net/api/Usuarios')
             .then(response => {
                 if (response.status === 200) {
-                    setListaUsuarios(response.data);
+                    setListaUsuarios(response.data)
+                    // Busca o array de usuários
+                    const listaDeUsuarios = response.data;
+                    console.log(response.data)
+
+                    //Mapeia parametros
+                    const mapearArrayResponse = listaDeUsuarios.map((parametro => { return (parametro.imagemUsuario) }))
+                    console.log(mapearArrayResponse)
+
+                    //Armazena response data em um array
+                    // const armazenarArray = [mapearArrayResponse]
+                    // console.log(armazenarArray) 
+
+                    //Transforma em objeto JSON e mostra um array do parametro de imagens  
+                    const armazenarParametroImg = JSON.stringify(mapearArrayResponse).split('[]')[0]
+                    console.log(armazenarParametroImg)
+
+                    //Função de filtro de imagem
+                    function filtrarPorImagem(armazenarParametroImg) {
+                        if (armazenarParametroImg === null)
+                            return true
+                        else
+                            return false
+                    }
+
+                    //Filtra se tem ou não imagem dentro do array
+                    const teste = armazenarParametroImg.filter((item,i) => item === null)
+                    console.log(teste) 
+
+
+
+
+
+                    //Caso não tenha foto 
+                    // if (tamanhoArray.length == 11) { 
+                    // console.log('não tem foto') 
+                    //ImagemUsuario
+                    // setImagem('Perfilpadrao.jpg')
+
+                    //Caso tenha foto
+                    // else {
+                    //Identificar Nome do usuário
+                    // console.log('tem foto')
+                    // const nomeUsuario = tamanhoArray.filter(( imagem => "imagemUsuario"))
+                    // console.log(nomeUsuario)
+                    // setNome(nomeUsuario); 
+
+                    // //Identificar Tel do usuario
+                    // const telUsuario = formatoEmJSON.split(',')[5].split(':')[1].replace('"', "").split('"')[0] + ' ' + formatoEmJSON.split(',')[6].split(':')[1].replace('"', "").split('"')[0];
+                    // // console.log(telUsuario)
+                    // setTel(telUsuario);
+
+                    // //Identificar CPF do usuario
+                    // const cpfUsuario = formatoEmJSON.split(',')[7].split(':')[1].replace('"', "").split('"')[0]
+                    // // console.log(cpfUsuario)
+                    // setCPF(cpfUsuario);
+
+                    // //Identificar Imagem usuario
+                    // const Imagem = formatoEmJSON.split(',')[2].split(':')[1].replace('"', "").split('"')[0];
+                    // // console.log(Imagem);
+                    // setImagem(Imagem);
+
                 }
             })
             .catch(erro => console.log(erro));
     };
+
 
     function deletar(id) {
         axios.delete('https://backend-saf-api.azurewebsites.net/api/Usuarios/Deletar' + id)
             .then(resposta => {
                 if (resposta.status === 204) {
                     setListaUsuarios(resposta.data)
-                    console.log('excluiu');
                 }
             })
             .catch(erro => console.log(erro))
-
-            .then(buscarUsuarios());
     };
 
 
     useEffect(buscarUsuarios, []);
 
-    const [isModalAddUsuarioVisible, setIsModalAddUsuarioVisible] = useState(false);
-    const [isModalEditUsuarioVisible, setIsModalEditUsuarioVisible] = useState(false);
+
+    // const [isModalAddUsuarioVisible, setIsModalAddUsuarioVisible] = useState(false);
+    // const [isModalEditUsuarioVisible, setIsModalEditUsuarioVisible] = useState(false);
 
     return (
         <div>
@@ -63,31 +128,11 @@ export default function ListarUsuarios() {
                                 <p className="pAddUsuario">Novo usuário</p>
                             </div>
                         </button>
-
                         <div className="input-e-btn-2">
                             <input className='inputBusca' type="text" />
                             <button className='btnBuscar' type='submit'><p>Buscar</p></button>
-
-                            <div className="cardUsuario" key={ListaUsuarios}>
-                                <div className="conteudoUsuario">
-                                    <div className="alinharEtiquetasUsuarios">
-                                        <div className="imgUsuario" />
-                                        <div className="etiquetasUsuarios">
-                                            <div className="etiquetaUsuario">
-                                                <p className="nomeEtiquetaUsuario">{ListaUsuarios}</p>
-                                            </div>
-                                        </div>
-                                        <div className="iconesEtiquetaUsuarios">
-                                            <FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} style={{ cursor: 'pointer' }} size="2x" />
-                                            <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
                         </div>
                     </div>
-
                     <div className="cardCabecalhoUsuario">
                         <div className="conteudoCabecalhoUsuario">
                             <div className="alinharEtiquetasUsuariosCabecalho">
@@ -109,12 +154,12 @@ export default function ListarUsuarios() {
                     </div>
 
                     {
-                        ListaUsuarios.map((usuario) => {
+                        ListaUsuarios.map((usuario => {
                             return (
                                 <div className="cardUsuario">
                                     <div className="conteudoUsuario">
                                         <div className="alinharEtiquetasUsuarios">
-                                            {/* <div className="imgUsuario" /> */}
+                                            <img src={usuario.imagemUsuario} className="imgUsuario" />
                                             <div className="etiquetasUsuarios">
                                                 <div className="etiquetaUsuario">
                                                     <p className="nomeEtiquetaUsuario">{usuario.nome}</p>
@@ -134,7 +179,9 @@ export default function ListarUsuarios() {
                                     </div>
                                 </div>
                             )
-                        })
+                        }
+                        )
+                        )
                     }
                 </div>
             </main >

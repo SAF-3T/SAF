@@ -25,7 +25,7 @@ export default function Header() {
 
                     // Formata em JSON
                     const formatoEmJSON = JSON.stringify(listaDeUsuarios)
-                    console.log(formatoEmJSON)
+                    // console.log(formatoEmJSON)
 
                     let tamanhoArray = formatoEmJSON.split(',').length
 
@@ -39,7 +39,7 @@ export default function Header() {
                     else {
                         //Identificar Imagem usuario
                         const imagemUsuario = formatoEmJSON.split(',')[2].split(':')[1].replace('"', "").split('"')[0]
-                        console.log(imagemUsuario);
+                        // console.log(imagemUsuario);
                         setImagemUsuario(imagemUsuario);
                     }
                 }

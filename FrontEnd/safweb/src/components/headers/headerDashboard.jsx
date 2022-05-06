@@ -6,6 +6,9 @@ import axios from "axios";
 
 import { Link } from 'react-router-dom';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+
 import '../../assets/css/App.css';
 
 export default function Header() {
@@ -14,6 +17,10 @@ export default function Header() {
     const [CargoUsuario, setCargoUsuario] = useState([]);
     const [ImagemUsuario, setImagemUsuario] = useState('');
 
+    function Logout() {
+        localStorage.removeItem('usuario-login')
+    }
+
     function buscarUsuarios() {
 
         // Armazena token do usuário
@@ -21,6 +28,7 @@ export default function Header() {
 
         // Descriptografa token
         const tokenDescriptografado = window.atob(armazenaToken).split(',')[2].split('"')[3];
+
 
         axios('http://backend-saf-api.azurewebsites.net/api/Usuarios/BuscarPorId/' + tokenDescriptografado)
             .then(response => {
@@ -31,7 +39,7 @@ export default function Header() {
 
                     // Formata em JSON
                     const formatoEmJSON = JSON.stringify(listaDeUsuarios)
-                    console.log(formatoEmJSON)
+                    // console.log(formatoEmJSON)
 
                     let tamanhoArray = formatoEmJSON.split(',').length
 
@@ -50,6 +58,7 @@ export default function Header() {
                     }
                     //Caso tenha foto
                     else {
+                        //Buscar nome do Usuário
                         const nomeUsuario = formatoEmJSON.split(',')[3].split(':')[1].replace('"', "").split('"')[0]
                         console.log(nomeUsuario)
                         setNomeUsuario(nomeUsuario)
@@ -59,7 +68,7 @@ export default function Header() {
                         console.log(imagemUsuario);
                         setImagemUsuario(imagemUsuario);
 
-                        //Buscar nome do Usuário
+                        //Identificar cargo do usuario
                         const cargoUsuario = formatoEmJSON.split(',')[10].split(':')[1].replace('"', "").split('"')[0]
                         console.log(cargoUsuario)
                         setCargoUsuario(cargoUsuario);
@@ -78,16 +87,19 @@ export default function Header() {
 
             <p className="pBemVindo">Bem vindo, {NomeUsuario}!</p>
             <div className="usuarioHeaderDashboard">
-                <a className="linkImagemUsuario" href="#">
-                    <img src={"http://backend-saf-api.azurewebsites.net/Img/" + ImagemUsuario} className="imagemUsuario" />
-                </a>
+                <img src={"http://backend-saf-api.azurewebsites.net/Img/" + ImagemUsuario} className="linkImagemUsuario" />
                 <div className="linksUsuario">
-                    <p className="pNomeUsuario">{NomeUsuario}</p>
-                    <p className="pCargoUsuario">{CargoUsuario}</p>
+                    <div className="linkUsuarioNomeCargo">
+                        <p className="pNomeUsuario">{NomeUsuario}</p>
+                        <p className="pCargoUsuario">{CargoUsuario}</p>
+                    </div>
+
+                    <Link className="removerLink" onClick={() => Logout()} to='/'>
+                        <FontAwesomeIcon className="iconRightFromBracket" icon={faRightFromBracket} size="lg" />
+                    </Link>
                 </div>
             </div>
-
-        </div>
+        </div >
 
     );
 
