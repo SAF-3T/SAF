@@ -5,7 +5,7 @@ import Header from '../../components/headers/header';
 import Sidebar4 from '../../components/sidebars/sidebar4';
 import Footer from '../../components/footer';
 
-// import ModalAddUsuario from '../usuarios/modal/modalUsuario';
+import ModalAddUsuario from '../usuarios/modal/modalUsuario';
 // import ModalEditUsuario from '../usuarios/modalEdit/modaEditUsuario';
 
 import './usuarios.css';
@@ -35,6 +35,7 @@ export default function ListarUsuarios() {
             })
             .catch(erro => console.log(erro));
     };
+    
 
     const notyf = new Notyf();
 
@@ -56,12 +57,9 @@ export default function ListarUsuarios() {
             })
             .catch(erro => console.log(erro))
     };
-
-
     useEffect(buscarUsuarios, [ListaUsuarios]);
 
-
-    // const [isModalAddUsuarioVisible, setIsModalAddUsuarioVisible] = useState(false);
+    const [isModalAddUsuarioVisible, setIsModalAddUsuarioVisible] = useState(false);
     // const [isModalEditUsuarioVisible, setIsModalEditUsuarioVisible] = useState(false);
 
     return (
@@ -74,7 +72,7 @@ export default function ListarUsuarios() {
                     <p className="pUsuario">Usuários</p>
 
                     <div className="input-e-btn">
-                        <button className='btnAddUsuario' type='submit' >
+                        <button className='btnAddUsuario' type='submit' onClick={() => setIsModalAddUsuarioVisible(true)}>
                             <div className="conteudoBtnAddUsuario">
                                 <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" />
                                 <p className="pAddUsuario">Novo usuário</p>
@@ -104,6 +102,7 @@ export default function ListarUsuarios() {
                             <div className="iconesEtiquetaUsuarios" />
                         </div>
                     </div>
+                   {isModalAddUsuarioVisible ? (<ModalAddUsuario onClose={() => setIsModalAddUsuarioVisible(false)}></ModalAddUsuario>) : null}
 
                     {
                         ListaUsuarios.map((usuario => {
@@ -136,12 +135,9 @@ export default function ListarUsuarios() {
                                                 onClick={() => deletar(usuario.idUsuario)} />
                                         </div>
                                     </div>
-                                </div>  
+                                </div>
                             )
-                        }
-                        )
-                        )
-                    }
+                        }))}
                 </div>
             </main >
             <Footer />

@@ -2,13 +2,46 @@ import React from 'react';
 
 import './modalUsuario.css';
 
+import axios from 'axios';
+
 import MaskedInput from '../../login/MaskedInput';
+
+import { Notyf } from 'notyf';
+import 'notyf/notyf.min.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImage } from '@fortawesome/free-solid-svg-icons';
 import { faClose } from '@fortawesome/free-solid-svg-icons'
 
 const Modal = ({ onClose = () => { }, children }) => {
+
+    const notyf = new Notyf();
+
+    function CadastrarCarroceria(event) {
+
+        event.preventDefault();
+
+        axios.post('http://backend-saf-api.azurewebsites.net/api/Usuario', {
+            
+
+        })
+            .then((resposta) => {
+                if (resposta.status === 201) {
+                    notyf.success(
+                        {
+                            message: 'Usuario cadastrado!',
+                            duration: 1000,
+                            position: {
+                                x: 'right',
+                                y: 'top',
+                            }
+                        }
+                    );
+                    onClose()
+                }
+            })
+
+    }
 
     return (
         <div className="modalUsuario">

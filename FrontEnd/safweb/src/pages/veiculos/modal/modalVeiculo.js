@@ -36,7 +36,7 @@ export default function Modal({ onClose = () => { } }) {
         setIdUsuario(armazenaToken);
     }
 
-function AdicionarVeiculo() {
+    function AdicionarVeiculo() {
 
         var formData = new FormData();
 
@@ -45,7 +45,6 @@ function AdicionarVeiculo() {
             const file = element.files[0]
             formData.append('arquivo', file, file.name)
         }
-
 
         formData.append('idUsuario', Placa);
         formData.append('idMarca', Marca);
