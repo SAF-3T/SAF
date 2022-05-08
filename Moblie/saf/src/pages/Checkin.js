@@ -2,6 +2,7 @@ import { Component } from "react";
 import { useState, useEffect } from 'react';
 import React from 'react';
 import jwtDecode from 'jwt-decode';
+import axios from 'axios';
 import {
     StyleSheet,
     Text,
@@ -32,30 +33,72 @@ export default function Checkin() {
     const [ estadoTransmissao, setEstadoTransmissao ] = useState( false );
     const [ estadoRodas, setEstadoRodas ] = useState( false );
     const [ combustivel, setCombustivel ] = useState( false );
+    const [ dataAtual, setDataAtual ] = useState( '' );
 
-    function cadastrarCheckIn() {
-        console.warn(estadoPneus)
-    }
 
-    async function buscarInfoUsuarios () {
-        const token = await AsyncStorage.getItem('userToken')
-        setTipoAutorizacao(jwtDecode(token).role)
-        setIdUsuario( jwtDecode(token).jti)
-        console.warn(jwtDecode(token).jti)
-        const resposta =  await api.get('/Usuarios/BuscarPorId/'+ idUsuario)
-        setNomeU(resposta.data.nome)
-        setIdVeiculo(resposta.data.idVeiculo)
-        idVeiculo = resposta.data.idVeiculo
-        console.warn(resposta.data.idVeiculo)
+    async function cadastrarCheckIn() {
+        setDataAtual(new Date().toString())
+        var resposta = await api.post('/CheckList',{
+            idTipoCheckList: x,
+            idVeiculo: 1,
+            idUsuario: idUsuario,
+            dataCheckList: dataAtual
+        })
+
+        if (estadoPneus === false) {
+            api.post('/Erro', 
+            {
+                idTipoErro : 1,
+                idCheckList : resposta.data.idCheckList,
+                descricaoErro : ''
+            })
+        }
+        if (estadoFreio === false) {
+            api.post('/Erro', 
+            {
+                idTipoErro : 1,
+                idCheckList : 1,
+                descricaoErro : ''
+            })
+        }
+        if (estadoMotor === false) {
+            api.post('/Erro', 
+            {
+                idTipoErro : 1,
+                idCheckList : 1,
+                descricaoErro : ''
+            })
+        }
+        if (estadoTransmissao === false) {
+            api.post('/Erro', 
+            {
+                idTipoErro : 1,
+                idCheckList : 1,
+                descricaoErro : ''
+            })
+        }
+        if (estadoRodas === false) {
+            api.post('/Erro', 
+            {
+                idTipoErro : 1,
+                idCheckList : 1,
+                descricaoErro : ''
+            })
+        }
+        if (combustivel === false) {
+            api.post('/Erro', 
+            {
+                idTipoErro : 1,
+                idCheckList : 1,
+                descricaoErro : ''
+            })
+        }
     }
 
     async function buscaInfoVeiculo() {
         const token = await AsyncStorage.getItem('userToken')
-        axios('https://backend-saf-api.azurewebsites.net/BuscarVeiculo/1', {
-            headers : {
-                'Authorization' : 'Bearer ' + localStorage.getItem('userToken')
-            }
-        })
+        setIdUsuario(jwtDecode(token).jti)
+        axios('https://backend-saf-api.azurewebsites.net/BuscarVeiculo/2')
         .then(response => {
             if(response.status === 200)
             {
@@ -63,7 +106,6 @@ export default function Checkin() {
                 setPlacaVeiculo(response.data.placa)
                 setStatusVeiculo(response.data.idStatusNavigation.nomeStatus)
                 setNomeTipoVeiculo(response.data.idTipoVeiculoNavigation.nomeTipoVeiculo)
-                
             }
         })
     }
@@ -76,9 +118,9 @@ export default function Checkin() {
                 <View style={styles.background}>
                     <View style={styles.content}>
                         <View style={styles.header}>
-                            <Text style={styles.placa}> SEX-6969{placaVeiculo}</Text>
-                            <Text style={styles.tipoVeiculo}>Caminhão {nomeTipoVeiculo}</Text>
-                            <Text style={styles.status}>Na garagem{statusVeiculo}</Text>
+                            <Text style={styles.placa}>{placaVeiculo}</Text>
+                            <Text style={styles.tipoVeiculo}>{nomeTipoVeiculo}</Text>
+                            <Text style={styles.status}>{statusVeiculo}</Text>
                         </View>
                         <View style={styles.body}>
                             <View style={styles.containerItens}>
