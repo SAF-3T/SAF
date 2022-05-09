@@ -9,6 +9,9 @@ import Footer from '../../components/footer';
 import ModalAddVeiculo from '../veiculos/modal/modalVeiculo';
 import ModalEditVeiculo from '../veiculos/modalEdit/modalEditVeiculo';
 
+import { Notyf } from 'notyf';
+import 'notyf/notyf.min.css';
+
 import './veiculos.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -18,6 +21,8 @@ import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 
 export default function ListarVeiculos() {
     const [ListaVeiculos, setListaVeiculos] = useState([]);
+
+    const notyf = new Notyf();
 
     function buscarVeiculos() {
         axios('https://backend-saf-api.azurewebsites.net/api/Veiculos', {
@@ -33,24 +38,32 @@ export default function ListarVeiculos() {
             .catch(erro => console.log(erro));
     };
 
+    function DeletarVeiculo(idVeiculo) {
+
+        axios.delete('https://backend-saf-api.azurewebsites.net/Deletar/' + idVeiculo)
+            .then(resposta => {
+                if (resposta.status === 204) {
+                    notyf.success(
+                        {
+                            message: 'Veículo excluída com êxito',
+                            duration: 1000,
+                            position: {
+                                x: 'right',
+                                y: 'top',
+                            }
+                        }
+                    );
+                }
+            })
+    }
+
     // Armazena token do usuário
     const armazenaToken = localStorage.getItem('usuario-login').split('.')[1];
 
     // Descriptografa token
     const tokenDescriptografado = window.atob(armazenaToken).split(',')[2].split('"')[3];
 
-    function deletarVeiculos() {
-        //axios.delete('https://backend-saf-api.azurewebsites.net/api/Deletar/' + tokenDescriptografado)
-        //   .then(resposta => {
-        //        if (resposta.status === 200) {
-        //            setListaVeiculos(resposta.data)
-        //            console.log(resposta.data)
-        //        }
-        //    })
-        //   .catch(erro => console.log(erro));
-    };
-
-    useEffect(buscarVeiculos, []);
+    useEffect(buscarVeiculos, [ListaVeiculos]);
 
     const [isModalAddVeiculoVisible, setIsModalAddVeiculoVisible] = useState(false);
     const [isModalEditVeiculoVisible, setIsModalEditVeiculoVisible] = useState(false);
@@ -132,7 +145,8 @@ export default function ListarVeiculos() {
                                         </div>
                                         <div className="iconesEtiquetaVeiculos">
                                             <FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} style={{ cursor: 'pointer' }} size="2x" onClick={() => setIsModalEditVeiculoVisible(true)} />{isModalEditVeiculoVisible ? (<ModalEditVeiculo onClose={() => setIsModalEditVeiculoVisible(false)}></ModalEditVeiculo>) : null}
-                                            <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
+                                            <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} style={{cursor: 'pointer'}} size="2x"
+                                                onClick={() => DeletarVeiculo(veiculo.idVeiculo)} />
                                         </div>
                                     </div>
                                 </div>

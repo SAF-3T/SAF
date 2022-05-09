@@ -4,7 +4,9 @@ import './modalVeiculo.css';
 
 import axios from 'axios';
 
-import { useHistory } from 'react-router-dom';
+import { Notyf } from 'notyf';
+import 'notyf/notyf.min.css';
+
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImage } from '@fortawesome/free-solid-svg-icons';
@@ -12,8 +14,9 @@ import { faClose } from '@fortawesome/free-solid-svg-icons'
 
 export default function Modal({ onClose = () => { } }) {
 
+    const notyf = new Notyf();
+
     //Cadastrar
-    const [imagem] = useState('');
     const [Placa, setPlaca] = useState('');
     const [Marca, setMarca] = useState('');
     const [Data, setData] = useState('');
@@ -21,7 +24,6 @@ export default function Modal({ onClose = () => { } }) {
     const [Status, setStatus] = useState('');
     const [TipoVeiculo, setTipoVeiculo] = useState('');
     const [IdUsuario, setIdUsuario] = useState('');
-    // const [Carga, setCarga] = useState('');
 
     //Listar
     const [Marcas, setMarcas] = useState([]);
@@ -30,21 +32,12 @@ export default function Modal({ onClose = () => { } }) {
     const [Carrocerias, setCarrocerias] = useState([]);
     const [TiposCargas, setTiposCargas] = useState([]);
 
-    // function BuscarUsuario() {
-    //     // Armazena token do usuário
-    //     const armazenaToken = localStorage.getItem('usuario-login').split('.')[1]
-    //     // Descriptografa token
-    //     const tokenDescriptografado = window.atob(armazenaToken).split(',')[2].split('"')[3];
-    //     setIdUsuario(armazenaToken);
-    // }
-
     function BuscarForms() {
 
         axios.get("http://backend-saf-api.azurewebsites.net/api/Status")
             .then((response) => {
                 if (response.status === 200) {
                     setTipoStatus(response.data)
-                    // console.log(TipoStatus)
                 }
             })
 
@@ -52,7 +45,6 @@ export default function Modal({ onClose = () => { } }) {
             .then((response) => {
                 if (response.status === 200) {
                     setTipoVeiculos(response.data)
-                    // console.log(TipoVeiculos)
                 }
             })
 
@@ -60,7 +52,6 @@ export default function Modal({ onClose = () => { } }) {
             .then((response) => {
                 if (response.status === 200) {
                     setCarrocerias(response.data)
-                    // console.log(Carrocerias)
                 }
             })
 
@@ -68,7 +59,6 @@ export default function Modal({ onClose = () => { } }) {
             .then((response) => {
                 if (response.status === 200) {
                     setTiposCargas(response.data)
-                    // console.log(TiposCargas);
                 }
             })
 
@@ -76,7 +66,6 @@ export default function Modal({ onClose = () => { } }) {
             .then((response) => {
                 if (response.status === 200) {
                     setMarcas(response.data)
-                    // console.log(Marcas);
                 }
             })
     }
@@ -86,15 +75,9 @@ export default function Modal({ onClose = () => { } }) {
         event.preventDefault();
 
         var formData = new FormData();
-
-        // const element = document.getElementById('arquivo')
-        // if (element != null) {
-        //     const file = element.files[0]
-        //     formData.append('arquivo', file, file.name)
-        // }
-
-        // formData.append('idVeiculo', 0);
-        formData.append('arquivo', imagem);
+        const element = document.getElementById('arquivo')
+        const file = element.files[0]
+        formData.append('arquivo', file, file.name)
         formData.append('idUsuario', 33);
         formData.append('idMarca', Marca);
         formData.append('idTipoVeiculo', TipoVeiculo);
@@ -102,7 +85,6 @@ export default function Modal({ onClose = () => { } }) {
         formData.append('placa', Placa);
         formData.append('dataAquisicao', Data);
         formData.append('idCarroceria', IdCarroceria);
-        //formData.append('idTipoCarga', Carga);
 
         try {
             axios({
@@ -113,16 +95,19 @@ export default function Modal({ onClose = () => { } }) {
             })
                 .then((resposta) => {
                     if (resposta.status === 200) {
-                        console.log('Cadastrado');
+                        onClose()
+                        notyf.success(
+                            {
+                                message: 'Veículo cadastrado com êxito',
+                                duration: 1000,
+                                position: {
+                                    x: 'right',
+                                    y: 'top',
+                                }
+                            }
+                        );
                     }
                 });
-
-            //await axios.post('http://backend-saf-api.azurewebsites.net/api/Veiculos', {
-            //    headers: { "Content-Type": "multipart/form-data" },
-            //    data: formData,
-            //}).then((resposta =>
-            //    console.log(resposta.status)
-            // ))
         } catch (error) {
             console.log(error)
         }
@@ -140,8 +125,10 @@ export default function Modal({ onClose = () => { } }) {
                 <div className="conteudos">
                     <div className="conteudo">
                         <form form encType="multipart/form-data" className='formularioCadastroVeiculoDashboard'>
-                            <input type="file" id="arquivo" accept="image/png; image/jpeg"></input>
                             <div className='juntaInputs'>
+                                <input type="file" id="arquivo" className="imgCadastrarVeiculoDashboard" accept="image/png; image/jpeg">
+                                    {/* <FontAwesomeIcon icon={faImage} color="white" size="5x" /> */}
+                                </input>
                                 <div className='inputs-esq'>
                                     <input className='inputVeiculoDashboard' type='text' placeholder="ABC-1234" name='placa' maxlength="8" onChange={(e) => setPlaca(e.target.value)} />
                                     <select className='inputVeiculoDashboard selects' type='text' name='Marcas' placeholder='Marca' onChange={(e) => setMarca(e.target.value)}>

@@ -33,7 +33,6 @@ const Modal = ({ onClose = () => { } }) => {
             })
                 .then((resposta) => {
                     if (resposta.status === 201) {
-                        console.log('Carga cadastrada');
                         setCarga('');
                         onClose()
                         notyf.success(
