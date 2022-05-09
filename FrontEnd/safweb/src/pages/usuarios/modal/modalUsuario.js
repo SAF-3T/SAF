@@ -70,7 +70,7 @@ const Modal = ({ onClose = () => { }, children }) => {
                 if (resposta.status === 201) {
                     notyf.success(
                         {
-                            message: 'Usuario cadastrado!',
+                            message: 'Usuario cadastrado com êxito',
                             duration: 1000,
                             position: {
                                 x: 'right',
@@ -98,11 +98,14 @@ const Modal = ({ onClose = () => { }, children }) => {
                         <div className='juntaInputsUsuario'>
                             <div className='inputs-esq'>
                                 <input className='inputUsuario' type='text' name='nome' placeholder='Nome' required />
-                                <input className='inputUsuario' type='text' placeholder='Sobrenome' name='sobrenome' required />
+                                {/* Adicionar máscara de telefone e ajustar de CPF */}
+                                <MaskedInput className='inputUsuario' type='number' mask="999.999.999-99" placeholder='CPF' name='cpf' required />
+                                <input className='inputUsuario' type='number' placeholder='DDD' name='ddd' required />
                             </div>
                             <div className='inputs-dir'>
-                                {/* Adicionar máscara de telefone e ajustar de CPF */}
-                                <MaskedInput className='inputUsuario' mask="999.999.999-99" placeholder='CPF' required />
+                                <input className='inputUsuario' type='text' name='sobrenome' placeholder='Sobrenome' required />
+                                {/* Mudar para select */}
+                                <input className='inputUsuario' type='tel' name='' placeholder='Tipo de usuário' required />
                                 <input className='inputUsuario' type='tel' name='tel' placeholder='Telefone' required />
                             </div>
                         </div>
