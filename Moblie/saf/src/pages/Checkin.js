@@ -22,6 +22,7 @@ export default function Checkin() {
     const [ tipoAutorizacao, setTipoAutorizacao ] = useState( 0 );
     const [ idUsuario, setIdUsuario ] = useState( 0 );
     const [ idVeiculo, setIdVeiculo ] = useState( 0 );
+    const [ idCheckList, setIdCheckList ] = useState( 0 );
     const [ idStatus, setIdStatus ] = useState( 0 );
     const [ nomeTipoVeiculo, setNomeTipoVeiculo ] = useState( '' );
     const [ nomeU, setNomeU ] = useState( '' );
@@ -38,60 +39,89 @@ export default function Checkin() {
 
     async function cadastrarCheckIn() {
         setDataAtual(new Date().toString())
-        var resposta = await api.post('/CheckList',{
-            idTipoCheckList: x,
-            idVeiculo: 1,
+        let corpoChecklist = {
+            idTipoCheckList: 1,
+            idVeiculo: 2,
             idUsuario: idUsuario,
             dataCheckList: dataAtual
+        }
+        axios.post('https://backend-saf-api.azurewebsites.net/api/CheckList',corpoChecklist)
+        .then(resposta => {
+            if (resposta.status === 201) {
+                console.warn('CheckList cadastrada!')
+                console.warn(resposta)
+                setIdCheckList(resposta.data.idCheckList)
+            }
         })
+        .catch(error => console.warn(error))
+        
 
         if (estadoPneus === false) {
-            api.post('/Erro', 
+            var respostaPneu = await api.post('/Erro',
             {
-                idTipoErro : 1,
-                idCheckList : resposta.data.idCheckList,
-                descricaoErro : ''
+                idTipoErro : 3,
+                idCheckList : idCheckList,
+                descricaoErro : 'Pneu furado!'
             })
+            if (respostaPneu.status === 201) {
+                console.warn('Erro de pneu cadastrado')
+            }
+            
         }
         if (estadoFreio === false) {
-            api.post('/Erro', 
+            var respostaFreio = await api.post('/Erro',
             {
-                idTipoErro : 1,
-                idCheckList : 1,
-                descricaoErro : ''
+                idTipoErro : 8,
+                idCheckList : idCheckList,
+                descricaoErro : 'Freio travado!'
             })
+            if (respostaFreio.status === 201) {
+                console.warn('Erro de pneu cadastrado')
+            }
         }
         if (estadoMotor === false) {
-            api.post('/Erro', 
+            var respostaMotor = await api.post('/Erro',
             {
-                idTipoErro : 1,
-                idCheckList : 1,
-                descricaoErro : ''
+                idTipoErro : 5,
+                idCheckList : idCheckList,
+                descricaoErro : 'Motor sobreaquecido!'
             })
+            if (respostaMotor.status === 201) {
+                console.warn('Erro de motor cadastrado')
+            }
         }
         if (estadoTransmissao === false) {
-            api.post('/Erro', 
+            var respostaTransmissao = await api.post('/Erro', 
             {
-                idTipoErro : 1,
-                idCheckList : 1,
-                descricaoErro : ''
+                idTipoErro : 7,
+                idCheckList : idCheckList,
+                descricaoErro : 'Transmissão com problemas!'
             })
+            if (respostaTransmissao.status === 201) {
+                console.warn('Erro de transmissao cadastrado')
+            }
         }
         if (estadoRodas === false) {
-            api.post('/Erro', 
+            var respostaRodas = await api.post('/Erro',
             {
-                idTipoErro : 1,
-                idCheckList : 1,
-                descricaoErro : ''
+                idTipoErro : 4,
+                idCheckList : idCheckList,
+                descricaoErro : 'Rodas amassadas!'
             })
+            if (respostaRodas.status === 201) {
+                console.warn('Erro de rodas cadastrado')
+            }
         }
         if (combustivel === false) {
-            api.post('/Erro', 
+            var respostaCombustivel = await api.post('/Erro', 
             {
-                idTipoErro : 1,
-                idCheckList : 1,
-                descricaoErro : ''
+                idTipoErro : 6,
+                idCheckList : idCheckList,
+                descricaoErro : 'Sem combustível!'
             })
+            if (respostaCombustivel.status === 201) {
+                console.warn('Erro de combustivel cadastrado')
+            }
         }
     }
 
