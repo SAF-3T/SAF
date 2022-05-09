@@ -12,41 +12,90 @@ import { faClose } from '@fortawesome/free-solid-svg-icons'
 
 export default function Modal({ onClose = () => { } }) {
 
+    //Cadastrar
+    const [imagem] = useState('');
     const [Placa, setPlaca] = useState('');
     const [Marca, setMarca] = useState('');
     const [Data, setData] = useState('');
     const [IdCarroceria, setIdCarroceria] = useState('');
     const [Status, setStatus] = useState('');
-    const [Carga, setCarga] = useState('');
     const [TipoVeiculo, setTipoVeiculo] = useState('');
     const [IdUsuario, setIdUsuario] = useState('');
+    // const [Carga, setCarga] = useState('');
 
-
+    //Listar
     const [Marcas, setMarcas] = useState([]);
     const [TipoStatus, setTipoStatus] = useState([]);
     const [TipoVeiculos, setTipoVeiculos] = useState([]);
     const [Carrocerias, setCarrocerias] = useState([]);
     const [TiposCargas, setTiposCargas] = useState([]);
 
-    function BuscarUsuario() {
-        // Armazena token do usuário
-        const armazenaToken = localStorage.getItem('usuario-login').split('.')[1]
-        // Descriptografa token
-        const tokenDescriptografado = window.atob(armazenaToken).split(',')[2].split('"')[3];
-        setIdUsuario(armazenaToken);
+    // function BuscarUsuario() {
+    //     // Armazena token do usuário
+    //     const armazenaToken = localStorage.getItem('usuario-login').split('.')[1]
+    //     // Descriptografa token
+    //     const tokenDescriptografado = window.atob(armazenaToken).split(',')[2].split('"')[3];
+    //     setIdUsuario(armazenaToken);
+    // }
+
+    function BuscarForms() {
+
+        axios.get("http://backend-saf-api.azurewebsites.net/api/Status")
+            .then((response) => {
+                if (response.status === 200) {
+                    setTipoStatus(response.data)
+                    // console.log(TipoStatus)
+                }
+            })
+
+        axios.get("http://backend-saf-api.azurewebsites.net/api/TipoVeiculos")
+            .then((response) => {
+                if (response.status === 200) {
+                    setTipoVeiculos(response.data)
+                    // console.log(TipoVeiculos)
+                }
+            })
+
+        axios.get("http://backend-saf-api.azurewebsites.net/api/Carroceria")
+            .then((response) => {
+                if (response.status === 200) {
+                    setCarrocerias(response.data)
+                    // console.log(Carrocerias)
+                }
+            })
+
+        axios.get("http://backend-saf-api.azurewebsites.net/api/TipoCargas")
+            .then((response) => {
+                if (response.status === 200) {
+                    setTiposCargas(response.data)
+                    // console.log(TiposCargas);
+                }
+            })
+
+        axios.get("http://backend-saf-api.azurewebsites.net/api/Marca")
+            .then((response) => {
+                if (response.status === 200) {
+                    setMarcas(response.data)
+                    // console.log(Marcas);
+                }
+            })
     }
 
-    function AdicionarVeiculo() {
+    const AdicionarVeiculo = (event) => {
+
+        event.preventDefault();
 
         var formData = new FormData();
 
-        const element = document.getElementById('arquivo')
-        if (element != null) {
-            const file = element.files[0]
-            formData.append('arquivo', file, file.name)
-        }
+        // const element = document.getElementById('arquivo')
+        // if (element != null) {
+        //     const file = element.files[0]
+        //     formData.append('arquivo', file, file.name)
+        // }
 
-        formData.append('idUsuario', Placa);
+        // formData.append('idVeiculo', 0);
+        formData.append('arquivo', imagem);
+        formData.append('idUsuario', 33);
         formData.append('idMarca', Marca);
         formData.append('idTipoVeiculo', TipoVeiculo);
         formData.append('idStatus', Status);
@@ -79,51 +128,7 @@ export default function Modal({ onClose = () => { } }) {
         }
     }
 
-
-    function BuscarForms() {
-
-        axios.get("http://backend-saf-api.azurewebsites.net/api/Status")
-            .then((response) => {
-                if (response.status === 200) {
-                    setTipoStatus(response.data)
-                    console.log(TipoStatus)
-                }
-            })
-
-        axios.get("http://backend-saf-api.azurewebsites.net/api/TipoVeiculos")
-            .then((response) => {
-                if (response.status === 200) {
-                    setTipoVeiculos(response.data)
-                    console.log(TipoVeiculos)
-                }
-            })
-
-        axios.get("http://backend-saf-api.azurewebsites.net/api/Carroceria")
-            .then((response) => {
-                if (response.status === 200) {
-                    setCarrocerias(response.data)
-                    console.log(Carrocerias)
-                }
-            })
-
-        axios.get("http://backend-saf-api.azurewebsites.net/api/TipoCargas")
-            .then((response) => {
-                if (response.status === 200) {
-                    setTiposCargas(response.data)
-                    console.log(TiposCargas);
-                }
-            })
-
-        axios.get("http://backend-saf-api.azurewebsites.net/api/Marca")
-            .then((response) => {
-                if (response.status === 200) {
-                    setMarcas(response.data)
-                    console.log(Marcas);
-                }
-            })
-    }
-
-    useEffect(BuscarForms, BuscarUsuario, []);
+    useEffect(() => { BuscarForms() }, []);
 
     return (
         <div className="modalVeiculoDashboard">
@@ -134,9 +139,8 @@ export default function Modal({ onClose = () => { } }) {
                 </div>
                 <div className="conteudos">
                     <div className="conteudo">
-                        <div className='imgCadastrarVeiculoDashboard'><FontAwesomeIcon icon={faImage} color="white" size="5x" /></div>
-
-                        <form method="post" encType="multipart/form-data" className='formularioCadastroVeiculoDashboard' onSubmit={AdicionarVeiculo}>
+                        <form form encType="multipart/form-data" className='formularioCadastroVeiculoDashboard'>
+                            <input type="file" id="arquivo" accept="image/png; image/jpeg"></input>
                             <div className='juntaInputs'>
                                 <div className='inputs-esq'>
                                     <input className='inputVeiculoDashboard' type='text' placeholder="ABC-1234" name='placa' maxlength="8" onChange={(e) => setPlaca(e.target.value)} />
@@ -183,7 +187,7 @@ export default function Modal({ onClose = () => { } }) {
                                             )
                                         })}
                                     </select>
-                                    <select className='inputVeiculoDashboard selects' type='text' name='TipoCargas' required onChange={(e) => setCarga(e.target.value)}>
+                                    {/* <select className='inputVeiculoDashboard selects' type='text' name='TipoCargas' required onChange={(e) => setCarga(e.target.value)}>
                                         <option value='0' disabled selected>Carga</option>
                                         {TiposCargas.map((tipo) => {
                                             return (
@@ -192,8 +196,8 @@ export default function Modal({ onClose = () => { } }) {
                                                 </option>
                                             )
                                         })}
-                                    </select>
-                                    <button onClick={(e) => AdicionarVeiculo(e)} className='btn_cadastro_Dashboard' type='submit'><p className='pCadastro'>Cadastrar</p></button>
+                                    </select> */}
+                                    <button onClick={(e) => AdicionarVeiculo(e)} className='btn_cadastro_Dashboard' type="submit"><p className='pCadastro'>Cadastrar</p></button>
                                 </div>
                             </div>
                         </form>
