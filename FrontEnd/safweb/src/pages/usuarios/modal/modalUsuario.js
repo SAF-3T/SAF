@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './modalUsuario.css';
 
@@ -17,13 +17,54 @@ const Modal = ({ onClose = () => { }, children }) => {
 
     const notyf = new Notyf();
 
+    //Cadastrar
+    const [IdTipoUsuario, setIdTipoUsuario] = useState('');
+    const [Senha, setSenha] = useState('');
+    const [CPF, setCPF] = useState('');
+    const [DDD, setDDD] = useState('');
+    const [Nome, setNome] = useState('');
+    const [Sobrenome, setSobrenome] = useState('');
+    const [Telefone, setTelefone] = useState('');
+
+    //Listar
+    const [TiposUsuarios, setTiposUsuarios] = useState([]);
+
+
+    function BuscarForms() {
+        axios.get('http://backend-saf-api.azurewebsites.net/api/TipoUsuarios')
+            .then(response => {
+                if (response.status === 200)
+                    setTiposUsuarios(response.data)
+                console.log(TiposUsuarios)
+            })
+    }
+
     function CadastrarCarroceria(event) {
 
         event.preventDefault();
 
-        axios.post('http://backend-saf-api.azurewebsites.net/api/Usuario', {
-            
+        try {
+            var formData = new FormData();
+            const element = document.getElementById('arquivo')
+            const file = element.files[0]
+            formData.append('arquivo', file, file.name)
+            formData.append('idTipoUsuario', IdTipoUsuario);
+            formData.append('senha', Senha);
+            formData.append('CPF', CPF);
+            formData.append('DDD', DDD);
+            formData.append('nome', Nome);
+            formData.append('sobrenome', Sobrenome);
+            formData.append('telefone', Telefone);
 
+        } catch (error) {
+            console.log(error)
+        }
+
+        axios({
+            method: "post",
+            url: "http://backend-saf-api.azurewebsites.net/api/Usuarios",
+            data: formData,
+            headers: { "Content-Type": "multipart/form-data" },
         })
             .then((resposta) => {
                 if (resposta.status === 201) {
@@ -40,8 +81,9 @@ const Modal = ({ onClose = () => { }, children }) => {
                     onClose()
                 }
             })
-
     }
+
+    useEffect(BuscarForms, [])
 
     return (
         <div className="modalUsuario">
