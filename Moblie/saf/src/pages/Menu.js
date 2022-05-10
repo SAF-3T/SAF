@@ -60,15 +60,21 @@ import {
                         <TouchableOpacity onPress={() =>(this.props.navigation.navigate('Checkin'))} style={styles.buttonBackground}>
                             <Text style={styles.buttonText}>Check-in</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={() =>(this.props.navigation.navigate('Contatos'))} style={styles.buttonBackground}>
+                        <TouchableOpacity onPress={() =>(this.props.navigation.navigate('Checkout'))} style={styles.buttonBackground}>
                             <Text style={styles.buttonText}>Check-out</Text>
                         </TouchableOpacity>
                     </View>
-                    <View>
-                        <TouchableOpacity onPress={() =>(this.props.navigation.navigate('Contatos'))} style={styles.buttonBackgroundBig}>
-                            <Text style={styles.buttonText}>Chat</Text>
+                    <View style={styles.container2buttons}>
+                        <TouchableOpacity onPress={() =>(this.props.navigation.navigate('Preventiva'))} style={styles.buttonBackground}>
+                            <Text style={styles.buttonText}>Preventiva</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() =>(this.props.navigation.navigate('Corretiva'))} style={styles.buttonBackground}>
+                            <Text style={styles.buttonText}>Corretiva</Text>
                         </TouchableOpacity>
                     </View>
+                    
+                        
+                    
                 </View>
             </View>
         )

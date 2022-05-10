@@ -18,7 +18,7 @@ import {
   import Header from '../components/Header'
 
 
-export default function Checkin() {
+export default function Corretiva() {
     const [ tipoAutorizacao, setTipoAutorizacao ] = useState( 0 );
     const [ idUsuario, setIdUsuario ] = useState( 0 );
     const [ idVeiculo, setIdVeiculo ] = useState( 0 );
@@ -35,12 +35,21 @@ export default function Checkin() {
     const [ estadoRodas, setEstadoRodas ] = useState( false );
     const [ combustivel, setCombustivel ] = useState( false );
     const [ dataAtual, setDataAtual ] = useState( '' );
+    const [ listaErros, setListaErros ] = useState( [] );
 
+    async function BuscarChecklist() {
+        var resposta = api.get('/CheckList/MaisRecente/2')
+        if(resposta.status === 200) {
+            setListaErros(resposta.data)
+            console.warn(listaErros)
+        }
+
+    }
 
     async function cadastrarCheckIn() {
         setDataAtual(new Date().toString())
         let corpoChecklist = {
-            idTipoCheckList: 2,
+            idTipoCheckList: 4,
             idVeiculo: 2,
             idUsuario: idUsuario,
             dataCheckList: dataAtual
@@ -149,7 +158,6 @@ export default function Checkin() {
                 <View style={styles.background}>
                     <View style={styles.content}>
                         <View style={styles.header}>
-                            <Text style={styles.placa}>Check-in</Text>
                             <Text style={styles.placa}>{placaVeiculo}</Text>
                             <Text style={styles.tipoVeiculo}>{nomeTipoVeiculo}</Text>
                             <Text style={styles.status}>{statusVeiculo}</Text>

@@ -18,7 +18,7 @@ import {
   import Header from '../components/Header'
 
 
-export default function Checkin() {
+export default function Checkout() {
     const [ tipoAutorizacao, setTipoAutorizacao ] = useState( 0 );
     const [ idUsuario, setIdUsuario ] = useState( 0 );
     const [ idVeiculo, setIdVeiculo ] = useState( 0 );
@@ -40,7 +40,7 @@ export default function Checkin() {
     async function cadastrarCheckIn() {
         setDataAtual(new Date().toString())
         let corpoChecklist = {
-            idTipoCheckList: 2,
+            idTipoCheckList: 1,
             idVeiculo: 2,
             idUsuario: idUsuario,
             dataCheckList: dataAtual
@@ -149,7 +149,7 @@ export default function Checkin() {
                 <View style={styles.background}>
                     <View style={styles.content}>
                         <View style={styles.header}>
-                            <Text style={styles.placa}>Check-in</Text>
+                            <Text style={styles.placa}>Check-out</Text>
                             <Text style={styles.placa}>{placaVeiculo}</Text>
                             <Text style={styles.tipoVeiculo}>{nomeTipoVeiculo}</Text>
                             <Text style={styles.status}>{statusVeiculo}</Text>
