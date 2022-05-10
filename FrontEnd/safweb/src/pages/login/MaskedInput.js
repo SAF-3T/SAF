@@ -2,7 +2,9 @@ import React from 'react';
 import InputMask from 'react-input-mask';
 import './login.css'
 
-const onlyNumbers = (str) => str.replace(/[^0-9]/g, '');
+const MaskPlaca = (placa) => placa.replace(/[a-z][A-Z]{3}[0-9]{4}/g, '');
+
+const MaskCPF = (cpf) => cpf.replace(/[0-9]/g, '');
 
 const MaskedInput = ({ value, onChange, name, mask, className, placeholder }) => {
   function handleChange(event) {
@@ -11,7 +13,8 @@ const MaskedInput = ({ value, onChange, name, mask, className, placeholder }) =>
       target: {
         ...event.target,
         name,
-        value: onlyNumbers(event.target.value)
+        value: MaskPlaca(event.target.value),
+        value: MaskCPF(event.target.value)
       }
     });
   }

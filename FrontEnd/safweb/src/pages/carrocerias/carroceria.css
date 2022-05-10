@@ -145,7 +145,7 @@ body {
     width: fit-content;
     height: 60px;
     width: 158px;
-    background: #d8d3d3;
+    background: #0E758C;
     border-radius: 10px;
     margin: 0 20px;
     display: flex;
@@ -161,7 +161,7 @@ body {
     display: flex;
     align-items: center;
     text-align: center;
-    color: #0F282D;
+    color: #FFF;
 }
 
 .alinharEtiquetasCarrocerias {

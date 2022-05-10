@@ -125,7 +125,7 @@ export default function ListarUsuarios() {
                                                     <p className="nomeEtiquetaUsuario">{usuario.telefone}</p>
                                                 </div>
                                                 <div className="etiquetaUsuario">
-                                                    <p className="nomeEtiquetaUsuario">{usuario.cpf}</p>
+                                                    <p className="nomeEtiquetaUsuario ">{usuario.cpf}</p>
                                                 </div>
                                             </div>
                                         </div>

@@ -87,40 +87,32 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 0 auto;
     width: 80%;
 }
 
 .alinharCabecalhoEtiquetasCargas {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin: 0 auto;
     width: 80%;
 }
 
-.etiquetasCargas {
-    width: 27%;
-    height: 63px;
-    border-radius: 10px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .etiquetaCabecalhoCargas {
-    width: 27%;
-    height: 63px;
+    width: 193px;
     border-radius: 10px;
     text-align: center;
+    margin: 0 20px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .etiquetaCargas {
-    width: 153px;
+    width: 193px;
     height: 60px;
-    background: #d8d3d3;
+    background: #0E758C;
     border-radius: 10px;
     margin: 0 20px;
     display: flex;
@@ -133,7 +125,7 @@ body {
     font-weight: 500;
     font-size: 20px;
     line-height: 37px;
-    color: #0F282D;
+    color: #FFF;
 }
 
 .nomeEtiquetaCabecalhoCarga {

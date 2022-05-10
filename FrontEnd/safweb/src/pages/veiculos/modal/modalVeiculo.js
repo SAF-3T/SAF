@@ -7,6 +7,8 @@ import axios from 'axios';
 import { Notyf } from 'notyf';
 import 'notyf/notyf.min.css';
 
+import MaskedInput from '../../login/MaskedInput';
+
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImage } from '@fortawesome/free-solid-svg-icons';
@@ -15,6 +17,8 @@ import { faClose } from '@fortawesome/free-solid-svg-icons'
 export default function Modal({ onClose = () => { } }) {
 
     const notyf = new Notyf();
+
+    const [AtualizaStateCampo, setAtualizaStateCampo] = useState('');
 
     //Cadastrar
     const [Placa, setPlaca] = useState('');
@@ -126,11 +130,11 @@ export default function Modal({ onClose = () => { } }) {
                     <div className="conteudo">
                         <form form encType="multipart/form-data" className='formularioCadastroVeiculoDashboard'>
                             <div className='juntaInputs'>
-                                <input type="file" id="arquivo" className="imgCadastrarVeiculoDashboard" accept="image/png; image/jpeg">
+                                <input type="file" id="arquivo" className="imgCadastrarVeiculoDashboard" style={{cursor: 'pointer'}} accept="image/png; image/jpeg">
                                     {/* <FontAwesomeIcon icon={faImage} color="white" size="5x" /> */}
                                 </input>
                                 <div className='inputs-esq'>
-                                    <input className='inputVeiculoDashboard' type='text' placeholder="ABC-1234" name='placa' maxlength="8" onChange={(e) => setPlaca(e.target.value)} />
+                                    <MaskedInput className='inputVeiculoDashboard' mask="aaa-9999" placeholder='Placa' name='placa' onChange={(e) => setPlaca(e.target.value)} />
                                     <select className='inputVeiculoDashboard selects' type='text' name='Marcas' placeholder='Marca' onChange={(e) => setMarca(e.target.value)}>
                                         <option value='0' disabled selected >Marca</option>
                                         {Marcas.map((marca) => {

@@ -66,7 +66,7 @@ export default function ListarCarroceria() {
 
     useEffect(buscarCarroceria, [ListaCarroceria]);
     useEffect(Atualizalocal, [IdCarroceria]);
-    
+
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [ListaEditCarroceria, setListaEditCarroceria] = useState(false);
 
@@ -75,7 +75,7 @@ export default function ListarCarroceria() {
         <div>
             <Sidebar2 />
             <Header />
-        
+
             <main>
                 <div className="wrapperCarrocerias">
                     <p className="pCarroceria">Carrocerias</p>
@@ -147,7 +147,6 @@ export default function ListarCarroceria() {
                             )
                         })
                     }
-
                 </div>
             </main >
             <Footer />

@@ -100,7 +100,7 @@ body {
 .etiquetaUsuario {
     width: 158px;
     height: 62px;
-    background: rgba(196, 196, 196, 0.5);
+    background: #0E758C;
     border-radius: 10px;
     margin: 0 20px;
     display: flex;
@@ -126,7 +126,7 @@ body {
     display: flex;
     align-items: center;
     text-align: center;
-    color: #0F282D;
+    color: #fff;
 }
 
 .nomeCabecalhoEtiquetaUsuario {
