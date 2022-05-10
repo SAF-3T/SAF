@@ -44,6 +44,10 @@ class Login extends React.Component {
         this.setState({ [campo.target.name]: campo.target.value });
     };
 
+    log = () => {
+        console.log(this.state.cpf)
+    }
+
     render() {
         return (
             <div>
@@ -60,7 +64,7 @@ class Login extends React.Component {
                                     <div className="item">
                                         <p>{this.state.erroMensagem}</p>
                                     </div>
-                                <button type="submit" className="btn_login">LOGIN</button>
+                                <button onClick={this.log} type="submit" className="btn_login">LOGIN</button>
 
                             </form>
 

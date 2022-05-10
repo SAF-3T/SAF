@@ -7,8 +7,7 @@ import axios from 'axios';
 import { Notyf } from 'notyf';
 import 'notyf/notyf.min.css';
 
-import MaskedInput from '../../login/MaskedInput';
-
+import MaskedInputPlaca from '../MaskedInputPlaca';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImage } from '@fortawesome/free-solid-svg-icons';
@@ -119,6 +118,12 @@ export default function Modal({ onClose = () => { } }) {
 
     useEffect(() => { BuscarForms() }, []);
 
+    function log() {
+        console.log(Placa)
+    }
+
+    useEffect(log, [Placa])
+
     return (
         <div className="modalVeiculoDashboard">
             <div className="wrapperModalVeiculoDashboard">
@@ -134,7 +139,7 @@ export default function Modal({ onClose = () => { } }) {
                                     {/* <FontAwesomeIcon icon={faImage} color="white" size="5x" /> */}
                                 </input>
                                 <div className='inputs-esq'>
-                                    <MaskedInput className='inputVeiculoDashboard' mask="aaa-9999" placeholder='Placa' name='placa' onChange={(e) => setPlaca(e.target.value)} />
+                                    <MaskedInputPlaca className='inputVeiculoDashboard' mask="aaa-9999" placeholder='Placa' name='placa' onChange={(e) => setPlaca(e.target.value.toUpperCase())} />
                                     <select className='inputVeiculoDashboard selects' type='text' name='Marcas' placeholder='Marca' onChange={(e) => setMarca(e.target.value)}>
                                         <option value='0' disabled selected >Marca</option>
                                         {Marcas.map((marca) => {

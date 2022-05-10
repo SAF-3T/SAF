@@ -17,6 +17,20 @@ const Modal = ({ onClose = () => { }, children }) => {
 
     const notyf = new Notyf();
 
+    const initialValues = {
+        cpf: '',
+        tel: ''
+    };
+
+    const [ values,setValues ] = useState(initialValues)
+
+    function handleChange(event) {
+        setValues({
+            ...values,
+            [event.target.value]: event.target.value
+        });
+    }
+
     //Cadastrar
     const [IdTipoUsuario, setIdTipoUsuario] = useState('');
     const [Senha, setSenha] = useState('');
@@ -48,11 +62,11 @@ const Modal = ({ onClose = () => { }, children }) => {
         formData.append('arquivo', file, file.name);
         formData.append('idTipoUsuario', IdTipoUsuario);
         formData.append('senha', Senha);
-        formData.append('CPF', 11169111117);
+        formData.append('CPF', CPF);
         formData.append('DDD', 11);
         formData.append('nome', Nome);
         formData.append('sobrenome', Sobrenome);
-        formData.append('telefone', 981911331);
+        formData.append('telefone', Telefone);
 
         try {
             axios({
@@ -81,7 +95,13 @@ const Modal = ({ onClose = () => { }, children }) => {
         }
     }
 
+    function log() {
+        console.log(Telefone)
+        console.log(CPF)
+    }
+
     useEffect(() => { BuscarForms() }, []);
+    useEffect(log, [Telefone, CPF])
 
     return (
         <div className="modalUsuario">
@@ -98,7 +118,7 @@ const Modal = ({ onClose = () => { }, children }) => {
                         <div className='juntaInputsUsuario'>
                             <div className='inputs-esq'>
                                 <input className='inputUsuario' type='text' name='nome' placeholder='Nome' required onChange={(e) => setNome(e.target.value)} />
-                                <MaskedInput className='inputUsuario' type='number' mask="999.999.999-99" placeholder='CPF' name='cpf' required onChange={(e) => setCPF(e.target.value)} />
+                                <MaskedInput className='inputUsuario'placeholder='CPF' name='cpf' mask="999.999.999-99" value={CPF} required onChange={(e) => setCPF(e.target.value)} />
                                 <input className='inputUsuario' type='password' placeholder='Senha' name='senha' required onChange={(e) => setSenha(e.target.value)} />
                             </div>
                             <div className='inputs-dir'>
@@ -113,7 +133,7 @@ const Modal = ({ onClose = () => { }, children }) => {
                                         )
                                     })}
                                 </select>
-                                <MaskedInput className='inputUsuario' type='phone' name='tel' placeholder='Telefone' mask="(99) 99999-9999" required onChange={(e) => setTelefone(e.target.value)} />
+                                <MaskedInput className='inputUsuario' name="tel" placeholder='Telefone' mask="(99) 9999-9999" value={Telefone} onChange={(tel) => setTelefone(tel.target.value)} />
                             </div>
                         </div>
                         <button onClick={(e) => CadastrarUsuario(e)} className='btn_cadastroUsuario' type='submit'>
