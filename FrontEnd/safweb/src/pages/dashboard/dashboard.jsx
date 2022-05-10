@@ -13,7 +13,7 @@ import ModalVeiculoDashboard from '../veiculos/modalDashboard/modalVeiculoDashbo
 import ModalTipoVeiculoDashboard from '../tipoVeiculos/modalDashboard/modalTipoVeiculosDashboard';
 import ModalCargaDashboard from '../cargas/modalDashboard/modalCargasDashboard';
 import ModalCarroceriaDashboard from '../carrocerias/modalDashboard/modalCarroceriasDashboard';
-import ModalUsuarioDashboard from '../usuarios/modalDashboard/modalUsuarioDashboard';
+import ModalUsuario from '../usuarios/modal/modalUsuario.js';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faWarehouse } from '@fortawesome/free-solid-svg-icons'
@@ -60,7 +60,7 @@ function Dashboard() {
   const [isModalTipoVeiculoVisible, setIsModalTipoVeiculoVisible] = useState(false);
   const [isModalCargaVisible, setIsModalCargaVisible] = useState(false);
   const [isModalCarroceriaVisible, setIsModalCarroceriaVisible] = useState(false);
-  const [isModalUsuarioVisible, setIsModalUsuarioVisible] = useState(false);
+  const [isModalAddUsuarioVisible, setIsModalAddUsuarioVisible] = useState(false);
 
   return (
     <div>
@@ -128,14 +128,14 @@ function Dashboard() {
               </div>
             </div>{isModalCarroceriaVisible ? (<ModalCarroceriaDashboard onClose={() => setIsModalCarroceriaVisible(false)}></ModalCarroceriaDashboard>) : null}
 
-            <div className="card" onClick={() => setIsModalUsuarioVisible(true)}>
+            <div className="card" onClick={() => setIsModalAddUsuarioVisible(true)}>
               <div className="adicionarCard">
                 <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" /> </div>
               <div className="textosCard">
                 <p className="pCadastrarCard">Cadastrar</p>
                 <p className="pCadastrarCard">Usuario</p>
               </div>
-            </div>{isModalUsuarioVisible ? (<ModalUsuarioDashboard onClose={() => setIsModalUsuarioVisible(false)}></ModalUsuarioDashboard>) : null}
+            </div>{isModalAddUsuarioVisible ? (<ModalUsuario onClose={() => setIsModalAddUsuarioVisible(false)}></ModalUsuario>) : null}
           </div>
         </div>
       </main >

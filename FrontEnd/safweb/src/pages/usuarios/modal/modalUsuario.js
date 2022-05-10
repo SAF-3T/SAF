@@ -45,15 +45,14 @@ const Modal = ({ onClose = () => { }, children }) => {
         var formData = new FormData();
         const element = document.getElementById('ImagemUsuario')
         const file = element.files[0]
-        formData.append('ImagemUsuario', file, file.name);
-        formData.append('IdUsuario', 33);
-        formData.append('IdTipoUsuario', IdTipoUsuario);
-        formData.append('Senha', Senha);
-        formData.append('Cpf', CPF);
-        formData.append('Ddd', DDD);
-        formData.append('Nome', Nome);
-        formData.append('Sobrenome', Sobrenome);
-        formData.append('Telefone', Telefone);
+        formData.append('arquivo', file, file.name);
+        formData.append('idTipoUsuario', IdTipoUsuario);
+        formData.append('senha', Senha);
+        formData.append('CPF', 11169111117);
+        formData.append('DDD', 11);
+        formData.append('nome', Nome);
+        formData.append('sobrenome', Sobrenome);
+        formData.append('telefone', 981911331);
 
         try {
             axios({
@@ -63,7 +62,7 @@ const Modal = ({ onClose = () => { }, children }) => {
                 headers: { "Content-Type": "multipart/form-data" },
             })
                 .then((resposta) => {
-                    if (resposta.status === 200) {
+                    if (resposta.status === 201) {
                         onClose()
                         notyf.success(
                             {
@@ -80,7 +79,6 @@ const Modal = ({ onClose = () => { }, children }) => {
         } catch (error) {
             console.log(error)
         }
-
     }
 
     useEffect(() => { BuscarForms() }, []);
@@ -109,7 +107,7 @@ const Modal = ({ onClose = () => { }, children }) => {
                                     <option value='0' disabled selected >Tipo de usuário</option>
                                     {TiposUsuarios.map((tipoUsuario) => {
                                         return (
-                                            <option key={tipoUsuario.IdTipoUsuario} value={tipoUsuario.IdTipoUsuario}>
+                                            <option key={tipoUsuario.idTipoUsuario} value={tipoUsuario.idTipoUsuario}>
                                                 {tipoUsuario.nomeTipoUsuario}
                                             </option>
                                         )

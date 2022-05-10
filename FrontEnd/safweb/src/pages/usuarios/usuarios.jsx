@@ -39,8 +39,8 @@ export default function ListarUsuarios() {
 
     const notyf = new Notyf();
 
-    function deletar(idUsuario) {
-        axios.delete('https://backend-saf-api.azurewebsites.net/api/Usuarios/Deletar/' + idUsuario)
+    function DeletarUsuario(idUsuario) {
+        axios.delete('http://backend-saf-api.azurewebsites.net/api/Usuarios/Deletar/' + idUsuario)
             .then(resposta => {
                 if (resposta.status === 204) {
                     notyf.success(
@@ -57,6 +57,7 @@ export default function ListarUsuarios() {
             })
             .catch(erro => console.log(erro))
     };
+
     useEffect(buscarUsuarios, [ListaUsuarios]);
 
     const [isModalAddUsuarioVisible, setIsModalAddUsuarioVisible] = useState(false);
@@ -132,7 +133,7 @@ export default function ListarUsuarios() {
                                         <div className="iconesEtiquetaUsuarios">
                                             <FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} style={{ cursor: 'pointer' }} size="2x" />
                                             <FontAwesomeIcon className="iconTrashCan" style={{ cursor: 'pointer' }} icon={faTrashCan} size="2x"
-                                                onClick={() => deletar(usuario.idUsuario)} />
+                                                onClick={() => DeletarUsuario(usuario.idUsuario)} />
                                         </div>
                                     </div>
                                 </div>

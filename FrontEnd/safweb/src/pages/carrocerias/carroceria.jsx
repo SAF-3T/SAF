@@ -138,7 +138,7 @@ export default function ListarCarroceria() {
                                             </div>
                                         </div>
                                         <div className="iconesEtiquetaCarrocerias">
-                                            <FontAwesomeIcon value={carroceria.idCarroceria} className="iconPenToSquare" icon={faPenToSquare} size="2x" style={{ cursor: 'pointer' }} onClick={() => setListaEditCarroceria(true), (e) => setidCarroceria(e.target.value)} />{ListaEditCarroceria ? (<ModalEdit onClose={() => setListaEditCarroceria(false)}></ModalEdit>) : null}
+                                            <FontAwesomeIcon value={carroceria.idCarroceria} className="iconPenToSquare" icon={faPenToSquare} size="2x" style={{ cursor: 'pointer' }} onClick={() => setListaEditCarroceria(true)} />{ListaEditCarroceria ? (<ModalEdit onClose={() => setListaEditCarroceria(false)}></ModalEdit>) : null}
                                             <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" style={{ cursor: 'pointer' }}
                                                 onClick={() => deletar(carroceria.idCarroceria)} />
                                         </div>

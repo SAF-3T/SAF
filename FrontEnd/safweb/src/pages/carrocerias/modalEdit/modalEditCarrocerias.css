@@ -11,11 +11,11 @@
     align-items: center;
 }
 
-.wrapperModalCarrocerias {
+.wrapperModalCarrocerias1 {
     background-color: #fff;
     width: 50%;
     color: #000;
-    height: 12%;
+    height: 15%;
     position: absolute;
     top: 5%;
     border-radius: 10px;
@@ -40,44 +40,85 @@
     margin: 0 auto;
 }
 
-.conteudosCarrocerias {
-    height: fit-content;
+.conteudosCarrocerias1 {
+    height: 60%;
     width: 90%;
-    margin: 14% auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 6.5% auto;
 }
 
-.conteudoCarroceria {
+.conteudoCarroceriaModal {
     width: 80%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-direction: column;
     margin: 0 auto;
 }
 
-.inputCarroceria {
-    width: 45%;
+.inputCarroceria1 {
+    width: 70%;
     color: #000;
     background-color: white;
     font-size: 30px;
+    margin-bottom: 10px;
     text-align: center;
     border: none;
     border-bottom: 1px solid #000;
     margin-top: 0;
-    margin-bottom: 0;
+    margin-bottom: 50px;
 }
 
-.inputCarroceria::placeholder {
+.inputCarroceria1::placeholder {
     text-align: center;
     font-size: 30px;
     color: #00000048;
 }
 
-.inputCarroceria:focus {
+.inputsCarroceria {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    width: 80%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.inputCarroceria1:focus {
     box-shadow: 0 0 0 0;
     outline: 0;
 }
 
-.btn_editarCarroceria {
+.inputSelect {
+    width: 70%;
+    color: #00000048;
+    background-color: white;
+    font-size: 30px;
+    margin-bottom: 10px;
+    text-align: center;
+    border: none;
+    border-bottom: 1px solid #000;
+    margin-top: 0;
+    margin-bottom: 50px;
+}
+
+.inputSelect:required:invalid {
+    color: #00000048;
+}
+
+option[value=""][disabled] {
+    display: none;
+}
+
+.inputSelect:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
+}
+
+.btn_cadastroCarroceria {
     width: 30%;
     background-color: #0E758C;
     overflow: visible;
@@ -90,15 +131,15 @@
     border-radius: 10px;
 }
 
-.btn_editarCarroceria:hover {
+.btn_cadastroCarroceria:hover {
     opacity: 0.9;
 }
 
-.btn_editarCarroceria::after {
+.btn_cadastroCarroceria::after {
     display: none;
 }
 
-.pBtnEditarCarroceria {
+.pBtnCadastroCarroceria {
     color: white;
     font-size: 20px;
     font-family: 'Montserrat', sans-serif;
