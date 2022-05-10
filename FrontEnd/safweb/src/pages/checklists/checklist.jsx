@@ -15,6 +15,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
 import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
+import { faMagnifyingGlassPlus } from '@fortawesome/free-solid-svg-icons';
 
 export default function Checklists() {
 
@@ -57,17 +58,17 @@ export default function Checklists() {
             .catch(erro => console.log(erro));
     }
 
-        function deletar(idChecklist) {
-            axios.delete('https://backend-saf-api.azurewebsites.net/CheckList/' + idChecklist)
+    function deletar(idChecklist) {
+        axios.delete('https://backend-saf-api.azurewebsites.net/CheckList/' + idChecklist)
             .then(resposta => {
-                    if (resposta.status === 204) {
-                        setListaChecklist(resposta.data)
+                if (resposta.status === 204) {
+                    setListaChecklist(resposta.data)
                         .then(buscarChecklists());
-                    }
-                })
+                }
+            })
             .catch(erro => console.log(erro));
-        };
-    
+    };
+
     useEffect(buscarContagemErros, []);
     useEffect(buscarChecklists, []);
     useEffect(buscarContagemCorrecoes, []);
@@ -136,9 +137,11 @@ export default function Checklists() {
                                                 </div>
                                                 <div className="etiquetaChecklist" style={{ cursor: 'pointer' }} onClick={() => setListaChecklistErro(true)}>
                                                     <p className="nomeEtiquetaChecklist">{QntdErros}</p>
+                                                    <FontAwesomeIcon className="iconLupa" icon={faMagnifyingGlassPlus} style={{ cursor: 'pointer', color: '#FFF' }} size="lg" />
                                                 </div>
-                                                <div className="etiquetaChecklist" style={{ cursor: 'pointer' }}  onClick={() => setListaChecklistCorrecao(true)}>
+                                                <div className="etiquetaChecklist campoCorrecao" style={{ cursor: 'pointer' }} onClick={() => setListaChecklistCorrecao(true)}>
                                                     <div className="nomeEtiqueta">{QntdCorrecoes}</div>
+                                                    <FontAwesomeIcon className="iconLupa" icon={faMagnifyingGlassPlus} style={{ cursor: 'pointer', color: '#FFF' }} size="lg" />
                                                 </div>
                                                 <div className="etiquetaChecklist">
                                                     <p className="nomeEtiquetaChecklist">{Intl.DateTimeFormat("pt-BR", {
@@ -149,7 +152,7 @@ export default function Checklists() {
                                             </div>
                                         </div>
                                         <div className="iconesEtiquetaChecklist">
-                                            <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} style={{ cursor: 'pointer' }} size="2x" onClick={ () => deletar(checklist.idChecklist)} />
+                                            <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} style={{ cursor: 'pointer' }} size="2x" onClick={() => deletar(checklist.idChecklist)} />
                                         </div>
                                     </div>
                                 </div>

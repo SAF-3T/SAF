@@ -229,3 +229,8 @@ td {
     padding: 15px;  
     font-size: 20px;
 }
+
+.iconLupa {
+    position: relative;
+    left: 60px;
+}

@@ -17,8 +17,6 @@ export default function Modal({ onClose = () => { } }) {
 
     const notyf = new Notyf();
 
-    const [AtualizaStateCampo, setAtualizaStateCampo] = useState('');
-
     //Cadastrar
     const [Placa, setPlaca] = useState('');
     const [Marca, setMarca] = useState('');
@@ -26,14 +24,12 @@ export default function Modal({ onClose = () => { } }) {
     const [IdCarroceria, setIdCarroceria] = useState('');
     const [Status, setStatus] = useState('');
     const [TipoVeiculo, setTipoVeiculo] = useState('');
-    const [IdUsuario, setIdUsuario] = useState('');
 
     //Listar
     const [Marcas, setMarcas] = useState([]);
     const [TipoStatus, setTipoStatus] = useState([]);
     const [TipoVeiculos, setTipoVeiculos] = useState([]);
     const [Carrocerias, setCarrocerias] = useState([]);
-    const [TiposCargas, setTiposCargas] = useState([]);
 
     function BuscarForms() {
 
@@ -55,13 +51,6 @@ export default function Modal({ onClose = () => { } }) {
             .then((response) => {
                 if (response.status === 200) {
                     setCarrocerias(response.data)
-                }
-            })
-
-        axios.get("http://backend-saf-api.azurewebsites.net/api/TipoCargas")
-            .then((response) => {
-                if (response.status === 200) {
-                    setTiposCargas(response.data)
                 }
             })
 

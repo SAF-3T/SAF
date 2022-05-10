@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import MaskedInput from './MaskedInput';
 
-import { usuarioAutenticado } from '../../services/auth';
+import { parseJwt } from '../../services/auth';
 
 import './login.css';
 
@@ -29,7 +29,12 @@ class Login extends React.Component {
                 if (resposta.status === 200) {
                     localStorage.setItem('usuario-login', resposta.data.token);
                     let base64 = localStorage.getItem('usuario-login').split('.')[1];
+                }
+                if (parseJwt().role === '1' ) {
                     this.props.history.push('/dashboard');
+                }
+                else {
+                    console.log('Não permitido')
                 }
             })
             .catch(() => {
