@@ -31,16 +31,21 @@ const Modal = ({ onClose = () => { } }) => {
     }
 
     function AtualizarCarroceria() {
-        axios.put('http://backend-saf-api.azurewebsites.net/Alterar/1', {
+        axios.put('http://backend-saf-api.azurewebsites.net/Alterar/4', {
             idTipoCarga: 6,
-            idTipoCarroceria: IdTipoCarroceria,
+            idTipoCarroceria: 1,
             cubagem: Cubagem,
             peso: Peso
         })
-
+        .then(response => {
+            if(response.status === 200){
+                console.log("Atualizado")
+            }
+        })
     }
 
     useEffect(BuscarCarroceria, [])
+
 
     return (
         <div className="modalCarroceria">

@@ -22,7 +22,7 @@ const Modal = ({ onClose = () => { }, children }) => {
         tel: ''
     };
 
-    const [ values,setValues ] = useState(initialValues)
+    const [values, setValues] = useState(initialValues)
 
     function handleChange(event) {
         setValues({
@@ -39,6 +39,7 @@ const Modal = ({ onClose = () => { }, children }) => {
     const [Nome, setNome] = useState('');
     const [Sobrenome, setSobrenome] = useState('');
     const [Telefone, setTelefone] = useState('');
+    const [Digitado, setDigitado] = useState('');
 
     //Listar
     const [TiposUsuarios, setTiposUsuarios] = useState([]);
@@ -57,13 +58,16 @@ const Modal = ({ onClose = () => { }, children }) => {
         event.preventDefault();
 
         var formData = new FormData();
+
         const element = document.getElementById('ImagemUsuario')
+
         const file = element.files[0]
         formData.append('arquivo', file, file.name);
+
         formData.append('idTipoUsuario', IdTipoUsuario);
         formData.append('senha', Senha);
         formData.append('CPF', CPF);
-        formData.append('DDD', 11);
+        formData.append('DDD', DDD);
         formData.append('nome', Nome);
         formData.append('sobrenome', Sobrenome);
         formData.append('telefone', Telefone);
@@ -95,13 +99,29 @@ const Modal = ({ onClose = () => { }, children }) => {
         }
     }
 
-    function log() {
-        console.log(Telefone)
-        console.log(CPF)
+    function PegarDDD() {
+        let PrimeiroNumero = Digitado.slice()[0];
+        let SegundoNumero = Digitado.slice()[1];
+
+        let Terceiro = Digitado.slice()[2];
+        let Quarto = Digitado.slice()[3];
+        let Quinto = Digitado.slice()[4];
+        let Sexto = Digitado.slice()[5];
+        let Setimo = Digitado.slice()[6];
+        let Oitavo = Digitado.slice()[7];
+        let Nono = Digitado.slice()[8];
+        let Onze = Digitado.slice()[9];
+        let Doze = Digitado.slice()[10];
+
+        let telefone = Terceiro + Quarto + Quinto + Sexto + Setimo + Oitavo + Nono + Onze + Doze;
+
+        setTelefone(telefone);
+
+        setDDD(PrimeiroNumero + SegundoNumero)
     }
 
     useEffect(() => { BuscarForms() }, []);
-    useEffect(log, [Telefone, CPF])
+    useEffect(PegarDDD, [Digitado])
 
     return (
         <div className="modalUsuario">
@@ -118,7 +138,7 @@ const Modal = ({ onClose = () => { }, children }) => {
                         <div className='juntaInputsUsuario'>
                             <div className='inputs-esq'>
                                 <input className='inputUsuario' type='text' name='nome' placeholder='Nome' required onChange={(e) => setNome(e.target.value)} />
-                                <MaskedInput className='inputUsuario'placeholder='CPF' name='cpf' mask="999.999.999-99" value={CPF} required onChange={(e) => setCPF(e.target.value)} />
+                                <MaskedInput className='inputUsuario' placeholder='CPF' name='cpf' mask="999.999.999-99" value={CPF} required onChange={(e) => setCPF(e.target.value)} />
                                 <input className='inputUsuario' type='password' placeholder='Senha' name='senha' required onChange={(e) => setSenha(e.target.value)} />
                             </div>
                             <div className='inputs-dir'>
@@ -133,7 +153,7 @@ const Modal = ({ onClose = () => { }, children }) => {
                                         )
                                     })}
                                 </select>
-                                <MaskedInput className='inputUsuario' name="tel" placeholder='Telefone' mask="(99) 9999-9999" value={Telefone} onChange={(tel) => setTelefone(tel.target.value)} />
+                                <MaskedInput className='inputUsuario' name="tel" placeholder='Telefone' mask="(99) 99999-9999" value={Digitado} onChange={(tel) => setDigitado(tel.target.value)} />
                             </div>
                         </div>
                         <button onClick={(e) => CadastrarUsuario(e)} className='btn_cadastroUsuario' type='submit'>

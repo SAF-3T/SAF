@@ -59,7 +59,7 @@ export default function ListarUsuarios() {
     };
 
     useEffect(buscarUsuarios, [ListaUsuarios]);
-
+    
     const [isModalAddUsuarioVisible, setIsModalAddUsuarioVisible] = useState(false);
     // const [isModalEditUsuarioVisible, setIsModalEditUsuarioVisible] = useState(false);
 

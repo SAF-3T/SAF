@@ -60,12 +60,21 @@ export default function ListarCarroceria() {
     };
 
     function Atualizalocal() {
-        localStorage.setItem('att-carroceria', IdCarroceria)
-        console.log(localStorage.getItem('att-carroceria'))
+        document.querySelectorAll("button").forEach(function (button) {
+
+            button.addEventListener("click", function (event) {
+
+                const el = event.target || event.srcElement;
+
+                const id = el.id;
+
+                console.log(id);
+            });
+
+        });
     }
 
     useEffect(buscarCarroceria, [ListaCarroceria]);
-    useEffect(Atualizalocal, [IdCarroceria]);
 
     const [isModalVisible, setIsModalVisible] = useState(false);
     const [ListaEditCarroceria, setListaEditCarroceria] = useState(false);
@@ -138,7 +147,7 @@ export default function ListarCarroceria() {
                                             </div>
                                         </div>
                                         <div className="iconesEtiquetaCarrocerias">
-                                            <FontAwesomeIcon value={carroceria.idCarroceria} className="iconPenToSquare" icon={faPenToSquare} size="2x" style={{ cursor: 'pointer' }} onClick={() => setListaEditCarroceria(true)} />{ListaEditCarroceria ? (<ModalEdit onClose={() => setListaEditCarroceria(false)}></ModalEdit>) : null}
+                                            <FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" style={{ cursor: 'pointer' }} onClick={() => setListaEditCarroceria(true)} />{ListaEditCarroceria ? (<ModalEdit onClose={() => setListaEditCarroceria(false)}></ModalEdit>) : null}
                                             <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" style={{ cursor: 'pointer' }}
                                                 onClick={() => deletar(carroceria.idCarroceria)} />
                                         </div>

@@ -106,6 +106,12 @@ export default function ListarVeiculos() {
             })
     }
 
+    function AlterarLocal() {
+        localStorage.setItem('att-veiculo', 1);
+        console.log(localStorage.getItem('att-veiculo'))
+        setIsModalEditVeiculoVisible(true);
+    }
+
     useEffect(buscarVeiculos, [ListaVeiculos]);
 
     const [isModalAddVeiculoVisible, setIsModalAddVeiculoVisible] = useState(false);
@@ -130,7 +136,7 @@ export default function ListarVeiculos() {
                         </button>{isModalAddVeiculoVisible ? (<ModalAddVeiculo onClose={() => setIsModalAddVeiculoVisible(false)}></ModalAddVeiculo>) : null}
 
                         <div className="input-e-btn-2">
-                            <input onChange={(e) => setPesquisa(e.target.value)} className='inputBusca' type="text" placeholder="Pesquisar" />
+                            <input onChange={(e) => setPesquisa(e.target.value.toUpperCase())} className='inputBusca' type="text" placeholder="Pesquisar" />
                             <button onClick={PesquisaPlaca} className='btnBuscar' type='button'>Buscar</button>
                         </div>
                     </div>
@@ -187,7 +193,9 @@ export default function ListarVeiculos() {
                                                 </div>
                                             </div>
                                             <div className="iconesEtiquetaVeiculos">
-                                                <FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} style={{ cursor: 'pointer' }} size="2x" onClick={() => setIsModalEditVeiculoVisible(true)} />{isModalEditVeiculoVisible ? (<ModalEditVeiculo onClose={() => setIsModalEditVeiculoVisible(false)}></ModalEditVeiculo>) : null}
+                                                <div>
+                                                <FontAwesomeIcon id={veiculo.idVeiculo} className="iconPenToSquare" icon={faPenToSquare} style={{ cursor: 'pointer' }} size="2x" onClick={AlterarLocal} />{isModalEditVeiculoVisible ? (<ModalEditVeiculo onClose={() => setIsModalEditVeiculoVisible(false)}></ModalEditVeiculo>) : null}    
+                                                </div>
                                                 <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} style={{ cursor: 'pointer' }} size="2x"
                                                     onClick={() => DeletarVeiculo(veiculo.idVeiculo)} />
                                             </div>
@@ -201,5 +209,5 @@ export default function ListarVeiculos() {
             </main>
             <Footer />
         </div >
-    );
-};
+    )
+}
