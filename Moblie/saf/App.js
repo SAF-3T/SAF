@@ -25,7 +25,7 @@ export default function App() {
     return (
       <NavigationContainer>
   
-        <AuthStack.Navigator initialRouteName="TelaCadastrado" screenOptions={{ headerShown: false, }}>
+        <AuthStack.Navigator initialRouteName="PreLogin" screenOptions={{ headerShown: false, }}>
           <AuthStack.Screen name="PreLogin" component={PreLogin} />
           <AuthStack.Screen name="Login" component={Login} />
           <AuthStack.Screen name="Menu" component={Menu} />

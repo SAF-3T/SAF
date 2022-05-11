@@ -35,12 +35,12 @@ export default function Checkout() {
     const [ estadoRodas, setEstadoRodas ] = useState( false );
     const [ combustivel, setCombustivel ] = useState( false );
     const [ dataAtual, setDataAtual ] = useState( '' );
-
+    var navigation = useNavigation()
 
     async function cadastrarCheckIn() {
-        setDataAtual(new Date().toString())
+        setDataAtual('2022-05-05')
         let corpoChecklist = {
-            idTipoCheckList: 1,
+            idTipoCheckList: 2,
             idVeiculo: 2,
             idUsuario: idUsuario,
             dataCheckList: dataAtual
@@ -123,7 +123,7 @@ export default function Checkout() {
                 console.warn('Erro de combustivel cadastrado')
             }
         }
-        navigation.navigate('TelaCadastro')
+        
     }
 
     async function buscaInfoVeiculo() {
@@ -289,7 +289,7 @@ export default function Checkout() {
                             </View>
                         </View>
                         <View style={styles.containerBotao}>
-                            <TouchableOpacity onPress={ () => cadastrarCheckIn()} style={styles.btnProsseguir}>
+                            <TouchableOpacity  onPress={navigation('TelaCadastrado'), () => cadastrarCheckIn()} style={styles.btnProsseguir}>
                                 <Text style={styles.btnText}>Prosseguir</Text>
                             </TouchableOpacity>
                         </View>

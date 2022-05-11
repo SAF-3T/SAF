@@ -16,6 +16,7 @@ import {
   } from 'react-native';
   import api from '../services/api';
   import Header from '../components/Header'
+import { useNavigation } from "@react-navigation/native";
 
 
 export default function Preventiva() {
@@ -35,10 +36,11 @@ export default function Preventiva() {
     const [ estadoRodas, setEstadoRodas ] = useState( false );
     const [ combustivel, setCombustivel ] = useState( false );
     const [ dataAtual, setDataAtual ] = useState( '' );
+    var navigation = useNavigation()
 
 
     async function cadastrarCheckIn() {
-        setDataAtual(new Date().toString())
+        setDataAtual('2022-05-05')
         let corpoChecklist = {
             idTipoCheckList: 3,
             idVeiculo: 2,
@@ -124,7 +126,7 @@ export default function Preventiva() {
             }
         }
 
-        navigation.navigate('TelaCadastro')
+        navigation('TelaCadastrado')
     }
 
     async function buscaInfoVeiculo() {

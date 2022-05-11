@@ -13,6 +13,7 @@ import {
     Button,
   } from 'react-native';
   import api from '../services/api';
+import axios from "axios";
 
   export default class Menu extends Component {
     constructor(props){
@@ -46,7 +47,7 @@ import {
           return(
             <View style={styles.main}>
                 <View style={styles.header}>
-                    <View style={styles.img}/>
+                    <Image source={'https://backend-saf-api.azurewebsites.net/Img/Perfilpadrao.jpg'} style={styles.img}/>
                     <Text style={styles.textName}>Olá, {this.nomeU}!</Text>       
                     <Text style={styles.textFunction}>{this.funcaoU}</Text>         
                 </View>

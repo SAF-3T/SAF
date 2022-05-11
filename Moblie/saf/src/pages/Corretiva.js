@@ -36,6 +36,7 @@ export default function Corretiva() {
     const [ combustivel, setCombustivel ] = useState( false );
     const [ dataAtual, setDataAtual ] = useState( '' );
     const [ listaErros, setListaErros ] = useState( [] );
+    var navigation = useNavigation()
 
     async function BuscarChecklist() {
         var resposta = api.get('/CheckList/MaisRecente/2')
@@ -47,7 +48,7 @@ export default function Corretiva() {
     }
 
     async function cadastrarCheckIn() {
-        setDataAtual(new Date().toString())
+        setDataAtual('2022-05-05')
         let corpoChecklist = {
             idTipoCheckList: 4,
             idVeiculo: 2,
@@ -132,7 +133,7 @@ export default function Corretiva() {
                 console.warn('Erro de combustivel cadastrado')
             }
         }
-        navigation.navigate('TelaCadastro')
+        navigation('TelaCadastrado')
     }
 
     async function buscaInfoVeiculo() {
