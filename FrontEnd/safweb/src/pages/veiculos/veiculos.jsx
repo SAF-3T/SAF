@@ -171,7 +171,7 @@ export default function ListarVeiculos() {
                                         <div className="conteudoVeiculo">
                                             <div className="alinharEtiquetas">
                                                 {
-                                                    veiculo.idVeiculo != null ?
+                                                    veiculo.imagemVeiculo != null ?
                                                         < img src={"http://backend-saf-api.azurewebsites.net/Img/" + veiculo.imagemVeiculo} className="imgVeiculo" /> :
                                                         < img src={"http://backend-saf-api.azurewebsites.net/Img/Veiculopadrao.png"} className="imgVeiculo" />
                                                 }

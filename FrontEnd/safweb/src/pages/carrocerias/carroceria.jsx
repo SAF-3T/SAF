@@ -98,7 +98,7 @@ export default function ListarCarroceria() {
                         </button>{isModalVisible ? (<Modal onClose={() => setIsModalVisible(false)}></Modal>) : null}
 
                         <div className="input-e-btn-2">
-                            <input className='inputBusca' type="text" placeholder="Pesquisar" />
+                            <input  className='inputBusca' type="text" placeholder="Pesquisar" />
                             <button className='btnBuscar' type='submit'><p>Buscar</p></button>
                         </div>
                     </div>
@@ -128,28 +128,30 @@ export default function ListarCarroceria() {
                     {
                         ListaCarroceria.map((carroceria) => {
                             return (
-                                <div className="cardCarrocerias">
-                                    <div className="conteudoCarroceria">
-                                        <div className="alinharEtiquetasCarrocerias">
-                                            <div className="etiquetasCarrocerias">
-                                                <div className="etiquetaCarrocerias">
-                                                    <p className="nomeEtiquetaCarrocerias">{carroceria.idTipoCarroceriaNavigation.nomeTipoCarroceria}</p>
-                                                </div>
-                                                <div className="etiquetaCarrocerias">
-                                                    <p className="nomeEtiquetaCarrocerias">{carroceria.idTipoCargaNavigation.nomeTipoCarga}</p>
-                                                </div>
-                                                <div className="etiquetaCarrocerias">
-                                                    <p className="nomeEtiquetaCarrocerias">{carroceria.cubagem}</p>
-                                                </div>
-                                                <div className="etiquetaCarrocerias">
-                                                    <p className="nomeEtiquetaCarrocerias">{carroceria.peso}</p>
+                                <div id={carroceria.idCarroceria}>
+                                    <div className="cardCarrocerias">
+                                        <div className="conteudoCarroceria">
+                                            <div className="alinharEtiquetasCarrocerias">
+                                                <div className="etiquetasCarrocerias">
+                                                    <div className="etiquetaCarrocerias">
+                                                        <p className="nomeEtiquetaCarrocerias">{carroceria.idTipoCarroceriaNavigation.nomeTipoCarroceria}</p>
+                                                    </div>
+                                                    <div className="etiquetaCarrocerias">
+                                                        <p className="nomeEtiquetaCarrocerias">{carroceria.idTipoCargaNavigation.nomeTipoCarga}</p>
+                                                    </div>
+                                                    <div className="etiquetaCarrocerias">
+                                                        <p className="nomeEtiquetaCarrocerias">{carroceria.cubagem}</p>
+                                                    </div>
+                                                    <div className="etiquetaCarrocerias">
+                                                        <p className="nomeEtiquetaCarrocerias">{carroceria.peso}</p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div className="iconesEtiquetaCarrocerias">
-                                            <FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" style={{ cursor: 'pointer' }} onClick={() => setListaEditCarroceria(true)} />{ListaEditCarroceria ? (<ModalEdit onClose={() => setListaEditCarroceria(false)}></ModalEdit>) : null}
-                                            <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" style={{ cursor: 'pointer' }}
-                                                onClick={() => deletar(carroceria.idCarroceria)} />
+                                            <div className="iconesEtiquetaCarrocerias">
+                                                <FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" style={{ cursor: 'pointer' }} onClick={() => setListaEditCarroceria(true)} />{ListaEditCarroceria ? (<ModalEdit onClose={() => setListaEditCarroceria(false)}></ModalEdit>) : null}
+                                                <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" style={{ cursor: 'pointer' }}
+                                                    onClick={() => deletar(carroceria.idCarroceria)} />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
