@@ -174,8 +174,7 @@ export default function Checklists() {
                                                     </div>
                                                     <div className="etiquetaChecklist">
                                                         <p className="nomeEtiquetaChecklist">{Intl.DateTimeFormat("pt-BR", {
-                                                            year: 'numeric', month: 'numeric', day: 'numeric',
-                                                            hour: 'numeric', minute: 'numeric', hour12: false
+                                                            year: 'numeric', month: 'numeric', day: 'numeric'
                                                         }).format(new Date(checklist.dataCheckList))}</p>
                                                     </div>
                                                 </div>

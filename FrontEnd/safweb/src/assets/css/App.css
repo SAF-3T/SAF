@@ -139,6 +139,7 @@ footer {
 .pLinkEsquerdoFooter {
   cursor: pointer;
   color: #FFFFFF;
+  text-decoration: unset;
 }
 
 .link2, .link1 {
@@ -315,7 +316,7 @@ footer {
   -moz-transition: all 0.3s;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  padding-top: 10px;
+  padding-top: 15px;
   padding-left: 10px;
 }
 
@@ -331,9 +332,13 @@ footer {
 }
 
 .adicionarCard {
+  display: flex;
+  justify-content: start;
+  padding-left: 10px;
+  align-items: center;
   background: rgba(255, 255, 255, 0.1);
   text-align: center;
-  border-radius: 10px;
+  border-radius: 1vw;
   width: 70px;
   height: 70px;
 }

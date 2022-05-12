@@ -10,7 +10,7 @@ body {
 
 .wrapperVeiculos {
     width: 70%;
-    margin: 100px auto;
+    margin: 40px auto;
 }
 
 .pVeiculo {
@@ -83,6 +83,7 @@ body {
     align-items: center;
     margin: 0 auto;
     width: 90%;
+    height: 0px;
 }
 
 .nomeCabecalhoEtiqueta {

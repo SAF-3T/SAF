@@ -10,7 +10,7 @@ body {
 
 .wrapperUsuarios {
     width: 70%;
-    margin: 100px auto;
+    margin: 40px auto;
 }
 
 .pUsuario {
@@ -98,7 +98,7 @@ body {
 }
 
 .etiquetaUsuario {
-    width: 158px;
+    width: 9.2vw;
     height: 62px;
     background: #0E758C;
     border-radius: 10px;

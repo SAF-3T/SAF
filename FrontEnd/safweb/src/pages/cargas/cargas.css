@@ -10,7 +10,7 @@ body {
 
 .wrapperCargas {
     width: 70%;
-    margin: 100px auto;
+    margin: 40px auto;
 }
 
 .pCarga {
@@ -183,7 +183,7 @@ body {
 }
 
 .btnBuscar {
-    background: #139FC0;
+    background: #0E758C;
     width: 170px;
     height: 73px;
     border-radius: 10px;
