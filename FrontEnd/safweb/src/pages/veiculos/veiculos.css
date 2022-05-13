@@ -11,6 +11,7 @@ body {
 .wrapperVeiculos {
     width: 70%;
     margin: 40px auto;
+    min-height: 850px;
 }
 
 .pVeiculo {
@@ -73,7 +74,6 @@ body {
 
 .imgCabecalhoVeiculo {
     width: 20%;
-    height: 190px;
     border-radius: 5px;
 }
 

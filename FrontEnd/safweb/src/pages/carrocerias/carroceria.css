@@ -11,6 +11,7 @@ body {
 .wrapperCarrocerias {
     width: 70%;
     margin: 40px auto;
+    min-height: 850px;
 }
 
 .pCarroceria {

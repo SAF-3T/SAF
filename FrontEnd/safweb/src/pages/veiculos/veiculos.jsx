@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useHistory } from "react-router-dom";
 import axios from 'axios';
 
 import Header from '../../components/headers/header';
@@ -53,14 +52,15 @@ export default function ListarVeiculos() {
                     //Pega a placa da string e coloca ela na lista de placas
                     ListaPlacas.push(veiculoString.split(',')[7].split(':')[1].replace('"', "").split('"')[0])
                 }
+                console.log(ListaPlacas.length)
             }
             setIsSearch(true);
         }
 
         //Verifica se as letras digitadas correspondem a alguma placa da lista de placas
         for (let i = 0; i < ListaPlacas.length; i++) {
-
             //Se Corresponde
+            console.log('Entrou no for '+i+' Vezes')
             if (ListaPlacas[i].match(Pesquisa)) {
                 //Torna o item visivel
                 document.getElementById(ListaPlacas[i]).style.display = "initial"
@@ -194,7 +194,7 @@ export default function ListarVeiculos() {
                                             </div>
                                             <div className="iconesEtiquetaVeiculos">
                                                 <div>
-                                                <FontAwesomeIcon id={veiculo.idVeiculo} className="iconPenToSquare" icon={faPenToSquare} style={{ cursor: 'pointer' }} size="2x" onClick={AlterarLocal} />{isModalEditVeiculoVisible ? (<ModalEditVeiculo onClose={() => setIsModalEditVeiculoVisible(false)}></ModalEditVeiculo>) : null}    
+                                                    <FontAwesomeIcon id={veiculo.idVeiculo} className="iconPenToSquare" icon={faPenToSquare} style={{ cursor: 'pointer' }} size="2x" onClick={AlterarLocal} />{isModalEditVeiculoVisible ? (<ModalEditVeiculo onClose={() => setIsModalEditVeiculoVisible(false)}></ModalEditVeiculo>) : null}
                                                 </div>
                                                 <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} style={{ cursor: 'pointer' }} size="2x"
                                                     onClick={() => DeletarVeiculo(veiculo.idVeiculo)} />

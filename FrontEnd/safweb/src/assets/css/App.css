@@ -334,7 +334,7 @@ footer {
 .adicionarCard {
   display: flex;
   justify-content: start;
-  padding-left: 10px;
+  padding-left: 2.25%;
   align-items: center;
   background: rgba(255, 255, 255, 0.1);
   text-align: center;

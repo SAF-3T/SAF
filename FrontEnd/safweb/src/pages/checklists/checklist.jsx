@@ -12,10 +12,9 @@ import axios from 'axios';
 import './checklist.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
-import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 import { faMagnifyingGlassPlus } from '@fortawesome/free-solid-svg-icons';
+import { ContactlessOutlined } from '@material-ui/icons';
 
 export default function Checklists() {
 
@@ -26,21 +25,57 @@ export default function Checklists() {
     const [QntdCorrecoes, setQntdCorrecoes] = useState([]);
 
     const [Pesquisa, setPesquisa] = useState('');
-    const [ListaPlacas, setListaPlacas] = useState([]);
+    const [ListaPlacas] = useState([]);
+    const [ListaVeiculos, setListaVeiculos] = useState([]);
+    const [isSearch, setIsSearch] = useState(false);
 
     function PesquisaPlaca() {
 
+        if (isSearch === false) {
+            //Para criar a lista de placas
+            for (let i = 0; i < ListaVeiculos.length; i++) {
+
+                //Para puxar cada veiculo da lista
+                const objetoVeiculo = ListaVeiculos[i]
+
+                //Para transformar a lista de atributos em string
+                let veiculoString = JSON.stringify(objetoVeiculo);
+
+                //Para verificarmos a quantidade de campos da string
+                let tamanhoArray = veiculoString.split(',').length
+
+                //Verificar se a quantidade é igual a 30(Sem imagem)
+                if (tamanhoArray === 30) {
+                    //Pega a placa da string e coloca ela na lista de placas
+                    ListaPlacas.push(veiculoString.split(',')[6].split(':')[1].replace('"', "").split('"')[0])
+                }
+
+                //Com imagem
+                else {
+                    //Pega a placa da string e coloca ela na lista de placas
+                    ListaPlacas.push(veiculoString.split(',')[7].split(':')[1].replace('"', "").split('"')[0])
+                }
+            }
+            setIsSearch(true);
+        }
+
         //Verifica se as letras digitadas correspondem a alguma placa da lista de placas
         for (let i = 0; i < ListaPlacas.length; i++) {
-
+            console.log('Entrou no for ' + i + ' Vezes')
             //Se Corresponde
             if (ListaPlacas[i].match(Pesquisa)) {
                 //Torna o item visivel
-                document.getElementById(ListaPlacas[i]).style.display = "initial"
+                var elems = document.getElementsByClassName(ListaPlacas[i]);
+                for (var a = 0; a < elems.length; a += 1) {
+                    elems[a].style.display = 'initial';
+                }
             }
             //Se não corresponde, torna o item oculto
             else {
-                document.getElementById(ListaPlacas[i]).style.display = "none"
+                var elems = document.getElementsByClassName(ListaPlacas[i]);
+                for (var a = 0; a < elems.length; a += 1) {
+                    elems[a].style.display = 'none';
+                }
             }
         }
     }
@@ -50,15 +85,16 @@ export default function Checklists() {
             .then(response => {
                 if (response.status === 200) {
                     setListaChecklist(response.data);
-                    
-                    for (let i = 0; i < response.data.length; i++) {
-                        let checklists = response.data[i]
-                        let checklistString = JSON.stringify(checklists)
-
-                    }
                 }
             })
             .catch(erro => console.log(erro));
+
+        axios.get('http://backend-saf-api.azurewebsites.net/api/Veiculos')
+            .then(response => {
+                if (response.status === 200) {
+                    setListaVeiculos(response.data)
+                }
+            })
     };
 
     function buscarContagemErros() {
@@ -92,14 +128,9 @@ export default function Checklists() {
             .catch(erro => console.log(erro));
     };
 
-    function Log() {
-        console.log(Pesquisa)
-    }
-
     useEffect(buscarContagemErros, []);
     useEffect(buscarChecklists, []);
     useEffect(buscarContagemCorrecoes, []);
-    useEffect(Log, [Pesquisa])
 
     return (
         <div>
@@ -150,7 +181,7 @@ export default function Checklists() {
                     {
                         ListaCheckList.map((checklist) => {
                             return (
-                                <div id={checklist.idVeiculoNavigation.placa}>
+                                <div className={checklist.idVeiculoNavigation.placa}>
                                     <div className="cardChecklist">
                                         <div className="conteudoChecklist">
                                             <div className="alinharEtiquetasChecklist">

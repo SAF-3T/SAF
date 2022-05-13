@@ -11,6 +11,7 @@ body {
 .wrapperUsuarios {
     width: 70%;
     margin: 40px auto;
+    min-height: 850px;
 }
 
 .pUsuario {
@@ -152,7 +153,6 @@ body {
 
 .imgCabecalhoUsuario {
     width: 240px;
-    height: 210px;
     border-radius: 5px;
     display: flex;
     justify-content: center;
