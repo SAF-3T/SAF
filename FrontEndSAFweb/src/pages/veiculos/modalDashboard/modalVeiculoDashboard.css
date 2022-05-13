@@ -1,0 +1,181 @@
+.modalVeiculoDashboard {
+    width: 100%;
+    height: 385vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    backdrop-filter: brightness(60%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapperModalVeiculoDashboard {
+    background-color: #fff;
+    width: 90%;
+    color: #000;
+    height: 20%;
+    position: absolute;
+    top: 3%;
+    border-radius: 10px;
+}
+
+.headerModal {
+    width: 95%;
+    height: 80px;
+    margin: 0 auto;
+    margin-top: 20px;
+    display: flex;
+    padding: 0 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pHeaderModal {
+    font-size: 45px;
+    font-weight: 700;
+    color: #0E758C;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0 auto;
+}
+
+.conteudos {
+    height: 90%;
+    width: 90%;
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.conteudo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.imgCadastrarVeiculoDashboard {
+    width: 320px;
+    height: 260px;
+    border-radius: 10px;
+    background-color: #77757548;
+    margin: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.formularioCadastroVeiculoDashboard {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    height: fit-content;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.inputVeiculoDashboard {
+    width: 65%;
+    margin: 40px 0;
+    height: 30px;
+    color: #000;
+    background-color: white;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    text-align: center;
+    border: none;
+    border-bottom: 1px solid #000;
+}
+
+.inputVeiculoDashboardEspaco {
+    width: 65%;
+    margin: 40px 0;
+    height: 30px;
+    color: #000;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    text-align: center;
+    border: none;
+}
+
+.inputVeiculoDashboard:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
+} 
+
+.inputs-esq, .inputs-dir {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+
+.inputVeiculoDashboard::placeholder {
+    text-align: center;
+    font-size: 20px;
+    color: #00000048;
+}
+
+.juntaInputs {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.btn_cadastro_Dashboard:hover {
+    opacity: 0.9;
+}
+
+.btn_cadastro_Dashboard {
+    width: 35%;
+    background-color: #0E758C;
+    overflow: visible;
+    height: 60px;
+    border: none;
+    margin-top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    border-radius: 10px;
+}
+
+.pCadastro {
+    color: white;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+}
+
+.btn_cadastro_Dashboard::after {
+    display: none;
+}
+
+.selectsVeiculoDashboard {
+    font-size: 22px;
+    font-weight: 200;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    border: none;
+    text-align: center;
+    border-bottom: 1px solid #000;
+}
+
+.selectsVeiculoDashboard:required:invalid {
+    color: #00000048;
+}
+
+option[value=""][disabled] {
+    display: none;
+}
+
+.selectsVeiculoDashboard:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
+}

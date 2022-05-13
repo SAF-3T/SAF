@@ -5,81 +5,143 @@ import Header from '../../components/headers/header';
 import Sidebar4 from '../../components/sidebars/sidebar4';
 import Footer from '../../components/footer';
 
-import { Link } from 'react-router-dom';
+import ModalAddUsuario from '../usuarios/modal/modalUsuario';
+// import ModalEditUsuario from '../usuarios/modalEdit/modaEditUsuario';
 
-import '../../assets/css/usuarios.css';
+import './usuarios.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
+import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
+
+import { Notyf } from 'notyf';
+import 'notyf/notyf.min.css';
 
 export default function ListarUsuarios() {
-    const [listaUsuarios, setListaUsuarios] = useState([]);
+    const [ListaUsuarios, setListaUsuarios] = useState([]);
+    // const [Imagem, setImagem] = useState('');
+    // const [Nome, setNome] = useState('');
+    // const [CPF, setCPF] = useState('');
+    // const [Tel, setTel] = useState('');
 
     function buscarUsuarios() {
-        axios('http://localhost:5000/api/Usuarios',)
+
+        axios('http://backend-saf-api.azurewebsites.net/api/Usuarios')
             .then(response => {
                 if (response.status === 200) {
-                    setListaUsuarios(response.data);
-                    console.log(listaUsuarios)
+                    setListaUsuarios(response.data)
                 }
             })
             .catch(erro => console.log(erro));
     };
+    
 
-    useEffect(buscarUsuarios, []);
+    const notyf = new Notyf();
+
+    function DeletarUsuario(idUsuario) {
+        axios.delete('http://backend-saf-api.azurewebsites.net/api/Usuarios/Deletar/' + idUsuario)
+            .then(resposta => {
+                if (resposta.status === 204) {
+                    notyf.success(
+                        {
+                            message: 'Usuário excluída com êxito',
+                            duration: 1000,
+                            position: {
+                                x: 'right',
+                                y: 'top',
+                            }
+                        }
+                    );
+                }
+            })
+            .catch(erro => console.log(erro))
+    };
+
+    useEffect(buscarUsuarios, [ListaUsuarios]);
+    
+    const [isModalAddUsuarioVisible, setIsModalAddUsuarioVisible] = useState(false);
+    // const [isModalEditUsuarioVisible, setIsModalEditUsuarioVisible] = useState(false);
 
     return (
         <div>
-            <Header />
             <Sidebar4 />
+            <Header />
 
             <main>
-                <div className="wrapperVeiculos">
-                    <p className="pVeiculo">Usuários</p>
+                <div className="wrapperUsuarios">
+                    <p className="pUsuario">Usuários</p>
 
                     <div className="input-e-btn">
-                        <button className="addVeiculo" type='submit'><Link className='removerLink' to="/veiculos/cadastro/usuario"><FontAwesomeIcon className="iconPlus" icon={faPlus} color="#fff" size="lg" />Novo usuário</Link></button>
+                        <button className='btnAddUsuario' type='submit' onClick={() => setIsModalAddUsuarioVisible(true)}>
+                            <div className="conteudoBtnAddUsuario">
+                                <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" />
+                                <p className="pAddUsuario">Novo usuário</p>
+                            </div>
+                        </button>
                         <div className="input-e-btn-2">
-                            <input className='inputBusca' type="text" placeholder="Pesquisar" />
+                            <input className='inputBusca' type="text" />
                             <button className='btnBuscar' type='submit'><p>Buscar</p></button>
                         </div>
                     </div>
+                    <div className="cardCabecalhoUsuario">
+                        <div className="conteudoCabecalhoUsuario">
+                            <div className="alinharEtiquetasUsuariosCabecalho">
+                                <div className="imgCabecalhoUsuario" />
+                                <div className="etiquetasCabecalhoUsuarios">
+                                    <div className="etiquetaCabecalhoUsuario">
+                                        <p className="nomeCabecalhoEtiquetaUsuario">Nome</p>
+                                    </div>
+                                    <div className="etiquetaCabecalhoUsuario">
+                                        <p className="nomeCabecalhoEtiquetaUsuario">Telefone</p>
+                                    </div>
+                                    <div className="etiquetaCabecalhoUsuario">
+                                        <p className="nomeCabecalhoEtiquetaUsuario">CPF</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="iconesEtiquetaUsuarios" />
+                        </div>
+                    </div>
+                   {isModalAddUsuarioVisible ? (<ModalAddUsuario onClose={() => setIsModalAddUsuarioVisible(false)}></ModalAddUsuario>) : null}
 
                     {
-                        listaUsuarios.map((usuario) => {
+                        ListaUsuarios.map((usuario => {
                             return (
-                                <div className="cardVeiculo">
-                                    <div className="alinharEtiquetas">
-                                        <div className="imgVeiculo">
-                                            <img src={usuario.imagemUsuario} alt="" />
+                                <div className="cardUsuario">
+                                    <div className="conteudoUsuario">
+                                        <div className="alinharEtiquetasUsuarios">
+                                            {
+                                                usuario.imagemUsuario != null ?
+                                                    <img src={"http://backend-saf-api.azurewebsites.net/Img/" + usuario.imagemUsuario} className="imgUsuario" />
+                                                    :
+                                                    <img src={"http://backend-saf-api.azurewebsites.net/Img/Perfilpadrao.jpg"} className="imgUsuario" />
+                                            }
+
+                                            <div className="etiquetasUsuarios">
+                                                <div className="etiquetaUsuario">
+                                                    <p className="nomeEtiquetaUsuario">{usuario.nome}</p>
+                                                </div>
+                                                <div className="etiquetaUsuario">
+                                                    <p className="nomeEtiquetaUsuario">{usuario.telefone}</p>
+                                                </div>
+                                                <div className="etiquetaUsuario">
+                                                    <p className="nomeEtiquetaUsuario ">{usuario.cpf}</p>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div className="etiquetas">
-                                            <div className="etiqueta">
-                                                <p className="nomeEtiqueta alinhar">{usuario.nome}</p>
-                                            </div>
-                                            <div className="etiqueta">
-                                                <p className="nomeEtiqueta">{usuario.telefone}</p>
-                                            </div>
-                                            <div className="etiqueta">
-                                                <p className="nomeEtiqueta">{usuario.cpf}</p>
-                                            </div>
-                                            {/* <div className="etiqueta">
-                                    <p className="nomeEtiqueta">[status-veiculo]</p>
-                                </div> */}
+                                        <div className="iconesEtiquetaUsuarios">
+                                            <FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} style={{ cursor: 'pointer' }} size="2x" />
+                                            <FontAwesomeIcon className="iconTrashCan" style={{ cursor: 'pointer' }} icon={faTrashCan} size="2x"
+                                                onClick={() => DeletarUsuario(usuario.idUsuario)} />
                                         </div>
                                     </div>
                                 </div>
                             )
-
-                        })
-                    }
-
-
-
+                        }))}
                 </div>
-            </main>
-
+            </main >
             <Footer />
-        </div>
+        </div >
     );
 };

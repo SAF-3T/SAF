@@ -1,0 +1,106 @@
+.modalCargas {
+    width: 100%;
+    height: 385vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    backdrop-filter: brightness(60%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapperModalCargasDashboard {
+    background-color: #fff;
+    width: 80%;
+    color: #000;
+    height: 12%;
+    position: absolute;
+    top: 5%;
+    border-radius: 10px;
+}
+
+.headerModal {
+    width: 95%;
+    height: 80px;
+    margin: 0 auto;
+    margin-top: 20px;
+    display: flex;
+    padding: 0 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pHeaderModal {
+    font-size: 45px;
+    font-weight: 700;
+    color: #0E758C;
+    font-family: 'Montserrat', sans-serif;
+    margin: 0 auto;
+}
+
+.conteudosCargas {
+    height: fit-content;
+    width: 90%;
+    margin: 14% auto;
+}
+
+.conteudoCarga {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+}
+
+.inputCarga {
+    width: 45%;
+    color: #000;
+    background-color: white;
+    font-size: 30px;
+    text-align: center;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    border-bottom: 1px solid #000;
+}
+
+.inputCarga::placeholder {
+    text-align: center;
+    font-size: 30px;
+    color: #00000048;
+}
+
+.inputCarga:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
+}
+
+.btn_cadastroCarga {
+    width: 30%;
+    background-color: #0E758C;
+    overflow: visible;
+    height: 60px;
+    border: none;
+    margin-top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.btn_cadastroCarga:hover {
+    opacity: 0.9;
+}
+
+.btn_cadastroCarga::after {
+    display: none;
+}
+
+.pBtnCadastroCarga {
+    color: white;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+}

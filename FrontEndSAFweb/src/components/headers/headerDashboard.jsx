@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 import { useState, useEffect } from 'react';
 
@@ -6,51 +6,74 @@ import axios from "axios";
 
 import { Link } from 'react-router-dom';
 
-import '../../pages/dashboard/App.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+
+import '../../assets/css/App.css';
 
 export default function Header() {
 
-    const [ListaUsuario, setListaUsuario] = useState([]);
     const [NomeUsuario, setNomeUsuario] = useState([]);
     const [CargoUsuario, setCargoUsuario] = useState([]);
+    const [ImagemUsuario, setImagemUsuario] = useState('');
+
+    function Logout() {
+        localStorage.removeItem('usuario-login')
+    }
 
     function buscarUsuarios() {
 
-        let token = localStorage.getItem('usuario-login').split('.')[1];
-        // console.log(token)
+        // Armazena token do usuário
+        const armazenaToken = localStorage.getItem('usuario-login').split('.')[1];
 
-        var token2 = window.atob(token);
-        console.log(token2)
+        // Descriptografa token
+        const tokenDescriptografado = window.atob(armazenaToken).split(',')[2].split('"')[3];
 
-        var token3 = token2.split(',')[2];
-        console.log(token3)
 
-        var token4 = token3.split('"')[3];
-        console.log(token4)
-
-        axios('http://localhost:5000/api/Usuarios/BuscarPorId/' + token4)
+        axios('http://backend-saf-api.azurewebsites.net/api/Usuarios/BuscarPorId/' + tokenDescriptografado)
             .then(response => {
                 if (response.status === 200) {
-                    setListaUsuario(response.data);
-                    var lista = response.data;
-                    console.log(lista)
 
-                    var chave = JSON.stringify(lista)
-                    console.log(chave);
+                    // Busca o array de usuários
+                    const listaDeUsuarios = response.data;
 
-                    var chave2 = chave.split(',')[2];
-                    console.log(chave2)
+                    // Formata em JSON
+                    const formatoEmJSON = JSON.stringify(listaDeUsuarios)
+                    // console.log(formatoEmJSON)
 
-                    var chave3 = chave2.split(':')[1]
-                    console.log(chave3)
+                    let tamanhoArray = formatoEmJSON.split(',').length
 
-                    var chave5 = chave3.replace('"', "").split('"')[0]
+                    //Caso não tenha foto
+                    if (tamanhoArray === 13) {
+                        // Identificar cargo do usuário 
+                        const nomeUsuario = formatoEmJSON.split(',')[2].split(':')[1].replace('"', "").split('"')[0]
+                        setNomeUsuario(nomeUsuario)
 
-                    setNomeUsuario(chave5)
+                        //ImagemUsuario
+                        setImagemUsuario('Perfilpadrao.jpg')
 
-                    console.log(chave5)
+                        //Buscar nome do Usuário
+                        const cargo = formatoEmJSON.split(',')[9].split(':')[1].replace('"', "").split('"')[0]
+                        setCargoUsuario(cargo);
+                    }
+                    //Caso tenha foto
+                    else {
+                        //Buscar nome do Usuário
+                        const nomeUsuario = formatoEmJSON.split(',')[3].split(':')[1].replace('"', "").split('"')[0]
+                        console.log(nomeUsuario)
+                        setNomeUsuario(nomeUsuario)
+
+                        //Identificar Imagem usuario
+                        const imagemUsuario = formatoEmJSON.split(',')[2].split(':')[1].replace('"', "").split('"')[0]
+                        console.log(imagemUsuario);
+                        setImagemUsuario(imagemUsuario);
+
+                        //Identificar cargo do usuario
+                        const cargoUsuario = formatoEmJSON.split(',')[10].split(':')[1].replace('"', "").split('"')[0]
+                        console.log(cargoUsuario)
+                        setCargoUsuario(cargoUsuario);
+                    }
                 }
-                // console.log(ListaUsuario)
             })
             .catch(erro => console.log(erro));
     };
@@ -62,16 +85,21 @@ export default function Header() {
         <div className="wrapperDashboard">
             <Link to="/dashboard"><div className="imagemLogoHeaderDashboard"></div></Link>
 
-            <p className="pBemVindo">Bem vindo, {NomeUsuario} !</p>
+            <p className="pBemVindo">Bem vindo, {NomeUsuario}!</p>
             <div className="usuarioHeaderDashboard">
-                <a href="#"><div className="imagemUsuario"></div></a>
+                <img src={"http://backend-saf-api.azurewebsites.net/Img/" + ImagemUsuario} className="linkImagemUsuario" />
                 <div className="linksUsuario">
-                    <p className="pNomeUsuario">{NomeUsuario}</p>
-                    <p className="pCargoUsuario">{CargoUsuario}</p>
+                    <div className="linkUsuarioNomeCargo">
+                        <p className="pNomeUsuario">{NomeUsuario}</p>
+                        <p className="pCargoUsuario">{CargoUsuario}</p>
+                    </div>
+
+                    <Link className="removerLink" onClick={() => Logout()} to='/'>
+                        <FontAwesomeIcon className="iconRightFromBracket" icon={faRightFromBracket} size="lg" />
+                    </Link>
                 </div>
             </div>
-
-        </div>
+        </div >
 
     );
 

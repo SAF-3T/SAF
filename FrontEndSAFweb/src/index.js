@@ -4,8 +4,8 @@ import {
   Route,
   BrowserRouter as Router,
   Switch,
+  Redirect,
 } from 'react-router-dom';
-import { parseJwt, usuarioAutenticado } from './services/auth';
 
 import './index.css';
 
@@ -14,25 +14,14 @@ import Login from './pages/login/login';
 import Veiculos from './pages/veiculos/veiculos';
 import Usuarios from './pages/usuarios/usuarios';
 import Carrocerias from './pages/carrocerias/carroceria';
-import Cargas from './pages/cargas/cargas';
+import ListarCarga from './pages/cargas/cargas';
 import Checklists from './pages/checklists/checklist';
-import Corretivas from './pages/erros/corretivas';
+import NotFound from './pages/notFound/notFound';
 
 import reportWebVitals from './reportWebVitals';
 
-// const PermissaoGestor = ({ component: Component }) => (
-//   <Route
-//     render={(props) =>
-//       usuarioAutenticado() && parseJwt().role === '1' ? (
-//         <Component {...props} />
-//       ) : (
-//         <Redirect to="/dashboard" />
-//       )
-//     }
-//   />
-// );
-
 const routing = (
+
   <Router>
     <div>
       <Switch>
@@ -40,10 +29,11 @@ const routing = (
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/veiculos" component={Veiculos} />
         <Route path="/carrocerias" component={Carrocerias} />
-        <Route path="/cargas" component={Cargas} />
+        <Route path="/cargas" component={ListarCarga} />
         <Route path="/usuarios" component={Usuarios} />
-        <Route path="/corretivas" component={Corretivas} />
-        {/* <Route path="/checklists" component={Checklists} /> */}
+        <Route path="/checklists" component={Checklists} />
+        <Route path="/notFound" component={NotFound} />
+        <Redirect to="/notFound" />
       </Switch>
     </div>
   </Router>
