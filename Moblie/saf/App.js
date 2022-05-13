@@ -14,6 +14,11 @@ import Menu from './src/pages/Menu'
 import Contatos from './src/pages/Contatos'
 import BuscarVeiculos from './src/pages/BuscarVeiculo'
 import Checkin from './src/pages/Checkin'
+import Checkout from './src/pages/Checkout'
+import Preventiva from './src/pages/Preventiva'
+import Corretiva from './src/pages/Corretiva'
+import TelaCadastrado from './src/pages/TelaCadastrado'
+
 
 export default function App() {
 
@@ -27,6 +32,10 @@ export default function App() {
           <AuthStack.Screen name="Contatos" component={Contatos} />
           <AuthStack.Screen name="BuscarVeiculos" component={BuscarVeiculos} />
           <AuthStack.Screen name="Checkin" component={Checkin} />
+          <AuthStack.Screen name="Checkout" component={Checkout} />
+          <AuthStack.Screen name="Preventiva" component={Preventiva} />
+          <AuthStack.Screen name="Corretiva" component={Corretiva} />
+          <AuthStack.Screen name="TelaCadastrado" component={TelaCadastrado} />
         </AuthStack.Navigator>
       </NavigationContainer>
     )

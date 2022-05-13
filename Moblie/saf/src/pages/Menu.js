@@ -13,6 +13,7 @@ import {
     Button,
   } from 'react-native';
   import api from '../services/api';
+import axios from "axios";
 
   export default class Menu extends Component {
     constructor(props){
@@ -46,7 +47,7 @@ import {
           return(
             <View style={styles.main}>
                 <View style={styles.header}>
-                    <View style={styles.img}/>
+                    <Image source={'https://backend-saf-api.azurewebsites.net/Img/Perfilpadrao.jpg'} style={styles.img}/>
                     <Text style={styles.textName}>Olá, {this.nomeU}!</Text>       
                     <Text style={styles.textFunction}>{this.funcaoU}</Text>         
                 </View>
@@ -60,15 +61,21 @@ import {
                         <TouchableOpacity onPress={() =>(this.props.navigation.navigate('Checkin'))} style={styles.buttonBackground}>
                             <Text style={styles.buttonText}>Check-in</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={() =>(this.props.navigation.navigate('Contatos'))} style={styles.buttonBackground}>
+                        <TouchableOpacity onPress={() =>(this.props.navigation.navigate('Checkout'))} style={styles.buttonBackground}>
                             <Text style={styles.buttonText}>Check-out</Text>
                         </TouchableOpacity>
                     </View>
-                    <View>
-                        <TouchableOpacity onPress={() =>(this.props.navigation.navigate('Contatos'))} style={styles.buttonBackgroundBig}>
-                            <Text style={styles.buttonText}>Chat</Text>
+                    <View style={styles.container2buttons}>
+                        <TouchableOpacity onPress={() =>(this.props.navigation.navigate('Preventiva'))} style={styles.buttonBackground}>
+                            <Text style={styles.buttonText}>Preventiva</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() =>(this.props.navigation.navigate('Corretiva'))} style={styles.buttonBackground}>
+                            <Text style={styles.buttonText}>Corretiva</Text>
                         </TouchableOpacity>
                     </View>
+                    
+                        
+                    
                 </View>
             </View>
         )

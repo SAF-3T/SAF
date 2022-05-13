@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import React from 'react';
 import jwtDecode from 'jwt-decode';
 import axios from 'axios';
-import { useNavigation } from '@react-navigation/native';
 import {
     StyleSheet,
     Text,
@@ -17,9 +16,10 @@ import {
   } from 'react-native';
   import api from '../services/api';
   import Header from '../components/Header'
+import { useNavigation } from "@react-navigation/native";
 
 
-export default function Checkin() {
+export default function Preventiva() {
     const [ tipoAutorizacao, setTipoAutorizacao ] = useState( 0 );
     const [ idUsuario, setIdUsuario ] = useState( 0 );
     const [ idVeiculo, setIdVeiculo ] = useState( 0 );
@@ -38,11 +38,11 @@ export default function Checkin() {
     const [ dataAtual, setDataAtual ] = useState( '' );
     var navigation = useNavigation()
 
+
     async function cadastrarCheckIn() {
         setDataAtual('2022-05-05')
-        console.warn(dataAtual)
         let corpoChecklist = {
-            idTipoCheckList: 1,
+            idTipoCheckList: 3,
             idVeiculo: 2,
             idUsuario: idUsuario,
             dataCheckList: dataAtual
@@ -125,7 +125,8 @@ export default function Checkin() {
                 console.warn('Erro de combustivel cadastrado')
             }
         }
-        await navigation.goBack() 
+
+        navigation('TelaCadastrado')
     }
 
     async function buscaInfoVeiculo() {
@@ -151,7 +152,7 @@ export default function Checkin() {
                 <View style={styles.background}>
                     <View style={styles.content}>
                         <View style={styles.header}>
-                            <Text style={styles.placa}>Check-in</Text>
+                            <Text style={styles.placa}>Preventiva</Text>
                             <Text style={styles.placa}>{placaVeiculo}</Text>
                             <Text style={styles.tipoVeiculo}>{nomeTipoVeiculo}</Text>
                             <Text style={styles.status}>{statusVeiculo}</Text>
@@ -175,7 +176,7 @@ export default function Checkin() {
                                         }    
                                     </TouchableOpacity>
                                     <TouchableOpacity>
-                                        <Image style={styles.icon2} source={require('../../assets/img/clip.png')} /> 
+                                        <Image style={styles.icon} source={require('../../assets/img/clip.png')} /> 
                                     </TouchableOpacity>                                  
                                 </View>
                             </View>
@@ -197,7 +198,7 @@ export default function Checkin() {
                                         }    
                                     </TouchableOpacity>
                                     <TouchableOpacity>
-                                        <Image style={styles.icon2} source={require('../../assets/img/clip.png')} /> 
+                                        <Image style={styles.icon} source={require('../../assets/img/clip.png')} /> 
                                     </TouchableOpacity>                                  
                                 </View>
                             </View>
@@ -219,7 +220,7 @@ export default function Checkin() {
                                         }   
                                     </TouchableOpacity>
                                     <TouchableOpacity>
-                                        <Image style={styles.icon2} source={require('../../assets/img/clip.png')} /> 
+                                        <Image style={styles.icon} source={require('../../assets/img/clip.png')} /> 
                                     </TouchableOpacity>                                  
                                 </View>
                             </View>
@@ -241,7 +242,7 @@ export default function Checkin() {
                                         }    
                                     </TouchableOpacity>
                                     <TouchableOpacity>
-                                        <Image style={styles.icon2} source={require('../../assets/img/clip.png')} /> 
+                                        <Image style={styles.icon} source={require('../../assets/img/clip.png')} /> 
                                     </TouchableOpacity>                                  
                                 </View>
                             </View>
@@ -263,7 +264,7 @@ export default function Checkin() {
                                         }    
                                     </TouchableOpacity>
                                     <TouchableOpacity>
-                                        <Image style={styles.icon2} source={require('../../assets/img/clip.png')} /> 
+                                        <Image style={styles.icon} source={require('../../assets/img/clip.png')} /> 
                                     </TouchableOpacity>                                  
                                 </View>
                             </View>
@@ -285,13 +286,13 @@ export default function Checkin() {
                                         }   
                                     </TouchableOpacity>
                                     <TouchableOpacity >
-                                        <Image style={styles.icon2} source={require('../../assets/img/clip.png')} /> 
+                                        <Image style={styles.icon} source={require('../../assets/img/clip.png')} /> 
                                     </TouchableOpacity>                                  
                                 </View>
                             </View>
                         </View>
                         <View style={styles.containerBotao}>
-                            <TouchableOpacity onPress={() => cadastrarCheckIn()} style={styles.btnProsseguir}>
+                            <TouchableOpacity onPress={ () => cadastrarCheckIn()} style={styles.btnProsseguir}>
                                 <Text style={styles.btnText}>Prosseguir</Text>
                             </TouchableOpacity>
                         </View>
@@ -387,12 +388,7 @@ const styles = StyleSheet.create({
         
     },
     icon: {
-        marginLeft: 15,
-        width: 28,
-        height: 28
-    },
-    icon2: {
-        marginLeft: 15,
+        marginLeft: 15
     },
     containerDivisaoItens: {
         flex: 1,

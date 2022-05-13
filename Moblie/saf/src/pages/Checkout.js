@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import React from 'react';
 import jwtDecode from 'jwt-decode';
 import axios from 'axios';
-import { useNavigation } from '@react-navigation/native';
 import {
     StyleSheet,
     Text,
@@ -19,7 +18,7 @@ import {
   import Header from '../components/Header'
 
 
-export default function Checkin() {
+export default function Checkout() {
     const [ tipoAutorizacao, setTipoAutorizacao ] = useState( 0 );
     const [ idUsuario, setIdUsuario ] = useState( 0 );
     const [ idVeiculo, setIdVeiculo ] = useState( 0 );
@@ -40,9 +39,8 @@ export default function Checkin() {
 
     async function cadastrarCheckIn() {
         setDataAtual('2022-05-05')
-        console.warn(dataAtual)
         let corpoChecklist = {
-            idTipoCheckList: 1,
+            idTipoCheckList: 2,
             idVeiculo: 2,
             idUsuario: idUsuario,
             dataCheckList: dataAtual
@@ -125,7 +123,7 @@ export default function Checkin() {
                 console.warn('Erro de combustivel cadastrado')
             }
         }
-        await navigation.goBack() 
+        
     }
 
     async function buscaInfoVeiculo() {
@@ -151,7 +149,7 @@ export default function Checkin() {
                 <View style={styles.background}>
                     <View style={styles.content}>
                         <View style={styles.header}>
-                            <Text style={styles.placa}>Check-in</Text>
+                            <Text style={styles.placa}>Check-out</Text>
                             <Text style={styles.placa}>{placaVeiculo}</Text>
                             <Text style={styles.tipoVeiculo}>{nomeTipoVeiculo}</Text>
                             <Text style={styles.status}>{statusVeiculo}</Text>
@@ -175,7 +173,7 @@ export default function Checkin() {
                                         }    
                                     </TouchableOpacity>
                                     <TouchableOpacity>
-                                        <Image style={styles.icon2} source={require('../../assets/img/clip.png')} /> 
+                                        <Image style={styles.icon} source={require('../../assets/img/clip.png')} /> 
                                     </TouchableOpacity>                                  
                                 </View>
                             </View>
@@ -197,7 +195,7 @@ export default function Checkin() {
                                         }    
                                     </TouchableOpacity>
                                     <TouchableOpacity>
-                                        <Image style={styles.icon2} source={require('../../assets/img/clip.png')} /> 
+                                        <Image style={styles.icon} source={require('../../assets/img/clip.png')} /> 
                                     </TouchableOpacity>                                  
                                 </View>
                             </View>
@@ -219,7 +217,7 @@ export default function Checkin() {
                                         }   
                                     </TouchableOpacity>
                                     <TouchableOpacity>
-                                        <Image style={styles.icon2} source={require('../../assets/img/clip.png')} /> 
+                                        <Image style={styles.icon} source={require('../../assets/img/clip.png')} /> 
                                     </TouchableOpacity>                                  
                                 </View>
                             </View>
@@ -241,7 +239,7 @@ export default function Checkin() {
                                         }    
                                     </TouchableOpacity>
                                     <TouchableOpacity>
-                                        <Image style={styles.icon2} source={require('../../assets/img/clip.png')} /> 
+                                        <Image style={styles.icon} source={require('../../assets/img/clip.png')} /> 
                                     </TouchableOpacity>                                  
                                 </View>
                             </View>
@@ -263,7 +261,7 @@ export default function Checkin() {
                                         }    
                                     </TouchableOpacity>
                                     <TouchableOpacity>
-                                        <Image style={styles.icon2} source={require('../../assets/img/clip.png')} /> 
+                                        <Image style={styles.icon} source={require('../../assets/img/clip.png')} /> 
                                     </TouchableOpacity>                                  
                                 </View>
                             </View>
@@ -285,13 +283,13 @@ export default function Checkin() {
                                         }   
                                     </TouchableOpacity>
                                     <TouchableOpacity >
-                                        <Image style={styles.icon2} source={require('../../assets/img/clip.png')} /> 
+                                        <Image style={styles.icon} source={require('../../assets/img/clip.png')} /> 
                                     </TouchableOpacity>                                  
                                 </View>
                             </View>
                         </View>
                         <View style={styles.containerBotao}>
-                            <TouchableOpacity onPress={() => cadastrarCheckIn()} style={styles.btnProsseguir}>
+                            <TouchableOpacity  onPress={navigation('TelaCadastrado'), () => cadastrarCheckIn()} style={styles.btnProsseguir}>
                                 <Text style={styles.btnText}>Prosseguir</Text>
                             </TouchableOpacity>
                         </View>
@@ -387,12 +385,7 @@ const styles = StyleSheet.create({
         
     },
     icon: {
-        marginLeft: 15,
-        width: 28,
-        height: 28
-    },
-    icon2: {
-        marginLeft: 15,
+        marginLeft: 15
     },
     containerDivisaoItens: {
         flex: 1,
