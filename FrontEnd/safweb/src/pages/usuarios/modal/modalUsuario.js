@@ -85,7 +85,7 @@ const Modal = ({ onClose = () => { }, children }) => {
                         notyf.success(
                             {
                                 message: 'Usuario cadastrado com êxito.',
-                                duration: 1000,
+                                duration: 3000,
                                 position: {
                                     x: 'right',
                                     y: 'top',

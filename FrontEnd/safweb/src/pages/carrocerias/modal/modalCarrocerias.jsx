@@ -26,7 +26,6 @@ const Modal = ({ onClose = () => { } }) => {
             .then((response) => {
                 if (response.status === 200) {
                     setListarCarroceria(response.data)
-                    console.log('sla')
                 }
             })
     }
@@ -48,7 +47,7 @@ const Modal = ({ onClose = () => { } }) => {
                     notyf.success(
                         {
                             message: 'Carroceria cadastrada',
-                            duration: 1000,
+                            duration: 3000,
                             position: {
                                 x: 'right',
                                 y: 'top',

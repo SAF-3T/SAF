@@ -45,7 +45,7 @@ export default function ListarCarroceria() {
                     notyf.success(
                         {
                             message: 'Carroceria excluída com êxito',
-                            duration: 1000,
+                            duration: 3000,
                             position: {
                                 x: 'right',
                                 y: 'top',
@@ -58,21 +58,6 @@ export default function ListarCarroceria() {
 
             .then(buscarCarroceria);
     };
-
-    function Atualizalocal() {
-        document.querySelectorAll("button").forEach(function (button) {
-
-            button.addEventListener("click", function (event) {
-
-                const el = event.target || event.srcElement;
-
-                const id = el.id;
-
-                console.log(id);
-            });
-
-        });
-    }
 
     useEffect(buscarCarroceria, [ListaCarroceria]);
 

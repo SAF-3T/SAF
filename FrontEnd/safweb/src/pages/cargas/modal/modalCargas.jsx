@@ -38,7 +38,7 @@ const Modal = ({ onClose = () => { } }) => {
                         notyf.success(
                             {
                                 message: 'Carga cadastrada com êxito',
-                                duration: 1000,
+                                duration: 3000,
                                 position: {
                                     x: 'right',
                                     y: 'top',
@@ -52,7 +52,7 @@ const Modal = ({ onClose = () => { } }) => {
             notyf.error(
                 {
                     message: 'Carga já cadastrada!',
-                    duration: 2000,
+                    duration: 3000,
                     position: {
                         x: 'right',
                         y: 'top',

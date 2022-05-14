@@ -91,7 +91,7 @@ export default function Modal({ onClose = () => { } }) {
                         notyf.success(
                             {
                                 message: 'Veículo cadastrado com êxito',
-                                duration: 1000,
+                                duration: 3000,
                                 position: {
                                     x: 'right',
                                     y: 'top',

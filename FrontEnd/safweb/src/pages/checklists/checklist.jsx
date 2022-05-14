@@ -61,7 +61,6 @@ export default function Checklists() {
 
         //Verifica se as letras digitadas correspondem a alguma placa da lista de placas
         for (let i = 0; i < ListaPlacas.length; i++) {
-            console.log('Entrou no for ' + i + ' Vezes')
             //Se Corresponde
             if (ListaPlacas[i].match(Pesquisa)) {
                 //Torna o item visivel
@@ -143,7 +142,7 @@ export default function Checklists() {
 
                     <div className="input-e-btn">
                         <div className="input-e-btn-2">
-                            <input onChange={(e) => setPesquisa(e.target.value.toUpperCase())} className='inputBusca' type="text" placeholder="Pesquisar" />
+                            <input onSubmit={PesquisaPlaca} onChange={(e) => setPesquisa(e.target.value.toUpperCase())} className='inputBusca' type="text" placeholder="Pesquisar" />
                             <button onClick={PesquisaPlaca} className='btnBuscar' type='submit'><p>Buscar</p></button>
                         </div>
                     </div>

@@ -95,7 +95,7 @@ export default function ListarVeiculos() {
                     notyf.success(
                         {
                             message: 'Veículo excluída com êxito',
-                            duration: 1000,
+                            duration: 3000,
                             position: {
                                 x: 'right',
                                 y: 'top',

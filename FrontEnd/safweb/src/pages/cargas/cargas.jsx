@@ -44,7 +44,7 @@ export default function ListarCarga() {
                         notyf.success(
                             {
                                 message: 'Carga excluída com êxito',
-                                duration: 1000,
+                                duration: 3000,
                                 position: {
                                     x: 'right',
                                     y: 'top',
