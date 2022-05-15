@@ -12,7 +12,6 @@ import { faClose } from '@fortawesome/free-solid-svg-icons'
 
 const Modal = ({ onClose = () => { } }) => {
 
-    const [Carga, setCarga] = useState([]);
     const [NovaCarga, setNovaCarga] = useState('');
     const [Disponibiliade, setDisponibilidade] = useState('');
 
@@ -21,19 +20,17 @@ const Modal = ({ onClose = () => { } }) => {
     async function CadastrarCarga(event) {
 
         event.preventDefault();
-
-        await axios('http://backend-saf-api.azurewebsites.net/VerificaDisponibilidadeNome/' + NovaCarga)
+        axios('http://backend-saf-api.azurewebsites.net/VerificaDisponibilidadeNome/' + NovaCarga)
             .then(response => {
                 setDisponibilidade(response.data)
             })
-
+            
         if (Disponibiliade === 1) {
             axios.post('http://backend-saf-api.azurewebsites.net/api/TipoCargas', {
                 nomeTipoCarga: NovaCarga
             })
                 .then((resposta) => {
                     if (resposta.status === 201) {
-                        setCarga('');
                         onClose()
                         notyf.success(
                             {
@@ -73,7 +70,7 @@ const Modal = ({ onClose = () => { } }) => {
                 <div className="conteudosCargas">
                     <form className='conteudoCarga' onSubmit={CadastrarCarga}>
                         <input required type='text' className='inputCarga' placeholder='Tipo de carga' onChange={(e) => setNovaCarga(e.target.value)} />
-                        <button className='btn_cadastroCarga' type='submit'><p className='pBtnCadastroCarga' >Cadastrar</p></button>
+                        <button className='btn_cadastroCarga' type='submit'><p className='pBtnCadastroCarga'>Cadastrar</p></button>
                     </form>
                 </div>
             </div>

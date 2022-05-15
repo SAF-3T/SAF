@@ -15,12 +15,19 @@ import './cargas.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
+import { useUpdateEffect } from 'rsuite/esm/utils';
 
 export default function ListarCarga() {
 
     const [ListaCarga, setListaCarga] = useState([]);
 
+    const [listaCargas] = useState([]);
+    const [Pesquisa, setPesquisa] = useState('');
+    const [isSearch, setIsSearch] = useState(false);
+
     const notyf = new Notyf();
+
+
 
     function buscarCarga() {
         axios('http://backend-saf-api.azurewebsites.net/api/TipoCargas', {
@@ -36,27 +43,50 @@ export default function ListarCarga() {
             .catch(erro => console.log(erro));
     };
 
+    function PesquisarCarga() {
+
+        if (isSearch === false) {
+            for (let a = 0; a < ListaCarga.length; a++) {
+                listaCargas.push(JSON.stringify(ListaCarga[a]).split(',')[1].split(':')[1].replace('"', "").split('"')[0].toUpperCase());
+            }
+        }
+        setIsSearch(true);
+
+        for (let i = 0; i < ListaCarga.length; i++) {
+            //Se Corresponde
+            if (listaCargas[i].match(Pesquisa)) {
+                //Torna o item visivel
+                document.getElementById(listaCargas[i]).style.display = "initial";
+            }
+            //Se não corresponde, torna o item oculto
+            else {
+                document.getElementById(listaCargas[i]).style.display = "none";
+            }
+        }
+    }
+
     function deletar(idTipoCarga) {
 
-            axios.delete('https://backend-saf-api.azurewebsites.net/' + idTipoCarga)
-                .then(resposta => {
-                    if (resposta.status === 204) {
-                        notyf.success(
-                            {
-                                message: 'Carga excluída com êxito',
-                                duration: 3000,
-                                position: {
-                                    x: 'right',
-                                    y: 'top',
-                                }
+        axios.delete('https://backend-saf-api.azurewebsites.net/' + idTipoCarga)
+            .then(resposta => {
+                if (resposta.status === 204) {
+                    notyf.success(
+                        {
+                            message: 'Carga excluída com êxito',
+                            duration: 3000,
+                            position: {
+                                x: 'right',
+                                y: 'top',
                             }
-                        );
-                    }
-                })
-        
+                        }
+                    );
+                }
+            })
+
     };
 
     useEffect(buscarCarga, [ListaCarga]);
+    useUpdateEffect(PesquisarCarga,[Pesquisa]);
 
 
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -80,8 +110,8 @@ export default function ListarCarga() {
                         </button>{isModalVisible ? (<Modal onClose={() => setIsModalVisible(false)}></Modal>) : null}
 
                         <div className="input-e-btn-2">
-                            <input className='inputBusca' type="text" placeholder="Pesquisar" />
-                            <button className='btnBuscar' type='button'><p>Buscar</p></button>
+                            <input onChange={(e) => setPesquisa(e.target.value.toUpperCase())} className='inputBusca' type="text" placeholder="Pesquisar" />
+                            <button onClick={PesquisarCarga} className='btnBuscar' type='button'><p>Buscar</p></button>
                         </div>
                     </div>
 
@@ -97,14 +127,16 @@ export default function ListarCarga() {
                     {
                         ListaCarga.map((carga) => {
                             return (
-                                <div className="cardCargas">
-                                    <div className="alinharEtiquetasCargas">
-                                        <div className="etiquetaCargas">
-                                            <p key={carga.nomeTipoCarga} className="nomeEtiquetaCarga">{carga.nomeTipoCarga}</p>
-                                        </div>
-                                        <div className="iconesEtiquetaCargas">
-                                            <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} style={{ cursor: 'pointer' }} size="2x"
-                                                onClick={() => deletar(carga.idTipoCarga)} />
+                                <div id={carga.nomeTipoCarga.toUpperCase()}>
+                                    <div className="cardCargas">
+                                        <div className="alinharEtiquetasCargas">
+                                            <div className="etiquetaCargas">
+                                                <p key={carga.nomeTipoCarga} className="nomeEtiquetaCarga">{carga.nomeTipoCarga}</p>
+                                            </div>
+                                            <div className="iconesEtiquetaCargas">
+                                                <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} style={{ cursor: 'pointer' }} size="2x"
+                                                    onClick={() => deletar(carga.idTipoCarga)} />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

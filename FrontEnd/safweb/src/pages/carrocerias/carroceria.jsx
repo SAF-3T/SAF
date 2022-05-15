@@ -20,7 +20,6 @@ import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 
 export default function ListarCarroceria() {
     const [ListaCarroceria, setListaCarroceria] = useState([]);
-    const [IdCarroceria, setidCarroceria] = useState('');
 
     const notyf = new Notyf();
 

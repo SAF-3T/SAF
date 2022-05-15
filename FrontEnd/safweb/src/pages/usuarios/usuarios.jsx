@@ -14,19 +14,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
 import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
+import { useUpdateEffect } from 'rsuite/esm/utils';
 
 import { Notyf } from 'notyf';
 import 'notyf/notyf.min.css';
 
 export default function ListarUsuarios() {
     const [ListaUsuarios, setListaUsuarios] = useState([]);
-    const [ListaCPF, setListaCPF] = useState([]);
+    const [ListaCPF] = useState([]);
     const [isSearch, setIsSearch] = useState(false);
     const [Pesquisa, setPesquisa] = useState('');
-    // const [Imagem, setImagem] = useState('');
-    // const [Nome, setNome] = useState('');
-    // const [CPF, setCPF] = useState('');
-    // const [Tel, setTel] = useState('');
 
     function buscarUsuarios() {
 
@@ -41,7 +38,7 @@ export default function ListarUsuarios() {
 
     function PesquisaCPF() {
 
-        if (isSearch == false) {
+        if (isSearch === false) {
             //Para criar a lista de placas
             for (let i = 0; i < ListaUsuarios.length; i++) {
 
@@ -54,7 +51,7 @@ export default function ListarUsuarios() {
                 //Para verificarmos a quantidade de campos da string
                 let tamanhoArray = usuarioString.split(',').length;
 
-                //Verificar se a quantidade é igual a 30(Sem imagem)
+                //Verificar se a quantidade é igual a 13(Sem imagem)
                 if (tamanhoArray === 13) {
                     //Pega a placa da string e coloca ela na lista de placas
                     ListaCPF.push(usuarioString.split(',')[6].split(':')[1].replace('"', "").split('"')[0]);
@@ -90,7 +87,7 @@ export default function ListarUsuarios() {
 
         for (let i = 0; i < ListaCPF.length; i++) {
             CPFFormatado += ListaCPF[i];
-            if (i / 2 === 1 || i / 5 == 1) {
+            if (i / 2 === 1 || i / 5 === 1) {
                 CPFFormatado += ".";
             }
 
@@ -137,6 +134,7 @@ export default function ListarUsuarios() {
     };
 
     useEffect(buscarUsuarios, [ListaUsuarios]);
+    useUpdateEffect(PesquisaCPF,[Pesquisa]);
 
     const [isModalAddUsuarioVisible, setIsModalAddUsuarioVisible] = useState(false);
     // const [isModalEditUsuarioVisible, setIsModalEditUsuarioVisible] = useState(false);
@@ -192,9 +190,9 @@ export default function ListarUsuarios() {
                                             <div className="alinharEtiquetasUsuarios">
                                                 {
                                                     usuario.imagemUsuario != null ?
-                                                        <img src={"http://backend-saf-api.azurewebsites.net/Img/" + usuario.imagemUsuario} className="imgUsuario" />
+                                                        <img alt="Imagem do Usuário" src={"http://backend-saf-api.azurewebsites.net/Img/" + usuario.imagemUsuario} className="imgUsuario" />
                                                         :
-                                                        <img src={"http://backend-saf-api.azurewebsites.net/Img/Perfilpadrao.jpg"} className="imgUsuario" />
+                                                        <img alt="Imagem do Usuário" src={"http://backend-saf-api.azurewebsites.net/Img/Perfilpadrao.jpg"} className="imgUsuario" />
                                                 }
 
                                                 <div className="etiquetasUsuarios">

@@ -14,7 +14,8 @@ import './checklist.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
 import { faMagnifyingGlassPlus } from '@fortawesome/free-solid-svg-icons';
-import { ContactlessOutlined } from '@material-ui/icons';
+import { useUpdateEffect } from 'rsuite/esm/utils';
+
 
 export default function Checklists() {
 
@@ -64,9 +65,9 @@ export default function Checklists() {
             //Se Corresponde
             if (ListaPlacas[i].match(Pesquisa)) {
                 //Torna o item visivel
-                var elems = document.getElementsByClassName(ListaPlacas[i]);
-                for (var a = 0; a < elems.length; a += 1) {
-                    elems[a].style.display = 'initial';
+                var elemst = document.getElementsByClassName(ListaPlacas[i]);
+                for (var b = 0; b < elemst.length; b += 1) {
+                    elemst[b].style.display = 'initial';
                 }
             }
             //Se não corresponde, torna o item oculto
@@ -130,6 +131,7 @@ export default function Checklists() {
     useEffect(buscarContagemErros, []);
     useEffect(buscarChecklists, []);
     useEffect(buscarContagemCorrecoes, []);
+    useUpdateEffect(PesquisaPlaca,[Pesquisa]);
 
     return (
         <div>

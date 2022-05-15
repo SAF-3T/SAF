@@ -17,10 +17,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
 import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
+import { useUpdateEffect } from 'rsuite/esm/utils';
 
 export default function ListarVeiculos() {
     const [ListaVeiculos, setListaVeiculos] = useState([]);
-    const [ListaPlacas, setListaPlacas] = useState([]);
+    const [ListaPlacas] = useState([]);
     const [Pesquisa, setPesquisa] = useState('');
     const [isSearch, setIsSearch] = useState(false);
 
@@ -28,7 +29,7 @@ export default function ListarVeiculos() {
 
     function PesquisaPlaca() {
 
-        if (isSearch == false) {
+        if (isSearch === false) {
             //Para criar a lista de placas
             for (let i = 0; i < ListaVeiculos.length; i++) {
 
@@ -73,8 +74,8 @@ export default function ListarVeiculos() {
     }
 
 
-    async function buscarVeiculos() {
-        await axios('https://backend-saf-api.azurewebsites.net/api/Veiculos', {
+    function buscarVeiculos() {
+        axios('https://backend-saf-api.azurewebsites.net/api/Veiculos', {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
             }
@@ -113,6 +114,7 @@ export default function ListarVeiculos() {
     }
 
     useEffect(buscarVeiculos, [ListaVeiculos]);
+    useUpdateEffect(PesquisaPlaca, [Pesquisa]);
 
     const [isModalAddVeiculoVisible, setIsModalAddVeiculoVisible] = useState(false);
     const [isModalEditVeiculoVisible, setIsModalEditVeiculoVisible] = useState(false);
@@ -172,8 +174,8 @@ export default function ListarVeiculos() {
                                             <div className="alinharEtiquetas">
                                                 {
                                                     veiculo.imagemVeiculo != null ?
-                                                        < img src={"http://backend-saf-api.azurewebsites.net/Img/" + veiculo.imagemVeiculo} className="imgVeiculo" /> :
-                                                        < img src={"http://backend-saf-api.azurewebsites.net/Img/Veiculopadrao.png"} className="imgVeiculo" />
+                                                        < img alt='Imagem do Veiculo' src={"http://backend-saf-api.azurewebsites.net/Img/" + veiculo.imagemVeiculo} className="imgVeiculo" /> :
+                                                        < img alt='Imagem do Veiculo' src={"http://backend-saf-api.azurewebsites.net/Img/Veiculopadrao.png"} className="imgVeiculo" />
                                                 }
                                                 <div className="etiquetasVeiculos">
                                                     <div className="etiquetaVeiculo">
