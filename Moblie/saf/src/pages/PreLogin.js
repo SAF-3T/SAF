@@ -2,7 +2,7 @@ import { Component } from "react";
 import React from 'react';
 import jwtDecode from 'jwt-decode';
 
-import FontRegular from '../../assets/fonts/Montserrat-Regular.ttf'
+// import FontRegular from '../../assets/fonts/Montserrat-Regular.ttf'
 
 import {
     StyleSheet,
