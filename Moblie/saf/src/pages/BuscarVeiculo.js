@@ -37,7 +37,7 @@ export default class Contatos extends Component {
                             <Image source={require('../../assets/img/cameraBranca.png')}/>
                         </TouchableOpacity>
                         <Text style={styles.textPlaca}>Placa do veículo</Text>
-                        <Text style={styles.textPlacaFuncional}>{this.placa}</Text>
+                        <Text style={styles.textPlacaFuncional}>placa</Text>
                     </View>
                     <View style={styles.container3}>
                         <TouchableOpacity style={styles.btnBuscar}>

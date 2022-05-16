@@ -65,7 +65,7 @@ export default function Checkin() {
 
     async function cadastrarCheckIn() {
         setDataAtual('2022-05-05')
-        console.warn(dataAtual)
+        // console.warn(dataAtual)
         let corpoChecklist = {
             idTipoCheckList: 1,
             idVeiculo: 2,
@@ -76,7 +76,7 @@ export default function Checkin() {
         .then(resposta => {
             if (resposta.status === 201) {
                 console.warn('CheckList cadastrada!')
-                console.warn(resposta)
+                // console.warn(resposta)
                 setIdCheckList(resposta.data.idCheckList)
             }
         })
@@ -160,7 +160,7 @@ export default function Checkin() {
         .then(response => {
             if(response.status === 200)
             {
-                console.warn(response)
+                // console.warn(response)
                 setPlacaVeiculo(response.data.placa)
                 setStatusVeiculo(response.data.idStatusNavigation.nomeStatus)
                 setNomeTipoVeiculo(response.data.idTipoVeiculoNavigation.nomeTipoVeiculo)

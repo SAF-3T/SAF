@@ -10,83 +10,79 @@ import {
     TextInput,
     ImageBackground,
     AsyncStorage,
-  } from 'react-native';
-  import api from '../services/api';
-  
+} from 'react-native';
+import api from '../services/api';
 
-  
 
 export default class Login extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
-            cpf : "36671849213",
-            senha : "123456789",
+            cpf: "",
+            senha: "",
             isLoading: false,
             erroMensagem: ''
         };
     }
 
     realizarLogin = async () => {
-        this.isLoading = true    
+        this.isLoading = true
         //this.setState(erroMensagem = 'Email ou senha incorreto1')    
         const resposta = await api.post('/Login',
-        {
-            cpf: this.state.cpf,
-            senha: this.state.senha
-        })
-        console.warn(resposta)
+            {
+                cpf: this.state.cpf,
+                senha: this.state.senha
+            })
+        // console.warn(resposta)
         if (resposta.status == 200) {
             const token = resposta.data.token;
-            await AsyncStorage.setItem('userToken',token)
+            await AsyncStorage.setItem('userToken', token)
             //console.warn(token)
             this.props.navigation.navigate('Menu');
             this.isLoading = false
         }
         else {
-           // Alert.alert('Email ou Senha incorretos!')
             this.isLoading = false
             return false
-
         }
     }
 
     render() {
-        return(
+        return (
             <View style={styles.main}>
                 <View style={styles.containerImg}>
                     <View style={styles.imgFixa}>
-                        <Image style={styles.imgCamera} source={require('../../assets/img/Group.png')}/>
+                        <Image style={styles.imgCamera} source={require('../../assets/img/Group.png')} />
                     </View>
                 </View>
                 <View style={styles.containerInputs}>
-                    <TextInput 
-                    placeholder="CPF"
-                    placeholderTextColor="#0E758C"
-                    style={styles.input}
-                    keyboardType="default"
-                    onChangeText={cpf => this.setState({cpf})}
+                    <TextInput
+                        placeholder="CPF"
+                        placeholderTextColor="#0E758C"
+                        style={styles.input}
+                        keyboardType="default"
+                        onChangeText={cpf => this.setState({ cpf })}
                     />
-                    <TextInput 
-                    placeholder="Senha"
-                    placeholderTextColor="#0E758C"
-                    style={styles.input}
-                    keyboardType="default"
-                    onChangeText={senha => this.setState({senha})}
-                    secureTextEntry={true}
+                    <TextInput
+                        placeholder="Senha"
+                        placeholderTextColor="#0E758C"
+                        style={styles.input}
+                        keyboardType="default"
+                        onChangeText={senha => this.setState({ senha })}
+                        secureTextEntry={true}
                     />
                 </View>
                 <View style={styles.containerBotao}>
                     <TouchableOpacity onPress={this.realizarLogin} style={styles.corpoBotao} >
                         <Text style={styles.textoBotao}>ENTRAR</Text>
-                    </TouchableOpacity>                 
+                    </TouchableOpacity>
                     {this.erroMensagem}
                 </View>
             </View>
 
         )
     }
-    
+
 }
 
 const styles = StyleSheet.create({
@@ -129,7 +125,7 @@ const styles = StyleSheet.create({
         borderBottomColor: '#0E758C',
         textAlign: 'center',
         fontSize: 20,
-        
+
     },
     corpoBotao: {
         width: 190,
@@ -144,7 +140,7 @@ const styles = StyleSheet.create({
         fontWeight: '900',
         fontSize: 25,
         color: 'white',
-        fontFamily: 'Montserrat'
+        // fontFamily: 'Montserrat'
     },
     imgFixa: {
         width: 150,
