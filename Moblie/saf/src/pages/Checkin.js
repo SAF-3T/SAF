@@ -14,6 +14,7 @@ import {
     ImageBackground,
     AsyncStorage,
     Button,
+    Modal
   } from 'react-native';
   import api from '../services/api';
   import Header from '../components/Header'
@@ -30,11 +31,35 @@ export default function Checkin() {
     const [ placaVeiculo, setPlacaVeiculo ] = useState( '' );
     const [ statusVeiculo, setStatusVeiculo ] = useState( '' );
     const [ estadoPneus, setEstadoPneus ] = useState( false );
+    const [ estadoPneusModal, setEstadoPneusModal ] = useState( false );
+    const [ estadoPneusComentario, setEstadoPneusComentario ] = useState( '' );
+
+    
     const [ estadoFreio, setEstadoFreio ] = useState( false );
+    const [ estadoFreioModal, setEstadoFreioModal ] = useState( false );
+    const [ estadoFreioComentario, setEstadoFreioComentario ] = useState( '' );
+
+    
     const [ estadoMotor, setEstadoMotor ] = useState( false );
+    const [ estadoMotorModal, setEstadoMotorModal ] = useState( false );
+    const [ estadoMotorComentario, setEstadoMotorComentario ] = useState( '' );
+
+    
     const [ estadoTransmissao, setEstadoTransmissao ] = useState( false );
+    const [ estadoTransmissaoModal, setEstadoTransmissaoModal ] = useState( false );
+    const [ estadoTransmissaoComentario, setEstadoTransmissaoComentario ] = useState( '' );
+
+
     const [ estadoRodas, setEstadoRodas ] = useState( false );
+    const [ estadoRodasModal, setEstadoRodasModal ] = useState( false );
+    const [ estadoRodasComentario, setEstadoRodasComentario ] = useState( '' );
+
+
     const [ combustivel, setCombustivel ] = useState( false );
+    const [ combustivelModal, setCombustivelModal ] = useState( false );
+    const [ combustivelComentario, setCombustivelComentario ] = useState( '' );
+
+
     const [ dataAtual, setDataAtual ] = useState( '' );
     var navigation = useNavigation()
 
@@ -150,6 +175,19 @@ export default function Checkin() {
                 <Header/>
                 <View style={styles.background}>
                     <View style={styles.content}>
+
+                        <Modal
+                        animationType="slide"
+                        transparent={true}
+                        visible={true}
+                        >
+                            <View style={styles.modalPneu}>
+                                <TextInput />
+                            </View>
+                            
+                        </Modal>
+
+
                         <View style={styles.header}>
                             <Text style={styles.placa}>Check-in</Text>
                             <Text style={styles.placa}>{placaVeiculo}</Text>
@@ -174,9 +212,12 @@ export default function Checkin() {
                                             <Image style={styles.icon} source={require('../../assets/img/x.png')} />
                                         }    
                                     </TouchableOpacity>
-                                    <TouchableOpacity>
-                                        <Image style={styles.icon2} source={require('../../assets/img/clip.png')} /> 
-                                    </TouchableOpacity>                                  
+                                        {estadoPneus?
+                                            <View><Image style={styles.icon2} source={require('../../assets/img/clipApagado.png')} /></View>:
+                                            <TouchableOpacity>
+                                                <Image style={styles.icon2} source={require('../../assets/img/clip.png')} /> 
+                                            </TouchableOpacity>                                         
+                                        }     
                                 </View>
                             </View>
                             <View style={styles.containerItens}>
@@ -196,9 +237,12 @@ export default function Checkin() {
                                             <Image style={styles.icon} source={require('../../assets/img/x.png')} />
                                         }    
                                     </TouchableOpacity>
-                                    <TouchableOpacity>
-                                        <Image style={styles.icon2} source={require('../../assets/img/clip.png')} /> 
-                                    </TouchableOpacity>                                  
+                                        {estadoFreio?
+                                            <View><Image style={styles.icon2} source={require('../../assets/img/clipApagado.png')} /></View>:
+                                            <TouchableOpacity>
+                                                <Image style={styles.icon2} source={require('../../assets/img/clip.png')} /> 
+                                            </TouchableOpacity>                                         
+                                        }                                
                                 </View>
                             </View>
                             <View style={styles.containerItens}>
@@ -218,9 +262,12 @@ export default function Checkin() {
                                             <Image style={styles.icon} source={require('../../assets/img/x.png')} />
                                         }   
                                     </TouchableOpacity>
-                                    <TouchableOpacity>
-                                        <Image style={styles.icon2} source={require('../../assets/img/clip.png')} /> 
-                                    </TouchableOpacity>                                  
+                                        {estadoMotor?
+                                            <View><Image style={styles.icon2} source={require('../../assets/img/clipApagado.png')} /></View>:
+                                            <TouchableOpacity>
+                                                <Image style={styles.icon2} source={require('../../assets/img/clip.png')} /> 
+                                            </TouchableOpacity>                                         
+                                        }                              
                                 </View>
                             </View>
                             <View style={styles.containerItens}>
@@ -240,9 +287,12 @@ export default function Checkin() {
                                             <Image style={styles.icon} source={require('../../assets/img/x.png')} />
                                         }    
                                     </TouchableOpacity>
-                                    <TouchableOpacity>
-                                        <Image style={styles.icon2} source={require('../../assets/img/clip.png')} /> 
-                                    </TouchableOpacity>                                  
+                                        {estadoTransmissao?
+                                            <View><Image style={styles.icon2} source={require('../../assets/img/clipApagado.png')} /></View>:
+                                            <TouchableOpacity>
+                                                <Image style={styles.icon2} source={require('../../assets/img/clip.png')} /> 
+                                            </TouchableOpacity>                                         
+                                        }                                   
                                 </View>
                             </View>
                             <View style={styles.containerItens}>
@@ -262,9 +312,12 @@ export default function Checkin() {
                                             <Image style={styles.icon} source={require('../../assets/img/x.png')} />
                                         }    
                                     </TouchableOpacity>
-                                    <TouchableOpacity>
-                                        <Image style={styles.icon2} source={require('../../assets/img/clip.png')} /> 
-                                    </TouchableOpacity>                                  
+                                        {estadoRodas?
+                                            <View><Image style={styles.icon2} source={require('../../assets/img/clipApagado.png')} /></View>:
+                                            <TouchableOpacity>
+                                                <Image style={styles.icon2} source={require('../../assets/img/clip.png')} /> 
+                                            </TouchableOpacity>                                         
+                                        }                                   
                                 </View>
                             </View>
                             <View style={styles.containerItens}>
@@ -284,9 +337,12 @@ export default function Checkin() {
                                             <Image style={styles.icon} source={require('../../assets/img/x.png')} />
                                         }   
                                     </TouchableOpacity>
-                                    <TouchableOpacity >
-                                        <Image style={styles.icon2} source={require('../../assets/img/clip.png')} /> 
-                                    </TouchableOpacity>                                  
+                                        {combustivel?
+                                            <View><Image style={styles.icon2} source={require('../../assets/img/clipApagado.png')} /></View>:
+                                            <TouchableOpacity>
+                                                <Image style={styles.icon2} source={require('../../assets/img/clip.png')} /> 
+                                            </TouchableOpacity>                                         
+                                        }                                     
                                 </View>
                             </View>
                         </View>
@@ -323,7 +379,10 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         width: 320,
         height: 500,
-        borderRadius: 5
+        borderRadius: 5,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     header: {
         display: 'flex',
@@ -393,12 +452,20 @@ const styles = StyleSheet.create({
     },
     icon2: {
         marginLeft: 15,
+        width: 28,
+        
     },
     containerDivisaoItens: {
         flex: 1,
         display: 'flex',
         alignItems: 'center',
         flexDirection: 'row',
+    },
+    modalPneu:{
+        backgroundColor: 'black',
+        width: 300,
+        height:400,
+        margin: 30
     }
 
 
