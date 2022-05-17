@@ -2,9 +2,7 @@ import React, { Component } from "react";
 
 import { Link } from 'react-router-dom';
 
-import '../../pages/dashboard/App.css';
-
-import Footer from '../footer';
+import '../../assets/css/App.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTruck } from '@fortawesome/free-solid-svg-icons'
@@ -24,11 +22,9 @@ class Sidebar extends Component {
                         <div className="link2 iconCarroceria"><Link to="/carrocerias"><FontAwesomeIcon icon={faTruckRampBox} color="#0E758C" size="lg" /></Link></div>
                         <div className="link1"><Link to="/cargas"><FontAwesomeIcon icon={faTruckArrowRight} color="#0E758C" size="lg" /></Link></div>
                         <div className="link2"><Link to="/usuarios"><FontAwesomeIcon icon={faUsers} color="#0E758C" size="lg" /></Link></div>
-                        <div className="link1"><Link to="/checklists"><FontAwesomeIcon icon={faListCheck} color="#0E758C" size="lg" /></Link></div>
+                        <div className="link1 linkUltimo"><Link to="/checklists"><FontAwesomeIcon icon={faListCheck} color="#0E758C" size="lg" /></Link></div>
                     </div>
                 </nav>
-
-                <Footer />
             </div>
         );
     };

@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { useState, useEffect } from 'react';
 import React from 'react';
 import jwtDecode from 'jwt-decode';
 import Header from '../components/Header'
@@ -12,58 +12,72 @@ import {
     ImageBackground,
     AsyncStorage,
     Button,
-  } from 'react-native';
-  import api from '../services/api';
+} from 'react-native';
+import { Camera } from 'expo-camera'
+import api from '../services/api';
 
-export default class Contatos extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            placa: '',
+export default function Contatos() {
 
-        };
+    const [startCamera, setStartCamera] = useState(false)
+
+    var camera = Camera();
+
+    const __startCamera = async () => {
+        const { status } = await Camera.requestPermissionsAsync()
+        if (status === 'granted') {
+            // start the camera
+            setStartCamera(true)
+        } else {
+            Alert.alert('Access denied')
+        }
     }
 
-    render() {
-        return(
-            <View>
-                <Header />
-                <View style={styles.main}>
-                    <View style={styles.container1}>
-                        <Text style={styles.titulo}>Buscar veículo</Text>
-                    </View>
-                    <View style={styles.container2}>
-                        <TouchableOpacity style={styles.quadradoImg}>
-                            <Image source={require('../../assets/img/cameraBranca.png')}/>
-                        </TouchableOpacity>
-                        <Text style={styles.textPlaca}>Placa do veículo</Text>
-                        <Text style={styles.textPlacaFuncional}>{this.placa}</Text>
-                    </View>
-                    <View style={styles.container3}>
-                        <TouchableOpacity style={styles.btnBuscar}>
-                            <Text style={styles.btnBuscarText}>BUSCAR</Text>
-                        </TouchableOpacity>
-                    </View>
+    return (
+        <View>
+            <Header />
+            <View style={styles.main}>
+                <View style={styles.container1}>
+                    <Text style={styles.titulo}>Buscar veículo</Text>
+                </View>
+                <View style={styles.container2}>
+                    <TouchableOpacity style={styles.quadradoImg}>
+                        <Image source={require('../../assets/img/cameraBranca.png')} />
+                    </TouchableOpacity>
+                    <Text style={styles.textPlaca}>Placa do veículo</Text>
+                    <Text style={styles.textPlacaFuncional}>placa</Text>
+                </View>
+                <View style={styles.container3}>
+                    <TouchableOpacity style={styles.btnBuscar}
+                        onPress={__startCamera}
+                    >
+                        <Camera
+                            style={{ flex: 1, width: "100%" }}
+                            ref={(r) => {
+                                camera = r
+                            }}
+                        ></Camera>
+                        <Text style={styles.btnBuscarText}>BUSCAR</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
-        )
-    }
+        </View>
+    )
 }
 
 const styles = StyleSheet.create({
-    main : {
+    main: {
         backgroundColor: '#0E758C',
-        height: 610,
+        height: '100%',
         display: 'flex',
         alignItems: 'center'
-        
+
     },
-    titulo : {
+    titulo: {
         color: 'white',
         fontSize: 20,
         fontWeight: 'bold'
     },
-    container1 : {
+    container1: {
         flex: 1,
         display: 'flex',
         alignItems: 'center',

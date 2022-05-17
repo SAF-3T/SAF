@@ -2,7 +2,7 @@ import { Component } from "react";
 import React from 'react';
 import jwtDecode from 'jwt-decode';
 
-import FontRegular from '../../assets/fonts/Montserrat-Regular.ttf'
+// import FontRegular from '../../assets/fonts/Montserrat-Regular.ttf'
 
 import {
     StyleSheet,
@@ -43,7 +43,7 @@ export default class PreLogin extends Component {
                     </View>
                                        
                     <View style={styles.containerEspacamento}>
-                        <TouchableOpacity onPress={ () => (this.props.navigation.navigate('Login'))} style={styles.corpoBotao}>
+                        <TouchableOpacity onPress={ () => (this.props.navigation.navigate('Menu'))} style={styles.corpoBotao}>
                             <Text style={styles.textoBotao}>COMEÇAR</Text>
                         </TouchableOpacity>
                     </View>

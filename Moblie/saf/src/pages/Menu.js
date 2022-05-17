@@ -13,7 +13,6 @@ import {
     Button,
   } from 'react-native';
   import api from '../services/api';
-import axios from "axios";
 
   export default class Menu extends Component {
     constructor(props){
@@ -35,10 +34,11 @@ import axios from "axios";
         this.nomeU = resposta.data.nome
         this.funcaoU = resposta.data.idTipoUsuarioNavigation.nomeTipoUsuario
         //console.warn(resposta.data)
+        this.setState({imgU: resposta.data.imagemUsuario})
         this.setState({ nomeU: resposta.data.nome })
         this.setState({ funcaoU: resposta.data.idTipoUsuarioNavigation.nomeTipoUsuario })
 
-        console.warn(this.nomeU)
+        // console.warn(this.nomeU)
     }
 
     componentDidMount() { this.buscarInfosUsuario() }

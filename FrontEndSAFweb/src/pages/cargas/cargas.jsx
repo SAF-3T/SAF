@@ -5,20 +5,25 @@ import Header from '../../components/headers/header';
 import Sidebar3 from '../../components/sidebars/sidebar3';
 import Footer from '../../components/footer';
 
-import { Link } from 'react-router-dom';
+import Modal from '../cargas/modal/modalCargas';
 
-import '../../assets/css/cargas.css';
+import { Notyf } from 'notyf';
+import 'notyf/notyf.min.css';
+
+import './cargas.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
-import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
 
 export default function ListarCarga() {
+
     const [ListaCarga, setListaCarga] = useState([]);
 
+    const notyf = new Notyf();
+
     function buscarCarga() {
-        axios('http://localhost:5000/api/TipoCargas', {
+        axios('http://backend-saf-api.azurewebsites.net/api/TipoCargas', {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
             }
@@ -31,87 +36,81 @@ export default function ListarCarga() {
             .catch(erro => console.log(erro));
     };
 
-    useEffect(buscarCarga, []);
+    function deletar(idTipoCarga) {
+
+            axios.delete('https://backend-saf-api.azurewebsites.net/' + idTipoCarga)
+                .then(resposta => {
+                    if (resposta.status === 204) {
+                        notyf.success(
+                            {
+                                message: 'Carga excluída com êxito',
+                                duration: 1000,
+                                position: {
+                                    x: 'right',
+                                    y: 'top',
+                                }
+                            }
+                        );
+                    }
+                })
+        
+    };
+
+    useEffect(buscarCarga, [ListaCarga]);
+
+
+    const [isModalVisible, setIsModalVisible] = useState(false);
+
 
     return (
         <div>
-            <Header />
             <Sidebar3 />
+            <Header />
 
             <main>
-                <div className="wrapperVeiculos">
-                    <p className="pVeiculo">Cargas</p>
+                <div className="wrapperCargas">
+                    <p className="pCarga">Cargas</p>
 
                     <div className="input-e-btn">
-                        <button className="addVeiculo" type='submit'><Link className='removerLink' to="/veiculos/cadastro/carga"><FontAwesomeIcon className="iconPlus" icon={faPlus} color="#fff" size="lg" />Nova carga</Link></button>
+                        <button className='btnAddCarga' type='button' onClick={() => setIsModalVisible(true)}>
+                            <div className="conteudoBtnAddCarga">
+                                <FontAwesomeIcon icon={faPlus} color="#fff" size="4x" />
+                                <p className="pAddCarga">Nova carga</p>
+                            </div>
+                        </button>{isModalVisible ? (<Modal onClose={() => setIsModalVisible(false)}></Modal>) : null}
+
                         <div className="input-e-btn-2">
                             <input className='inputBusca' type="text" placeholder="Pesquisar" />
-                            <button className='btnBuscar' type='submit'><p>Buscar</p></button>
+                            <button className='btnBuscar' type='button'><p>Buscar</p></button>
+                        </div>
+                    </div>
+
+                    <div className="cardCabecalhoCargas">
+                        <div className="alinharCabecalhoEtiquetasCargas">
+                            <div className="etiquetaCabecalhoCargas">
+                                <p className="nomeEtiquetaCabecalhoCarga">Carga</p>
+                            </div>
+                            <div className="iconesCabecalhoEtiquetaCargas" />
                         </div>
                     </div>
 
                     {
                         ListaCarga.map((carga) => {
                             return (
-                                <div className="cardVeiculoCargas1">
+                                <div className="cardCargas">
                                     <div className="alinharEtiquetasCargas">
                                         <div className="etiquetaCargas">
-                                            <div className="etiquetaCargas">
-                                                <p className="nomeEtiquetaCargas">{carga.nomeTipoCarga}</p>
-                                            </div>
+                                            <p key={carga.nomeTipoCarga} className="nomeEtiquetaCarga">{carga.nomeTipoCarga}</p>
                                         </div>
                                         <div className="iconesEtiquetaCargas">
-                                            <Link className='removerLink' to="/veiculos/atualizar/carroceria"><FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" /></Link>
-                                            <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
+                                            <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} style={{ cursor: 'pointer' }} size="2x"
+                                                onClick={() => deletar(carga.idTipoCarga)} />
                                         </div>
                                     </div>
                                 </div>
                             )
                         })
                     }
-
-                    {/* <div className="cardVeiculoCargas2">
-                        <div className="alinharEtiquetasCargas">
-                            <div className="etiquetaCargas">
-                                <div className="etiquetaCargas">
-                                    <p className="nomeEtiquetaCargas">[tipo-carga]</p>
-                                </div>
-                            </div>
-                            <div className="iconesEtiquetaCargas">
-                                <Link className='removerLink' to="/veiculos/atualizar/carroceria"><FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" /></Link>
-                                <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="cardVeiculoCargas3">
-                        <div className="alinharEtiquetasCargas">
-                            <div className="etiquetaCargas">
-                                <div className="etiquetaCargas">
-                                    <p className="nomeEtiquetaCargas">[tipo-carga]</p>
-                                </div>
-                            </div>
-                            <div className="iconesEtiquetaCargas">
-                                <Link className='removerLink' to="/veiculos/atualizar/carroceria"><FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" /></Link>
-                                <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="cardVeiculoCargas4">
-                        <div className="alinharEtiquetasCargas">
-                            <div className="etiquetaCargas">
-                                <div className="etiquetaCargas">
-                                    <p className="nomeEtiquetaCargas">[tipo-carga]</p>
-                                </div>
-                            </div>
-                            <div className="iconesEtiquetaCargas">
-                                <Link className='removerLink' to="/veiculos/atualizar/carroceria"><FontAwesomeIcon className="iconPenToSquare" icon={faPenToSquare} size="2x" /></Link>
-                                <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} size="2x" />
-                            </div>
-                        </div>
-                    </div> */}
-
                 </div>
             </main>
 
