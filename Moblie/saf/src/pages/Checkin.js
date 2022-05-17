@@ -4,6 +4,7 @@ import React from 'react';
 import jwtDecode from 'jwt-decode';
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
+import * as ImagePicker from 'expo-image-picker';
 import {
     StyleSheet,
     Text,
@@ -37,6 +38,25 @@ export default function Checkin() {
     const [ combustivel, setCombustivel ] = useState( false );
     const [ dataAtual, setDataAtual ] = useState( '' );
     var navigation = useNavigation()
+
+    const [image, setImage] = useState(null);
+
+  const pickImage = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.cancelled) {
+      setImage(result.uri);
+    }
+  };
+
 
     async function cadastrarCheckIn() {
         setDataAtual('2022-05-05')
