@@ -31,34 +31,25 @@ export default function Checkin() {
     const [ nomeU, setNomeU ] = useState( '' );
     const [ placaVeiculo, setPlacaVeiculo ] = useState( '' );
     const [ statusVeiculo, setStatusVeiculo ] = useState( '' );
-    const [ estadoPneus, setEstadoPneus ] = useState( false );
-    const [ estadoPneusModal, setEstadoPneusModal ] = useState( false );
-    const [ estadoPneusComentario, setEstadoPneusComentario ] = useState( '' );
+    
+    const [ dianteira, setDianteira ] = useState( false );
+    const [ dianteiraModal, setDianteiraModal ] = useState( false );
+    const [ dianteiraImg, setDianteiraImg ] = useState( '' );
 
     
-    const [ estadoFreio, setEstadoFreio ] = useState( false );
-    const [ estadoFreioModal, setEstadoFreioModal ] = useState( false );
-    const [ estadoFreioComentario, setEstadoFreioComentario ] = useState( '' );
+    const [ traseira, setTraseira ] = useState( false );
+    const [ traseiraModal, setTraseiraModal ] = useState( false );
+    const [ traseiraImg, setTraseiraImg ] = useState( '' );
 
     
-    const [ estadoMotor, setEstadoMotor ] = useState( false );
-    const [ estadoMotorModal, setEstadoMotorModal ] = useState( false );
-    const [ estadoMotorComentario, setEstadoMotorComentario ] = useState( '' );
-
-    
-    const [ estadoTransmissao, setEstadoTransmissao ] = useState( false );
-    const [ estadoTransmissaoModal, setEstadoTransmissaoModal ] = useState( false );
-    const [ estadoTransmissaoComentario, setEstadoTransmissaoComentario ] = useState( '' );
+    const [ lateralEsquerda, setLateralEsquerda ] = useState( false );
+    const [ lateralEsquerdaModal, setLateralEsquerdaModal ] = useState( false );
+    const [ lateralEsquerdaImg, setLateralEsquerdaImg ] = useState( '' );
 
 
-    const [ estadoRodas, setEstadoRodas ] = useState( false );
-    const [ estadoRodasModal, setEstadoRodasModal ] = useState( false );
-    const [ estadoRodasComentario, setEstadoRodasComentario ] = useState( '' );
-
-
-    const [ combustivel, setCombustivel ] = useState( false );
-    const [ combustivelModal, setCombustivelModal ] = useState( false );
-    const [ combustivelComentario, setCombustivelComentario ] = useState( '' );
+    const [ lateralDireita, setLateralDireita ] = useState( false );
+    const [ lateralDireitaModal, setLateralDireitaModal ] = useState( false );
+    const [ lateralDireitaImg, setLateralDireitaImg ] = useState( '' );
 
 
     const [ dataAtual, setDataAtual ] = useState( '' );
@@ -188,6 +179,42 @@ export default function Checkin() {
         })
     }
 
+    async function minimizarDianteiraSim() {
+        setDianteiraModal(false)
+        setDianteira(true)
+    }
+    async function minimizarDianteiraNao() {
+        setDianteiraModal(false)
+        setDianteira(false)
+    }
+
+    async function minimizarTraseiraSim() {
+        setTraseiraModal(false)
+        setTraseira(true)
+    }
+    async function minimizarTraseiraNao() {
+        setTraseiraModal(false)
+        setTraseira(false)
+    }
+
+    async function minimizarLateralEsquerdaSim() {
+        setLateralEsquerdaModal(false)
+        setLateralEsquerda(true)
+    }
+    async function minimizarLateralEsquerdaNao() {
+        setLateralEsquerdaModal(false)
+        setLateralEsquerda(false)
+    }
+
+    async function minimizarLateralDireitaSim() {
+        setLateralDireitaModal(false)
+        setLateralDireita(true)
+    }
+    async function minimizarLateralDireitaNao() {
+        setLateralDireitaModal(false)
+        setLateralDireita(false)
+    }
+
     useEffect(buscaInfoVeiculo, [])
 
     return(
@@ -199,10 +226,119 @@ export default function Checkin() {
                         <Modal
                         animationType="slide"
                         transparent={true}
-                        visible={true}
+                        visible={dianteiraModal}
                         >
-                            <View style={styles.modalPneu}>
-                                <TextInput style={styles.modalPneu}/>
+                            <View style={styles.modal}>
+                                <View style={styles.modalContent}>
+                                    <View style={styles.modalContainerTextImg}>
+                                        <View style={styles.modalContainerImgText}>
+                                            <Text style={styles.modalText}>Imagem Padrão</Text>
+                                            <View style={styles.imgModal}></View>
+                                        </View>
+                                        <View style={styles.modalContainerImgText}>
+                                            <Text style={styles.modalText}>Sua imagem</Text>
+                                            <View style={styles.imgModal}></View>
+                                        </View>
+                                    </View>
+                                    
+                                    
+                                    <Text style={styles.modalText}>Taxa de correspondência: XX%</Text>
+                                    <Text style={styles.modalText}>Correspondente?</Text>
+                                    <View style={styles.modalContainerBotoes}>
+                                        <TouchableOpacity style={styles.modalBotaoSim} onPress={() => minimizarDianteiraSim()}><Text style={styles.modalBotaoText}>Sim</Text></TouchableOpacity>
+                                        <TouchableOpacity style={styles.modalBotaoNao} onPress={() => minimizarDianteiraNao()}><Text style={styles.modalBotaoText}>Não</Text></TouchableOpacity>
+                                    </View>
+                                </View>
+                            </View>
+                            
+                        </Modal>
+
+                        <Modal
+                        animationType="slide"
+                        transparent={true}
+                        visible={traseiraModal}
+                        >
+                            <View style={styles.modal}>
+                                <View style={styles.modalContent}>
+                                    <View style={styles.modalContainerTextImg}>
+                                        <View style={styles.modalContainerImgText}>
+                                            <Text style={styles.modalText}>Imagem Padrão</Text>
+                                            <View style={styles.imgModal}></View>
+                                        </View>
+                                        <View style={styles.modalContainerImgText}>
+                                            <Text style={styles.modalText}>Sua imagem</Text>
+                                            <View style={styles.imgModal}></View>
+                                        </View>
+                                    </View>
+                                    
+                                    
+                                    <Text style={styles.modalText}>Taxa de correspondência: XX%</Text>
+                                    <Text style={styles.modalText}>Correspondente?</Text>
+                                    <View style={styles.modalContainerBotoes}>
+                                        <TouchableOpacity style={styles.modalBotaoSim} onPress={() => minimizarTraseiraSim()}><Text style={styles.modalBotaoText}>Sim</Text></TouchableOpacity>
+                                        <TouchableOpacity style={styles.modalBotaoNao} onPress={() => minimizarTraseiraNao()}><Text style={styles.modalBotaoText}>Não</Text></TouchableOpacity>
+                                    </View>
+                                </View>
+                            </View>
+                            
+                        </Modal>
+
+                        <Modal
+                        animationType="slide"
+                        transparent={true}
+                        visible={lateralDireitaModal}
+                        >
+                            <View style={styles.modal}>
+                                <View style={styles.modalContent}>
+                                    <View style={styles.modalContainerTextImg}>
+                                        <View style={styles.modalContainerImgText}>
+                                            <Text style={styles.modalText}>Imagem Padrão</Text>
+                                            <View style={styles.imgModal}></View>
+                                        </View>
+                                        <View style={styles.modalContainerImgText}>
+                                            <Text style={styles.modalText}>Sua imagem</Text>
+                                            <View style={styles.imgModal}></View>
+                                        </View>
+                                    </View>
+                                    
+                                    
+                                    <Text style={styles.modalText}>Taxa de correspondência: XX%</Text>
+                                    <Text style={styles.modalText}>Correspondente?</Text>
+                                    <View style={styles.modalContainerBotoes}>
+                                        <TouchableOpacity style={styles.modalBotaoSim} onPress={() => minimizarLateralDireitaSim()}><Text style={styles.modalBotaoText}>Sim</Text></TouchableOpacity>
+                                        <TouchableOpacity style={styles.modalBotaoNao} onPress={() => minimizarLateralDireitaNao()}><Text style={styles.modalBotaoText}>Não</Text></TouchableOpacity>
+                                    </View>
+                                </View>
+                            </View>
+                            
+                        </Modal>
+
+                        <Modal
+                        animationType="slide"
+                        transparent={true}
+                        visible={lateralEsquerdaModal}
+                        >
+                            <View style={styles.modal}>
+                                <View style={styles.modalContent}>
+                                    <View style={styles.modalContainerTextImg}>
+                                        <View style={styles.modalContainerImgText}>
+                                            <Text style={styles.modalText}>Imagem Padrão</Text>
+                                            <View style={styles.imgModal}></View>
+                                        </View>
+                                        <View style={styles.modalContainerImgText}>
+                                            <Text style={styles.modalText}>Sua imagem</Text>
+                                            <View style={styles.imgModal}></View>
+                                        </View>
+                                    </View>
+                                    
+                                    
+                                    <Text style={styles.modalText}>Taxa de correspondência: XX%</Text>
+                                    <Text style={styles.modalText}>Correspondente?</Text>
+                                    <View style={styles.modalContainerBotoes}>
+                                        <TouchableOpacity style={styles.modalBotaoSim} onPress={() => minimizarLateralEsquerdaSim()}><Text style={styles.modalBotaoText}>Sim</Text></TouchableOpacity>
+                                        <TouchableOpacity style={styles.modalBotaoNao} onPress={() => minimizarLateralEsquerdaNao()}><Text style={styles.modalBotaoText}>Não</Text></TouchableOpacity>
+                                    </View>
+                                </View>
                             </View>
                             
                         </Modal>
@@ -217,152 +353,90 @@ export default function Checkin() {
                         <View style={styles.body}>
                             <View style={styles.containerItens}>
                                 <View style={styles.containerDivisaoItens}>
-                                    <Text style={styles.textItem}>Pneus</Text>
+                                    <Text style={styles.textItem}>Dianteira</Text>
                                 </View>
                                 <View style={styles.containerDivisaoItens}>
-                                    <TouchableOpacity onPress={() => setEstadoPneus(true)}>
-                                        {estadoPneus?
+                                    <TouchableOpacity>
+                                        {dianteira?
                                             <Image style={styles.icon} source={require('../../assets/img/certo.png')} /> :
                                             <Image style={styles.icon} source={require('../../assets/img/certoApagado.png')} />
                                         }
                                     </TouchableOpacity>
-                                    <TouchableOpacity onPress={() =>setEstadoPneus(false)}>
-                                        {estadoPneus?
+                                    <TouchableOpacity>
+                                        {dianteira?
                                             <Image style={styles.icon} source={require('../../assets/img/xApagado.png')} /> :
                                             <Image style={styles.icon} source={require('../../assets/img/x.png')} />
                                         }    
-                                    </TouchableOpacity>
-                                        {estadoPneus?
-                                            <View><Image style={styles.icon2} source={require('../../assets/img/clipApagado.png')} /></View>:
-                                            <TouchableOpacity>
-                                                <Image style={styles.icon2} source={require('../../assets/img/clip.png')} /> 
-                                            </TouchableOpacity>                                         
-                                        }     
+                                    </TouchableOpacity>   
+                                    <TouchableOpacity onPress={() => setDianteiraModal(true)}>
+                                        <Image style={styles.icon2} source={require('../../assets/img/clip.png')} /> 
+                                    </TouchableOpacity>                                         
                                 </View>
                             </View>
                             <View style={styles.containerItens}>
                                 <View style={styles.containerDivisaoItens}>
-                                    <Text style={styles.textItem}>Pastilhas de freio</Text>
+                                    <Text style={styles.textItem}>Traseira</Text>
                                 </View>
                                 <View style={styles.containerDivisaoItens}>
-                                    <TouchableOpacity onPress={() => setEstadoFreio(true)}>
-                                        {estadoFreio?
+                                    <TouchableOpacity>
+                                        {traseira?
                                             <Image style={styles.icon} source={require('../../assets/img/certo.png')} /> :
                                             <Image style={styles.icon} source={require('../../assets/img/certoApagado.png')} />
                                         }
                                     </TouchableOpacity>
-                                    <TouchableOpacity onPress={() => setEstadoFreio(false)}>
-                                        {estadoFreio?
+                                    <TouchableOpacity>
+                                        {traseira?
                                             <Image style={styles.icon} source={require('../../assets/img/xApagado.png')} /> :
                                             <Image style={styles.icon} source={require('../../assets/img/x.png')} />
                                         }    
                                     </TouchableOpacity>
-                                        {estadoFreio?
-                                            <View><Image style={styles.icon2} source={require('../../assets/img/clipApagado.png')} /></View>:
-                                            <TouchableOpacity>
-                                                <Image style={styles.icon2} source={require('../../assets/img/clip.png')} /> 
-                                            </TouchableOpacity>                                         
-                                        }                                
+                                    <TouchableOpacity onPress={() => setTraseiraModal(true)}>
+                                        <Image style={styles.icon2} source={require('../../assets/img/clip.png')} /> 
+                                    </TouchableOpacity>                            
                                 </View>
                             </View>
                             <View style={styles.containerItens}>
                                 <View style={styles.containerDivisaoItens}>
-                                    <Text style={styles.textItem}>Motor</Text>
+                                    <Text style={styles.textItem}>Lateral esquerda</Text>
                                 </View>
                                 <View style={styles.containerDivisaoItens}>
-                                    <TouchableOpacity onPress={() => setEstadoMotor(true)}>
-                                        {estadoMotor?
+                                    <TouchableOpacity>
+                                        {lateralEsquerda?
                                             <Image style={styles.icon} source={require('../../assets/img/certo.png')} /> :
                                             <Image style={styles.icon} source={require('../../assets/img/certoApagado.png')} />
                                         }
                                     </TouchableOpacity>
-                                    <TouchableOpacity onPress={() => setEstadoMotor(false)}>
-                                        {estadoMotor?
+                                    <TouchableOpacity>
+                                        {lateralEsquerda?
                                             <Image style={styles.icon} source={require('../../assets/img/xApagado.png')} /> :
                                             <Image style={styles.icon} source={require('../../assets/img/x.png')} />
                                         }   
                                     </TouchableOpacity>
-                                        {estadoMotor?
-                                            <View><Image style={styles.icon2} source={require('../../assets/img/clipApagado.png')} /></View>:
-                                            <TouchableOpacity>
-                                                <Image style={styles.icon2} source={require('../../assets/img/clip.png')} /> 
-                                            </TouchableOpacity>                                         
-                                        }                              
+                                    <TouchableOpacity onPress={() => setLateralEsquerdaModal(true)}>
+                                        <Image style={styles.icon2} source={require('../../assets/img/clip.png')} /> 
+                                    </TouchableOpacity>                          
                                 </View>
                             </View>
                             <View style={styles.containerItens}>
                                 <View style={styles.containerDivisaoItens}>
-                                    <Text style={styles.textItem}>Trasmissão</Text>
+                                    <Text style={styles.textItem}>Lateral direita</Text>
                                 </View>
                                 <View style={styles.containerDivisaoItens}>
-                                    <TouchableOpacity onPress={() => setEstadoTransmissao(true)}>
-                                        {estadoTransmissao?
+                                    <TouchableOpacity >
+                                        {lateralDireita?
                                             <Image style={styles.icon} source={require('../../assets/img/certo.png')} /> :
                                             <Image style={styles.icon} source={require('../../assets/img/certoApagado.png')} />
                                         }
                                     </TouchableOpacity>
-                                    <TouchableOpacity onPress={() => setEstadoTransmissao(false)}>
-                                        {estadoTransmissao?
+                                    <TouchableOpacity>
+                                        {lateralDireita?
                                             <Image style={styles.icon} source={require('../../assets/img/xApagado.png')} /> :
                                             <Image style={styles.icon} source={require('../../assets/img/x.png')} />
                                         }    
                                     </TouchableOpacity>
-                                        {estadoTransmissao?
-                                            <View><Image style={styles.icon2} source={require('../../assets/img/clipApagado.png')} /></View>:
-                                            <TouchableOpacity>
-                                                <Image style={styles.icon2} source={require('../../assets/img/clip.png')} /> 
-                                            </TouchableOpacity>                                         
-                                        }                                   
-                                </View>
-                            </View>
-                            <View style={styles.containerItens}>
-                                <View style={styles.containerDivisaoItens}>
-                                    <Text style={styles.textItem}>Rodas</Text>
-                                </View>
-                                <View style={styles.containerDivisaoItens}>
-                                    <TouchableOpacity onPress={() => setEstadoRodas(true)}>
-                                        {estadoRodas?
-                                            <Image style={styles.icon} source={require('../../assets/img/certo.png')} /> :
-                                            <Image style={styles.icon} source={require('../../assets/img/certoApagado.png')} />
-                                        }
-                                    </TouchableOpacity >
-                                    <TouchableOpacity onPress={() => setEstadoRodas(false)}>
-                                        {estadoRodas?
-                                            <Image style={styles.icon} source={require('../../assets/img/xApagado.png')} /> :
-                                            <Image style={styles.icon} source={require('../../assets/img/x.png')} />
-                                        }    
-                                    </TouchableOpacity>
-                                        {estadoRodas?
-                                            <View><Image style={styles.icon2} source={require('../../assets/img/clipApagado.png')} /></View>:
-                                            <TouchableOpacity>
-                                                <Image style={styles.icon2} source={require('../../assets/img/clip.png')} /> 
-                                            </TouchableOpacity>                                         
-                                        }                                   
-                                </View>
-                            </View>
-                            <View style={styles.containerItens}>
-                                <View style={styles.containerDivisaoItens}>
-                                    <Text style={styles.textItem}>Tanques de combustível</Text>
-                                </View>
-                                <View style={styles.containerDivisaoItens}>
-                                    <TouchableOpacity onPress={() => setCombustivel(true)}>
-                                        {combustivel?
-                                            <Image style={styles.icon} source={require('../../assets/img/certo.png')} /> :
-                                            <Image style={styles.icon} source={require('../../assets/img/certoApagado.png')} />
-                                        }
-                                    </TouchableOpacity>
-                                    <TouchableOpacity onPress={() => setCombustivel(false)}>
-                                        {combustivel?
-                                            <Image style={styles.icon} source={require('../../assets/img/xApagado.png')} /> :
-                                            <Image style={styles.icon} source={require('../../assets/img/x.png')} />
-                                        }   
-                                    </TouchableOpacity>
-                                        {combustivel?
-                                            <View><Image style={styles.icon2} source={require('../../assets/img/clipApagado.png')} /></View>:
-                                            <TouchableOpacity>
-                                                <Image style={styles.icon2} source={require('../../assets/img/clip.png')} /> 
-                                            </TouchableOpacity>                                         
-                                        }                                     
+                                    <TouchableOpacity onPress={() => setLateralDireitaModal(true)}>
+                                        <Image style={styles.icon2} source={require('../../assets/img/clip.png')} /> 
+                                    </TouchableOpacity>                               
                                 </View>
                             </View>
                         </View>
@@ -481,12 +555,87 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
     },
-    modalPneu:{
+    modal:{
+        backgroundColor: 'white',
+        width: 320,
+        height: 500,
+        borderRadius: 5,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: 20,
+        marginTop: 50
+    },
+    modalContent:{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    imgModal: {
         backgroundColor: 'black',
-        width: 300,
-        height:400,
-        margin: 30
+        width: 120,
+        height: 150,
+        margin: 5
+    },
+    modalContainerImg: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row'
+    },
+    modalContainerText: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row'
+    },
+    modalBotaoSim: {
+        width: 100,
+        height: 60,
+        backgroundColor: '#4CC341',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 5,
+        margin: 10
+    },
+    modalBotaoNao: {
+        width: 100,
+        height: 60,
+        backgroundColor: '#EC3C3C',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 5,
+        margin: 10
+    },
+    modalBotaoText: {
+        color: 'white',
+        fontSize: 20,
+        fontWeight: 'bold'
+    },
+    modalContainerBotoes: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row'
+    },
+    modalText:{
+        fontSize: 18,
+        fontWeight: 'bold',
+        margin: 10,
+        
+    },
+    modalContainerImgText: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    modalContainerTextImg: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row'
     }
-
 
 })
