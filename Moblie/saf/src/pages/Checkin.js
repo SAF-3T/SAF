@@ -202,7 +202,7 @@ export default function Checkin() {
                         visible={true}
                         >
                             <View style={styles.modalPneu}>
-                                <TextInput />
+                                <TextInput style={styles.modalPneu}/>
                             </View>
                             
                         </Modal>

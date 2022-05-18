@@ -13,24 +13,24 @@ import {
     AsyncStorage,
     Button,
 } from 'react-native';
-import { Camera } from 'expo-camera'
+//import { Camera } from 'expo-camera'
 import api from '../services/api';
 
 export default function Contatos() {
 
-    const [startCamera, setStartCamera] = useState(false)
+    //const [startCamera, setStartCamera] = useState(false)
 
-    var camera = Camera();
+    //var camera = Camera();
 
-    const __startCamera = async () => {
-        const { status } = await Camera.requestPermissionsAsync()
-        if (status === 'granted') {
+    //const __startCamera = async () => {
+        //const { status } = await Camera.requestPermissionsAsync()
+        //if (status === 'granted') {
             // start the camera
-            setStartCamera(true)
-        } else {
-            Alert.alert('Access denied')
-        }
-    }
+          //  setStartCamera(true)
+        //} else {
+        //    Alert.alert('Access denied')
+      //  }
+    //}
 
     return (
         <View>
@@ -50,12 +50,7 @@ export default function Contatos() {
                     <TouchableOpacity style={styles.btnBuscar}
                         onPress={__startCamera}
                     >
-                        <Camera
-                            style={{ flex: 1, width: "100%" }}
-                            ref={(r) => {
-                                camera = r
-                            }}
-                        ></Camera>
+    
                         <Text style={styles.btnBuscarText}>BUSCAR</Text>
                     </TouchableOpacity>
                 </View>
