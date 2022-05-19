@@ -34,30 +34,30 @@ export default function Checkin() {
     
     const [ dianteira, setDianteira ] = useState( false );
     const [ dianteiraModal, setDianteiraModal ] = useState( false );
-    const [ dianteiraImg, setDianteiraImg ] = useState( '' );
+    const [ dianteiraImg, setDianteiraImg ] = useState( null );
 
     
     const [ traseira, setTraseira ] = useState( false );
     const [ traseiraModal, setTraseiraModal ] = useState( false );
-    const [ traseiraImg, setTraseiraImg ] = useState( '' );
+    const [ traseiraImg, setTraseiraImg ] = useState( null );
 
     
     const [ lateralEsquerda, setLateralEsquerda ] = useState( false );
     const [ lateralEsquerdaModal, setLateralEsquerdaModal ] = useState( false );
-    const [ lateralEsquerdaImg, setLateralEsquerdaImg ] = useState( '' );
+    const [ lateralEsquerdaImg, setLateralEsquerdaImg ] = useState( null );
 
 
     const [ lateralDireita, setLateralDireita ] = useState( false );
     const [ lateralDireitaModal, setLateralDireitaModal ] = useState( false );
-    const [ lateralDireitaImg, setLateralDireitaImg ] = useState( '' );
+    const [ lateralDireitaImg, setLateralDireitaImg ] = useState( null );
 
 
     const [ dataAtual, setDataAtual ] = useState( '' );
+    const [image, setImage] = useState(null);
     var navigation = useNavigation()
 
-    const [image, setImage] = useState(null);
 
-  const pickImage = async () => {
+  const pickImageDianteira = async () => {
     // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -66,10 +66,47 @@ export default function Checkin() {
       quality: 1,
     });
 
-    console.log(result);
+    if (!result.cancelled) {
+        setDianteiraImg(result.uri);
+    }
+  };
+  const pickImageTraseira = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
 
     if (!result.cancelled) {
-      setImage(result.uri);
+        setTraseiraImg(result.uri);
+    }
+  };
+  const pickImageLateralD = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    if (!result.cancelled) {
+        setLateralDireitaImg(result.uri);
+    }
+  };
+  const pickImageLateralE = async () => {
+    // No permissions request is necessary for launching the image library
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    if (!result.cancelled) {
+        setLateralEsquerdaImg(result.uri);
     }
   };
 
@@ -237,7 +274,14 @@ export default function Checkin() {
                                         </View>
                                         <View style={styles.modalContainerImgText}>
                                             <Text style={styles.modalText}>Sua imagem</Text>
-                                            <View style={styles.imgModal}></View>
+                                            {
+                                                dianteiraImg === null?
+                                                <TouchableOpacity onPress={pickImageDianteira}><View style={styles.imgModal} ><Image style={styles.imgCamera} source={require('../../assets/img/Group.png')} /></View></TouchableOpacity>:
+                                                <View />
+                                            }
+                                            <TouchableOpacity onPress={pickImageDianteira}>{dianteiraImg && <Image source={{ uri: dianteiraImg }} style={styles.imgModal} />}</TouchableOpacity>
+                                            
+                                            
                                         </View>
                                     </View>
                                     
@@ -267,7 +311,14 @@ export default function Checkin() {
                                         </View>
                                         <View style={styles.modalContainerImgText}>
                                             <Text style={styles.modalText}>Sua imagem</Text>
-                                            <View style={styles.imgModal}></View>
+                                            {
+                                                traseiraImg === null?
+                                                <TouchableOpacity onPress={pickImageTraseira}><View style={styles.imgModal} ><Image style={styles.imgCamera} source={require('../../assets/img/Group.png')} /></View></TouchableOpacity>:
+                                                <View />
+                                            }
+                                            <TouchableOpacity onPress={pickImageTraseira}>{traseiraImg && <Image source={{ uri: traseiraImg }} style={styles.imgModal} />}</TouchableOpacity>
+                                            
+                                            
                                         </View>
                                     </View>
                                     
@@ -297,7 +348,14 @@ export default function Checkin() {
                                         </View>
                                         <View style={styles.modalContainerImgText}>
                                             <Text style={styles.modalText}>Sua imagem</Text>
-                                            <View style={styles.imgModal}></View>
+                                            {
+                                                lateralDireitaImg === null?
+                                                <TouchableOpacity onPress={pickImageLateralD}><View style={styles.imgModal} ><Image style={styles.imgCamera} source={require('../../assets/img/Group.png')} /></View></TouchableOpacity>:
+                                                <View />
+                                            }
+                                            <TouchableOpacity onPress={pickImageLateralD}>{lateralDireitaImg && <Image source={{ uri: lateralDireitaImg }} style={styles.imgModal} />}</TouchableOpacity>
+                                            
+                                            
                                         </View>
                                     </View>
                                     
@@ -327,7 +385,14 @@ export default function Checkin() {
                                         </View>
                                         <View style={styles.modalContainerImgText}>
                                             <Text style={styles.modalText}>Sua imagem</Text>
-                                            <View style={styles.imgModal}></View>
+                                            {
+                                                lateralEsquerdaImg === null?
+                                                <TouchableOpacity onPress={pickImageLateralE}><View style={styles.imgModal} ><Image style={styles.imgCamera} source={require('../../assets/img/Group.png')} /></View></TouchableOpacity>:
+                                                <View />
+                                            }
+                                            <TouchableOpacity onPress={pickImageLateralE}>{lateralEsquerdaImg && <Image source={{ uri: lateralEsquerdaImg }} style={styles.imgModal} />}</TouchableOpacity>
+                                            
+                                            
                                         </View>
                                     </View>
                                     
@@ -441,9 +506,15 @@ export default function Checkin() {
                             </View>
                         </View>
                         <View style={styles.containerBotao}>
-                            <TouchableOpacity onPress={() => cadastrarCheckIn()} style={styles.btnProsseguir}>
-                                <Text style={styles.btnText}>Prosseguir</Text>
-                            </TouchableOpacity>
+                            {
+                                dianteiraImg === null || traseiraImg === null || lateralEsquerdaImg === null || lateralDireitaImg === null ?
+                                <View style={styles.btnProsseguir}>
+                                    <Text style={styles.btnText2}>Anexe imagens antes de prosseguir</Text>
+                                </View> :
+                                <TouchableOpacity onPress={() => cadastrarCheckIn()} style={styles.btnProsseguir}>
+                                    <Text style={styles.btnText}>Prosseguir</Text>
+                                </TouchableOpacity>
+                            }
                         </View>
                     </View>
                 </View>
@@ -534,6 +605,13 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 20
     },
+    btnText2: {
+        color: 'white',
+        fontWeight: 'bold',
+        fontSize: 18,
+        textAlign: 'center',
+        width: 160
+    },
     textItem: {
         fontSize: 16,
         fontWeight: 'normal',
@@ -572,10 +650,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     imgModal: {
-        backgroundColor: 'black',
+        backgroundColor: '#C4C4C4',
         width: 120,
         height: 150,
-        margin: 5
+        margin: 5,
+        display: 'flex',
+        alignItems: "center",
+        justifyContent: 'center'
     },
     modalContainerImg: {
         display: 'flex',
