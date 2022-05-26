@@ -24,19 +24,20 @@ export const LerConteudoDaImagem = async (formData) => {
 
 
 export const FiltrarOBJ = (obj) => {
-
     let resultado;
+        let teste = JSON.parse(obj)
+        // console.debug("foi aqui")
+        // console.debug(teste.language)
 
-    obj.regions.forEach(region => {
-        region.lines.forEach(line => {
-            line.words.forEach(word => {
-                if(word.text === 7){
-                    resultado = word.text;
-                }
+        teste.regions.forEach(region => {
+            region.lines.forEach(line => {
+                line.words.forEach(word => {
+                    if (word.text.length >= 7 && isNaN(Number(word.text.slice(-2))) !== true) {
+                        resultado = word.text.slice(-7);
+                    }
+                });
             });
         });
-    });
 
-    return resultado;
-
+        return resultado;
 }

@@ -15,7 +15,7 @@ import {
     Button,
   } from 'react-native';
 
-export default class TelaCadastrado extends Component {
+export default class TelaCadastradoCheckIn extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -27,9 +27,9 @@ export default class TelaCadastrado extends Component {
             <View style={styles.main}>
                 <View style={styles.body}> 
                     <Image style={styles.imgV} source={require('../../assets/img/certo.png')}/>
-                    <Text style={styles.textSucess}>CheckList cadastrada com sucesso!</Text>  
-                    <TouchableOpacity style={styles.btnProsseguir} onPress={() =>(this.props.navigation.navigate('Menu'))}>
-                        <Text style={styles.btnText}>Prosseguir</Text>
+                    <Text style={styles.textSucess}>Check-In cadastrada com sucesso.</Text>  
+                    <TouchableOpacity style={styles.btnProsseguir} onPress={() =>(this.props.navigation.navigate('MenuMotorista'))}>
+                        <Text style={styles.btnText}>Concluir</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -46,13 +46,13 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     body: {
-        flex: 1,
         backgroundColor: 'white',
-        height: 500,
         width: 300,
+        height: 500,
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        borderRadius: 10
     },
     imgV: {
         width: 100,
@@ -75,6 +75,7 @@ const styles = StyleSheet.create({
     textSucess: {
         fontSize: 20,
         margin: 30,
+        fontWeight: 'bold',
         textAlign: 'center'
     }
 })

@@ -18,28 +18,33 @@ export default class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            cpf: "",
-            senha: "",
+            cpf: "45999057809",
+            senha: "123",
             isLoading: false,
-            erroMensagem: ''
         };
     }
 
     realizarLogin = async () => {
         this.isLoading = true
-        //this.setState(erroMensagem = 'Email ou senha incorreto1')    
         const resposta = await api.post('/Login',
             {
                 cpf: this.state.cpf,
                 senha: this.state.senha
             })
-        // console.warn(resposta)
+
         if (resposta.status == 200) {
             const token = resposta.data.token;
             await AsyncStorage.setItem('userToken', token)
-            //console.warn(token)
-            this.props.navigation.navigate('Menu');
-            this.isLoading = false
+            const pegarIdUsuario = jwtDecode(token).role
+            if (pegarIdUsuario === '1') {
+                this.props.navigation.navigate('MenuGestor');
+            }
+            if (pegarIdUsuario === '2') {
+                this.props.navigation.navigate('MenuMotorista');
+            }
+            if (pegarIdUsuario === '3') {
+                this.props.navigation.navigate('MenuMecanico');
+            }
         }
         else {
             this.isLoading = false
@@ -76,13 +81,10 @@ export default class Login extends Component {
                     <TouchableOpacity onPress={this.realizarLogin} style={styles.corpoBotao} >
                         <Text style={styles.textoBotao}>ENTRAR</Text>
                     </TouchableOpacity>
-                    {this.erroMensagem}
                 </View>
             </View>
-
         )
     }
-
 }
 
 const styles = StyleSheet.create({
@@ -151,5 +153,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         display: 'flex'
     },
-
+    textErroMensagem: {
+        color: 'red'
+    }
 })

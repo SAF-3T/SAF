@@ -53,7 +53,7 @@ export default function Checkin() {
 
 
     const [ dataAtual, setDataAtual ] = useState( '' );
-    const [image, setImage] = useState(null);
+
     var navigation = useNavigation()
 
 
@@ -113,6 +113,34 @@ export default function Checkin() {
 
     async function cadastrarCheckIn() {
         setDataAtual('2022-05-05')
+        const dataCheckin = new FormData();
+        const dataDianteira = new FormData();
+        const dataTraseira = new FormData();
+        const dataLateralE = new FormData();
+        const dataLateralD = new FormData();    
+
+        dataDianteira.append('arquivo', dianteiraImg)
+        dataDianteira.append('idTipoErro', 9)
+        dataDianteira.append('idCheckList', idCheckList)
+        dataDianteira.append('descricaoErro', 'Erro na dianteira do veículo')
+
+        dataTraseira.append('arquivo', traseiraImg)
+        dataTraseira.append('idTipoErro', 10)
+        dataTraseira.append('idCheckList', idCheckList)
+        dataTraseira.append('descricaoErro', 'Erro na traseira do veículo')
+
+        dataLateralD.append('arquivo', lateralDireitaImg)
+        dataLateralD.append('idTipoErro', 11)
+        dataLateralD.append('idCheckList', idCheckList)
+        dataLateralD.append('descricaoErro', 'Erro na lateral direita do veículo')
+
+        dataLateralE.append('arquivo', lateralEsquerdaImg)
+        dataLateralE.append('idTipoErro', 12)
+        dataLateralE.append('idCheckList', idCheckList)
+        dataLateralE.append('descricaoErro', 'Erro na lateral esquerda do veículo')
+
+        const header = {'Content-Type': 'multipart/form-data'}
+        
         // console.warn(dataAtual)
         let corpoChecklist = {
             idTipoCheckList: 1,
@@ -131,74 +159,50 @@ export default function Checkin() {
         .catch(error => console.warn(error))
         
 
-        if (estadoPneus === false) {
-            var respostaPneu = await api.post('/Erro',
-            {
-                idTipoErro : 3,
-                idCheckList : idCheckList,
-                descricaoErro : 'Pneu furado!'
-            })
-            if (respostaPneu.status === 201) {
-                console.warn('Erro de pneu cadastrado')
+        if (dianteira === false) {
+            var respostaDianteira = await axios.post({url: 'https://backend-saf-api.azurewebsites.net/api/Erro',data: dataDianteira,
+            headers: header})
+            if (respostaDianteira.status === 201) {
+                console.warn('Erro da dianteira cadastrado')
             }
             
         }
-        if (estadoFreio === false) {
-            var respostaFreio = await api.post('/Erro',
-            {
-                idTipoErro : 8,
-                idCheckList : idCheckList,
-                descricaoErro : 'Freio travado!'
-            })
-            if (respostaFreio.status === 201) {
-                console.warn('Erro de pneu cadastrado')
+        if (traseira === false) {
+            var respostaTraseira = await axios.post({url:'https://backend-saf-api.azurewebsites.net/api/Erro',data:dataTraseira,
+            header:header
+        })
+            if (respostaTraseira.status === 201) {
+                console.warn('Erro da traseira cadastrado')
             }
         }
-        if (estadoMotor === false) {
-            var respostaMotor = await api.post('/Erro',
-            {
-                idTipoErro : 5,
-                idCheckList : idCheckList,
-                descricaoErro : 'Motor sobreaquecido!'
-            })
-            if (respostaMotor.status === 201) {
-                console.warn('Erro de motor cadastrado')
+        if (lateralDireita === false) {
+            var respostaLateralDireita = await axios.post({url:'https://backend-saf-api.azurewebsites.net/api/Erro',data:dataLateralD,
+            header:header})
+            if (respostaLateralDireita.status === 201) {
+                console.warn('Erro da lateral direita cadastrado')
             }
         }
-        if (estadoTransmissao === false) {
-            var respostaTransmissao = await api.post('/Erro', 
-            {
-                idTipoErro : 7,
-                idCheckList : idCheckList,
-                descricaoErro : 'Transmissão com problemas!'
-            })
-            if (respostaTransmissao.status === 201) {
-                console.warn('Erro de transmissao cadastrado')
+        if (lateralEsquerda === false) {
+            var respostaLateralEsquerda = await axios.post({url:'https://backend-saf-api.azurewebsites.net/api/Erro',data:dataLateralE,
+            headers: header})
+            if (respostaLateralEsquerda.status === 201) {
+                console.warn('Erro da lateral esquerda cadastrado')
             }
         }
-        if (estadoRodas === false) {
-            var respostaRodas = await api.post('/Erro',
-            {
-                idTipoErro : 4,
-                idCheckList : idCheckList,
-                descricaoErro : 'Rodas amassadas!'
-            })
-            if (respostaRodas.status === 201) {
-                console.warn('Erro de rodas cadastrado')
-            }
-        }
-        if (combustivel === false) {
-            var respostaCombustivel = await api.post('/Erro', 
-            {
-                idTipoErro : 6,
-                idCheckList : idCheckList,
-                descricaoErro : 'Sem combustível!'
-            })
-            if (respostaCombustivel.status === 201) {
-                console.warn('Erro de combustivel cadastrado')
-            }
-        }
-        await navigation.goBack() 
+        setTipoAutorizacao(0)
+        setIdUsuario(0)
+        setIdVeiculo(0)
+        setIdCheckList(0)
+        setIdStatus(0)
+        setNomeTipoVeiculo('')
+        setNomeU('')
+        setPlacaVeiculo('')
+        setStatusVeiculo('')
+        setDianteiraImg(null)
+        setTraseiraImg(null)
+        setLateralEsquerdaImg(null)
+        setLateralDireitaImg(null)
+        await navigation.navigate('TelaCadastradoCheckIn') 
     }
 
     async function buscaInfoVeiculo() {
@@ -256,7 +260,7 @@ export default function Checkin() {
 
     return(
         <View style={styles.main}>
-                <Header/>
+            <Header/>
                 <View style={styles.background}>
                     <View style={styles.content}>
 
@@ -264,6 +268,7 @@ export default function Checkin() {
                         animationType="slide"
                         transparent={true}
                         visible={dianteiraModal}
+                        style={styles.modalTela}
                         >
                             <View style={styles.modal}>
                                 <View style={styles.modalContent}>
@@ -301,6 +306,7 @@ export default function Checkin() {
                         animationType="slide"
                         transparent={true}
                         visible={traseiraModal}
+                        style={styles.modalTela}
                         >
                             <View style={styles.modal}>
                                 <View style={styles.modalContent}>
@@ -338,6 +344,7 @@ export default function Checkin() {
                         animationType="slide"
                         transparent={true}
                         visible={lateralDireitaModal}
+                        style={styles.modalTela}
                         >
                             <View style={styles.modal}>
                                 <View style={styles.modalContent}>
@@ -375,6 +382,7 @@ export default function Checkin() {
                         animationType="slide"
                         transparent={true}
                         visible={lateralEsquerdaModal}
+                        style={styles.modalTela}
                         >
                             <View style={styles.modal}>
                                 <View style={styles.modalContent}>
@@ -518,7 +526,6 @@ export default function Checkin() {
                         </View>
                     </View>
                 </View>
-                
             </View>
     )
 }
@@ -527,14 +534,14 @@ export default function Checkin() {
 const styles = StyleSheet.create({
     main: {
         flex: 1,
-        backgroundColor: '#0F282D',
+        backgroundColor: '#0E758C',
     },
     header: {
         flex: 1,
     },
     background: {
         flex: 1,
-        backgroundColor: '#0F282D',
+        backgroundColor: '#0E758C',
         height: 500,
         display: 'flex',
         alignItems: 'center',
@@ -562,6 +569,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         flex: 3
+    },
+    modalTela: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     containerBotao: {
         display: 'flex',
@@ -593,7 +605,16 @@ const styles = StyleSheet.create({
     },
     btnProsseguir: {
         backgroundColor: '#0F282D',
-        width: 200,
+        width: 220,
+        height: 60,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 5
+    },
+    btnProsseguir: {
+        backgroundColor: '#0F282D',
+        width: 220,
         height: 60,
         display: 'flex',
         justifyContent: 'center',
@@ -608,9 +629,9 @@ const styles = StyleSheet.create({
     btnText2: {
         color: 'white',
         fontWeight: 'bold',
-        fontSize: 18,
+        fontSize: 16,
         textAlign: 'center',
-        width: 160
+        width: 200
     },
     textItem: {
         fontSize: 16,
