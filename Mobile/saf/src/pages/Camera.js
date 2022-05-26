@@ -87,18 +87,23 @@ export default function CameraTela() {
                     <Modal
                         animationType="slide"
                         transparent={true}
-                        visible={true} //modalResultado
+                        visible={modalResultado} //modalResultado
                         style={styles.modalResultado}
                     >
-                        <View>
-                            <Text>Caminhão</Text>
-                            <Text>Na garagem</Text>
-                            <View />
-                            <Text>Placa:</Text>
-                            <Text>Carroceria:</Text>
-                            <Text>Data de aquisição:</Text>
-                            <Text>Marca:</Text>
-                            <Text>Motorista:</Text>
+                        <View style={styles.modal}>
+                            <View style={styles.containerModal}>
+                                <Text style={styles.atributosCaminhao}>Caminhão</Text>
+                                <Text style={styles.atributosCaminhao}>Na garagem</Text>
+                                <Image style={styles.imgModal} source={require('../../assets/img/caminhao.png')} />
+                                <Text style={styles.atributosCaminhao}>Placa: DHD-8391</Text>
+                                <Text style={styles.atributosCaminhao}>Carroceria: Caçamba</Text>
+                                <Text style={styles.atributosCaminhao}>Data de aquisição: 16-06-2021</Text>
+                                <Text style={styles.atributosCaminhao}>Marca: Volkswagen</Text>
+                                <Text style={styles.atributosCaminhao}>Motorista: Marcos Paulo</Text>
+                                <TouchableOpacity onPress={() => setModalResultado(false)} style={styles.btnModal}>
+                                    <Text style={styles.textBtnModal}>Voltar</Text>
+                                </TouchableOpacity>
+                            </View>
                         </View>
                     </Modal>
 
@@ -111,7 +116,7 @@ export default function CameraTela() {
                 ref={ref}
             >
             </Camera>
-            <TouchableOpacity onPress={TakePicture} style={styles.btnFoto}>
+            <TouchableOpacity onPress={() => setModalResultado(true)} style={styles.btnFoto}>
                 <Text style={styles.btnTxt}>Tirar Foto</Text>
             </TouchableOpacity>
         </View>
@@ -178,14 +183,6 @@ const styles = StyleSheet.create({
         fontSize: 20
     },
 
-    modal: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        flexDirection: 'column',
-        padding: '4%'
-    },
-
     image: {
         width: '100%',
         borderTopLeftRadius: 10,
@@ -201,44 +198,51 @@ const styles = StyleSheet.create({
         fontSize: 30
     },
 
-    txtModal: {
-        width: '100%',
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        flexDirection: 'column',
-        height: 70
-    },
-
-    btnModal: {
-        display: 'flex',
-        width: '100%',
-        height: 51,
-        backgroundColor: '#060657',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        borderRadius: 2
-    },
-
-    txtBtnModal1: {
-        fontSize: 16,
-        color: '#FFF'
-    },
-
-    modalBtns: {
-        width: '100%',
-        marginTop: '20%',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        height: 90
-    },
 
     txtBtnModal2: {
         color: '#060657',
         fontSize: 17
+    },
+    modal: {
+        flex: 1,
+        padding: 30,
+        backgroundColor: '#0E758C',
+        
+    },
+    containerModal: {
+        flex: 1,
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderColor: '#0E758C',
+        backgroundColor: 'white',
+        borderRadius: 5
+    },
+    btnModal: {
+        backgroundColor: '#0E758C',
+        width: 220,
+        height: 60,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 5,
+        margin: 15
+    },
+    textBtnModal: {
+        fontSize: 20,
+        color: 'white',
+        fontWeight: 'bold'
+    },
+    imgModal: {
+        width: 200,
+        height: 230
+    },
+    atributosCaminhao: {
+        color: 'black',
+        fontSize: 15,
+        fontWeight: 'bold',
+        margin: 5
     }
 
 });

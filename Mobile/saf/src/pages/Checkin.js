@@ -5,6 +5,8 @@ import jwtDecode from 'jwt-decode';
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 import * as ImagePicker from 'expo-image-picker';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faCheck} from "@fortawesome/react-fontawesome";
 import {
     StyleSheet,
     Text,
@@ -275,7 +277,7 @@ export default function Checkin() {
                                     <View style={styles.modalContainerTextImg}>
                                         <View style={styles.modalContainerImgText}>
                                             <Text style={styles.modalText}>Imagem Padrão</Text>
-                                            <View style={styles.imgModal}></View>
+                                            <Image style={styles.imgModal}  source={{ uri: 'https://backend-saf-api.azurewebsites.net/Img/cam1.jpg' }}/>
                                         </View>
                                         <View style={styles.modalContainerImgText}>
                                             <Text style={styles.modalText}>Sua imagem</Text>
@@ -313,7 +315,7 @@ export default function Checkin() {
                                     <View style={styles.modalContainerTextImg}>
                                         <View style={styles.modalContainerImgText}>
                                             <Text style={styles.modalText}>Imagem Padrão</Text>
-                                            <View style={styles.imgModal}></View>
+                                            <Image style={styles.imgModal}  source={{ uri: 'https://backend-saf-api.azurewebsites.net/Img/cam1.jpg' }}/>
                                         </View>
                                         <View style={styles.modalContainerImgText}>
                                             <Text style={styles.modalText}>Sua imagem</Text>
@@ -351,7 +353,7 @@ export default function Checkin() {
                                     <View style={styles.modalContainerTextImg}>
                                         <View style={styles.modalContainerImgText}>
                                             <Text style={styles.modalText}>Imagem Padrão</Text>
-                                            <View style={styles.imgModal}></View>
+                                            <Image style={styles.imgModal}  source={{ uri: 'https://backend-saf-api.azurewebsites.net/Img/cam31.jpg' }}/>
                                         </View>
                                         <View style={styles.modalContainerImgText}>
                                             <Text style={styles.modalText}>Sua imagem</Text>
@@ -389,7 +391,7 @@ export default function Checkin() {
                                     <View style={styles.modalContainerTextImg}>
                                         <View style={styles.modalContainerImgText}>
                                             <Text style={styles.modalText}>Imagem Padrão</Text>
-                                            <View style={styles.imgModal}></View>
+                                            <Image style={styles.imgModal}  source={{ uri: 'https://backend-saf-api.azurewebsites.net/Img/cam21.jpg' }}/>
                                         </View>
                                         <View style={styles.modalContainerImgText}>
                                             <Text style={styles.modalText}>Sua imagem</Text>
@@ -431,7 +433,7 @@ export default function Checkin() {
                                 <View style={styles.containerDivisaoItens}>
                                     <TouchableOpacity>
                                         {dianteira?
-                                            <Image style={styles.icon} source={require('../../assets/img/certo.png')} /> :
+                                            <FontAwesomeIcon style={styles.icon} icon={faCheck} /> :
                                             <Image style={styles.icon} source={require('../../assets/img/certoApagado.png')} />
                                         }
                                     </TouchableOpacity>
