@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
+import { Notyf } from 'notyf';
+import 'notyf/notyf.min.css';
+
 import Header from '../../components/headers/header';
 import Sidebar5 from '../../components/sidebars/sidebar5';
 import Footer from '../../components/footer';
@@ -18,6 +21,8 @@ import { useUpdateEffect } from 'rsuite/esm/utils';
 
 
 export default function Checklists() {
+
+    const notyf = new Notyf();
 
     const [ListaCheckList, setListaChecklist] = useState([]);
     const [ListaChecklistErro, setListaChecklistErro] = useState(false);
@@ -118,20 +123,30 @@ export default function Checklists() {
     }
 
     function deletar(idChecklist) {
-        axios.delete('https://backend-saf-api.azurewebsites.net/CheckList/' + idChecklist)
+        axios.delete('http://backend-saf-api.azurewebsites.net/api/CheckList/' + idChecklist)
             .then(resposta => {
                 if (resposta.status === 204) {
-                    setListaChecklist(resposta.data)
-                        .then(buscarChecklists());
+                    notyf.success(
+                        {
+                            message: 'Carroceria excluída com êxito',
+                            duration: 3000,
+                            position: {
+                                x: 'right',
+                                y: 'top',
+                            }
+                        }
+                    );
                 }
-            })
-            .catch(erro => console.log(erro));
-    };
+            }
+            )
+    }
+
+
 
     useEffect(buscarContagemErros, []);
-    useEffect(buscarChecklists, []);
     useEffect(buscarContagemCorrecoes, []);
-    useUpdateEffect(PesquisaPlaca,[Pesquisa]);
+    useEffect(buscarChecklists, [ListaCheckList]);
+    useUpdateEffect(PesquisaPlaca, [Pesquisa]);
 
     return (
         <div>
@@ -212,7 +227,7 @@ export default function Checklists() {
                                                 </div>
                                             </div>
                                             <div className="iconesEtiquetaChecklist">
-                                                <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} style={{ cursor: 'pointer' }} size="2x" onClick={() => deletar(checklist.idChecklist)} />
+                                                <FontAwesomeIcon className="iconTrashCan" icon={faTrashCan} style={{ cursor: 'pointer' }} size="2x" onClick={() => deletar(checklist.idCheckList)} />
                                             </div>
                                         </div>
                                     </div>

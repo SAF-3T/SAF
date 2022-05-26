@@ -39,7 +39,7 @@ class Login extends React.Component {
             })
             .catch(() => {
                 this.setState({
-                    erroMensagem: 'E-mail e/ou senha inválidos!',
+                    erroMensagem: 'CPF e/ou senha inválidos!',
                     isLoading: false,
                 });
             });
