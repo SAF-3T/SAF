@@ -93,6 +93,18 @@ const Modal = ({ onClose = () => { }, children }) => {
                             }
                         );
                     }
+                    if (resposta.status === 204) {
+                        notyf.error(
+                            {
+                                message: 'CPF ou telefone já cadastrado',
+                                duration: 3000,
+                                position: {
+                                    x: 'right',
+                                    y: 'top',
+                                }
+                            }
+                        );
+                    }
                 });
         } catch (error) {
             console.log(error)

@@ -99,6 +99,18 @@ export default function Modal({ onClose = () => { } }) {
                             }
                         );
                     }
+                    if (resposta.status === 204) {
+                        notyf.error(
+                            {
+                                message: 'Placa já cadastrada',
+                                duration: 3000,
+                                position: {
+                                    x: 'right',
+                                    y: 'top',
+                                }
+                            }
+                        );
+                    }
                 });
         } catch (error) {
             console.log(error)
@@ -124,7 +136,7 @@ export default function Modal({ onClose = () => { } }) {
                     <div className="conteudo">
                         <form form encType="multipart/form-data" className='formularioCadastroVeiculoDashboard'>
                             <div className='juntaInputs'>
-                                <input type="file" id="arquivo" className="imgCadastrarVeiculoDashboard" style={{cursor: 'pointer'}} accept="image/png; image/jpeg">
+                                <input type="file" id="arquivo" className="imgCadastrarVeiculoDashboard" style={{ cursor: 'pointer' }} accept="image/png; image/jpeg">
                                     {/* <FontAwesomeIcon icon={faImage} color="white" size="5x" /> */}
                                 </input>
                                 <div className='inputs-esq'>
