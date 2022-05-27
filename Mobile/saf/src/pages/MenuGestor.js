@@ -82,8 +82,8 @@ const styles = StyleSheet.create({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        borderBottomRightRadius: 100,
-        borderBottomLeftRadius: 100,
+        borderBottomRightRadius: 150,
+        borderBottomLeftRadius: 150,
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -103,25 +103,25 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     img: {
-        height: 220,
-        width: 220,
+        height: '40%',
+        width:'40%',
         backgroundColor: 'white',
         borderRadius: 200
     },
     textName: {
         color: '#0F282D',
-        fontSize: 25,
+        fontSize: 40,
         marginTop: 20
     },
     textFunction: {
         color: '#0F282D',
-        fontSize: 20,
+        fontSize: 40,
         fontWeight: 'bold'
     },
     buttonMenu: {
         backgroundColor: 'white',
-        width: 220,
-        height: 80,
+        width: 500,
+        height: 130,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -138,8 +138,8 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         color: '#0F282D',
-        fontSize: 25,
-        fontWeight: '300'
+        fontSize: 40,
+        fontWeight: 'bold'
     },
     container2buttons: {
         display: 'flex',

@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
         width: '100%',
         borderTopLeftRadius: 10,
         borderTopRightRadius: 10,
-        height: 230
+        height: 200
     },
 
     tituloModal: {
@@ -221,28 +221,28 @@ const styles = StyleSheet.create({
     },
     btnModal: {
         backgroundColor: '#0E758C',
-        width: 220,
-        height: 60,
+        width: 300,
+        height: 100,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 5,
-        margin: 15
+        margin: 25
     },
     textBtnModal: {
-        fontSize: 20,
+        fontSize: 40,
         color: 'white',
         fontWeight: 'bold'
     },
     imgModal: {
-        width: 200,
-        height: 230
+        width: 300,
+        height: 330
     },
     atributosCaminhao: {
         color: 'black',
-        fontSize: 15,
+        fontSize: 25,
         fontWeight: 'bold',
-        margin: 5
+        margin: 25
     }
 
 });

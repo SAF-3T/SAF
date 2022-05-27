@@ -4717,6 +4717,11 @@
     "jscodeshift" "^0.11.0"
     "nullthrows" "^1.1.1"
 
+"react-native-css-vh-vw@^1.0.4", "react-native-css-vh-vw@^1.0.5":
+  "integrity" "sha512-pY0gIB1xc1xLp3VH6mji7zHfiOc7BpFFCtOTpMeyjfoQ4CacmcCD6vTZuM2ReuK+oXdWrbx7CquTHxl44aHcBA=="
+  "resolved" "https://registry.npmjs.org/react-native-css-vh-vw/-/react-native-css-vh-vw-1.0.5.tgz"
+  "version" "1.0.5"
+
 "react-native-drop-shadow@^0.0.4":
   "integrity" "sha512-45Bsq24dcc1rK9H+42H91xEYN/Ql5S0693FseQWdCKgri6D+4vkFeL9dgtrSD5Bg3+RffjMbPDD7BuNS9BZuvg=="
   "resolved" "https://registry.npmjs.org/react-native-drop-shadow/-/react-native-drop-shadow-0.0.4.tgz"
@@ -4752,6 +4757,13 @@
   dependencies:
     "react-freeze" "^1.0.0"
     "warn-once" "^0.1.0"
+
+"react-native-slider-picker@^1.1.4":
+  "integrity" "sha512-ln5qfFh0TSzqTfRgRKrZddO+l45KNZ3MYibWApdm7rkstJsTUN/uVWjQgXuU5fBGdYtOfCvk6s5XcV0R/kA4+A=="
+  "resolved" "https://registry.npmjs.org/react-native-slider-picker/-/react-native-slider-picker-1.1.4.tgz"
+  "version" "1.1.4"
+  dependencies:
+    "react-native-css-vh-vw" "^1.0.4"
 
 "react-native-web@0.17.1":
   "integrity" "sha512-lUnn+2O8ynQ6/gJKylSxm7DLi2vHw6AujdDV1+LSa8Epe1bYFJNUcJTEhJf0jNYUFGOujzMtuG8Mkz3HdWTkag=="

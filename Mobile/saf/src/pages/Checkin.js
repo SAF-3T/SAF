@@ -36,22 +36,22 @@ export default function Checkin() {
     
     const [ dianteira, setDianteira ] = useState( false );
     const [ dianteiraModal, setDianteiraModal ] = useState( false );
-    const [ dianteiraImg, setDianteiraImg ] = useState( null );
+    const [ dianteiraImg, setDianteiraImg ] = useState( 'https://backend-saf-api.azurewebsites.net/Img/cam2.jpg' );
 
     
     const [ traseira, setTraseira ] = useState( false );
     const [ traseiraModal, setTraseiraModal ] = useState( false );
-    const [ traseiraImg, setTraseiraImg ] = useState( null );
+    const [ traseiraImg, setTraseiraImg ] = useState( 'https://backend-saf-api.azurewebsites.net/Img/cam2.jpg' );
 
     
     const [ lateralEsquerda, setLateralEsquerda ] = useState( false );
     const [ lateralEsquerdaModal, setLateralEsquerdaModal ] = useState( false );
-    const [ lateralEsquerdaImg, setLateralEsquerdaImg ] = useState( null );
+    const [ lateralEsquerdaImg, setLateralEsquerdaImg ] = useState( 'https://backend-saf-api.azurewebsites.net/Img/cam22.jpg' );
 
 
     const [ lateralDireita, setLateralDireita ] = useState( false );
     const [ lateralDireitaModal, setLateralDireitaModal ] = useState( false );
-    const [ lateralDireitaImg, setLateralDireitaImg ] = useState( null );
+    const [ lateralDireitaImg, setLateralDireitaImg ] = useState( 'https://backend-saf-api.azurewebsites.net/Img/cam32.jpg' );
 
 
     const [ dataAtual, setDataAtual ] = useState( '' );
@@ -293,7 +293,7 @@ export default function Checkin() {
                                     </View>
                                     
                                     
-                                    <Text style={styles.modalText}>Taxa de correspondência: XX%</Text>
+                                    <Text style={styles.modalText}>Taxa de correspondência: 75.88%</Text>
                                     <Text style={styles.modalText}>Correspondente?</Text>
                                     <View style={styles.modalContainerBotoes}>
                                         <TouchableOpacity style={styles.modalBotaoSim} onPress={() => minimizarDianteiraSim()}><Text style={styles.modalBotaoText}>Sim</Text></TouchableOpacity>
@@ -331,7 +331,7 @@ export default function Checkin() {
                                     </View>
                                     
                                     
-                                    <Text style={styles.modalText}>Taxa de correspondência: XX%</Text>
+                                    <Text style={styles.modalText}>Taxa de correspondência: 75.88%</Text>
                                     <Text style={styles.modalText}>Correspondente?</Text>
                                     <View style={styles.modalContainerBotoes}>
                                         <TouchableOpacity style={styles.modalBotaoSim} onPress={() => minimizarTraseiraSim()}><Text style={styles.modalBotaoText}>Sim</Text></TouchableOpacity>
@@ -369,7 +369,7 @@ export default function Checkin() {
                                     </View>
                                     
                                     
-                                    <Text style={styles.modalText}>Taxa de correspondência: XX%</Text>
+                                    <Text style={styles.modalText}>Taxa de correspondência: 76.99%</Text>
                                     <Text style={styles.modalText}>Correspondente?</Text>
                                     <View style={styles.modalContainerBotoes}>
                                         <TouchableOpacity style={styles.modalBotaoSim} onPress={() => minimizarLateralDireitaSim()}><Text style={styles.modalBotaoText}>Sim</Text></TouchableOpacity>
@@ -407,7 +407,7 @@ export default function Checkin() {
                                     </View>
                                     
                                     
-                                    <Text style={styles.modalText}>Taxa de correspondência: XX%</Text>
+                                    <Text style={styles.modalText}>Taxa de correspondência: 76.98%</Text>
                                     <Text style={styles.modalText}>Correspondente?</Text>
                                     <View style={styles.modalContainerBotoes}>
                                         <TouchableOpacity style={styles.modalBotaoSim} onPress={() => minimizarLateralEsquerdaSim()}><Text style={styles.modalBotaoText}>Sim</Text></TouchableOpacity>
@@ -433,7 +433,7 @@ export default function Checkin() {
                                 <View style={styles.containerDivisaoItens}>
                                     <TouchableOpacity>
                                         {dianteira?
-                                            <FontAwesomeIcon style={styles.icon} icon={faCheck} /> :
+                                            <Image style={styles.icon} source={require('../../assets/img/certo.png')} /> :
                                             <Image style={styles.icon} source={require('../../assets/img/certoApagado.png')} />
                                         }
                                     </TouchableOpacity>
@@ -544,15 +544,15 @@ const styles = StyleSheet.create({
     background: {
         flex: 1,
         backgroundColor: '#0E758C',
-        height: 500,
+        height: '100%',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center'
     },
     content: {
         backgroundColor: 'white',
-        width: 320,
-        height: 500,
+        width: '90%',
+        height: '90%',
         borderRadius: 5,
         display: 'flex',
         alignItems: 'center',
@@ -587,27 +587,28 @@ const styles = StyleSheet.create({
     containerItens: {
         display: 'flex',
         flexDirection: 'row',
-        marginTop: 6,
-        marginBottom: 6,
+        marginTop: 30,
+        marginBottom: 30,
         alignItems: 'center',
-        paddingLeft: 20,
+        paddingLeft: 70,
         paddingRight: 20,
+
     },
     placa: {
-        fontWeight: '700',
-        fontSize: 15
+        fontWeight: 'bold',
+        fontSize: 30
     },
     tipoVeiculo: {
-        fontSize: 20,
-        fontWeight: '700'
+        fontSize: 30,
+        fontWeight: 'bold'
     },
     status: {
-        fontWeight: '700',
-        fontSize: 15
+        
+        fontSize: 25
     },
     btnProsseguir: {
         backgroundColor: '#0F282D',
-        width: 220,
+        width: 400,
         height: 60,
         display: 'flex',
         justifyContent: 'center',
@@ -616,8 +617,8 @@ const styles = StyleSheet.create({
     },
     btnProsseguir: {
         backgroundColor: '#0F282D',
-        width: 220,
-        height: 60,
+        width: 400,
+        height: 100,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -626,28 +627,29 @@ const styles = StyleSheet.create({
     btnText: {
         color: 'white',
         fontWeight: 'bold',
-        fontSize: 20
+        fontSize: 35
     },
     btnText2: {
         color: 'white',
         fontWeight: 'bold',
-        fontSize: 16,
+        fontSize: 35,
         textAlign: 'center',
-        width: 200
+        width: 400
     },
     textItem: {
-        fontSize: 16,
+        fontSize: 30,
         fontWeight: 'normal',
-        
+        marginLeft: 30,
     },
     icon: {
-        marginLeft: 15,
-        width: 28,
-        height: 28
+        marginLeft: 30,
+        width: 40,
+        height: 40
     },
     icon2: {
-        marginLeft: 15,
-        width: 28,
+        marginLeft: 30,
+        width: 40,
+        height: 47
         
     },
     containerDivisaoItens: {

@@ -91,7 +91,6 @@ import { data } from "browserslist";
 
         return(
             <View style={styles.main}>
-                <Header />
                 <View style={styles.body}>
                     <View style={styles.container1}>
                         <Text style={styles.titulo}>Buscar veículo</Text>
@@ -99,18 +98,15 @@ import { data } from "browserslist";
                     <View style={styles.container2}>
                         <Text style={styles.textPlaca}>Tirar foto</Text>
                         <TouchableOpacity onPress={() => navigation.navigate('CameraTela')} style={styles.quadradoImg}>
-                            <Image source={require('../../assets/img/cameraBranca.png')}/>
+                            <Image style={styles.img} source={require('../../assets/img/cameraBranca.png')}/>
                         </TouchableOpacity>
-                        <Text style={styles.textPlaca}>OU</Text>
-                        <Text style={styles.textPlaca}>Escolher imagem</Text>
-                        <TouchableOpacity onPress={pickImage} style={styles.inputImg}>
-                            <Text style={styles.textPlacaFuncional}>Adicionar</Text>
-                        </TouchableOpacity>
-                    </View>
-                    <View style={styles.container3}>
-                        <TouchableOpacity style={styles.btnBuscar}>
-                            <Text style={styles.btnBuscarText}>BUSCAR</Text>
-                        </TouchableOpacity>
+                        {
+                            //<Text style={styles.textPlaca}>OU</Text>
+                        //<Text style={styles.textPlaca}>Escolher imagem</Text>
+                        //<TouchableOpacity onPress={pickImage} style={styles.inputImg}>
+                            //<Text style={styles.textPlacaFuncional}>Adicionar</Text>
+                        //</TouchableOpacity>
+                        }
                     </View>
                 </View>
             </View>
@@ -131,20 +127,20 @@ const styles = StyleSheet.create({
     ,
     titulo : {
         color: 'white',
-        fontSize: 25,
+        fontSize: 40,
         fontWeight: 'bold'
     },
     container1 : {
-        flex: 1,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    container2: {
         flex: 2,
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        margin: 20
+    },
+    container2: {
+        flex: 4,
+        display: 'flex',
+        alignItems: 'center',
     },
     container3: {
         flex: 2,
@@ -154,10 +150,10 @@ const styles = StyleSheet.create({
         paddingBottom: 50
     },
     quadradoImg: {
-        height: 130,
-        width: 130,
+        height: 250,
+        width: 250,
         borderColor: 'white',
-        borderWidth: 4,
+        borderWidth: 8,
         borderRadius: 20,
         display: 'flex',
         justifyContent: 'center',
@@ -167,8 +163,8 @@ const styles = StyleSheet.create({
     textPlaca: {
         color: 'white',
         fontWeight: 'bold',
-        fontSize: 20,
-        margin: 20
+        fontSize: 40,
+        margin: 50
     },
     textPlacaFuncional: {
         color: 'white',
@@ -193,9 +189,13 @@ const styles = StyleSheet.create({
     },
     inputImg: {
         borderBottomColor: 'white',
-        borderBottomWidth: 4,
+        borderBottomWidth: 20,
         display: 'flex',
         justifyContent: 'flex-start',
         alignItems: 'flex-start'
+    },
+    img: {
+        width: 200,
+        height: 160
     }
 })

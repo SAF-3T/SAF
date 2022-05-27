@@ -24,6 +24,10 @@ export default class Login extends Component {
         };
     }
 
+    displayNone() {
+        styles.img.height = 0
+    }
+
     realizarLogin = async () => {
         this.isLoading = true
         const resposta = await api.post('/Login',
@@ -56,12 +60,15 @@ export default class Login extends Component {
         return (
             <View style={styles.main}>
                 <View style={styles.containerImg}>
-                    <View style={styles.imgFixa}>
-                        <Image style={styles.imgCamera} source={require('../../assets/img/Group.png')} />
-                    </View>
+                    <Image style={styles.img} source={{
+                        uri:
+                            'https://backend-saf-api.azurewebsites.net/Img/logoSAFmedio.jpg'
+                    }} />
+
                 </View>
                 <View style={styles.containerInputs}>
                     <TextInput
+                        onPressIn={this.displayNone}
                         placeholder="CPF"
                         placeholderTextColor="#0E758C"
                         style={styles.input}
@@ -120,7 +127,7 @@ const styles = StyleSheet.create({
     },
     input: {
         //backgroundColor: 'black',
-        width: 250,
+        width: '70%',
         height: 50,
         marginTop: 20,
         borderBottomWidth: 2,
@@ -144,14 +151,10 @@ const styles = StyleSheet.create({
         color: 'white',
         // fontFamily: 'Montserrat'
     },
-    imgFixa: {
-        width: 150,
-        height: 150,
-        backgroundColor: '#C4C4C4',
-        borderRadius: 100,
-        alignItems: 'center',
-        justifyContent: 'center',
-        display: 'flex'
+    img: {
+        height: 162,
+        width: 155,
+        marginTop: 90
     },
     textErroMensagem: {
         color: 'red'

@@ -1,6 +1,8 @@
 import { Component } from "react";
 import React from 'react';
 import jwtDecode from 'jwt-decode';
+import {vw} from "react-native";
+
 
 // import FontRegular from '../../assets/fonts/Montserrat-Regular.ttf'
 
@@ -66,32 +68,35 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-evenly',
         paddingBottom: 50
     },
     logo: {
-        width: 95.5,
-        height: 93
+        width: 200,
+        height: 194
     },
     texto: {
-        fontSize: 20,
+        fontSize: 30,
         color: 'white',
         textAlign: 'center',
+        width: 450,
+        height: 100
 
     },
     textoGrifado: {
-        fontSize: 20,
+        fontSize: 50,
         color: 'white',
-        fontWeight: '900', 
+        fontWeight: 'bold',
+        height: 70
     },
     textoBotao: {
-        fontWeight: '900',
-        fontSize: 25,
+        fontWeight: 'bold',
+        fontSize: 40,
         color: 'white',
     },
     corpoBotao: {
-        width: 190,
-        height: 60,
+        width: 350,
+        height: 100,
         backgroundColor: '#0F282D',
         display: 'flex',
         alignItems: 'center',
