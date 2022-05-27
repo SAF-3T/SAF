@@ -10,6 +10,7 @@ import {
 import './index.css';
 
 import Dashboard from './pages/dashboard/dashboard';
+import preLogin from './pages/preLogin/preLogin';
 import Login from './pages/login/login';
 import Veiculos from './pages/veiculos/veiculos';
 import Usuarios from './pages/usuarios/usuarios';
@@ -25,7 +26,8 @@ const routing = (
   <Router>
     <div>
       <Switch>
-        <Route exact path="/" component={Login} />
+        <Route exact path="/" component={preLogin} />
+        <Route exact path="/login" component={Login} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/veiculos" component={Veiculos} />
         <Route path="/carrocerias" component={Carrocerias} />
