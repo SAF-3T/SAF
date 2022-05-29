@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import MaskedInput from './MaskedInput';
 
-import { parseJwt } from '../../services/auth';
+import { parseJwt } from '../veiculos/services/auth';
 
 import './login.css';
 
