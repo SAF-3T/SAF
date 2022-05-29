@@ -1,5 +1,5 @@
 .backgroundPreLogin {
-    background-color: #0E758C;
+    background-color: #fff;
     width: 100%;
     height: 100vh;
 }
@@ -22,9 +22,9 @@
 }
 
 .LogoPreLogin {
-    width: 100px;
-    height: 100px;
-    background-image: url("../../assets/imgs/Logo.png");
+    width: 86px;
+    height: 82px;
+    background-image: url("../../assets/imgs/LogoHeader.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -36,7 +36,7 @@
 }
 
 .btnPreLogin {
-    font-size: 15px;
+    font-size: 20px;
     height: 70px;
     width: 170px;
     background-color: #fff;
@@ -61,4 +61,15 @@
 
 .btnPreLogin:hover{
     color: #0E758C;
+}
+
+.third {
+    border-color: #0E758C;
+    color: #fff;
+    box-shadow: 0 0 40px 40px #0E758C inset, 0 0 0 0 #0E758C;
+    -webkit-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
+}
+.third:hover {
+    box-shadow: 0 0 10px 0 #0E758C inset, 0 0 10px 4px #0E758C;
 }

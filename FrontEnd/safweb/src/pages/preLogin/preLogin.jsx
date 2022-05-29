@@ -11,7 +11,7 @@ export default function PreLogin() {
                 <div className='divEsqPreLogin' />
                 <div className="LogoPreLogin" />
                 <div className='divDirPreLogin'>
-                    <button className='btnPreLogin'>Entrar</button>
+                    <button className='btnPreLogin third'>Entrar</button>
                 </div>
             </div>
         </div>
