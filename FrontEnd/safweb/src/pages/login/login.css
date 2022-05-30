@@ -111,7 +111,7 @@ button::after {
     z-index: -1;
     padding: 0.85em 0.75em;
     position: absolute;
-    display: block; 
+    display: block;
 }
 
 button[class^="btn_login"]::after {
@@ -156,6 +156,42 @@ button.btn_login::after {
 }
 
 .esq-dir {
-    /* background-color: gold; */
     margin: 0 auto;
+}
+
+@media screen and (max-width: 1110px) {
+    
+    .div-esq {
+        width: 100%;
+        background-image: url('');
+    }
+    .div-dir {
+        width: 0;
+        visibility: hidden;
+    }
+}
+
+@media screen and (max-width: 490px) {
+    .inputLogin {
+        width: 80%;
+    }
+    .item {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .item {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 340px) {
+    .item {
+        width: 80%;
+    }
+    .item>p {
+        font-size: 15px;
+    }
+
 }

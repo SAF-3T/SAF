@@ -1,5 +1,5 @@
 .backgroundPreLogin {
-    background-color: #0F282D;
+    background-color: #0C1829;
     width: 100%;
     height: 100vh;
 }
@@ -11,8 +11,9 @@
 
 .divEsqPreLogin {
     width: 50%;
+    height: 70px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
 }
 
 .divDirPreLogin {
@@ -24,7 +25,7 @@
 .LogoPreLogin {
     width: 86px;
     height: 82px;
-    background-image: url("../../assets/imgs/LogoPreLogin.png");
+    background-image: url("../../assets/imgs/Logo.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -64,18 +65,6 @@
     color: #0E758C;
 }
 
-.third {
-    border-color: #0E758C;
-    color: #fff;
-    box-shadow: 0 0 40px 40px #0E758C inset, 0 0 0 0 #0E758C;
-    -webkit-transition: all 150ms ease-in-out;
-    transition: all 150ms ease-in-out;
-}
-
-.third:hover {
-    box-shadow: 0 0 10px 0 #0E758C inset, 0 0 10px 4px #0E758C;
-}
-
 .h1PreLogin {
     width: 786px;
     font-family: "Open Sans", sans-serif;
@@ -85,7 +74,6 @@
     font-size: 30px;
     line-height: 58px;
     margin: 30px auto 100px;
-    /* background-color: red; */
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -118,19 +106,15 @@
     text-align: center;
     width: 350px;
     margin: 0 auto;
-
 }
 
 .footerPreLogin {
     background-color: unset;
     width: 350px;
     display: flex;
-    margin: 0 auto;
     justify-content: space-between;
     align-items: center;
-    position: fixed;
-    bottom: 0;
-    left: 40%;
+    margin: 60px auto 20px;
 }
 
 .img1 {
@@ -158,4 +142,127 @@
     background-image: url("../../assets/imgs/IMGOCR.png");
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+
+@media screen and (max-width: 1660px) {
+    .cardsPreLogin {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 1410px) {
+    .cardPreLogin {
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 1284px) {
+    .backgroundPreLogin {
+        height: auto;
+    }
+
+    .cardPreLogin {
+        width: 30%;
+        height: 420px;
+    }
+
+    .cardPreLogin>p {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 1170px) {
+    .cardPreLogin {
+        height: 440px;
+    }
+}
+
+@media screen and (max-width: 1032px) {
+    .cardPreLogin {
+        height: 470px;
+    }
+}
+
+@media screen and (max-width: 883px) {
+    .cardPreLogin {
+        height: 490px;
+    }
+}
+
+@media screen and (max-width: 809px) {
+    .backgroundPreLogin {
+        width: 800px;
+    }
+    .linksPreLogin {
+        width: 800px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .LogoPreLogin {
+        height: 90px;
+    }
+
+    .divEsqPreLogin {
+        width: 0;
+    }
+
+    .cardsPreLogin {
+        flex-direction: column;
+        height: 1300px;
+    }
+
+    .cardPreLogin {
+        width: 90%;
+        height: 400px;
+    }
+
+    .cardPreLogin>p {
+        margin-top: 30px;
+    }
+}
+
+@media screen and (max-width: 787px) {
+    .backgroundPreLogin {
+        height: auto;
+    }
+
+    .h1PreLogin {
+        width: 600px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .LogoPreLogin {
+        width: 100px;
+        height: 100px;
+    }
+
+    .h1PreLogin {
+        width: 600px;
+    }
+
+    .btnPreLogin {
+        margin-left: 30px;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .backgroundPreLogin {
+        height: 1900px;
+    }
+
+}
+
+@media screen and (max-width: 360px) {
+    .backgroundPreLogin {
+        width: 800px;
+        height: 1880px;
+    }
+
+    .h1PreLogin {
+        width: 500px;
+    }
 }

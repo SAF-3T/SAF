@@ -16,7 +16,7 @@ export default function PreLogin() {
                 <div className='divEsqPreLogin' />
                 <div className="LogoPreLogin" />
                 <div className='divDirPreLogin'>
-                    <button className='btnPreLogin third'><Link style={{textDecoration: 'none', color: 'inherit'}} to="/login">Entrar</Link></button>
+                    <button className='btnPreLogin'><Link style={{textDecoration: 'none', color: 'inherit'}} to="/login">Entrar</Link></button>
                 </div>
             </div>
 

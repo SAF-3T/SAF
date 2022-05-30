@@ -10,8 +10,8 @@ class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            cpf: '', 
-            senha: '', 
+            cpf: '',
+            senha: '',
             erroMensagem: '',
         };
     }
@@ -30,7 +30,7 @@ class Login extends React.Component {
                     localStorage.setItem('usuario-login', resposta.data.token);
                     let base64 = localStorage.getItem('usuario-login').split('.')[1];
                 }
-                if (parseJwt().role === '1' ) {
+                if (parseJwt().role === '1') {
                     this.props.history.push('/dashboard');
                 }
                 else {
@@ -59,6 +59,7 @@ class Login extends React.Component {
                 <div className="full-page">
                     <div className="div-esq">
                         <div className="div-form esq-dir">
+                            <div className="imgResponsivo" />
                             <h1>LOGIN</h1>
                             <form className="form" onSubmit={this.efetuaLogin}>
                                 <label htmlFor="cpf"></label>
@@ -66,9 +67,9 @@ class Login extends React.Component {
 
                                 <label htmlFor="senha"></label>
                                 <input className='inputLogin' type="password" name="senha" value={this.state.senha} onChange={this.atualizaStateCampo} placeholder="SENHA" />
-                                    <div className="item">
-                                        <p>{this.state.erroMensagem}</p>
-                                    </div>
+                                <div className="item">
+                                    <p>{this.state.erroMensagem}</p>
+                                </div>
                                 <button onClick={this.log} type="submit" className="btn_login">LOGIN</button>
 
                             </form>
