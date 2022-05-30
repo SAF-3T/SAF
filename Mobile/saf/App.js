@@ -23,6 +23,7 @@ import TelaCadastradoCheckIn from './src/pages/TelaCadastradoCheckIn'
 import CameraTela from './src/pages/Camera'
 
 
+
 export default function App() {
 
     return (

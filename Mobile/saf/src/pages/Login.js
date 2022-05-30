@@ -1,5 +1,7 @@
 import { Component } from "react";
 import React from 'react';
+import { StatusBar } from 'react-native';
+
 import jwtDecode from 'jwt-decode';
 import {
     StyleSheet,
@@ -21,8 +23,10 @@ export default class Login extends Component {
             cpf: "45999057809",
             senha: "123",
             isLoading: false,
+            isTyping: false
         };
     }
+    
 
     displayNone() {
         styles.img.height = 0
@@ -58,38 +62,47 @@ export default class Login extends Component {
 
     render() {
         return (
-            <View style={styles.main}>
-                <View style={styles.containerImg}>
-                    <Image style={styles.img} source={{
-                        uri:
-                            'https://backend-saf-api.azurewebsites.net/Img/logoSAFmedio.jpg'
-                    }} />
 
-                </View>
-                <View style={styles.containerInputs}>
-                    <TextInput
-                        onPressIn={this.displayNone}
-                        placeholder="CPF"
-                        placeholderTextColor="#0E758C"
-                        style={styles.input}
-                        keyboardType="default"
-                        onChangeText={cpf => this.setState({ cpf })}
+                <View style={styles.main}>
+                    <StatusBar
+                        hidden={true}
                     />
-                    <TextInput
-                        placeholder="Senha"
-                        placeholderTextColor="#0E758C"
-                        style={styles.input}
-                        keyboardType="default"
-                        onChangeText={senha => this.setState({ senha })}
-                        secureTextEntry={true}
-                    />
+                    {this.state.isTyping == false ?
+                        <View style={styles.containerImg}>
+                            <Image style={styles.img} source={{
+                                uri:
+                                    'https://backend-saf-api.azurewebsites.net/Img/logoSAFmedio.jpg'
+                            }} />
+                        </View>
+                        :
+                        console.warn("Fechado")
+                    }
+                    <View style={styles.containerInputs}>
+                        <TextInput
+                            onFocus={() => this.setState({ isTyping: true })}
+                            placeholder="CPF"
+                            placeholderTextColor="#0E758C"
+                            style={styles.input}
+                            keyboardType="default"
+                            onChangeText={cpf => this.setState({ cpf })}
+                        />
+                        <TextInput
+                            onFocus={() => this.setState({ isTyping: true })}
+                            placeholder="Senha"
+                            placeholderTextColor="#0E758C"
+                            style={styles.input}
+                            keyboardType="default"
+                            onChangeText={senha => this.setState({ senha })}
+                            secureTextEntry={true}
+                        />
+                    </View>
+                    <View style={styles.containerBotao}>
+                        <TouchableOpacity onPress={this.realizarLogin} style={styles.corpoBotao} >
+                            <Text style={styles.textoBotao}>ENTRAR</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
-                <View style={styles.containerBotao}>
-                    <TouchableOpacity onPress={this.realizarLogin} style={styles.corpoBotao} >
-                        <Text style={styles.textoBotao}>ENTRAR</Text>
-                    </TouchableOpacity>
-                </View>
-            </View>
+
         )
     }
 }
@@ -152,8 +165,8 @@ const styles = StyleSheet.create({
         // fontFamily: 'Montserrat'
     },
     img: {
-        height: 162,
-        width: 155,
+        height: 200,
+        width: 190,
         marginTop: 90
     },
     textErroMensagem: {

@@ -2,6 +2,7 @@ import { Component } from "react";
 import React from 'react';
 import jwtDecode from 'jwt-decode';
 import {vw} from "react-native";
+import { StatusBar } from 'react-native';
 
 
 // import FontRegular from '../../assets/fonts/Montserrat-Regular.ttf'
@@ -27,13 +28,16 @@ export default class PreLogin extends Component {
     render() {
         return (
             <View style={styles.main}>
+                <StatusBar
+                        hidden={true}
+                    />
                 <View style={styles.fundo}>
                     <View style={styles.containerEspacamentoLogo}>
                         <Image style={styles.logo} source={require('../../assets/img/Vector.png')}/>
                     </View>
 
                     <View style={styles.containerEspacamentoTextos}>
-                        <Text style={styles.texto}>Bem vindo ao Sistema de Administração de Frotas</Text>
+                        <Text style={styles.texto}>Bem vindo ao Sistema de Administração de Frotas.</Text>
                     </View>
                     
                     <View style={styles.containerEspacamentoSAF}>
@@ -59,7 +63,7 @@ export default class PreLogin extends Component {
 const styles = StyleSheet.create({
     main: {
         flex: 1,
-        alignItems: 'center'
+        alignItems: 'center',
     },
     fundo: {
         backgroundColor: '#0E758C',
@@ -69,18 +73,19 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'space-evenly',
-        paddingBottom: 50
+        paddingBottom: 10,
+        paddingTop: 10
     },
     logo: {
-        width: 200,
-        height: 194
+        resizeMode: "contain",
+        height: '75%'
     },
     texto: {
-        fontSize: 30,
+        fontSize: 25,
         color: 'white',
         textAlign: 'center',
-        width: 450,
-        height: 100
+        width: '100%',
+        height: '100%'
 
     },
     textoGrifado: {
@@ -91,23 +96,23 @@ const styles = StyleSheet.create({
     },
     textoBotao: {
         fontWeight: 'bold',
-        fontSize: 40,
+        fontSize: 32,
         color: 'white',
     },
     corpoBotao: {
-        width: 350,
-        height: 100,
+        width: '100%',
+        height: '80%',
         backgroundColor: '#0F282D',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 5,
-        marginTop: 60,
     },
     containerEspacamentoLogo: {
         //backgroundColor: 'pink',
         //flex: 1,
-        height: 150,
+        width: '60%',
+        height: '30%',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center'
@@ -115,7 +120,8 @@ const styles = StyleSheet.create({
     containerEspacamentoSAF: {
         //backgroundColor: 'pink',
         //flex: 1,
-        height: 50,
+        height: '10%',
+        width: '30%',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center'
@@ -123,12 +129,16 @@ const styles = StyleSheet.create({
     containerEspacamentoTextos: {
         //backgroundColor: 'pink',
         //flex: 1,
-        height: 50,
-        width: 250,
-        marginTop: 40,
+        height: '10%',
+        width: '90%',
+        marginTop: 10,
+        display: 'flex'
+    },
+    containerEspacamento:{
+        width: '60%',
+        height: '10%',
         display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: "center"
     }
 
 })

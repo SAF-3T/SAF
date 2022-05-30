@@ -5,8 +5,6 @@ import jwtDecode from 'jwt-decode';
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 import * as ImagePicker from 'expo-image-picker';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faCheck} from "@fortawesome/react-fontawesome";
 import {
     StyleSheet,
     Text,
