@@ -20,6 +20,8 @@ import {
   import api from '../services/api';
   import Header from '../components/Header'
 
+  import qs from 'qs'
+
 
 export default function Checkout() {
     const [ tipoAutorizacao, setTipoAutorizacao ] = useState( 0 );
@@ -56,7 +58,26 @@ export default function Checkout() {
 
     var navigation = useNavigation()
 
-
+    const [correspondencia, setCorrespondencia] = useState('');
+    function PesquisarCorrespondencia(img1, img2) {
+        axios({
+            method: 'post',
+            url: 'http://18.232.43.149:8000/comparar/img1/img2',
+            data: qs.stringify({
+                nomeImg1: img1,
+                nomeImg2: img2
+            }),
+            headers: {
+                'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+            }})
+            .then(response => {
+        if (response.status === 200) {
+            setCorrespondencia(response.data)
+            console.warn(response.data)
+        }
+    })
+}
+    
   const pickImageDianteira = async () => {
     // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -68,6 +89,7 @@ export default function Checkout() {
 
     if (!result.cancelled) {
         setDianteiraImg(result.uri);
+        PesquisarCorrespondencia('cam1.jpg', 'cam2.jpg')
     }
   };
   const pickImageTraseira = async () => {
@@ -81,6 +103,7 @@ export default function Checkout() {
 
     if (!result.cancelled) {
         setTraseiraImg(result.uri);
+        PesquisarCorrespondencia('cam1.jpg', 'cam2.jpg')
     }
   };
   const pickImageLateralD = async () => {
@@ -94,6 +117,7 @@ export default function Checkout() {
 
     if (!result.cancelled) {
         setLateralDireitaImg(result.uri);
+        PesquisarCorrespondencia('cam21.jpg', 'cam22.jpg')
     }
   };
   const pickImageLateralE = async () => {
@@ -107,6 +131,7 @@ export default function Checkout() {
 
     if (!result.cancelled) {
         setLateralEsquerdaImg(result.uri);
+        PesquisarCorrespondencia('cam31.jpg', 'cam32.jpg')
     }
   };
 
@@ -291,7 +316,7 @@ export default function Checkout() {
                                     </View>
                                     
                                     
-                                    <Text style={styles.modalText}>Taxa de correspondência: 75.88%</Text>
+                                    <Text style={styles.modalText}>Taxa de correspondência: {correspondencia}</Text>
                                     <Text style={styles.modalText}>Correspondente?</Text>
                                     <View style={styles.modalContainerBotoes}>
                                         <TouchableOpacity style={styles.modalBotaoSim} onPress={() => minimizarDianteiraSim()}><Text style={styles.modalBotaoText}>Sim</Text></TouchableOpacity>
@@ -329,7 +354,7 @@ export default function Checkout() {
                                     </View>
                                     
                                     
-                                    <Text style={styles.modalText}>Taxa de correspondência: 75.88%</Text>
+                                    <Text style={styles.modalText}>Taxa de correspondência: {correspondencia}</Text>
                                     <Text style={styles.modalText}>Correspondente?</Text>
                                     <View style={styles.modalContainerBotoes}>
                                         <TouchableOpacity style={styles.modalBotaoSim} onPress={() => minimizarTraseiraSim()}><Text style={styles.modalBotaoText}>Sim</Text></TouchableOpacity>
@@ -405,7 +430,7 @@ export default function Checkout() {
                                     </View>
                                     
                                     
-                                    <Text style={styles.modalText}>Taxa de correspondência: 76.98%</Text>
+                                    <Text style={styles.modalText}>Taxa de correspondência: {correspondencia}</Text>
                                     <Text style={styles.modalText}>Correspondente?</Text>
                                     <View style={styles.modalContainerBotoes}>
                                         <TouchableOpacity style={styles.modalBotaoSim} onPress={() => minimizarLateralEsquerdaSim()}><Text style={styles.modalBotaoText}>Sim</Text></TouchableOpacity>

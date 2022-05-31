@@ -74,7 +74,9 @@ export default class Menu extends Component {
 const styles = StyleSheet.create({
     main: {
         flex: 1,
-        backgroundColor: '#0E758C'
+        backgroundColor: '#0E758C',
+        height: '100%',
+        width: '100%'
     },
     header: {
         flex: 1,
@@ -82,16 +84,16 @@ const styles = StyleSheet.create({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        borderBottomRightRadius: 150,
-        borderBottomLeftRadius: 150,
+        borderBottomRightRadius: 135,
+        borderBottomLeftRadius: 135,
         shadowColor: "#000",
+        width: '100%',
         shadowOffset: {
             width: 0,
             height: 12,
         },
         shadowOpacity: 0.58,
         shadowRadius: 16.00,
-
         elevation: 24,
     },
     content: {
@@ -100,7 +102,9 @@ const styles = StyleSheet.create({
         backgroundColor: '#0E758C',
         justifyContent: 'center',
         flexDirection: 'column',
-        alignItems: 'center'
+        alignItems: 'center',
+        width: '100%',
+        height: '50%'
     },
     img: {
         height: '40%',
@@ -110,18 +114,18 @@ const styles = StyleSheet.create({
     },
     textName: {
         color: '#0F282D',
-        fontSize: 40,
+        fontSize: 30,
         marginTop: 20
     },
     textFunction: {
         color: '#0F282D',
-        fontSize: 40,
+        fontSize: 35,
         fontWeight: 'bold'
     },
     buttonMenu: {
         backgroundColor: 'white',
-        width: 500,
-        height: 130,
+        width: '80%',
+        height: '25%',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -138,11 +142,15 @@ const styles = StyleSheet.create({
     },
     buttonText: {
         color: '#0F282D',
-        fontSize: 40,
+        fontSize: 32,
         fontWeight: 'bold'
     },
     container2buttons: {
         display: 'flex',
-        flexDirection: 'column'
+        flexDirection: 'column',
+         alignItems: 'center',
+         justifyContent: 'center',
+         width: '90%',
+         height: '100%'
     }
 })

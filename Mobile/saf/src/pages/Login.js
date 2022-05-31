@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
         //backgroundColor: 'black',
         width: '70%',
         height: 50,
-        marginTop: 20,
+        margin: '5%',
         borderBottomWidth: 2,
         borderBottomColor: '#0E758C',
         textAlign: 'center',
@@ -150,8 +150,8 @@ const styles = StyleSheet.create({
 
     },
     corpoBotao: {
-        width: 190,
-        height: 60,
+        width: '50%',
+        height: '20%',
         backgroundColor: '#0E758C',
         display: 'flex',
         alignItems: 'center',
@@ -159,17 +159,18 @@ const styles = StyleSheet.create({
         borderRadius: 5
     },
     textoBotao: {
-        fontWeight: '900',
+        fontWeight: 'bold',
         fontSize: 25,
         color: 'white',
         // fontFamily: 'Montserrat'
     },
     img: {
-        height: 200,
-        width: 190,
-        marginTop: 90
+        height: 190,
+        width: 182,
+        marginTop: 50
     },
     textErroMensagem: {
         color: 'red'
-    }
+    },
+    
 })

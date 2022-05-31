@@ -23,6 +23,8 @@ import {
 import api from '../services/api';
 import Header from '../components/Header'
 
+import qs from 'qs'
+
 
 export default function Checkin() {
 
@@ -40,7 +42,7 @@ export default function Checkin() {
 
     const [dianteira, setDianteira] = useState(false);
     const [dianteiraModal, setDianteiraModal] = useState(false);
-    const [dianteiraImg, setDianteiraImg] = useState('https://backend-saf-api.azurewebsites.net/Img/cam2.jpg');
+    const [dianteiraImg, setDianteiraImg] = useState('https://backend-saf-api.azurewebsites.net/Img/cam1.jpg');
 
 
     const [traseira, setTraseira] = useState(false);
@@ -68,20 +70,27 @@ export default function Checkin() {
 
     var navigation = useNavigation()
 
-
     const [correspondencia, setCorrespondencia] = useState('');
     function PesquisarCorrespondencia(img1, img2) {
-        axios("http://18.232.43.149:8000/comparar/img1/img2",{
-            nomeImg1: img1,
-            nomeImg2: img2
+        axios({
+            method: 'post',
+            url: 'http://18.232.43.149:8000/comparar/img1/img2',
+            data: qs.stringify({
+                nomeImg1: img1,
+                nomeImg2: img2
+            }),
+            headers: {
+                'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+            }
         })
             .then(response => {
                 if (response.status === 200) {
                     setCorrespondencia(response.data)
-                    console.warn(correspondencia)
+                    console.warn(response.data)
                 }
             })
     }
+
 
     const pickImageDianteira = async () => {
         // No permissions request is necessary for launching the image library
@@ -94,6 +103,8 @@ export default function Checkin() {
 
         if (!result.cancelled) {
             setDianteiraImg(result.uri);
+
+            PesquisarCorrespondencia('cam1.jpg', 'cam2.jpg')
         }
     };
 
@@ -136,6 +147,8 @@ export default function Checkin() {
 
         if (!result.cancelled) {
             setTraseiraImg(result.uri);
+
+            PesquisarCorrespondencia('cam1.jpg', 'cam2.jpg')
         }
     };
     const pickImageLateralD = async () => {
@@ -149,6 +162,8 @@ export default function Checkin() {
 
         if (!result.cancelled) {
             setLateralDireitaImg(result.uri);
+
+            PesquisarCorrespondencia('cam1.jpg', 'cam2.jpg')
         }
     };
     const pickImageLateralE = async () => {
@@ -162,6 +177,8 @@ export default function Checkin() {
 
         if (!result.cancelled) {
             setLateralEsquerdaImg(result.uri);
+
+            PesquisarCorrespondencia('cam1.jpg', 'cam2.jpg')
         }
     };
 
@@ -283,37 +300,45 @@ export default function Checkin() {
 
     async function minimizarDianteiraSim() {
         setDianteiraModal(false)
+        setCorrespondencia('')
         setDianteira(true)
     }
     async function minimizarDianteiraNao() {
         setDianteiraModal(false)
+        setCorrespondencia('')
         setDianteira(false)
     }
 
     async function minimizarTraseiraSim() {
         setTraseiraModal(false)
+        setCorrespondencia('')
         setTraseira(true)
     }
     async function minimizarTraseiraNao() {
         setTraseiraModal(false)
+        setCorrespondencia('')
         setTraseira(false)
     }
 
     async function minimizarLateralEsquerdaSim() {
         setLateralEsquerdaModal(false)
+        setCorrespondencia('')
         setLateralEsquerda(true)
     }
     async function minimizarLateralEsquerdaNao() {
         setLateralEsquerdaModal(false)
+        setCorrespondencia('')
         setLateralEsquerda(false)
     }
 
     async function minimizarLateralDireitaSim() {
         setLateralDireitaModal(false)
+        setCorrespondencia('')
         setLateralDireita(true)
     }
     async function minimizarLateralDireitaNao() {
         setLateralDireitaModal(false)
+        setCorrespondencia('')
         setLateralDireita(false)
     }
 
@@ -331,11 +356,12 @@ export default function Checkin() {
                         visible={modalCameraDianteira}
                         style={styles.modalTela}
                     >
+
                         <View style={styles.containerModalCamera}>
                             <Image style={styles.imgDianteiraModal} source={require('../../assets/img/Traseira.png')} />
                             <Text style={styles.textModalCamera}>Tire foto da parte frontal do veículo</Text>
                             <Camera style={styles.cameraModal} />
-                            <TouchableOpacity onPress={() => TakePictureDianteira()} style={styles.btnModalCamera}>
+                            <TouchableOpacity onPress={() => pickImageDianteira()} style={styles.btnModalCamera}>
                                 <Text style={styles.textBtnModalCamera}>Tirar Foto</Text>
                             </TouchableOpacity>
                         </View>
@@ -352,7 +378,7 @@ export default function Checkin() {
                             <Image style={styles.imgDianteiraModal} source={require('../../assets/img/Dianteira.png')} />
                             <Text style={styles.textModalCamera}>Tire foto da parte Traseira do veículo</Text>
                             <Camera style={styles.cameraModal} />
-                            <TouchableOpacity onPress={() => TakePictureTraseira()} style={styles.btnModalCamera}>
+                            <TouchableOpacity onPress={() => pickImageTraseira()} style={styles.btnModalCamera}>
                                 <Text style={styles.textBtnModalCamera}>Tirar Foto</Text>
                             </TouchableOpacity>
                         </View>
@@ -368,7 +394,7 @@ export default function Checkin() {
                             <Image style={styles.imgDianteiraModal} source={require('../../assets/img/LateralE.png')} />
                             <Text style={styles.textModalCamera}>Tire foto da parte lateral esquerda do veículo</Text>
                             <Camera style={styles.cameraModal} />
-                            <TouchableOpacity onPress={() => TakePictureLateralE()} style={styles.btnModalCamera}>
+                            <TouchableOpacity onPress={() => pickImageLateralE()} style={styles.btnModalCamera}>
                                 <Text style={styles.textBtnModalCamera}>Tirar Foto</Text>
                             </TouchableOpacity>
                         </View>
@@ -384,7 +410,7 @@ export default function Checkin() {
                             <Image style={styles.imgDianteiraModal} source={require('../../assets/img/LateralE.png')} />
                             <Text style={styles.textModalCamera}>Tire foto da parte lateral direita do veículo</Text>
                             <Camera style={styles.cameraModal} />
-                            <TouchableOpacity onPress={() => TakePictureLateralD()} style={styles.btnModalCamera}>
+                            <TouchableOpacity onPress={() => pickImageLateralD()} style={styles.btnModalCamera}>
                                 <Text style={styles.textBtnModalCamera}>Tirar Foto</Text>
                             </TouchableOpacity>
                         </View>
@@ -395,35 +421,38 @@ export default function Checkin() {
                         animationType="slide"
                         transparent={true}
                         visible={dianteiraModal}
-                        style={styles.modalTela}
+
                     >
-                        <View style={styles.modal}>
-                            <View style={styles.modalContent}>
-                                <View style={styles.modalContainerTextImg}>
-                                    <View style={styles.modalContainerImgText}>
-                                        <Text style={styles.modalText}>Imagem Padrão</Text>
-                                        <Image style={styles.imgModal} source={{ uri: 'https://backend-saf-api.azurewebsites.net/Img/cam1.jpg' }} />
-                                    </View>
-                                    <View style={styles.modalContainerImgText}>
-                                        <Text style={styles.modalText}>Sua imagem</Text>
-                                        {
-                                            dianteiraImg === null ?
-                                                <TouchableOpacity onPress={() => setModalCameraDianteira(true)}><View style={styles.imgModal} ><Image style={styles.imgCamera} source={require('../../assets/img/Group.png')} /></View></TouchableOpacity> :
-                                                <View />
-                                        }
-                                        <TouchableOpacity onPress={() => setModalCameraDianteira(true)}>{dianteiraImg && <Image source={{ uri: dianteiraImg }} style={styles.imgModal} />}</TouchableOpacity>
+                        <View style={styles.modalTela}>
+                            <View style={styles.modal}>
+                                <View style={styles.modalContent}>
+                                    <View style={styles.modalContainerTextImg}>
+                                        <View style={styles.modalContainerImgText}>
+                                            <Text style={styles.modalText}>Imagem Padrão</Text>
+                                            <Image style={styles.imgModal} source={{ uri: 'https://backend-saf-api.azurewebsites.net/Img/cam1.jpg' }} />
+                                        </View>
+                                        <View style={styles.modalContainerImgText}>
+                                            <Text style={styles.modalText}>Sua imagem</Text>
+                                            {
+                                                dianteiraImg === null ?
+                                                    <TouchableOpacity style={styles.imgModal} onPress={() => pickImageDianteira()}><View style={styles.imgModal} ><Image style={styles.imgCamera} source={require('../../assets/img/Group.png')} /></View></TouchableOpacity> :
+                                                    <View />
+                                            }
+                                            <TouchableOpacity style={styles.imgModal} onPress={() => pickImageDianteira()}>{dianteiraImg && <Image source={{ uri: dianteiraImg }} style={styles.imgModalMolde} />}</TouchableOpacity>
 
 
+                                        </View>
                                     </View>
-                                </View>
-                                <Text style={styles.modalText}>Taxa de correspondência: {correspondencia}</Text>
-                                <Text style={styles.modalText}>Correspondente?</Text>
-                                <View style={styles.modalContainerBotoes}>
-                                    <TouchableOpacity style={styles.modalBotaoSim} onPress={() => minimizarDianteiraSim()}><Text style={styles.modalBotaoText}>Sim</Text></TouchableOpacity>
-                                    <TouchableOpacity style={styles.modalBotaoNao} onPress={() => minimizarDianteiraNao()}><Text style={styles.modalBotaoText}>Não</Text></TouchableOpacity>
+                                    <Text style={styles.modalText}>Taxa de correspondência: {correspondencia}</Text>
+                                    <Text style={styles.modalText}>Correspondente?</Text>
+                                    <View style={styles.modalContainerBotoes}>
+                                        <TouchableOpacity style={styles.modalBotaoSim} onPress={() => minimizarDianteiraSim()}><Text style={styles.modalBotaoText}>Sim</Text></TouchableOpacity>
+                                        <TouchableOpacity style={styles.modalBotaoNao} onPress={() => minimizarDianteiraNao()}><Text style={styles.modalBotaoText}>Não</Text></TouchableOpacity>
+                                    </View>
                                 </View>
                             </View>
                         </View>
+
 
                     </Modal>
 
@@ -433,35 +462,39 @@ export default function Checkin() {
                         visible={traseiraModal}
                         style={styles.modalTela}
                     >
-                        <View style={styles.modal}>
-                            <View style={styles.modalContent}>
-                                <View style={styles.modalContainerTextImg}>
-                                    <View style={styles.modalContainerImgText}>
-                                        <Text style={styles.modalText}>Imagem Padrão</Text>
-                                        <Image style={styles.imgModal} source={{ uri: 'https://backend-saf-api.azurewebsites.net/Img/cam1.jpg' }} />
+                        <View style={styles.modalTela}>
+                            <View style={styles.modal}>
+                                <View style={styles.modalContent}>
+                                    <View style={styles.modalContainerTextImg}>
+                                        <View style={styles.modalContainerImgText}>
+                                            <Text style={styles.modalText}>Imagem Padrão</Text>
+                                            <Image style={styles.imgModal} source={{ uri: 'https://backend-saf-api.azurewebsites.net/Img/cam1.jpg' }} />
+                                        </View>
+                                        <View style={styles.modalContainerImgText}>
+                                            <Text style={styles.modalText}>Sua imagem</Text>
+                                            {
+                                                traseiraImg === null ?
+                                                    <TouchableOpacity style={styles.imgModal} onPress={() => pickImageTraseira()}><View style={styles.imgModal} ><Image style={styles.imgCamera} source={require('../../assets/img/Group.png')} /></View></TouchableOpacity> :
+                                                    <View />
+                                            }
+                                            <TouchableOpacity style={styles.imgModal} onPress={() => pickImageTraseira()}>{traseiraImg && <Image source={{ uri: traseiraImg }} style={styles.imgModalMolde} />}</TouchableOpacity>
+
+
+
+                                        </View>
                                     </View>
-                                    <View style={styles.modalContainerImgText}>
-                                        <Text style={styles.modalText}>Sua imagem</Text>
-                                        {
-                                            traseiraImg === null ?
-                                                <TouchableOpacity onPress={() => setModalCameraTraseira(true)}><View style={styles.imgModal} ><Image style={styles.imgCamera} source={require('../../assets/img/Group.png')} /></View></TouchableOpacity> :
-                                                <View />
-                                        }
-                                        <TouchableOpacity onPress={() => setModalCameraTraseira(true)}>{traseiraImg && <Image source={{ uri: traseiraImg }} style={styles.imgModal} />}</TouchableOpacity>
 
 
+                                    <Text style={styles.modalText}>Taxa de correspondência: {correspondencia}</Text>
+                                    <Text style={styles.modalText}>Correspondente?</Text>
+                                    <View style={styles.modalContainerBotoes}>
+                                        <TouchableOpacity style={styles.modalBotaoSim} onPress={() => minimizarTraseiraSim()}><Text style={styles.modalBotaoText}>Sim</Text></TouchableOpacity>
+                                        <TouchableOpacity style={styles.modalBotaoNao} onPress={() => minimizarTraseiraNao()}><Text style={styles.modalBotaoText}>Não</Text></TouchableOpacity>
                                     </View>
-                                </View>
-
-
-                                <Text style={styles.modalText}>Taxa de correspondência: 75.88%</Text>
-                                <Text style={styles.modalText}>Correspondente?</Text>
-                                <View style={styles.modalContainerBotoes}>
-                                    <TouchableOpacity style={styles.modalBotaoSim} onPress={() => minimizarTraseiraSim()}><Text style={styles.modalBotaoText}>Sim</Text></TouchableOpacity>
-                                    <TouchableOpacity style={styles.modalBotaoNao} onPress={() => minimizarTraseiraNao()}><Text style={styles.modalBotaoText}>Não</Text></TouchableOpacity>
                                 </View>
                             </View>
                         </View>
+
 
                     </Modal>
 
@@ -471,35 +504,39 @@ export default function Checkin() {
                         visible={lateralDireitaModal}
                         style={styles.modalTela}
                     >
-                        <View style={styles.modal}>
-                            <View style={styles.modalContent}>
-                                <View style={styles.modalContainerTextImg}>
-                                    <View style={styles.modalContainerImgText}>
-                                        <Text style={styles.modalText}>Imagem Padrão</Text>
-                                        <Image style={styles.imgModal} source={{ uri: 'https://backend-saf-api.azurewebsites.net/Img/cam31.jpg' }} />
+                        <View style={styles.modalTela} >
+                            <View style={styles.modal}>
+                                <View style={styles.modalContent}>
+                                    <View style={styles.modalContainerTextImg}>
+                                        <View style={styles.modalContainerImgText}>
+                                            <Text style={styles.modalText}>Imagem Padrão</Text>
+                                            <Image style={styles.imgModal} source={{ uri: 'https://backend-saf-api.azurewebsites.net/Img/cam31.jpg' }} />
+                                        </View>
+                                        <View style={styles.modalContainerImgText}>
+                                            <Text style={styles.modalText}>Sua imagem</Text>
+                                            {
+                                                lateralDireitaImg === null ?
+                                                    <TouchableOpacity style={styles.imgModal} onPress={() => pickImageLateralD()}><View style={styles.imgModal} ><Image style={styles.imgCamera} source={require('../../assets/img/Group.png')} /></View></TouchableOpacity> :
+                                                    <View />
+                                            }
+                                            <TouchableOpacity style={styles.imgModal} onPress={() => pickImageLateralD()}>{lateralDireitaImg && <Image source={{ uri: lateralDireitaImg }} style={styles.imgModalMolde} />}</TouchableOpacity>
+
+
+                                        </View>
                                     </View>
-                                    <View style={styles.modalContainerImgText}>
-                                        <Text style={styles.modalText}>Sua imagem</Text>
-                                        {
-                                            lateralDireitaImg === null ?
-                                                <TouchableOpacity onPress={() => setModalCameraLateralD(true)}><View style={styles.imgModal} ><Image style={styles.imgCamera} source={require('../../assets/img/Group.png')} /></View></TouchableOpacity> :
-                                                <View />
-                                        }
-                                        <TouchableOpacity onPress={() => setModalCameraLateralD(true)}>{lateralDireitaImg && <Image source={{ uri: lateralDireitaImg }} style={styles.imgModal} />}</TouchableOpacity>
 
 
+                                    <Text style={styles.modalText}>Taxa de correspondência: {correspondencia}</Text>
+                                    <Text style={styles.modalText}>Correspondente?</Text>
+                                    <View style={styles.modalContainerBotoes}>
+                                        <TouchableOpacity style={styles.modalBotaoSim} onPress={() => minimizarLateralDireitaSim()}><Text style={styles.modalBotaoText}>Sim</Text></TouchableOpacity>
+                                        <TouchableOpacity style={styles.modalBotaoNao} onPress={() => minimizarLateralDireitaNao()}><Text style={styles.modalBotaoText}>Não</Text></TouchableOpacity>
                                     </View>
-                                </View>
-
-
-                                <Text style={styles.modalText}>Taxa de correspondência: 76.99%</Text>
-                                <Text style={styles.modalText}>Correspondente?</Text>
-                                <View style={styles.modalContainerBotoes}>
-                                    <TouchableOpacity style={styles.modalBotaoSim} onPress={() => minimizarLateralDireitaSim()}><Text style={styles.modalBotaoText}>Sim</Text></TouchableOpacity>
-                                    <TouchableOpacity style={styles.modalBotaoNao} onPress={() => minimizarLateralDireitaNao()}><Text style={styles.modalBotaoText}>Não</Text></TouchableOpacity>
                                 </View>
                             </View>
                         </View>
+
+
 
                     </Modal>
 
@@ -509,39 +546,42 @@ export default function Checkin() {
                         visible={lateralEsquerdaModal}
                         style={styles.modalTela}
                     >
-                        <View style={styles.modal}>
-                            <View style={styles.modalContent}>
-                                <View style={styles.modalContainerTextImg}>
-                                    <View style={styles.modalContainerImgText}>
-                                        <Text style={styles.modalText}>Imagem Padrão</Text>
-                                        <Image style={styles.imgModal} source={{ uri: 'https://backend-saf-api.azurewebsites.net/Img/cam21.jpg' }} />
+                        <View style={styles.modalTela}>
+                            <View style={styles.modal}>
+                                <View style={styles.modalContent}>
+                                    <View style={styles.modalContainerTextImg}>
+                                        <View style={styles.modalContainerImgText}>
+                                            <Text style={styles.modalText}>Imagem Padrão</Text>
+                                            <Image style={styles.imgModal} source={{ uri: 'https://backend-saf-api.azurewebsites.net/Img/cam21.jpg' }} />
+                                        </View>
+                                        <View style={styles.modalContainerImgText}>
+                                            <Text style={styles.modalText}>Sua imagem</Text>
+                                            {
+                                                lateralEsquerdaImg === null ?
+                                                    <TouchableOpacity style={styles.imgModal} onPress={() => pickImageLateralE()}><View style={styles.imgModal} ><Image style={styles.imgCamera} source={require('../../assets/img/Group.png')} /></View></TouchableOpacity> :
+                                                    <View />
+                                            }
+                                            <TouchableOpacity style={styles.imgModal} onPress={() => pickImageLateralE()}>{lateralDireitaImg && <Image source={{ uri: lateralDireitaImg }} style={styles.imgModalMolde} />}</TouchableOpacity>
+
+                                        </View>
                                     </View>
-                                    <View style={styles.modalContainerImgText}>
-                                        <Text style={styles.modalText}>Sua imagem</Text>
-                                        {
-                                            lateralEsquerdaImg === null ?
-                                                <TouchableOpacity onPress={() => setModalCameraLateralE(true)}><View style={styles.imgModal} ><Image style={styles.imgCamera} source={require('../../assets/img/Group.png')} /></View></TouchableOpacity> :
-                                                <View />
-                                        }
-                                        <TouchableOpacity onPress={() => setModalCameraLateralE(true)}>{lateralEsquerdaImg && <Image source={{ uri: lateralEsquerdaImg }} style={styles.imgModal} />}</TouchableOpacity>
 
 
+                                    <Text style={styles.modalText}>Taxa de correspondência: {correspondencia}</Text>
+                                    <Text style={styles.modalText}>Correspondente?</Text>
+                                    <View style={styles.modalContainerBotoes}>
+                                        <TouchableOpacity style={styles.modalBotaoSim} onPress={() => minimizarLateralEsquerdaSim()}><Text style={styles.modalBotaoText}>Sim</Text></TouchableOpacity>
+                                        <TouchableOpacity style={styles.modalBotaoNao} onPress={() => minimizarLateralEsquerdaNao()}><Text style={styles.modalBotaoText}>Não</Text></TouchableOpacity>
                                     </View>
-                                </View>
-
-
-                                <Text style={styles.modalText}>Taxa de correspondência: 76.98%</Text>
-                                <Text style={styles.modalText}>Correspondente?</Text>
-                                <View style={styles.modalContainerBotoes}>
-                                    <TouchableOpacity style={styles.modalBotaoSim} onPress={() => minimizarLateralEsquerdaSim()}><Text style={styles.modalBotaoText}>Sim</Text></TouchableOpacity>
-                                    <TouchableOpacity style={styles.modalBotaoNao} onPress={() => minimizarLateralEsquerdaNao()}><Text style={styles.modalBotaoText}>Não</Text></TouchableOpacity>
                                 </View>
                             </View>
                         </View>
 
+
                     </Modal>
 
-
+                    {//Inicio do codigo
+                        console.warn("")}
                     <View style={styles.header}>
                         <Text style={styles.placa}>Check-in</Text>
                         <Text style={styles.placa}>{placaVeiculo}</Text>
@@ -679,21 +719,23 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'center'
     },
     header: {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        flex: 1
+        width: '90%',
+        height: '19%'
     },
     body: {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        flex: 3
+        height: '50%',
+        width: '97%'
     },
     modalTela: {
         display: 'flex',
@@ -705,7 +747,8 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        flex: 1
+        flex: 1,
+        width: '100%'
     },
     containerItens: {
         display: 'flex',
@@ -719,15 +762,21 @@ const styles = StyleSheet.create({
     },
     placa: {
         fontWeight: 'bold',
-        fontSize: 30
+        fontSize: 20,
+        width: '80%',
+        textAlign: 'center',
     },
     tipoVeiculo: {
-        fontSize: 30,
-        fontWeight: 'bold'
+        display: "flex",
+        textAlign: 'center',
+        fontSize: 20,
+        fontWeight: 'bold',
+        width: '80%',
     },
     status: {
-
-        fontSize: 25
+        width: '80%',
+        fontSize: 20,
+        textAlign: 'center'
     },
     btnProsseguir: {
         backgroundColor: '#0F282D',
@@ -740,8 +789,8 @@ const styles = StyleSheet.create({
     },
     btnProsseguir: {
         backgroundColor: '#0F282D',
-        width: 400,
-        height: 100,
+        width: '50%',
+        height: '30%',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -750,19 +799,18 @@ const styles = StyleSheet.create({
     btnText: {
         color: 'white',
         fontWeight: 'bold',
-        fontSize: 35
+        fontSize: 24
     },
     btnText2: {
         color: 'white',
         fontWeight: 'bold',
         fontSize: 35,
         textAlign: 'center',
-        width: 400
+        width: '95%'
     },
     textItem: {
         fontSize: 30,
         fontWeight: 'normal',
-        marginLeft: 30,
     },
     icon: {
         marginLeft: 30,
@@ -798,18 +846,23 @@ const styles = StyleSheet.create({
     },
     imgModal: {
         backgroundColor: '#C4C4C4',
-        width: 120,
-        height: 150,
+        width: '80%',
+        height: '60%',
         margin: 5,
         display: 'flex',
         alignItems: "center",
         justifyContent: 'center'
     },
+    imgModalMolde: {
+        width: '100%',
+        height: '100%',
+    },
     modalContainerImg: {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        width: '100%'
     },
     modalContainerText: {
         display: 'flex',
@@ -818,8 +871,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     modalBotaoSim: {
-        width: 100,
-        height: 60,
+        width: '20%',
+        height: '30%',
         backgroundColor: '#4CC341',
         display: 'flex',
         justifyContent: 'center',
@@ -828,8 +881,8 @@ const styles = StyleSheet.create({
         margin: 10
     },
     modalBotaoNao: {
-        width: 100,
-        height: 60,
+        width: '20%',
+        height: '30%',
         backgroundColor: '#EC3C3C',
         display: 'flex',
         justifyContent: 'center',
@@ -849,7 +902,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     modalText: {
-        fontSize: 18,
+        fontSize: 23,
         fontWeight: 'bold',
         margin: 10,
 
@@ -858,12 +911,14 @@ const styles = StyleSheet.create({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        width: '50%',
     },
     modalContainerTextImg: {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        width: '100%'
     },
     containerModalCamera: {
         height: '100%',
