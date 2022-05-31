@@ -17,12 +17,12 @@ const Modal = ({ onClose = () => { } }) => {
     const [Peso, setPeso] = useState('')
 
     function BuscarCarroceria() {
-        axios.get('http://backend-saf-api.azurewebsites.net/BuscaId/1')
+        axios.get('https://backend-saf-api.azurewebsites.net/BuscaId/1')
             .then(response => {
                 console.log(response.data);
             })
 
-        axios.get('http://backend-saf-api.azurewebsites.net/api/TipoCarroceria')
+        axios.get('https://backend-saf-api.azurewebsites.net/api/TipoCarroceria')
             .then(response => {
                 if (response.status === 200) {
                     console.log(response.data)
@@ -31,7 +31,7 @@ const Modal = ({ onClose = () => { } }) => {
     }
 
     function AtualizarCarroceria() {
-        axios.put('http://backend-saf-api.azurewebsites.net/Alterar/4', {
+        axios.put('https://backend-saf-api.azurewebsites.net/Alterar/4', {
             idTipoCarga: 6,
             idTipoCarroceria: 1,
             cubagem: Cubagem,

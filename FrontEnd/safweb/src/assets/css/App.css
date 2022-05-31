@@ -57,7 +57,6 @@ header {
 
 nav {
   height: calc(100vh);
-  width: fit-content;
   position: fixed;
   border-right: 3px solid rgba(19, 159, 192, 0.25);
   width: 160px;
@@ -93,7 +92,7 @@ footer {
 
 .wrapperFooter {
   margin: 0 auto;
-  width: 40%;
+  width: 45%;
   height: fit-content;
 }
 
@@ -115,7 +114,7 @@ footer {
 .linkDireitoFooter {
   display: flex;
   justify-content: space-between;
-  width: 43%;
+  width: 40%;
   align-items: center;
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
@@ -127,7 +126,7 @@ footer {
 .linkEsquerdoFooter {
   display: flex;
   justify-content: space-between;
-  width: 42%;
+  width: 40%;
   align-items: center;
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
@@ -205,7 +204,7 @@ footer {
   color: #000000;
 }
 
-.iconRightFromBracket{
+.iconRightFromBracket {
   color: #0E758C;
   cursor: pointer;
 }
@@ -363,4 +362,246 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+@media screen and (max-width: 1890px) {
+  .wrapperFooter {
+    width: 45%;
+  }
+}
+
+@media screen and (max-width: 1770px) {
+  .linkDireitoFooter {
+    width: 42%;
+  }
+
+  .linkEsquerdoFooter {
+    width: 42%;
+  }
+}
+
+@media screen and (max-width: 1676px) {
+  .linkDireitoFooter {
+    width: 44%;
+  }
+
+  .linkEsquerdoFooter {
+    width: 44%;
+  }
+}
+
+@media screen and (max-width: 1560px) {
+  .wrapperFooter {
+    width: 48%;
+  }
+
+  .linkDireitoFooter {
+    width: 45%;
+  }
+
+  .linkEsquerdoFooter {
+    width: 45%;
+  }
+}
+
+@media screen and (max-width: 1430px) {
+  .conteudoCima {
+    width: 70%;
+  }
+
+  .wrapperCards {
+    display: flex;
+    flex-wrap: wrap;
+    width: 60%;
+  }
+
+  .cardsBaixo, .cardsCima {
+    width: 50%;
+    height: 50%;
+  }
+
+  .wrapperFooter {
+    width: 50%;
+  }
+
+  .linkDireitoFooter {
+    width: 45%;
+  }
+
+  .linkEsquerdoFooter {
+    width: 45%;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .wrapperDashboard {
+    width: 70%;
+  }
+
+  .conteudoMensagem {
+    width: 75%;
+  }
+
+  .wrapperFooter {
+    width: 56%;
+  }
+}
+
+@media screen and (max-width: 1320px) {
+  .wrapperDashboard {
+    width: 70%;
+  }
+
+  .conteudoCima {
+    width: 60%;
+  }
+
+  .mensagemBoard {
+    width: 50%;
+    height: 70%;
+  }
+
+  .conteudoMensagem {
+    width: 90%;
+  }
+
+  .mensagem {
+    font-size: 18px;
+    margin-left: 10px;
+  }
+
+  .imagemDrawkit {
+    width: 430px;
+    height: 320px;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .wrapperCards {
+    width: 60%;
+  }
+
+  .wrapperFooter {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .wrapperDashboard {
+    width: 65%;
+  }
+
+  .conteudoCima {
+    width: 40%;
+  }
+
+  .mensagemBoard {
+    width: 100%;
+  }
+
+  .imagemDrawkit {
+    background: none;
+    width: 0;
+  }
+
+  .conteudoMensagem {
+    margin: 0 auto;
+  }
+
+  .mensagem {
+    width: 90%;
+    margin-left: 10px;
+  }
+
+  .iconesBoard {
+    font-size: 24px;
+  }
+
+  .pBemVindo {
+    font-size: 30px;
+  }
+
+  .wrapperFooter {
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 1125px) {
+  .wrapperCards {
+    width: 65%;
+    margin-left: 240px;
+  }
+
+  .wrapperFooter {
+    width: 45%;
+  }
+
+  .linkDireitoFooter {
+    width: 50%;
+    font-size: 10px;
+  }
+
+  .linkEsquerdoFooter {
+    font-size: 10px;
+    width: 44%;
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .wrapperCards {
+    width: 65%;
+    margin-left: 240px;
+  }
+
+  .linkDireitoFooter {
+    width: 0;
+    background: none;
+  }
+
+  .pLinkDireitoFooter {
+    display: none;
+  }
+
+  .linkEsquerdoFooter {
+    width: 90%;
+    font-size: 15px;
+  }
+
+  .conteudoFooter {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+  }
+}
+
+@media screen and (max-width: 1010px) {
+  .wrapperDashboard {
+    width: 50%;
+  }
+
+  .pBemVindo {
+    font-size: 20px;
+    width: 200px;
+  }
+  
+  .wrapperCards {
+    width: 60%;
+  }
+
+  .card {
+    width: 200px;
+    height: 200px;
+  }
+
+  .textosCard {
+    margin: 0;
+    height: 40px;
+  }
+
+  .pCadastrarCard {
+    font-size: 23px;
+  }
 }

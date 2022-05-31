@@ -16,7 +16,7 @@ const Modal = ({ onClose = () => { } }) => {
 
 
     function buscarChecklistErroPorId() {
-        axios('http://backend-saf-api.azurewebsites.net/api/Erro/Checklist/1')
+        axios('https://backend-saf-api.azurewebsites.net/api/Erro/Checklist/1')
             .then(response => {
                 if (response.status === 200) {
                     setListaChecklist(response.data);
@@ -26,7 +26,7 @@ const Modal = ({ onClose = () => { } }) => {
     };
 
     function buscarChecklistPorId() {
-        axios('http://backend-saf-api.azurewebsites.net/api/Checklist/1')
+        axios('https://backend-saf-api.azurewebsites.net/api/Checklist/1')
             .then(response => {
                 if (response.status === 200) {
                     setTipoCheckList(response.data);

@@ -24,7 +24,7 @@ export default function ListarCarroceria() {
     const notyf = new Notyf();
 
     function buscarCarroceria() {
-        axios('http://backend-saf-api.azurewebsites.net/api/Carroceria', {
+        axios('https://backend-saf-api.azurewebsites.net/api/Carroceria', {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
             }

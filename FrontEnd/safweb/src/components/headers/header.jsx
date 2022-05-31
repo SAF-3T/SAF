@@ -19,7 +19,7 @@ export default function Header() {
         // Descriptografa token
         const tokenDescriptografado = window.atob(armazenaToken).split(',')[2].split('"')[3];
 
-        axios('http://backend-saf-api.azurewebsites.net/api/Usuarios/BuscarPorId/' + tokenDescriptografado)
+        axios('https://backend-saf-api.azurewebsites.net/api/Usuarios/BuscarPorId/' + tokenDescriptografado)
             .then(response => {
                 if (response.status === 200) {
 

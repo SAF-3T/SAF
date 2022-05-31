@@ -86,7 +86,7 @@ export default function Checklists() {
     }
 
     function buscarChecklists() {
-        axios('http://backend-saf-api.azurewebsites.net/api/CheckList',)
+        axios('https://backend-saf-api.azurewebsites.net/api/CheckList',)
             .then(response => {
                 if (response.status === 200) {
                     setListaChecklist(response.data);
@@ -94,7 +94,7 @@ export default function Checklists() {
             })
             .catch(erro => console.log(erro));
 
-        axios.get('http://backend-saf-api.azurewebsites.net/api/Veiculos')
+        axios.get('https://backend-saf-api.azurewebsites.net/api/Veiculos')
             .then(response => {
                 if (response.status === 200) {
                     setListaVeiculos(response.data)
@@ -103,7 +103,7 @@ export default function Checklists() {
     };
 
     function buscarContagemErros() {
-        axios('http://backend-saf-api.azurewebsites.net/api/Erro/Contagem/1?idChecklsist=1')
+        axios('https://backend-saf-api.azurewebsites.net/api/Erro/Contagem/1?idChecklsist=1')
             .then(response => {
                 if (response.status === 200) {
                     setQntdErros(response.data);
@@ -113,7 +113,7 @@ export default function Checklists() {
     }
 
     function buscarContagemCorrecoes() {
-        axios('http://backend-saf-api.azurewebsites.net/api/Correcao/Contagem/1')
+        axios('https://backend-saf-api.azurewebsites.net/api/Correcao/Contagem/1')
             .then(response => {
                 if (response.status === 200) {
                     setQntdCorrecoes(response.data);
@@ -123,7 +123,7 @@ export default function Checklists() {
     }
 
     function deletar(idChecklist) {
-        axios.delete('http://backend-saf-api.azurewebsites.net/api/CheckList/' + idChecklist)
+        axios.delete('https://backend-saf-api.azurewebsites.net/api/CheckList/' + idChecklist)
             .then(resposta => {
                 if (resposta.status === 204) {
                     notyf.success(

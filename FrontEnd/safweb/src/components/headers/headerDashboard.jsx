@@ -30,7 +30,7 @@ export default function Header() {
         const tokenDescriptografado = window.atob(armazenaToken).split(',')[2].split('"')[3];
 
 
-        axios('http://backend-saf-api.azurewebsites.net/api/Usuarios/BuscarPorId/' + tokenDescriptografado)
+        axios('https://backend-saf-api.azurewebsites.net/api/Usuarios/BuscarPorId/' + tokenDescriptografado)
             .then(response => {
                 if (response.status === 200) {
 
@@ -87,7 +87,7 @@ export default function Header() {
 
             <p className="pBemVindo">Bem vindo, {NomeUsuario}!</p>
             <div className="usuarioHeaderDashboard">
-                <img src={"http://backend-saf-api.azurewebsites.net/Img/" + ImagemUsuario} className="linkImagemUsuario" />
+                <img src={"https://backend-saf-api.azurewebsites.net/Img/" + ImagemUsuario} className="linkImagemUsuario" />
                 <div className="linksUsuario">
                     <div className="linkUsuarioNomeCargo">
                         <p className="pNomeUsuario">{NomeUsuario}</p>

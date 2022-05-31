@@ -46,7 +46,7 @@ const Modal = ({ onClose = () => { }, children }) => {
 
 
     function BuscarForms() {
-        axios.get('http://backend-saf-api.azurewebsites.net/api/TipoUsuarios')
+        axios.get('https://backend-saf-api.azurewebsites.net/api/TipoUsuarios')
             .then(response => {
                 if (response.status === 200)
                     setTiposUsuarios(response.data)
@@ -75,7 +75,7 @@ const Modal = ({ onClose = () => { }, children }) => {
         try {
             axios({
                 method: "post",
-                url: "http://backend-saf-api.azurewebsites.net/api/Usuarios",
+                url: "https://backend-saf-api.azurewebsites.net/api/Usuarios",
                 data: formData,
                 headers: { "Content-Type": "multipart/form-data" },
             })

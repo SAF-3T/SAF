@@ -16,7 +16,7 @@ class Footer extends Component {
                         <div className="conteudoFooter">
                             <div className="linkDireitoFooter">
                                 <div className="imagemFooter"></div>
-                                <p>Todos os direitos reservados a SAF.</p>
+                                <p className='pLinkDireitoFooter'>Todos os direitos reservados a SAF.</p>
                             </div>
                             <div className="linkEsquerdoFooter">
                                 <FontAwesomeIcon icon={faGithub} color="#FFFFFF" size='2x' />

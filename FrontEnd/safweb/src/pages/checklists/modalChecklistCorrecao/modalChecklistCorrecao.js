@@ -15,7 +15,7 @@ const Modal = ({ onClose = () => { } }) => {
 
 
     function buscarChecklistCorrecaoPorId() {
-        axios('http://backend-saf-api.azurewebsites.net/api/Correcao/Checklist/1',)
+        axios('https://backend-saf-api.azurewebsites.net/api/Correcao/Checklist/1',)
             .then(response => {
                 if (response.status === 200) {
                     setListaChecklistCorrecao(response.data);

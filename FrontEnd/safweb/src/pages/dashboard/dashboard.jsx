@@ -73,15 +73,15 @@ function Dashboard() {
           <div className="mensagemBoard">
             <p className="mensagemTitulo">Dados da frota</p>
             <div className='conteudoMensagem'>
-              <FontAwesomeIcon icon={faRoad} color="#0E758C" size='2x' />
+              <FontAwesomeIcon className='iconesBoard' icon={faRoad} color="#0E758C" size='2x' />
               <p className="mensagem">Veículos em trajeto: {QntTrajeto} </p>
             </div>
             <div className='conteudoMensagem'>
-              <FontAwesomeIcon icon={faWarehouse} color="#0E758C" size='2x' />
+              <FontAwesomeIcon className='iconesBoard' icon={faWarehouse} color="#0E758C" size='2x' />
               <p className="mensagem">Veículos na garagem: {QntGaragem}</p>
             </div>
             <div className='conteudoMensagem'>
-              <FontAwesomeIcon icon={faWrench} color="#0E758C" size='2x' />
+              <FontAwesomeIcon className='iconesBoard' icon={faWrench} color="#0E758C" size='2x' />
               <p className="mensagem">Veículos em manutenção: {QntManutencao}</p>
             </div>
           </div>

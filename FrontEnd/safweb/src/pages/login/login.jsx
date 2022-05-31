@@ -20,7 +20,7 @@ class Login extends React.Component {
         event.preventDefault();
         this.setState({ erroMensagem: '', isLoading: true });
         axios
-            .post('http://backend-saf-api.azurewebsites.net/api/Login', {
+            .post('https://backend-saf-api.azurewebsites.net/api/Login', {
                 cpf: this.state.cpf,
                 senha: this.state.senha,
             })

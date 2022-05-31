@@ -30,7 +30,7 @@ export default function ListarCarga() {
 
 
     function buscarCarga() {
-        axios('http://backend-saf-api.azurewebsites.net/api/TipoCargas', {
+        axios('https://backend-saf-api.azurewebsites.net/api/TipoCargas', {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
             }

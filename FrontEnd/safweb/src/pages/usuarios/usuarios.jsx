@@ -27,7 +27,7 @@ export default function ListarUsuarios() {
 
     function buscarUsuarios() {
 
-        axios('http://backend-saf-api.azurewebsites.net/api/Usuarios')
+        axios('https://backend-saf-api.azurewebsites.net/api/Usuarios')
             .then(response => {
                 if (response.status === 200) {
                     setListaUsuarios(response.data)

@@ -33,28 +33,28 @@ export default function Modal({ onClose = () => { } }) {
 
     function BuscarForms() {
 
-        axios.get("http://backend-saf-api.azurewebsites.net/api/Status")
+        axios.get("https://backend-saf-api.azurewebsites.net/api/Status")
             .then((response) => {
                 if (response.status === 200) {
                     setTipoStatus(response.data)
                 }
             })
 
-        axios.get("http://backend-saf-api.azurewebsites.net/api/TipoVeiculos")
+        axios.get("https://backend-saf-api.azurewebsites.net/api/TipoVeiculos")
             .then((response) => {
                 if (response.status === 200) {
                     setTipoVeiculos(response.data)
                 }
             })
 
-        axios.get("http://backend-saf-api.azurewebsites.net/api/Carroceria")
+        axios.get("https://backend-saf-api.azurewebsites.net/api/Carroceria")
             .then((response) => {
                 if (response.status === 200) {
                     setCarrocerias(response.data)
                 }
             })
 
-        axios.get("http://backend-saf-api.azurewebsites.net/api/Marca")
+        axios.get("https://backend-saf-api.azurewebsites.net/api/Marca")
             .then((response) => {
                 if (response.status === 200) {
                     setMarcas(response.data)
@@ -81,7 +81,7 @@ export default function Modal({ onClose = () => { } }) {
         try {
             axios({
                 method: "post",
-                url: "http://backend-saf-api.azurewebsites.net/api/Veiculos",
+                url: "https://backend-saf-api.azurewebsites.net/api/Veiculos",
                 data: formData,
                 headers: { "Content-Type": "multipart/form-data" },
             })

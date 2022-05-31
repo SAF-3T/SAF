@@ -22,7 +22,7 @@ const Modal = ({ onClose = () => { }, children }) => {
     const notyf = new Notyf();
 
     function ListaCarroceria() {
-        axios('http://backend-saf-api.azurewebsites.net/api/Carroceria')
+        axios('https://backend-saf-api.azurewebsites.net/api/Carroceria')
             .then((response) => {
                 if (response.status === 200) {
                     setListarCarroceria(response.data)
@@ -35,7 +35,7 @@ const Modal = ({ onClose = () => { }, children }) => {
 
         event.preventDefault();
 
-        axios.post('http://backend-saf-api.azurewebsites.net/api/Carroceria', {
+        axios.post('https://backend-saf-api.azurewebsites.net/api/Carroceria', {
             idTipoCarga: 6,
             idTipoCarroceria: NovoIdTipoCarroceria,
             cubagem: NovaCubagem + 'm³',

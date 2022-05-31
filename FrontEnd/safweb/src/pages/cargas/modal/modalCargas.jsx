@@ -20,13 +20,13 @@ const Modal = ({ onClose = () => { } }) => {
     async function CadastrarCarga(event) {
 
         event.preventDefault();
-        axios('http://backend-saf-api.azurewebsites.net/VerificaDisponibilidadeNome/' + NovaCarga)
+        axios('https://backend-saf-api.azurewebsites.net/VerificaDisponibilidadeNome/' + NovaCarga)
             .then(response => {
                 setDisponibilidade(response.data)
             })
             
         if (Disponibiliade === 1) {
-            axios.post('http://backend-saf-api.azurewebsites.net/api/TipoCargas', {
+            axios.post('https://backend-saf-api.azurewebsites.net/api/TipoCargas', {
                 nomeTipoCarga: NovaCarga
             })
                 .then((resposta) => {
