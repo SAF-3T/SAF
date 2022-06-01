@@ -89,14 +89,14 @@ const styles = StyleSheet.create({
 
     },
     textoGrifado: {
-        fontSize: 50,
+        fontSize: 40,
         color: 'white',
         fontWeight: 'bold',
         height: 70
     },
     textoBotao: {
         fontWeight: 'bold',
-        fontSize: 32,
+        fontSize: 30,
         color: 'white',
     },
     corpoBotao: {

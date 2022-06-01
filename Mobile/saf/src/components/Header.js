@@ -1,5 +1,6 @@
 import { Component } from "react";
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 import {
     StyleSheet,
     Text,
@@ -13,12 +14,14 @@ import {
 } from 'react-native';
 import api from '../services/api';
 
-export default class Header extends Component {
-    render() {
+export default function Header() {
+
+    var navigation = useNavigation()
+
         return (
             <View style={styles.header}>
                 <View style={styles.headerSeperator}>
-                <TouchableOpacity onPress={() => (this.props.navigation.navigate('MenuGestor'))}>
+                <TouchableOpacity onPress={() => navigation.navigate('MenuMecanico')}>
                     <Image style={styles.setaVoltar} source={require('../../assets/img/setaVoltar.png')} />
                 </TouchableOpacity>
                 </View>
@@ -32,7 +35,6 @@ export default class Header extends Component {
                 
             </View>
         )
-    }
 }
 
 const styles = StyleSheet.create({

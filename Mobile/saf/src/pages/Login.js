@@ -67,16 +67,13 @@ export default class Login extends Component {
                     <StatusBar
                         hidden={true}
                     />
-                    {this.state.isTyping == false ?
                         <View style={styles.containerImg}>
                             <Image style={styles.img} source={{
                                 uri:
                                     'https://backend-saf-api.azurewebsites.net/Img/logoSAFmedio.jpg'
                             }} />
                         </View>
-                        :
-                        console.warn("Fechado")
-                    }
+                        
                     <View style={styles.containerInputs}>
                         <TextInput
                             onFocus={() => this.setState({ isTyping: true })}
@@ -151,7 +148,7 @@ const styles = StyleSheet.create({
     },
     corpoBotao: {
         width: '50%',
-        height: '20%',
+        height: '25%',
         backgroundColor: '#0E758C',
         display: 'flex',
         alignItems: 'center',
@@ -165,8 +162,9 @@ const styles = StyleSheet.create({
         // fontFamily: 'Montserrat'
     },
     img: {
-        height: 190,
-        width: 182,
+        height: '56%',
+        width: '30%',
+        resizeMode: "contain",
         marginTop: 50
     },
     textErroMensagem: {

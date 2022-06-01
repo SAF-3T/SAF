@@ -8,6 +8,8 @@ import * as ImagePicker from 'expo-image-picker';
 import { Camera, CameraType } from 'expo-camera';
 import * as FileSystem from 'expo-file-system';
 import * as MediaLibrary from 'expo-media-library';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { faXmark, faCheck, faPaperclip } from '@fortawesome/free-solid-svg-icons'
 import {
     StyleSheet,
     Text,
@@ -41,23 +43,27 @@ export default function Checkin() {
     const [statusVeiculo, setStatusVeiculo] = useState('');
 
     const [dianteira, setDianteira] = useState(false);
+    const [dianteiraX, setDianteiraX] = useState(false);
     const [dianteiraModal, setDianteiraModal] = useState(false);
-    const [dianteiraImg, setDianteiraImg] = useState('https://backend-saf-api.azurewebsites.net/Img/cam1.jpg');
+    const [dianteiraImg, setDianteiraImg] = useState(null);
 
 
     const [traseira, setTraseira] = useState(false);
+    const [traseiraX, setTraseiraX] = useState(false);
     const [traseiraModal, setTraseiraModal] = useState(false);
-    const [traseiraImg, setTraseiraImg] = useState('https://backend-saf-api.azurewebsites.net/Img/cam2.jpg');
+    const [traseiraImg, setTraseiraImg] = useState(null);
 
 
     const [lateralEsquerda, setLateralEsquerda] = useState(false);
+    const [lateralEsquerdaX, setLateralEsquerdaX] = useState(false);
     const [lateralEsquerdaModal, setLateralEsquerdaModal] = useState(false);
-    const [lateralEsquerdaImg, setLateralEsquerdaImg] = useState('https://backend-saf-api.azurewebsites.net/Img/cam22.jpg');
+    const [lateralEsquerdaImg, setLateralEsquerdaImg] = useState(null);
 
 
     const [lateralDireita, setLateralDireita] = useState(false);
+    const [lateralDireitaX, setLateralDireitaX] = useState(false);
     const [lateralDireitaModal, setLateralDireitaModal] = useState(false);
-    const [lateralDireitaImg, setLateralDireitaImg] = useState('https://backend-saf-api.azurewebsites.net/Img/cam32.jpg');
+    const [lateralDireitaImg, setLateralDireitaImg] = useState(null);
 
     const [modalCameraDianteira, setModalCameraDianteira] = useState(false);
     const [modalCameraTraseira, setModalCameraTraseira] = useState(false);
@@ -86,11 +92,9 @@ export default function Checkin() {
             .then(response => {
                 if (response.status === 200) {
                     setCorrespondencia(response.data)
-                    console.warn(response.data)
                 }
             })
     }
-
 
     const pickImageDianteira = async () => {
         // No permissions request is necessary for launching the image library
@@ -302,44 +306,52 @@ export default function Checkin() {
         setDianteiraModal(false)
         setCorrespondencia('')
         setDianteira(true)
+        setDianteiraX(false)
     }
     async function minimizarDianteiraNao() {
         setDianteiraModal(false)
         setCorrespondencia('')
         setDianteira(false)
+        setDianteiraX(true)
     }
 
     async function minimizarTraseiraSim() {
         setTraseiraModal(false)
         setCorrespondencia('')
         setTraseira(true)
+        setTraseiraX(false)
     }
     async function minimizarTraseiraNao() {
         setTraseiraModal(false)
         setCorrespondencia('')
         setTraseira(false)
+        setTraseiraX(true)
     }
 
     async function minimizarLateralEsquerdaSim() {
         setLateralEsquerdaModal(false)
         setCorrespondencia('')
         setLateralEsquerda(true)
+        setLateralEsquerdaX(false)
     }
     async function minimizarLateralEsquerdaNao() {
         setLateralEsquerdaModal(false)
         setCorrespondencia('')
         setLateralEsquerda(false)
+        setLateralEsquerdaX(true)
     }
 
     async function minimizarLateralDireitaSim() {
         setLateralDireitaModal(false)
         setCorrespondencia('')
         setLateralDireita(true)
+        setLateralDireitaX(false)
     }
     async function minimizarLateralDireitaNao() {
         setLateralDireitaModal(false)
         setCorrespondencia('')
         setLateralDireita(false)
+        setLateralDireitaX(true)
     }
 
     useEffect(buscaInfoVeiculo, [])
@@ -435,12 +447,9 @@ export default function Checkin() {
                                             <Text style={styles.modalText}>Sua imagem</Text>
                                             {
                                                 dianteiraImg === null ?
-                                                    <TouchableOpacity style={styles.imgModal} onPress={() => pickImageDianteira()}><View style={styles.imgModal} ><Image style={styles.imgCamera} source={require('../../assets/img/Group.png')} /></View></TouchableOpacity> :
-                                                    <View />
+                                                    <TouchableOpacity style={styles.imgModal} onPress={() => pickImageDianteira()}><View ></View></TouchableOpacity> :
+                                                    <TouchableOpacity style={styles.imgModal} onPress={() => pickImageDianteira()}>{dianteiraImg && <Image source={{ uri: dianteiraImg }} style={styles.imgModalMolde} />}</TouchableOpacity>
                                             }
-                                            <TouchableOpacity style={styles.imgModal} onPress={() => pickImageDianteira()}>{dianteiraImg && <Image source={{ uri: dianteiraImg }} style={styles.imgModalMolde} />}</TouchableOpacity>
-
-
                                         </View>
                                     </View>
                                     <Text style={styles.modalText}>Taxa de correspondência: {correspondencia}</Text>
@@ -475,12 +484,8 @@ export default function Checkin() {
                                             {
                                                 traseiraImg === null ?
                                                     <TouchableOpacity style={styles.imgModal} onPress={() => pickImageTraseira()}><View style={styles.imgModal} ><Image style={styles.imgCamera} source={require('../../assets/img/Group.png')} /></View></TouchableOpacity> :
-                                                    <View />
+                                                    <TouchableOpacity style={styles.imgModal} onPress={() => pickImageTraseira()}>{traseiraImg && <Image source={{ uri: traseiraImg }} style={styles.imgModalMolde} />}</TouchableOpacity>
                                             }
-                                            <TouchableOpacity style={styles.imgModal} onPress={() => pickImageTraseira()}>{traseiraImg && <Image source={{ uri: traseiraImg }} style={styles.imgModalMolde} />}</TouchableOpacity>
-
-
-
                                         </View>
                                     </View>
 
@@ -517,11 +522,8 @@ export default function Checkin() {
                                             {
                                                 lateralDireitaImg === null ?
                                                     <TouchableOpacity style={styles.imgModal} onPress={() => pickImageLateralD()}><View style={styles.imgModal} ><Image style={styles.imgCamera} source={require('../../assets/img/Group.png')} /></View></TouchableOpacity> :
-                                                    <View />
+                                                    <TouchableOpacity style={styles.imgModal} onPress={() => pickImageLateralD()}>{lateralDireitaImg && <Image source={{ uri: lateralDireitaImg }} style={styles.imgModalMolde} />}</TouchableOpacity>
                                             }
-                                            <TouchableOpacity style={styles.imgModal} onPress={() => pickImageLateralD()}>{lateralDireitaImg && <Image source={{ uri: lateralDireitaImg }} style={styles.imgModalMolde} />}</TouchableOpacity>
-
-
                                         </View>
                                     </View>
 
@@ -559,10 +561,8 @@ export default function Checkin() {
                                             {
                                                 lateralEsquerdaImg === null ?
                                                     <TouchableOpacity style={styles.imgModal} onPress={() => pickImageLateralE()}><View style={styles.imgModal} ><Image style={styles.imgCamera} source={require('../../assets/img/Group.png')} /></View></TouchableOpacity> :
-                                                    <View />
+                                                    <TouchableOpacity style={styles.imgModal} onPress={() => pickImageLateralE()}>{lateralDireitaImg && <Image source={{ uri: lateralDireitaImg }} style={styles.imgModalMolde} />}</TouchableOpacity>
                                             }
-                                            <TouchableOpacity style={styles.imgModal} onPress={() => pickImageLateralE()}>{lateralDireitaImg && <Image source={{ uri: lateralDireitaImg }} style={styles.imgModalMolde} />}</TouchableOpacity>
-
                                         </View>
                                     </View>
 
@@ -580,8 +580,6 @@ export default function Checkin() {
 
                     </Modal>
 
-                    {//Inicio do codigo
-                        console.warn("")}
                     <View style={styles.header}>
                         <Text style={styles.placa}>Check-in</Text>
                         <Text style={styles.placa}>{placaVeiculo}</Text>
@@ -596,18 +594,18 @@ export default function Checkin() {
                             <View style={styles.containerDivisaoItens}>
                                 <TouchableOpacity>
                                     {dianteira ?
-                                        <Image style={styles.icon} source={require('../../assets/img/certo.png')} /> :
-                                        <Image style={styles.icon} source={require('../../assets/img/certoApagado.png')} />
+                                        <FontAwesomeIcon margin='2%' size={35} icon={faCheck} color='green'/> :
+                                        <FontAwesomeIcon margin='2%' size={35} icon={faCheck} color='gray'/>
                                     }
                                 </TouchableOpacity>
                                 <TouchableOpacity>
-                                    {dianteira ?
-                                        <Image style={styles.icon} source={require('../../assets/img/xApagado.png')} /> :
-                                        <Image style={styles.icon} source={require('../../assets/img/x.png')} />
+                                    {dianteiraX ?
+                                        <FontAwesomeIcon margin='2%' size={40} icon={faXmark} color='red'/> :
+                                        <FontAwesomeIcon margin='2%' size={40} icon={faXmark} color='gray'/>
                                     }
                                 </TouchableOpacity>
                                 <TouchableOpacity onPress={() => setDianteiraModal(true)}>
-                                    <Image style={styles.icon2} source={require('../../assets/img/clip.png')} />
+                                    <FontAwesomeIcon size={30} icon={faPaperclip} color='black'/>
                                 </TouchableOpacity>
                             </View>
                         </View>
@@ -618,18 +616,18 @@ export default function Checkin() {
                             <View style={styles.containerDivisaoItens}>
                                 <TouchableOpacity>
                                     {traseira ?
-                                        <Image style={styles.icon} source={require('../../assets/img/certo.png')} /> :
-                                        <Image style={styles.icon} source={require('../../assets/img/certoApagado.png')} />
+                                        <FontAwesomeIcon margin='2%' size={35} icon={faCheck} color='green'/> :
+                                        <FontAwesomeIcon margin='2%' size={35} icon={faCheck} color='gray'/>
                                     }
                                 </TouchableOpacity>
                                 <TouchableOpacity>
-                                    {traseira ?
-                                        <Image style={styles.icon} source={require('../../assets/img/xApagado.png')} /> :
-                                        <Image style={styles.icon} source={require('../../assets/img/x.png')} />
+                                    {traseiraX ?
+                                        <FontAwesomeIcon margin='2%' size={40} icon={faXmark} color='red'/> :
+                                        <FontAwesomeIcon margin='2%' size={40} icon={faXmark} color='gray'/>
                                     }
                                 </TouchableOpacity>
                                 <TouchableOpacity onPress={() => setTraseiraModal(true)}>
-                                    <Image style={styles.icon2} source={require('../../assets/img/clip.png')} />
+                                    <FontAwesomeIcon size={30} icon={faPaperclip} color='black'/>
                                 </TouchableOpacity>
                             </View>
                         </View>
@@ -640,18 +638,18 @@ export default function Checkin() {
                             <View style={styles.containerDivisaoItens}>
                                 <TouchableOpacity>
                                     {lateralEsquerda ?
-                                        <Image style={styles.icon} source={require('../../assets/img/certo.png')} /> :
-                                        <Image style={styles.icon} source={require('../../assets/img/certoApagado.png')} />
+                                        <FontAwesomeIcon margin='2%' size={35} icon={faCheck} color='green'/> :
+                                        <FontAwesomeIcon margin='2%' size={35} icon={faCheck} color='gray'/>
                                     }
                                 </TouchableOpacity>
                                 <TouchableOpacity>
-                                    {lateralEsquerda ?
-                                        <Image style={styles.icon} source={require('../../assets/img/xApagado.png')} /> :
-                                        <Image style={styles.icon} source={require('../../assets/img/x.png')} />
+                                    {lateralEsquerdaX ?
+                                        <FontAwesomeIcon margin='2%' size={40} icon={faXmark} color='red'/> :
+                                        <FontAwesomeIcon margin='2%' size={40} icon={faXmark} color='gray'/>
                                     }
                                 </TouchableOpacity>
                                 <TouchableOpacity onPress={() => setLateralEsquerdaModal(true)}>
-                                    <Image style={styles.icon2} source={require('../../assets/img/clip.png')} />
+                                    <FontAwesomeIcon size={30} icon={faPaperclip} color='black'/>
                                 </TouchableOpacity>
                             </View>
                         </View>
@@ -662,18 +660,18 @@ export default function Checkin() {
                             <View style={styles.containerDivisaoItens}>
                                 <TouchableOpacity >
                                     {lateralDireita ?
-                                        <Image style={styles.icon} source={require('../../assets/img/certo.png')} /> :
-                                        <Image style={styles.icon} source={require('../../assets/img/certoApagado.png')} />
+                                        <FontAwesomeIcon margin='2%' size={35} icon={faCheck} color='green'/> :
+                                        <FontAwesomeIcon margin='2%' size={35} icon={faCheck} color='gray'/>
                                     }
                                 </TouchableOpacity>
                                 <TouchableOpacity>
-                                    {lateralDireita ?
-                                        <Image style={styles.icon} source={require('../../assets/img/xApagado.png')} /> :
-                                        <Image style={styles.icon} source={require('../../assets/img/x.png')} />
+                                    {lateralDireitaX ?
+                                        <FontAwesomeIcon margin='2%' size={40} icon={faXmark} color='red'/> :
+                                        <FontAwesomeIcon margin='2%'size={40} icon={faXmark} color='gray'/>
                                     }
                                 </TouchableOpacity>
                                 <TouchableOpacity onPress={() => setLateralDireitaModal(true)}>
-                                    <Image style={styles.icon2} source={require('../../assets/img/clip.png')} />
+                                    <FontAwesomeIcon size={30} icon={faPaperclip} color='black'/>
                                 </TouchableOpacity>
                             </View>
                         </View>
@@ -681,7 +679,7 @@ export default function Checkin() {
                     <View style={styles.containerBotao}>
                         {
                             dianteiraImg === null || traseiraImg === null || lateralEsquerdaImg === null || lateralDireitaImg === null ?
-                                <View style={styles.btnProsseguir}>
+                                <View style={styles.btnProsseguir2}>
                                     <Text style={styles.btnText2}>Anexe imagens antes de prosseguir</Text>
                                 </View> :
                                 <TouchableOpacity onPress={() => cadastrarCheckIn()} style={styles.btnProsseguir}>
@@ -719,7 +717,8 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        padding: '5%'
     },
     header: {
         display: 'flex',
@@ -727,7 +726,8 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         width: '90%',
-        height: '19%'
+        height: '19%',
+        margin: '5%'
     },
     body: {
         display: 'flex',
@@ -753,12 +753,13 @@ const styles = StyleSheet.create({
     containerItens: {
         display: 'flex',
         flexDirection: 'row',
-        marginTop: 30,
-        marginBottom: 30,
+        marginTop: '5%',
+        marginBottom: '5%',
         alignItems: 'center',
-        paddingLeft: 70,
-        paddingRight: 20,
-
+        paddingLeft: '5%',
+        paddingRight: '5%',
+        width: '100%',
+        height: '10%'
     },
     placa: {
         fontWeight: 'bold',
@@ -796,6 +797,15 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderRadius: 5
     },
+    btnProsseguir2: {
+        backgroundColor: '#0F282D',
+        width: '50%',
+        height: '40%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 5
+    },
     btnText: {
         color: 'white',
         fontWeight: 'bold',
@@ -809,24 +819,22 @@ const styles = StyleSheet.create({
         width: '95%'
     },
     textItem: {
-        fontSize: 30,
-        fontWeight: 'normal',
+        fontSize: 16,
+        fontWeight: 'normal'
     },
     icon: {
-        marginLeft: 30,
-        width: 40,
-        height: 40
+        height: 50,
+        marginLeft: '25%'
     },
     icon2: {
-        marginLeft: 30,
-        width: 40,
-        height: 47
-
+      
+        height: '100%',
     },
     containerDivisaoItens: {
         flex: 1,
         display: 'flex',
         alignItems: 'center',
+        justifyContent: 'center',
         flexDirection: 'row',
     },
     modal: {
@@ -838,11 +846,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         margin: 40,
+        paddingBottom: '7%'
     },
     modalContent: {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        height: '100%',
+        width: '100%',
     },
     imgModal: {
         backgroundColor: '#C4C4C4',
@@ -905,7 +916,8 @@ const styles = StyleSheet.create({
         fontSize: 23,
         fontWeight: 'bold',
         margin: 10,
-
+        width: '100%',
+        textAlign: 'center'
     },
     modalContainerImgText: {
         display: 'flex',
