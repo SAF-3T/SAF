@@ -44,25 +44,25 @@ export default function Checkout() {
     const [dianteira, setDianteira] = useState(false);
     const [dianteiraX, setDianteiraX] = useState(false);
     const [dianteiraModal, setDianteiraModal] = useState(false);
-    const [dianteiraImg, setDianteiraImg] = useState('https://backend-saf-api.azurewebsites.net/Img/cam1.jpg');
+    const [dianteiraImg, setDianteiraImg] = useState(null);
 
 
     const [traseira, setTraseira] = useState(false);
     const [traseiraX, setTraseiraX] = useState(false);
     const [traseiraModal, setTraseiraModal] = useState(false);
-    const [traseiraImg, setTraseiraImg] = useState('https://backend-saf-api.azurewebsites.net/Img/cam2.jpg');
+    const [traseiraImg, setTraseiraImg] = useState(null);
 
 
     const [lateralEsquerda, setLateralEsquerda] = useState(false);
     const [lateralEsquerdaX, setLateralEsquerdaX] = useState(false);
     const [lateralEsquerdaModal, setLateralEsquerdaModal] = useState(false);
-    const [lateralEsquerdaImg, setLateralEsquerdaImg] = useState('https://backend-saf-api.azurewebsites.net/Img/cam22.jpg');
+    const [lateralEsquerdaImg, setLateralEsquerdaImg] = useState(null);
 
 
     const [lateralDireita, setLateralDireita] = useState(false);
     const [lateralDireitaX, setLateralDireitaX] = useState(false);
     const [lateralDireitaModal, setLateralDireitaModal] = useState(false);
-    const [lateralDireitaImg, setLateralDireitaImg] = useState('https://backend-saf-api.azurewebsites.net/Img/cam32.jpg');
+    const [lateralDireitaImg, setLateralDireitaImg] = useState(null);
 
     const [modalCameraDianteira, setModalCameraDianteira] = useState(false);
     const [modalCameraTraseira, setModalCameraTraseira] = useState(false);
@@ -312,6 +312,7 @@ export default function Checkout() {
         setCorrespondencia('')
         setDianteira(false)
         setDianteiraX(true)
+        setDianteiraImg(null)
     }
 
     async function minimizarTraseiraSim() {
@@ -324,6 +325,7 @@ export default function Checkout() {
         setTraseiraModal(false)
         setCorrespondencia('')
         setTraseira(false)
+        setTraseiraImg(null)
         setTraseiraX(true)
     }
 
@@ -336,6 +338,7 @@ export default function Checkout() {
     async function minimizarLateralEsquerdaNao() {
         setLateralEsquerdaModal(false)
         setCorrespondencia('')
+        setLateralEsquerdaImg(null)
         setLateralEsquerda(false)
         setLateralEsquerdaX(true)
     }
@@ -349,6 +352,7 @@ export default function Checkout() {
     async function minimizarLateralDireitaNao() {
         setLateralDireitaModal(false)
         setCorrespondencia('')
+        setLateralDireitaImg(null)
         setLateralDireita(false)
         setLateralDireitaX(true)
     }
@@ -439,26 +443,27 @@ export default function Checkout() {
                                 <View style={styles.modalContent}>
                                     <View style={styles.modalContainerTextImg}>
                                         <View style={styles.modalContainerImgText}>
-                                            <Text style={styles.modalText}>Imagem Padrão</Text>
-                                            <Image style={styles.imgModal} source={{ uri: 'https://backend-saf-api.azurewebsites.net/Img/cam1.jpg' }} />
-                                        </View>
-                                        <View style={styles.modalContainerImgText}>
-                                            <Text style={styles.modalText}>Sua imagem</Text>
+                                            <Text style={styles.modalText}>Selecione uma imagem</Text>
                                             {
                                                 dianteiraImg === null ?
-                                                    <TouchableOpacity style={styles.imgModal} onPress={() => pickImageDianteira()}><View style={styles.imgModal} ><Image style={styles.imgCamera} source={require('../../assets/img/Group.png')} /></View></TouchableOpacity> :
-                                                    <View />
+                                                    <TouchableOpacity style={styles.imgModal} onPress={() => pickImageDianteira()}><View ><Image style={styles.imgCamera} source={require('../../assets/img/Group.png')} /></View></TouchableOpacity> :
+                                                    <TouchableOpacity style={styles.imgModal} onPress={() => pickImageDianteira()}>{dianteiraImg && <Image source={{ uri: dianteiraImg }} style={styles.imgModalMolde} />}</TouchableOpacity>
                                             }
-                                            <TouchableOpacity style={styles.imgModal} onPress={() => pickImageDianteira()}>{dianteiraImg && <Image source={{ uri: dianteiraImg }} style={styles.imgModalMolde} />}</TouchableOpacity>
-
-
                                         </View>
                                     </View>
-                                    <Text style={styles.modalText}>Taxa de correspondência: {correspondencia}</Text>
-                                    <Text style={styles.modalText}>Correspondente?</Text>
+                                    {
+                                        dianteiraImg === null ?
+                                        <View /> :
+                                        <Text style={styles.textItem}>Deseja selecionar essa imagem?</Text>
+                                    }
                                     <View style={styles.modalContainerBotoes}>
-                                        <TouchableOpacity style={styles.modalBotaoSim} onPress={() => minimizarDianteiraSim()}><Text style={styles.modalBotaoText}>Sim</Text></TouchableOpacity>
-                                        <TouchableOpacity style={styles.modalBotaoNao} onPress={() => minimizarDianteiraNao()}><Text style={styles.modalBotaoText}>Não</Text></TouchableOpacity>
+                                        {
+                                            dianteiraImg === null ?
+                                            <View /> :
+                                            <TouchableOpacity style={styles.modalBotaoSim} onPress={() => minimizarDianteiraSim()}><FontAwesomeIcon margin='2%' size={35} icon={faCheck} color='white'/></TouchableOpacity>
+                                        }
+                                        
+                                        <TouchableOpacity style={styles.modalBotaoNao} onPress={() => minimizarDianteiraNao()}><FontAwesomeIcon margin='2%' size={40} icon={faXmark} color='white'/></TouchableOpacity>
                                     </View>
                                 </View>
                             </View>
@@ -478,29 +483,29 @@ export default function Checkout() {
                                 <View style={styles.modalContent}>
                                     <View style={styles.modalContainerTextImg}>
                                         <View style={styles.modalContainerImgText}>
-                                            <Text style={styles.modalText}>Imagem Padrão</Text>
-                                            <Image style={styles.imgModal} source={{ uri: 'https://backend-saf-api.azurewebsites.net/Img/cam1.jpg' }} />
-                                        </View>
-                                        <View style={styles.modalContainerImgText}>
-                                            <Text style={styles.modalText}>Sua imagem</Text>
+                                            <Text style={styles.modalText}>Selecione uma imagem</Text>
                                             {
                                                 traseiraImg === null ?
                                                     <TouchableOpacity style={styles.imgModal} onPress={() => pickImageTraseira()}><View style={styles.imgModal} ><Image style={styles.imgCamera} source={require('../../assets/img/Group.png')} /></View></TouchableOpacity> :
-                                                    <View />
+                                                    <TouchableOpacity style={styles.imgModal} onPress={() => pickImageTraseira()}>{traseiraImg && <Image source={{ uri: traseiraImg }} style={styles.imgModalMolde} />}</TouchableOpacity>
                                             }
-                                            <TouchableOpacity style={styles.imgModal} onPress={() => pickImageTraseira()}>{traseiraImg && <Image source={{ uri: traseiraImg }} style={styles.imgModalMolde} />}</TouchableOpacity>
-
-
-
                                         </View>
                                     </View>
 
 
-                                    <Text style={styles.modalText}>Taxa de correspondência: {correspondencia}</Text>
-                                    <Text style={styles.modalText}>Correspondente?</Text>
+                                    {
+                                        traseiraImg === null ?
+                                        <View /> :
+                                        <Text style={styles.textItem}>Deseja selecionar essa imagem?</Text>
+                                    }
                                     <View style={styles.modalContainerBotoes}>
-                                        <TouchableOpacity style={styles.modalBotaoSim} onPress={() => minimizarTraseiraSim()}><Text style={styles.modalBotaoText}>Sim</Text></TouchableOpacity>
-                                        <TouchableOpacity style={styles.modalBotaoNao} onPress={() => minimizarTraseiraNao()}><Text style={styles.modalBotaoText}>Não</Text></TouchableOpacity>
+                                        {
+                                            traseiraImg === null ?
+                                            <View /> :
+                                            <TouchableOpacity style={styles.modalBotaoSim} onPress={() => minimizarTraseiraSim()}><FontAwesomeIcon margin='2%' size={35} icon={faCheck} color='white'/></TouchableOpacity>
+                                        }
+                                        
+                                        <TouchableOpacity style={styles.modalBotaoNao} onPress={() => minimizarTraseiraNao()}><FontAwesomeIcon margin='2%' size={40} icon={faXmark} color='white'/></TouchableOpacity>
                                     </View>
                                 </View>
                             </View>
@@ -520,28 +525,27 @@ export default function Checkout() {
                                 <View style={styles.modalContent}>
                                     <View style={styles.modalContainerTextImg}>
                                         <View style={styles.modalContainerImgText}>
-                                            <Text style={styles.modalText}>Imagem Padrão</Text>
-                                            <Image style={styles.imgModal} source={{ uri: 'https://backend-saf-api.azurewebsites.net/Img/cam31.jpg' }} />
-                                        </View>
-                                        <View style={styles.modalContainerImgText}>
-                                            <Text style={styles.modalText}>Sua imagem</Text>
+                                            <Text style={styles.modalText}>Selecione uma imagem</Text>
                                             {
                                                 lateralDireitaImg === null ?
                                                     <TouchableOpacity style={styles.imgModal} onPress={() => pickImageLateralD()}><View style={styles.imgModal} ><Image style={styles.imgCamera} source={require('../../assets/img/Group.png')} /></View></TouchableOpacity> :
-                                                    <View />
+                                                    <TouchableOpacity style={styles.imgModal} onPress={() => pickImageLateralD()}>{lateralDireitaImg && <Image source={{ uri: lateralDireitaImg }} style={styles.imgModalMolde} />}</TouchableOpacity>
                                             }
-                                            <TouchableOpacity style={styles.imgModal} onPress={() => pickImageLateralD()}>{lateralDireitaImg && <Image source={{ uri: lateralDireitaImg }} style={styles.imgModalMolde} />}</TouchableOpacity>
-
-
                                         </View>
                                     </View>
-
-
-                                    <Text style={styles.modalText}>Taxa de correspondência: {correspondencia}</Text>
-                                    <Text style={styles.modalText}>Correspondente?</Text>
+                                    {
+                                        lateralDireitaImg === null ?
+                                        <View /> :
+                                        <Text style={styles.textItem}>Deseja selecionar essa imagem?</Text>
+                                    }
                                     <View style={styles.modalContainerBotoes}>
-                                        <TouchableOpacity style={styles.modalBotaoSim} onPress={() => minimizarLateralDireitaSim()}><Text style={styles.modalBotaoText}>Sim</Text></TouchableOpacity>
-                                        <TouchableOpacity style={styles.modalBotaoNao} onPress={() => minimizarLateralDireitaNao()}><Text style={styles.modalBotaoText}>Não</Text></TouchableOpacity>
+                                        {
+                                            lateralDireitaImg === null ?
+                                            <View /> :
+                                            <TouchableOpacity style={styles.modalBotaoSim} onPress={() => minimizarLateralDireitaSim()}><FontAwesomeIcon margin='2%' size={35} icon={faCheck} color='white'/></TouchableOpacity>
+                                        }
+                                        
+                                        <TouchableOpacity style={styles.modalBotaoNao} onPress={() => minimizarLateralDireitaNao()}><FontAwesomeIcon margin='2%' size={40} icon={faXmark} color='white'/></TouchableOpacity>
                                     </View>
                                 </View>
                             </View>
@@ -562,27 +566,27 @@ export default function Checkout() {
                                 <View style={styles.modalContent}>
                                     <View style={styles.modalContainerTextImg}>
                                         <View style={styles.modalContainerImgText}>
-                                            <Text style={styles.modalText}>Imagem Padrão</Text>
-                                            <Image style={styles.imgModal} source={{ uri: 'https://backend-saf-api.azurewebsites.net/Img/cam21.jpg' }} />
-                                        </View>
-                                        <View style={styles.modalContainerImgText}>
-                                            <Text style={styles.modalText}>Sua imagem</Text>
+                                            <Text style={styles.modalText}>Selecione uma imagem</Text>
                                             {
                                                 lateralEsquerdaImg === null ?
-                                                    <TouchableOpacity style={styles.imgModal} onPress={() => pickImageLateralE()}><View style={styles.imgModal} ><Image style={styles.imgCamera} source={require('../../assets/img/Group.png')} /></View></TouchableOpacity> :
-                                                    <View />
+                                                <TouchableOpacity style={styles.imgModal} onPress={() => pickImageLateralE()}><View style={styles.imgModal} ><Image style={styles.imgCamera} source={require('../../assets/img/Group.png')} /></View></TouchableOpacity> :
+                                                <TouchableOpacity style={styles.imgModal} onPress={() => pickImageLateralE()}>{lateralEsquerdaImg && <Image source={{ uri: lateralEsquerdaImg }} style={styles.imgModalMolde} />}</TouchableOpacity>
                                             }
-                                            <TouchableOpacity style={styles.imgModal} onPress={() => pickImageLateralE()}>{lateralDireitaImg && <Image source={{ uri: lateralDireitaImg }} style={styles.imgModalMolde} />}</TouchableOpacity>
-
                                         </View>
                                     </View>
-
-
-                                    <Text style={styles.modalText}>Taxa de correspondência: {correspondencia}</Text>
-                                    <Text style={styles.modalText}>Correspondente?</Text>
+                                    {
+                                        lateralEsquerdaImg === null ?
+                                        <View /> :
+                                        <Text style={styles.textItem}>Deseja selecionar essa imagem?</Text>
+                                    }
                                     <View style={styles.modalContainerBotoes}>
-                                        <TouchableOpacity style={styles.modalBotaoSim} onPress={() => minimizarLateralEsquerdaSim()}><Text style={styles.modalBotaoText}>Sim</Text></TouchableOpacity>
-                                        <TouchableOpacity style={styles.modalBotaoNao} onPress={() => minimizarLateralEsquerdaNao()}><Text style={styles.modalBotaoText}>Não</Text></TouchableOpacity>
+                                        {
+                                            lateralEsquerdaImg === null ?
+                                            <View /> :
+                                            <TouchableOpacity style={styles.modalBotaoSim} onPress={() => minimizarLateralEsquerdaSim()}><FontAwesomeIcon margin='2%' size={35} icon={faCheck} color='white'/></TouchableOpacity>
+                                        }
+                                        
+                                        <TouchableOpacity style={styles.modalBotaoNao} onPress={() => minimizarLateralEsquerdaNao()}><FontAwesomeIcon margin='2%' size={40} icon={faXmark} color='white'/></TouchableOpacity>
                                     </View>
                                 </View>
                             </View>
@@ -609,12 +613,6 @@ export default function Checkout() {
                                         <FontAwesomeIcon margin='2%' size={35} icon={faCheck} color='gray'/>
                                     }
                                 </TouchableOpacity>
-                                <TouchableOpacity>
-                                    {dianteiraX ?
-                                        <FontAwesomeIcon margin='2%' size={40} icon={faXmark} color='red'/> :
-                                        <FontAwesomeIcon margin='2%' size={40} icon={faXmark} color='gray'/>
-                                    }
-                                </TouchableOpacity>
                                 <TouchableOpacity onPress={() => setDianteiraModal(true)}>
                                     <FontAwesomeIcon size={30} icon={faPaperclip} color='black'/>
                                 </TouchableOpacity>
@@ -629,12 +627,6 @@ export default function Checkout() {
                                     {traseira ?
                                         <FontAwesomeIcon margin='2%' size={35} icon={faCheck} color='green'/> :
                                         <FontAwesomeIcon margin='2%' size={35} icon={faCheck} color='gray'/>
-                                    }
-                                </TouchableOpacity>
-                                <TouchableOpacity>
-                                    {traseiraX ?
-                                        <FontAwesomeIcon margin='2%' size={40} icon={faXmark} color='red'/> :
-                                        <FontAwesomeIcon margin='2%' size={40} icon={faXmark} color='gray'/>
                                     }
                                 </TouchableOpacity>
                                 <TouchableOpacity onPress={() => setTraseiraModal(true)}>
@@ -653,12 +645,7 @@ export default function Checkout() {
                                         <FontAwesomeIcon margin='2%' size={35} icon={faCheck} color='gray'/>
                                     }
                                 </TouchableOpacity>
-                                <TouchableOpacity>
-                                    {lateralEsquerdaX ?
-                                        <FontAwesomeIcon margin='2%' size={40} icon={faXmark} color='red'/> :
-                                        <FontAwesomeIcon margin='2%' size={40} icon={faXmark} color='gray'/>
-                                    }
-                                </TouchableOpacity>
+                                
                                 <TouchableOpacity onPress={() => setLateralEsquerdaModal(true)}>
                                     <FontAwesomeIcon size={30} icon={faPaperclip} color='black'/>
                                 </TouchableOpacity>
@@ -675,12 +662,7 @@ export default function Checkout() {
                                         <FontAwesomeIcon margin='2%' size={35} icon={faCheck} color='gray'/>
                                     }
                                 </TouchableOpacity>
-                                <TouchableOpacity>
-                                    {lateralDireitaX ?
-                                        <FontAwesomeIcon margin='2%' size={40} icon={faXmark} color='red'/> :
-                                        <FontAwesomeIcon margin='2%'size={40} icon={faXmark} color='gray'/>
-                                    }
-                                </TouchableOpacity>
+                                
                                 <TouchableOpacity onPress={() => setLateralDireitaModal(true)}>
                                     <FontAwesomeIcon size={30} icon={faPaperclip} color='black'/>
                                 </TouchableOpacity>
@@ -689,8 +671,8 @@ export default function Checkout() {
                     </View>
                     <View style={styles.containerBotao}>
                         {
-                            dianteiraImg === null || traseiraImg === null || lateralEsquerdaImg === null || lateralDireitaImg === null ?
-                                <View style={styles.btnProsseguir}>
+                            dianteira === false || traseira === false || lateralEsquerda === false || lateralDireita === false ?
+                                <View style={styles.btnProsseguir2}>
                                     <Text style={styles.btnText2}>Anexe imagens antes de prosseguir</Text>
                                 </View> :
                                 <TouchableOpacity onPress={() => cadastrarCheckIn()} style={styles.btnProsseguir}>
@@ -808,6 +790,15 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderRadius: 5
     },
+    btnProsseguir2: {
+        backgroundColor: '#0F282D',
+        width: '50%',
+        height: '40%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 5
+    },
     btnText: {
         color: 'white',
         fontWeight: 'bold',
@@ -816,7 +807,7 @@ const styles = StyleSheet.create({
     btnText2: {
         color: 'white',
         fontWeight: 'bold',
-        fontSize: 35,
+        fontSize: 20,
         textAlign: 'center',
         width: '95%'
     },
