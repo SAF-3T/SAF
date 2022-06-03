@@ -48,10 +48,10 @@ export default class Login extends Component {
                 this.props.navigation.navigate('MenuGestor');
             }
             if (pegarIdUsuario === '2') {
-                this.props.navigation.navigate('MenuMotorista');
+                this.props.navigation.navigate('MenuGestor');
             }
             if (pegarIdUsuario === '3') {
-                this.props.navigation.navigate('MenuMecanico');
+                this.props.navigation.navigate('MenuGestor');
             }
         }
         else {

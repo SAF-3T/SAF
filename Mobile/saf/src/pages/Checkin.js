@@ -189,31 +189,22 @@ export default function Checkin() {
 
     async function cadastrarCheckIn() {
         setDataAtual('2022-05-05')
-        const dataCheckin = new FormData();
-        const dataDianteira = new FormData();
-        const dataTraseira = new FormData();
-        const dataLateralE = new FormData();
-        const dataLateralD = new FormData();
+        const dataCheckin = new FormData();        
 
-        dataDianteira.append('arquivo', dianteiraImg)
-        dataDianteira.append('idTipoErro', 9)
-        dataDianteira.append('idCheckList', idCheckList)
-        dataDianteira.append('descricaoErro', 'Erro na dianteira do veículo')
+        var x;
 
-        dataTraseira.append('arquivo', traseiraImg)
-        dataTraseira.append('idTipoErro', 10)
-        dataTraseira.append('idCheckList', idCheckList)
-        dataTraseira.append('descricaoErro', 'Erro na traseira do veículo')
-
-        dataLateralD.append('arquivo', lateralDireitaImg)
-        dataLateralD.append('idTipoErro', 11)
-        dataLateralD.append('idCheckList', idCheckList)
-        dataLateralD.append('descricaoErro', 'Erro na lateral direita do veículo')
-
-        dataLateralE.append('arquivo', lateralEsquerdaImg)
-        dataLateralE.append('idTipoErro', 12)
-        dataLateralE.append('idCheckList', idCheckList)
-        dataLateralE.append('descricaoErro', 'Erro na lateral esquerda do veículo')
+        dataCheckin.append('idTipoCheckList', 1)
+        dataCheckin.append('idVeiculo', idVeiculo)
+        dataCheckin.append('idUsuario', idUsuario)
+        dataCheckin.append('dataCheckList', dataAtual)
+        dataCheckin.append('imagemFrontal', dianteiraImg)
+        dataCheckin.append('imagemTraseira', traseiraImg)
+        dataCheckin.append('imagemLateralDireita', lateralDireitaImg)
+        dataCheckin.append('imagemLateralEsquerda', lateralEsquerdaImg)
+        dataCheckin.append('porcentagemFrontal', x)
+        dataCheckin.append('porcentagemTraseira', x)
+        dataCheckin.append('porcentagemLateralDireita', x)
+        dataCheckin.append('porcentagemLateralEsquerda', x)
 
         const header = { 'Content-Type': 'multipart/form-data' }
 

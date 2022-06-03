@@ -117,8 +117,8 @@ const styles = StyleSheet.create({
     main : {
         backgroundColor: '#0E758C',
         display: 'flex',
-        alignItems: 'center'
-        
+        alignItems: 'center',
+        width: '100%'
     },
     body:{
         display: 'flex',
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     ,
     titulo : {
         color: 'white',
-        fontSize: 40,
+        fontSize: 25,
         fontWeight: 'bold'
     },
     container1 : {
@@ -141,6 +141,7 @@ const styles = StyleSheet.create({
         flex: 4,
         display: 'flex',
         alignItems: 'center',
+        width: '100%'
     },
     container3: {
         flex: 2,
@@ -150,27 +151,27 @@ const styles = StyleSheet.create({
         paddingBottom: 50
     },
     quadradoImg: {
-        height: 250,
-        width: 250,
+        height: 200,
+        width: 200,
         borderColor: 'white',
         borderWidth: 8,
         borderRadius: 20,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        margin: 20
+        margin: '10%'
     },
     textPlaca: {
         color: 'white',
         fontWeight: 'bold',
-        fontSize: 40,
-        margin: 50
+        fontSize: 25,
+        margin: '10%'
     },
     textPlacaFuncional: {
         color: 'white',
         fontWeight: 'bold',
         fontSize: 18,
-        margin: 20
+        margin: '20%'
     },
     btnBuscar: {
         backgroundColor: 'white',
@@ -195,7 +196,7 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start'
     },
     img: {
-        width: 200,
-        height: 160
+        width: '50%',
+        height: '40%'
     }
 })

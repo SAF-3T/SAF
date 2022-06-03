@@ -4,6 +4,7 @@ import * as MediaLibrary from 'expo-media-library';
 import { Camera } from 'expo-camera';
 import * as FileSystem from 'expo-file-system';
 import { Modalize } from 'react-native-modalize';
+import { useNavigation } from '@react-navigation/core';
 
 export default function CameraTela() {
     const [hasPermission, setHasPermission] = useState(null);
@@ -15,6 +16,7 @@ export default function CameraTela() {
     const [modalResultado, setModalResultado] = useState(false)
 
     const ref = useRef(null)
+    
     const modalizeRef = useRef(null)
 
     useEffect(() => {
@@ -34,6 +36,7 @@ export default function CameraTela() {
     function onOpen() {
         modalizeRef.current?.open();
     }
+    var navigation = useNavigation()
 
     const TakePicture = async () => {
         const foto = await ref.current.takePictureAsync()
@@ -52,6 +55,8 @@ export default function CameraTela() {
             }
         }
 
+    
+
 
         await FileSystem.uploadAsync("https://ocr-loggex.cognitiveservices.azure.com/vision/v3.2/ocr?language=pt&detectOrientation=true&model-version=latest", foto.uri, options)
             .then(response => {
@@ -60,6 +65,10 @@ export default function CameraTela() {
             .catch(erro => console.debug(erro))
 
         console.debug(resultado)
+    }
+
+    function mudaTela(){
+        navigation.navigate('MenuGestor')
     }
 
     const FiltrarOCR = (obj) => {
@@ -100,7 +109,7 @@ export default function CameraTela() {
                                 <Text style={styles.atributosCaminhao}>Data de aquisição: 16-06-2021</Text>
                                 <Text style={styles.atributosCaminhao}>Marca: Volkswagen</Text>
                                 <Text style={styles.atributosCaminhao}>Motorista: Marcos Paulo</Text>
-                                <TouchableOpacity onPress={() => setModalResultado(false)} style={styles.btnModal}>
+                                <TouchableOpacity onPress={mudaTela} style={styles.btnModal}>
                                     <Text style={styles.textBtnModal}>Voltar</Text>
                                 </TouchableOpacity>
                             </View>
@@ -201,10 +210,11 @@ const styles = StyleSheet.create({
 
     txtBtnModal2: {
         color: '#060657',
-        fontSize: 17
+        fontSize: 20
     },
     modal: {
-        flex: 1,
+        height: '100%',
+        width: '100%',
         padding: 30,
         backgroundColor: '#0E758C',
         
@@ -221,8 +231,8 @@ const styles = StyleSheet.create({
     },
     btnModal: {
         backgroundColor: '#0E758C',
-        width: 300,
-        height: 100,
+        width: '40%',
+        height: '7%',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
@@ -230,19 +240,19 @@ const styles = StyleSheet.create({
         margin: 25
     },
     textBtnModal: {
-        fontSize: 40,
+        fontSize: 20,
         color: 'white',
         fontWeight: 'bold'
     },
     imgModal: {
-        width: 300,
-        height: 330
+        width: '30%',
+        height: '20%'
     },
     atributosCaminhao: {
         color: 'black',
-        fontSize: 25,
+        fontSize: 20,
         fontWeight: 'bold',
-        margin: 25
+        margin: '2%'
     }
 
 });
