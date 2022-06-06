@@ -98,6 +98,11 @@ export default function CameraTela() {
         navigation.navigate('MenuGestor')
     }
 
+    async function abrirVeiculo() {
+        await sleep(1000);
+        setModalResultado(true)
+    }
+
     const FiltrarOCR = (obj) => {
         let resultado;
         let teste = JSON.parse(obj)
@@ -128,11 +133,14 @@ export default function CameraTela() {
                     >
                         <View style={styles.modal}>
                             <View style={styles.containerModal}>
-                                <Text style={styles.atributosCaminhao}>Caminhão</Text>
-                                <Text style={styles.atributosCaminhao}>Na garagem</Text>
+                                <Text style={styles.atributosCaminhao}>Truck</Text>
+                                <Text style={styles.atributosCaminhao}>Mercedes-Benz</Text>
+                                <Text style={styles.atributosCaminhao}>Em Trajeto</Text>
                                 <Image style={styles.imgModal} source={{uri : 'https://backend-saf-api.azurewebsites.net/Img/79ba8dc1-f188-488b-8bea-97d5d05c0b04.png'}} />
-                                <Text style={styles.atributosCaminhao}>Placa: APU-2394{placa}</Text>
-                                <Text style={styles.atributosCaminhao}>Data de aquisição: 16-06-2021</Text>
+                                <Text style={styles.atributosCaminhao}>Placa: LEU-2392</Text>
+                                <Text style={styles.atributosCaminhao}>Carroceria: Caçamba</Text>
+                                <Text style={styles.atributosCaminhao}>Carga: Areia</Text>
+                                <Text style={styles.atributosCaminhao}>Data de aquisição: 09-05-2022</Text>
                                 <TouchableOpacity onPress={mudaTela} style={styles.btnModal}>
                                     <Text style={styles.textBtnModal}>Voltar</Text>
                                 </TouchableOpacity>
@@ -220,7 +228,8 @@ const styles = StyleSheet.create({
         width: '100%',
         borderTopLeftRadius: 10,
         borderTopRightRadius: 10,
-        height: 200
+        height: 200,
+        
     },
 
     tituloModal: {
@@ -255,7 +264,7 @@ const styles = StyleSheet.create({
     },
     btnModal: {
         backgroundColor: '#0E758C',
-        width: '40%',
+        width: '50%',
         height: '7%',
         display: 'flex',
         justifyContent: 'center',
@@ -269,8 +278,9 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     imgModal: {
-        width: '30%',
-        height: '20%'
+        width: '50%',
+        height: '30%',
+        resizeMode: "contain",
     },
     atributosCaminhao: {
         color: 'black',

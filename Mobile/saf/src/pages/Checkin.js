@@ -166,7 +166,6 @@ export default function Checkin() {
             .then(response => {
                 if (response.status === 200) {
                     setLateralEsquerdaPorcentagem(response.data)
-                    console.warn(lateralDireitaPorcentagem)
                     
                 }
             })
@@ -185,7 +184,7 @@ export default function Checkin() {
         if (!result.cancelled) {
             setDianteiraImg(result.uri);
 
-            PesquisarCorrespondenciaDianteira()
+            //PesquisarCorrespondenciaDianteira()
         }
     };
 
@@ -201,7 +200,7 @@ export default function Checkin() {
         if (!result.cancelled) {
             setTraseiraImg(result.uri);
 
-            PesquisarCorrespondenciaTraseira()
+            //PesquisarCorrespondenciaTraseira()
         }
     };
     const pickImageLateralD = async () => {
@@ -216,7 +215,7 @@ export default function Checkin() {
         if (!result.cancelled) {
             setLateralDireitaImg(result.uri);
 
-            PesquisarCorrespondenciaLD()
+            //PesquisarCorrespondenciaLD()
         }
     };
     const pickImageLateralE = async () => {
@@ -231,7 +230,7 @@ export default function Checkin() {
         if (!result.cancelled) {
             setLateralEsquerdaImg(result.uri);
 
-            PesquisarCorrespondenciaLE()
+            //PesquisarCorrespondenciaLE()
         }
     };
 
@@ -265,7 +264,7 @@ export default function Checkin() {
         )
             .then(resposta => {
                 if (resposta.status === 201) {
-                    console.warn('CheckList cadastrada!')
+                    //console.warn('CheckList cadastrada!')
                     // console.warn(resposta)
 
                     setTipoAutorizacao(0)
@@ -285,10 +284,11 @@ export default function Checkin() {
                     setTraseiraPorcentagem(0)
                     setLateralDireitaPorcentagem(0)
                     setLateralEsquerdaPorcentagem(0)
-                    navigation.navigate('TelaCadastradoCheckIn')
+                    
                 }
             })
             .catch(error => console.warn(error))
+            navigation.navigate('TelaCadastradoCheckIn')
     }
 
     async function buscaInfoVeiculo() {
@@ -299,7 +299,6 @@ export default function Checkin() {
         axios('https://backend-saf-api.azurewebsites.net/BuscarVeiculo/4')
             .then(response => {
                 if (response.status === 200) {
-                    console.warn(response)
                     setPlacaVeiculo(response.data.placa)
                     setStatusVeiculo(response.data.idStatusNavigation.nomeStatus)
                     setNomeTipoVeiculo(response.data.idTipoVeiculoNavigation.nomeTipoVeiculo)
@@ -801,7 +800,7 @@ const styles = StyleSheet.create({
     },
     btnProsseguir2: {
         backgroundColor: '#0F282D',
-        width: '50%',
+        width: '60%',
         height: '40%',
         display: 'flex',
         justifyContent: 'center',
