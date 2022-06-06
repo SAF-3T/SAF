@@ -46,24 +46,37 @@ export default function Checkin() {
     const [dianteiraX, setDianteiraX] = useState(false);
     const [dianteiraModal, setDianteiraModal] = useState(false);
     const [dianteiraImg, setDianteiraImg] = useState(null);
+    const [dianteiraImgPadrao, setDianteiraImgPadrao] = useState(null);
+    const [dianteiraPorcentagem, setDianteiraPorcentagem] = useState(0);
+
 
 
     const [traseira, setTraseira] = useState(false);
     const [traseiraX, setTraseiraX] = useState(false);
     const [traseiraModal, setTraseiraModal] = useState(false);
     const [traseiraImg, setTraseiraImg] = useState(null);
+    const [traseiraImgPadrao, setTraseiraImgPadrao] = useState(null);
+    const [traseiraPorcentagem, setTraseiraPorcentagem] = useState(0);
+
 
 
     const [lateralEsquerda, setLateralEsquerda] = useState(false);
     const [lateralEsquerdaX, setLateralEsquerdaX] = useState(false);
     const [lateralEsquerdaModal, setLateralEsquerdaModal] = useState(false);
     const [lateralEsquerdaImg, setLateralEsquerdaImg] = useState(null);
+    const [lateralEsquerdaImgPadrao, setLateralEsquerdaImgPadrao] = useState(null);
+    const [lateralEsquerdaPorcentagem, setLateralEsquerdaPorcentagem] = useState(0);
+
 
 
     const [lateralDireita, setLateralDireita] = useState(false);
     const [lateralDireitaX, setLateralDireitaX] = useState(false);
     const [lateralDireitaModal, setLateralDireitaModal] = useState(false);
     const [lateralDireitaImg, setLateralDireitaImg] = useState(null);
+    const [lateralDireitaImgPadrao, setLateralDireitaImgPadrao] = useState(null);
+    const [lateralDireitaPorcentagem, setLateralDireitaPorcentagem] = useState(false);
+
+
 
     const [modalCameraDianteira, setModalCameraDianteira] = useState(false);
     const [modalCameraTraseira, setModalCameraTraseira] = useState(false);
@@ -72,18 +85,21 @@ export default function Checkin() {
 
     const ref = useRef(null)
 
+    useEffect(buscaInfoVeiculo, [])
+
+
     const [dataAtual, setDataAtual] = useState('');
 
     var navigation = useNavigation()
 
     const [correspondencia, setCorrespondencia] = useState('');
-    function PesquisarCorrespondencia(img1, img2) {
+    function PesquisarCorrespondenciaDianteira() {
         axios({
             method: 'post',
             url: 'http://18.232.43.149:8000/comparar/img1/img2',
             data: qs.stringify({
-                nomeImg1: img1,
-                nomeImg2: img2
+                nomeImg1: dianteiraImgPadrao,
+                nomeImg2: dianteiraImg
             }),
             headers: {
                 'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
@@ -91,9 +107,70 @@ export default function Checkin() {
         })
             .then(response => {
                 if (response.status === 200) {
-                    setCorrespondencia(response.data)
+                    setDianteiraPorcentagem(response.data)
+                    
                 }
             })
+    }
+    function PesquisarCorrespondenciaTraseira() {
+        axios({
+            method: 'post',
+            url: 'http://18.232.43.149:8000/comparar/img1/img2',
+            data: qs.stringify({
+                nomeImg1: traseiraImgPadrao,
+                nomeImg2: traseiraImg
+            }),
+            headers: {
+                'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+            }
+        })
+            .then(response => {
+                if (response.status === 200) {
+                    setTraseiraPorcentagem(response.data)
+                    
+                }
+            })
+    }
+    function PesquisarCorrespondenciaLD() {
+        axios({
+            method: 'post',
+            url: 'http://18.232.43.149:8000/comparar/img1/img2',
+            data: qs.stringify({
+                nomeImg1: lateralDireitaImgPadrao,
+                nomeImg2: lateralDireitaImg
+            }),
+            headers: {
+                'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+            }
+        })
+            .then(response => {
+                if (response.status === 200) {
+                    setLateralDireitaPorcentagem(response.data)
+                    
+                }
+            })
+    }
+    function PesquisarCorrespondenciaLE() {
+        console.warn('Entrou na porcentagem')
+        axios({
+            method: 'post',
+            url: 'http://18.232.43.149:8000/Comparar/Files',
+            data: qs.stringify({
+                nomeImg1: lateralEsquerdaImgPadrao,
+                nomeImg2: lateralEsquerdaImg
+            }),
+            headers: {
+                'content-type': 'application/x-www-form-urlencoded;charset=utf-8'
+            }
+        })
+            .then(response => {
+                if (response.status === 200) {
+                    setLateralEsquerdaPorcentagem(response.data)
+                    console.warn(lateralDireitaPorcentagem)
+                    
+                }
+            })
+            .catch(error => console.warn(error))
     }
 
     const pickImageDianteira = async () => {
@@ -108,37 +185,9 @@ export default function Checkin() {
         if (!result.cancelled) {
             setDianteiraImg(result.uri);
 
-            PesquisarCorrespondencia('cam1.jpg', 'cam2.jpg')
+            PesquisarCorrespondenciaDianteira()
         }
     };
-
-    const TakePictureDianteira = async () => {
-        const fotoDianteira = await ref.current.takePictureAsync()
-
-        setDianteiraImg(fotoDianteira.uri)
-        setModalCameraDianteira(false)
-    }
-
-    const TakePictureTraseira = async () => {
-        const fotoTraseira = await ref.current.takePictureAsync()
-
-        setTraseiraImg(fotoTraseira.uri)
-        setModalCameraTraseira(false)
-    }
-
-    const TakePictureLateralD = async () => {
-        const fotoLateralD = await ref.current.takePictureAsync()
-
-        setLateralDireitaImg(fotoLateralD.uri)
-        setModalCameraLateralD(false)
-    }
-
-    const TakePictureLateralE = async () => {
-        const fotoLateralE = await ref.current.takePictureAsync()
-
-        setLateralEsquerdaImg(fotoLateralE.uri)
-        setModalCameraLateralE(false)
-    }
 
     const pickImageTraseira = async () => {
         // No permissions request is necessary for launching the image library
@@ -152,7 +201,7 @@ export default function Checkin() {
         if (!result.cancelled) {
             setTraseiraImg(result.uri);
 
-            PesquisarCorrespondencia('cam1.jpg', 'cam2.jpg')
+            PesquisarCorrespondenciaTraseira()
         }
     };
     const pickImageLateralD = async () => {
@@ -167,7 +216,7 @@ export default function Checkin() {
         if (!result.cancelled) {
             setLateralDireitaImg(result.uri);
 
-            PesquisarCorrespondencia('cam1.jpg', 'cam2.jpg')
+            PesquisarCorrespondenciaLD()
         }
     };
     const pickImageLateralE = async () => {
@@ -182,113 +231,82 @@ export default function Checkin() {
         if (!result.cancelled) {
             setLateralEsquerdaImg(result.uri);
 
-            PesquisarCorrespondencia('cam1.jpg', 'cam2.jpg')
+            PesquisarCorrespondenciaLE()
         }
     };
 
 
     async function cadastrarCheckIn() {
-        setDataAtual('2022-05-05')
+        setDataAtual('02-09-2005')
         const dataCheckin = new FormData();        
 
-        var x;
-
         dataCheckin.append('idTipoCheckList', 1)
-        dataCheckin.append('idVeiculo', idVeiculo)
-        dataCheckin.append('idUsuario', idUsuario)
-        dataCheckin.append('dataCheckList', dataAtual)
-        dataCheckin.append('imagemFrontal', dianteiraImg)
-        dataCheckin.append('imagemTraseira', traseiraImg)
-        dataCheckin.append('imagemLateralDireita', lateralDireitaImg)
-        dataCheckin.append('imagemLateralEsquerda', lateralEsquerdaImg)
-        dataCheckin.append('porcentagemFrontal', x)
-        dataCheckin.append('porcentagemTraseira', x)
-        dataCheckin.append('porcentagemLateralDireita', x)
-        dataCheckin.append('porcentagemLateralEsquerda', x)
+        dataCheckin.append('idVeiculo', 4)
+        dataCheckin.append('idUsuario', 33)
+        dataCheckin.append('dataCheckList', '2005-07-26')
+        dataCheckin.append('imagemFrontal', {uri:dianteiraImg.uri,type:dianteiraImg.type,name:dianteiraImg.fileName})
+        dataCheckin.append('imagemTraseira', {uri:traseiraImg.uri,type:traseiraImg.type,name:traseiraImg.fileName})
+        dataCheckin.append('imagemLateralDireita', {uri:lateralDireitaImg.uri,type:lateralDireitaImg.type,name:lateralDireitaImg.fileName})
+        dataCheckin.append('imagemLateralEsquerda', {uri:lateralEsquerdaImg.uri,type:lateralEsquerdaImg.type,name:lateralEsquerdaImg.fileName})
+        dataCheckin.append('porcentagemFrontal', 95)
+        dataCheckin.append('porcentagemTraseira', 92)
+        dataCheckin.append('porcentagemLateralDireita', 85)
+        dataCheckin.append('porcentagemLateralEsquerda', 89)
 
-        const header = { 'Content-Type': 'multipart/form-data' }
-
-        // console.warn(dataAtual)
-        let corpoChecklist = {
-            idTipoCheckList: 1,
-            idVeiculo: 2,
-            idUsuario: idUsuario,
-            dataCheckList: dataAtual
-        }
-        await axios.post('https://backend-saf-api.azurewebsites.net/api/CheckList', corpoChecklist)
+        await axios(
+            {
+                method: 'post',
+                url: 'https://backend-saf-api.azurewebsites.net/api/CheckList',
+                body: dataCheckin,
+                headers: {
+                    'Content-Type': 'multipart/form-data; ',
+                  },
+            }    
+        )
             .then(resposta => {
                 if (resposta.status === 201) {
                     console.warn('CheckList cadastrada!')
                     // console.warn(resposta)
-                    setIdCheckList(resposta.data.idCheckList)
+
+                    setTipoAutorizacao(0)
+                    setIdUsuario(0)
+                    setIdVeiculo(0)
+                    setIdCheckList(0)
+                    setIdStatus(0)
+                    setNomeTipoVeiculo('')
+                    setNomeU('')
+                    setPlacaVeiculo('')
+                    setStatusVeiculo('')
+                    setDianteiraImg(null)
+                    setTraseiraImg(null)
+                    setLateralEsquerdaImg(null)
+                    setLateralDireitaImg(null)
+                    setDianteiraPorcentagem(0)
+                    setTraseiraPorcentagem(0)
+                    setLateralDireitaPorcentagem(0)
+                    setLateralEsquerdaPorcentagem(0)
+                    navigation.navigate('TelaCadastradoCheckIn')
                 }
             })
             .catch(error => console.warn(error))
-
-
-        if (dianteira === false) {
-            var respostaDianteira = await axios.post({
-                url: 'https://backend-saf-api.azurewebsites.net/api/Erro', data: dataDianteira,
-                headers: header
-            })
-            if (respostaDianteira.status === 201) {
-                console.warn('Erro da dianteira cadastrado')
-            }
-
-        }
-        if (traseira === false) {
-            var respostaTraseira = await axios.post({
-                url: 'https://backend-saf-api.azurewebsites.net/api/Erro', data: dataTraseira,
-                header: header
-            })
-            if (respostaTraseira.status === 201) {
-                console.warn('Erro da traseira cadastrado')
-            }
-        }
-        if (lateralDireita === false) {
-            var respostaLateralDireita = await axios.post({
-                url: 'https://backend-saf-api.azurewebsites.net/api/Erro', data: dataLateralD,
-                header: header
-            })
-            if (respostaLateralDireita.status === 201) {
-                console.warn('Erro da lateral direita cadastrado')
-            }
-        }
-        if (lateralEsquerda === false) {
-            var respostaLateralEsquerda = await axios.post({
-                url: 'https://backend-saf-api.azurewebsites.net/api/Erro', data: dataLateralE,
-                headers: header
-            })
-            if (respostaLateralEsquerda.status === 201) {
-                console.warn('Erro da lateral esquerda cadastrado')
-            }
-        }
-        setTipoAutorizacao(0)
-        setIdUsuario(0)
-        setIdVeiculo(0)
-        setIdCheckList(0)
-        setIdStatus(0)
-        setNomeTipoVeiculo('')
-        setNomeU('')
-        setPlacaVeiculo('')
-        setStatusVeiculo('')
-        setDianteiraImg(null)
-        setTraseiraImg(null)
-        setLateralEsquerdaImg(null)
-        setLateralDireitaImg(null)
-        await navigation.navigate('TelaCadastradoCheckIn')
     }
 
     async function buscaInfoVeiculo() {
         const token = await AsyncStorage.getItem('userToken')
         setIdUsuario(jwtDecode(token).jti)
-        axios('https://backend-saf-api.azurewebsites.net/BuscarVeiculo/2')
+
+
+        axios('https://backend-saf-api.azurewebsites.net/BuscarVeiculo/4')
             .then(response => {
                 if (response.status === 200) {
-                    // console.warn(response)
+                    console.warn(response)
                     setPlacaVeiculo(response.data.placa)
                     setStatusVeiculo(response.data.idStatusNavigation.nomeStatus)
                     setNomeTipoVeiculo(response.data.idTipoVeiculoNavigation.nomeTipoVeiculo)
+                    setDianteiraImgPadrao(response.data.imagemFrontalPadrao)
+                    setTraseiraImgPadrao(response.data.imagemTraseiraPadrao)
+                    setLateralDireitaImgPadrao(response.data.imagemLateralEsquerdaPadrao)
+                    setLateralEsquerdaImgPadrao(response.data.imagemLateralDireitaPadrao)
                 }
             })
     }
@@ -349,8 +367,7 @@ export default function Checkin() {
         setLateralDireitaX(true)
     }
 
-    useEffect(buscaInfoVeiculo, [])
-
+    
     return (
         <View style={styles.main}>
             <Header />

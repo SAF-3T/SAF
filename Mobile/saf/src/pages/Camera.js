@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, TouchableOpacity, Image, Modal } from 'react-na
 import * as MediaLibrary from 'expo-media-library';
 import { Camera } from 'expo-camera';
 import * as FileSystem from 'expo-file-system';
-import { Modalize } from 'react-native-modalize';
 import { useNavigation } from '@react-navigation/core';
 
 export default function CameraTela() {
@@ -11,20 +10,28 @@ export default function CameraTela() {
     const [type, setType] = useState(Camera.Constants.Type.back);
     const [status, requestPermission] = MediaLibrary.usePermissions();
     const [placa, setPlaca] = useState('')
+    const [statusVeiculo, setStatusVeiculo] = useState('')
+    const [imgVeiculo, setImgVeiculo] = useState(null)
+    const [carroceiraVeiculo, setCarroceiraVeiculo] = useState('')
+    const [marcaVeiculo, setMarcaVeiculo] = useState('')
+    const [nomeTipoVeiculo, setNomeTipoVeiculo] = useState('')
+
+
     const [teste, setTeste] = useState({})
 
     const [modalResultado, setModalResultado] = useState(false)
 
     const ref = useRef(null)
-    
-    const modalizeRef = useRef(null)
-
     useEffect(() => {
         (async () => {
             const { status } = await Camera.requestCameraPermissionsAsync();
             setHasPermission(status === 'granted');
         })();
     }, []);
+    
+    const modalizeRef = useRef(null)
+
+    
 
     if (hasPermission === null) {
         return <View />;
@@ -37,6 +44,26 @@ export default function CameraTela() {
         modalizeRef.current?.open();
     }
     var navigation = useNavigation()
+
+    async function buscaInfoVeiculo() {
+        const token = await AsyncStorage.getItem('userToken')
+        setIdUsuario(jwtDecode(token).jti)
+
+
+        axios('https://backend-saf-api.azurewebsites.net/BuscarVeiculo/4')
+            .then(response => {
+                if (response.status === 200) {
+                    console.warn(response)
+                    setImgVeiculo(response.data.imagemFrontalPadrao)
+                    setPlaca(response.data.placa)
+                    setStatusVeiculo(response.data.idStatusNavigation.nomeStatus)
+                    setNomeTipoVeiculo(response.data.idTipoVeiculoNavigation.nomeTipoVeiculo)
+                    setImgVeiculo(response.data.imagemFrontalPadrao)
+                    setMarcaVeiculo(response.data.idMarcaNavigation.nomeMarca)
+                }
+            })
+            .catch(error => console.warn(error))
+    }
 
     const TakePicture = async () => {
         const foto = await ref.current.takePictureAsync()
@@ -103,12 +130,9 @@ export default function CameraTela() {
                             <View style={styles.containerModal}>
                                 <Text style={styles.atributosCaminhao}>Caminhão</Text>
                                 <Text style={styles.atributosCaminhao}>Na garagem</Text>
-                                <Image style={styles.imgModal} source={require('../../assets/img/caminhao.png')} />
-                                <Text style={styles.atributosCaminhao}>Placa: DHD-8391</Text>
-                                <Text style={styles.atributosCaminhao}>Carroceria: Caçamba</Text>
+                                <Image style={styles.imgModal} source={{uri : 'https://backend-saf-api.azurewebsites.net/Img/79ba8dc1-f188-488b-8bea-97d5d05c0b04.png'}} />
+                                <Text style={styles.atributosCaminhao}>Placa: APU-2394{placa}</Text>
                                 <Text style={styles.atributosCaminhao}>Data de aquisição: 16-06-2021</Text>
-                                <Text style={styles.atributosCaminhao}>Marca: Volkswagen</Text>
-                                <Text style={styles.atributosCaminhao}>Motorista: Marcos Paulo</Text>
                                 <TouchableOpacity onPress={mudaTela} style={styles.btnModal}>
                                     <Text style={styles.textBtnModal}>Voltar</Text>
                                 </TouchableOpacity>

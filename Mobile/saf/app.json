@@ -4,11 +4,11 @@
     "slug": "saf",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/Img/Vector.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/img/Logo-SAF.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#0E758C"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -21,8 +21,8 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "foregroundImage": "./assets/img/Logo-SAF.png",
+        "backgroundColor": "#0E758C"
       }
     },
     "web": {

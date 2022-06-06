@@ -18,8 +18,6 @@ import {
     Button,
   } from 'react-native';
   import api from '../services/api';
-import { data } from "browserslist";
-
 
   export default function Contatos() {
 
