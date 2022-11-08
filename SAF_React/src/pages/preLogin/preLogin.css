@@ -1,0 +1,161 @@
+.backgroundPreLogin {
+    background-color: #0F282D;
+    width: 100%;
+    height: 100vh;
+}
+
+.linksPreLogin {
+    width: 100%;
+    padding-top: 30px;
+}
+
+.divEsqPreLogin {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.divDirPreLogin {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.LogoPreLogin {
+    width: 86px;
+    height: 82px;
+    background-image: url("../../assets/imgs/LogoPreLogin.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.linksPreLogin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnPreLogin {
+    font-size: 20px;
+    height: 70px;
+    width: 170px;
+    background-color: #fff;
+    color: #0E758C;
+    border-radius: 10px;
+    border: none;
+    padding: 0;
+    margin-top: 0;
+    margin-right: 70px;
+    position: none;
+    right: 0;
+    z-index: 1;
+    overflow: hidden;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    filter: drop-shadow(7px 7px 6px rgba(0, 0, 0, 0.6));
+}
+
+.btnPreLogin::after {
+    content: none;
+}
+
+.btnPreLogin:hover {
+    color: #0E758C;
+}
+
+.third {
+    border-color: #0E758C;
+    color: #fff;
+    box-shadow: 0 0 40px 40px #0E758C inset, 0 0 0 0 #0E758C;
+    -webkit-transition: all 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
+}
+
+.third:hover {
+    box-shadow: 0 0 10px 0 #0E758C inset, 0 0 10px 4px #0E758C;
+}
+
+.h1PreLogin {
+    width: 786px;
+    font-family: "Open Sans", sans-serif;
+    text-align: center;
+    color: #fff;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 58px;
+    margin: 30px auto 100px;
+    /* background-color: red; */
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.cardsPreLogin {
+    width: 1500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.cardPreLogin {
+    width: 400px;
+    height: 370px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 45px 40px 113px rgba(0, 0, 0, 0.5);
+    -moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.cardPreLogin:hover {
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.cardPreLogin>p {
+    text-align: center;
+    width: 350px;
+    margin: 0 auto;
+
+}
+
+.footerPreLogin {
+    background-color: unset;
+    width: 350px;
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 40%;
+}
+
+.img1 {
+    width: 200px;
+    height: 200px;
+    margin: 20px auto 10px;
+    background-image: url("../../assets/imgs/IMGCheckList.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.img2 {
+    width: 200px;
+    height: 200px;
+    margin: 20px auto 10px;
+    background-image: url("../../assets/imgs/IMGCheckList.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.img3 {
+    width: 200px;
+    height: 200px;
+    margin: 20px auto 10px;
+    background-image: url("../../assets/imgs/IMGOCR.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}

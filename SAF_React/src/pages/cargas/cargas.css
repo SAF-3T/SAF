@@ -1,0 +1,200 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: rgba(196, 196, 196, 0.1);
+}
+
+.wrapperCargas {
+    width: 70%;
+    margin: 40px auto;
+    min-height: 850px;
+}
+
+.pCarga {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 60px;
+    line-height: 73px;
+    color: #000000;
+}
+
+.btnAddCarga {
+    width: 15%;
+    height: 73px;
+    background-color: #0E758C;
+    border-radius: 10px;
+}
+
+.btnAddCarga::after {
+    background: none;
+    padding: 0;
+}
+
+.btnAddCarga:hover{
+    opacity: 0.9;
+}
+
+.conteudoBtnAddCarga {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pAddCarga {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 37px;
+    color: #FFFFFF;
+}
+
+.addCarga:hover {
+    opacity: 0.9;
+}
+
+.cardCargas {
+    width: 70%;
+    height: 100px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    margin: 2.5% auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cardCargas:hover {
+    -moz-transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+    box-shadow: 0 0.2px 10px black;
+}   
+
+.cardCabecalhoCargas {
+    margin: 20% auto 0;
+    width: 70%;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.alinharEtiquetasCargas {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    width: 80%;
+}
+
+.alinharCabecalhoEtiquetasCargas {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    width: 80%;
+}
+
+.etiquetaCabecalhoCargas {
+    width: 193px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.etiquetaCargas {
+    width: 193px;
+    height: 60px;
+    background: #0E758C;
+    border-radius: 10px;
+    margin: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nomeEtiquetaCarga {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 37px;
+    color: #FFF;
+}
+
+.nomeEtiquetaCabecalhoCarga {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 29px;
+    line-height: 37px;
+    color: #0F282D;
+}
+
+.iconesEtiquetaCargas {
+    width: 13%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.iconesCabecalhoEtiquetaCargas {
+    width: 13%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input-e-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.input-e-btn-2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 0 auto;
+    width: 1000px;
+}
+
+.inputBusca {
+    width: 600px;
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #0E758C;
+    border-radius: 10px;
+    align-items: center;
+    height: 73px;
+    margin: 0 auto;
+    padding-left: 15px;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.inputBusca::placeholder {
+    color: #00000048;
+}
+
+.btnBuscar {
+    background: #0E758C;
+    width: 170px;
+    height: 73px;
+    border-radius: 10px;
+    padding: 0;
+}
+
+.btnBuscar:hover {
+    opacity: 0.9;
+}
+
+.btnBuscar::after {
+    display: none !important;
+}

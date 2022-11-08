@@ -1,0 +1,1 @@
+percentage = image_diff_percent("ImagemSemMascara.jpg", "ImagemComMascara.jpg")

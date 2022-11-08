@@ -1,0 +1,242 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: rgba(196, 196, 196, 0.1);
+}
+
+.wrapperVeiculos {
+    width: 70%;
+    margin: 40px auto;
+    min-height: 850px;
+}
+
+.pVeiculo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 60px;
+    line-height: 73px;
+    color: #000000;
+}
+
+.addVeiculo {
+    background: #0E758C;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 37px;
+    display: flex;
+    align-items: center;
+    width: 170px;
+    height: 73px;
+    color: #FFFFFF;
+}
+
+.addVeiculo:hover {
+    opacity: 0.9;
+}
+
+.iconPlus {
+    margin-right: 12px;
+    margin-left: 6px;
+}
+
+.cardVeiculo {
+    margin-top: 3%;
+    width: 100%;
+    height: 250px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cardVeiculo:hover {
+    -moz-transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+    box-shadow: 0 0.2px 10px black;
+}
+
+.cardCabecalhoVeiculo {
+    margin-top: 20%;
+    width: 100%;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imgCabecalhoVeiculo {
+    width: 20%;
+    border-radius: 5px;
+}
+
+.alinharEtiquetasCabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    width: 90%;
+    height: 0px;
+}
+
+.nomeCabecalhoEtiqueta {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 29px;
+    line-height: 37px;
+    text-align: center;
+    color: #0F282D;
+}
+
+.iconesEtiquetaVeiculos {
+    width: 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.conteudoVeiculo {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.conteudoCabecalhoVeiculo {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.etiquetasVeiculos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.etiquetasCabecalhoVeiculos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.etiquetaVeiculo {
+    width: 170px;
+    height: 62px;
+    background: #0E758C;
+    border-radius: 10px;
+    text-align: center;
+    margin: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.etiquetaCabecalhoVeiculo {
+    width: 170px;
+    height: fit-content;
+    border-radius: 10px;
+    margin: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nomeEtiqueta {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 37px;
+    color: #FFF;
+}
+
+.imgVeiculo {
+    width: 20%;
+    height: 190px;
+    border-radius: 5px;
+}
+
+.alinharEtiquetas {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    width: 90%;
+}
+
+.input-e-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.input-e-btn-2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 0 auto;
+    width: 1000px;
+}
+
+.inputBusca {
+    width: 600px;
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #0E758C;
+    border-radius: 10px;
+    align-items: center;
+    height: 73px;
+    margin: 0 auto;
+    padding-left: 15px;
+    font-size: 25px;
+    font-weight: 600;
+
+}
+
+.inputBusca::placeholder {
+    color: #00000048;
+}
+
+.btnAddVeiculo {
+    width: 16%;
+    height: 73px;
+    background-color: #0E758C;
+    border-radius: 10px;
+}
+
+.btnAddVeiculo:hover {
+    opacity: 0.9;
+}
+
+.btnAddVeiculo::after {
+    background: none;
+    padding: 0;
+}
+
+.conteudoBtnAddVeiculo {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pAddVeiculo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 37px;
+    color: #FFFFFF;
+}

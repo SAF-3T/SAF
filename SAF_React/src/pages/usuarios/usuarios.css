@@ -1,0 +1,274 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: rgba(196, 196, 196, 0.1);
+}
+
+.wrapperUsuarios {
+    width: 70%;
+    margin: 40px auto;
+    min-height: 850px;
+}
+
+.pUsuario {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 60px;
+    line-height: 73px;
+    color: #000000;
+}
+
+.addUsuario {
+    background: #0E758C;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 37px;
+    display: flex;
+    align-items: center;
+    width: 170px;
+    height: 73px;
+    color: #FFFFFF;
+}
+
+.addUsuario:hover {
+    opacity: 0.9;
+}
+
+.iconPlus {
+    margin-right: 12px;
+    margin-left: 6px;
+}
+
+.cardCabecalhoUsuario {
+    margin-top: 15%;
+    width: 100%;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cardUsuario {
+    margin-top: 3%;
+    width: 100%;
+    height: 250px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cardUsuario:hover {
+    -moz-transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+    box-shadow: 0 0.2px 10px black;
+}
+
+.conteudoUsuario {
+    width: 92%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.conteudoCabecalhoUsuario {
+    width: 92%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.etiquetasUsuarios {
+    display: flex;
+    justify-content: space-between;
+    width: 67%;
+}
+
+.etiquetasCabecalhoUsuarios {
+    display: flex;
+    justify-content: space-between;
+    width: 67%;
+}
+
+.etiquetaUsuario {
+    width: 9.2vw;
+    height: 62px;
+    background: #0E758C;
+    border-radius: 10px;
+    margin: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.etiquetaCabecalhoUsuario {
+    width: 158px;
+    height: 42px;
+    border-radius: 10px;
+    margin: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nomeEtiquetaUsuario {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 37px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+}
+
+.nomeCabecalhoEtiquetaUsuario {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 29px;
+    line-height: 37px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #0F282D;
+}
+
+.imgUsuario {
+    width: 240px;
+    height: 210px;
+    background: rgba(196, 196, 196, 0.5);
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgCabecalhoUsuario {
+    width: 240px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.alinharEtiquetasUsuarios {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    width: 80%;
+}
+
+.alinharEtiquetasUsuariosCabecalho {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    align-items: flex-end;
+    width: 80%;
+}
+
+.iconesEtiquetaUsuarios {
+    width: 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.input-e-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.btnAddUsuario {
+    width: 16%;
+    height: 73px;
+    background-color: #0E758C;
+    border-radius: 10px;
+}
+
+.btnAddUsuario::after {
+    background: none;
+    padding: 0;
+}
+
+.btnAddUsuario:hover {
+    opacity: 0.9;
+}
+
+.conteudoBtnAddUsuario {
+    width: 91%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pAddUsuario {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 37px;
+    color: #FFFFFF;
+}
+
+.addUsuario:hover {
+    opacity: 0.9;
+}
+
+.input-e-btn-2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 0 auto;
+    width: 1000px;
+}
+
+.inputBusca {
+    width: 600px;
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #0E758C;
+    border-radius: 10px;
+    align-items: center;
+    height: 73px;
+    margin: 0 auto;
+    padding-left: 15px;
+    font-size: 25px;
+    font-weight: 600;
+
+}
+
+.inputBusca::placeholder {
+    color: #00000048;
+}
+
+.btnBuscar {
+    background: #139FC0;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 37px;
+    text-align: center;
+    width: 170px;
+    height: 73px;
+    color: #FFFFFF;
+}
+
+.btnBuscar:hover {
+    opacity: 0.9;
+}
+
+.btnBuscar::after {
+    display: none !important;
+}
